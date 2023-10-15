@@ -9,16 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        TimerComponent()
     }
 }
 
 #Preview {
     ContentView()
+        .environmentObject(MeetingModel(timer: TimerManager()))
+        .preferredColorScheme(.dark)
+        .previewInterfaceOrientation(.landscapeLeft)
+        
 }
