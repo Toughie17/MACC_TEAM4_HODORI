@@ -14,6 +14,9 @@ struct HodoriApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(MeetingModel(timer: TimerManager()))
+                .preferredColorScheme(.dark)
+                .previewInterfaceOrientation(.landscapeLeft)
         }
     }
 }
