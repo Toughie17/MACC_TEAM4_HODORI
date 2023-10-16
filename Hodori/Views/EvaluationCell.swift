@@ -36,3 +36,4 @@ struct EvaluationCell: View {
             .font(.system(size: 12))
     }
 }
+

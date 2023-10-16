@@ -77,7 +77,7 @@ struct ExtendMeetingView: View {
                 .padding(.horizontal, 14)
                 .background {
                     RoundedRectangle(cornerRadius: 18)
-                        .fill(.darkgray)
+                        .fill(Color.dargray)
                 }
                 .font(.system(size: 20))
         }
@@ -92,7 +92,7 @@ struct ExtendMeetingView: View {
                 .padding(.horizontal, 14)
                 .background {
                     RoundedRectangle(cornerRadius: 18)
-                        .fill(.darkgray)
+                        .fill(Color.dargray)
                 }
                 .font(.system(size: 20))
         }
@@ -110,7 +110,7 @@ struct ExtendMeetingView: View {
                 .padding(.horizontal, 7)
                 .background {
                     RoundedRectangle(cornerRadius: 18)
-                        .fill(.darkgray)
+                        .fill(Color.dargray)
                 }
         }
         
@@ -119,7 +119,7 @@ struct ExtendMeetingView: View {
     
     private var timeStepper: some View {
         RoundedRectangle(cornerRadius: 14)
-            .fill(.darkgray)
+            .fill(Color.dargray)
             .frame(maxWidth: .infinity)
             .aspectRatio(3, contentMode: .fit)
             .overlay {
@@ -180,10 +180,10 @@ struct ExtendMeetingView: View {
     }
 }
 
-
-
-#Preview {
-    ExtendMeetingView()
-        .preferredColorScheme(.dark)
-        .previewInterfaceOrientation(.landscapeLeft)
+struct ExtendMeetingView_Previews: PreviewProvider {
+    static var previews: some View {
+        ExtendMeetingView()
+            .preferredColorScheme(.dark)
+            .previewInterfaceOrientation(.landscapeLeft)
+    }
 }

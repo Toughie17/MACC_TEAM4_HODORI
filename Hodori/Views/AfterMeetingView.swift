@@ -15,11 +15,11 @@ enum Evaluate: String, CaseIterable, Identifiable {
     var description: String {
         switch self {
         case .exhausting:
-            "소모적이었어요"
+            return "소모적이었어요"
         case .average:
-            "보통이었어요"
+            return "보통이었어요"
         case .efficient:
-            "효율적이었어요"
+            return "효율적이었어요"
         }
     }
     
@@ -95,7 +95,7 @@ struct AfterMeetingView: View {
                 .padding(.leading, 6)
                 .background {
                     RoundedRectangle(cornerRadius: 14)
-                        .fill(.darkgray)
+                        .fill(Color.dargray)
                 }
         }
     }
@@ -111,7 +111,7 @@ struct AfterMeetingView: View {
                 .padding(.bottom, 43)
                 .background {
                     RoundedRectangle(cornerRadius: 14)
-                        .fill(.darkgray)
+                        .fill(Color.dargray)
                 }
         }
     }
@@ -135,9 +135,11 @@ struct AfterMeetingView: View {
     }
 }
 
-#Preview {
-    AfterMeetingView()
-        .preferredColorScheme(.dark)
-        .previewInterfaceOrientation(.landscapeLeft)
-}
 
+struct AfterMeetingView_Previews: PreviewProvider {
+    static var previews: some View {
+        AfterMeetingView()
+            .preferredColorScheme(.dark)
+            .previewInterfaceOrientation(.landscapeLeft)
+    }
+}

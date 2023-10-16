@@ -102,9 +102,10 @@ struct TimerComponent: View {
     }
 }
 
-#Preview {
-    TimerComponent()
-        .environmentObject(MeetingModel(timer: TimerManager()))
-        .previewInterfaceOrientation(.landscapeLeft)
+struct TimerComponent_Previews: PreviewProvider {
+    static var previews: some View {
+        TimerComponent()
+            .environmentObject(MeetingModel(timer: TimerManager()))
+            .previewInterfaceOrientation(.landscapeLeft)
+    }
 }
-
