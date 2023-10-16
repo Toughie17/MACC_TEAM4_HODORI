@@ -63,7 +63,7 @@ struct MeetingEndCheckView: View {
     
     private var topic: some View {
         RoundedRectangle(cornerRadius: 14)
-            .fill()
+            .fill(Color.dargray)
             .frame(maxWidth: .infinity)
             .aspectRatio(4.22, contentMode: .fit)
             .overlay(alignment: .top) {

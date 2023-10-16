@@ -22,7 +22,7 @@
 		079E76E42ADBD578009052B3 /* MeetingEndCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76E32ADBD578009052B3 /* MeetingEndCheckView.swift */; };
 		079E76E62ADBD593009052B3 /* AfterMeetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76E52ADBD593009052B3 /* AfterMeetingView.swift */; };
 		079E76E82ADBD5D1009052B3 /* ExtendMeetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76E72ADBD5D1009052B3 /* ExtendMeetingView.swift */; };
-		079E76EB2ADBD672009052B3 /* MeetingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76EA2ADBD672009052B3 /* MeetingModel.swift */; };
+		079E76EB2ADBD672009052B3 /* MeetingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76EA2ADBD672009052B3 /* MeetingManager.swift */; };
 		079E76ED2ADBD67E009052B3 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76EC2ADBD67E009052B3 /* Meeting.swift */; };
 		079E76EF2ADBD9DE009052B3 /* EvaluationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76EE2ADBD9DE009052B3 /* EvaluationCell.swift */; };
 		867907112ADD066C006397FD /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867907102ADD066C006397FD /* Color+.swift */; };
@@ -42,7 +42,7 @@
 		079E76E32ADBD578009052B3 /* MeetingEndCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingEndCheckView.swift; sourceTree = "<group>"; };
 		079E76E52ADBD593009052B3 /* AfterMeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterMeetingView.swift; sourceTree = "<group>"; };
 		079E76E72ADBD5D1009052B3 /* ExtendMeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendMeetingView.swift; sourceTree = "<group>"; };
-		079E76EA2ADBD672009052B3 /* MeetingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingModel.swift; sourceTree = "<group>"; };
+		079E76EA2ADBD672009052B3 /* MeetingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingManager.swift; sourceTree = "<group>"; };
 		079E76EC2ADBD67E009052B3 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		079E76EE2ADBD9DE009052B3 /* EvaluationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCell.swift; sourceTree = "<group>"; };
 		867907102ADD066C006397FD /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 		079E76E92ADBD668009052B3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				079E76EA2ADBD672009052B3 /* MeetingModel.swift */,
+				079E76EA2ADBD672009052B3 /* MeetingManager.swift */,
 				079E76EC2ADBD67E009052B3 /* Meeting.swift */,
 			);
 			path = Models;
@@ -243,7 +243,7 @@
 				079E76DC2ADBD4D3009052B3 /* TimerManager.swift in Sources */,
 				867907112ADD066C006397FD /* Color+.swift in Sources */,
 				0736DC1D2AD502CE002F1FE0 /* ContentView.swift in Sources */,
-				079E76EB2ADBD672009052B3 /* MeetingModel.swift in Sources */,
+				079E76EB2ADBD672009052B3 /* MeetingManager.swift in Sources */,
 				079E76EF2ADBD9DE009052B3 /* EvaluationCell.swift in Sources */,
 				079E76E22ADBD546009052B3 /* TimerComponent.swift in Sources */,
 				079E76E42ADBD578009052B3 /* MeetingEndCheckView.swift in Sources */,
@@ -382,10 +382,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Hodori/Hodori.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hodori/Preview Content\"";
-				DEVELOPMENT_TEAM = 27567HRR46;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = VGKCD7Q8NW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -407,6 +409,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodori;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = EricProvisioningFile;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -423,10 +426,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Hodori/Hodori.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hodori/Preview Content\"";
-				DEVELOPMENT_TEAM = 27567HRR46;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = VGKCD7Q8NW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -448,6 +453,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodori;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = EricProvisioningFile;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

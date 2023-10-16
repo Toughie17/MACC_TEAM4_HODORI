@@ -16,7 +16,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(MeetingModel(timer: TimerManager()))
+            .environmentObject(MeetingManager(timer: TimerManager()))
             .preferredColorScheme(.dark)
             .previewInterfaceOrientation(.landscapeLeft)
     }

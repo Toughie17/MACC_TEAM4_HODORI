@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TimerComponent: View {
-    @EnvironmentObject var meetingModel: MeetingModel
+    @EnvironmentObject var meetingModel: MeetingManager
     @State private var errorMessage: String = ""
     @State private var isFinished = false
     
@@ -105,7 +105,7 @@ struct TimerComponent: View {
 struct TimerComponent_Previews: PreviewProvider {
     static var previews: some View {
         TimerComponent()
-            .environmentObject(MeetingModel(timer: TimerManager()))
+            .environmentObject(MeetingManager(timer: TimerManager()))
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
