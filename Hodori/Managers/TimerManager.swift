@@ -7,71 +7,70 @@
 
 import SwiftUI
 
-enum TimerState {
-    case initial
-    case run
-    case pause
-    case reset
-}
+final class TimerManager: ObservableObject {
+    enum TimerState {
+        case active
+        case paused
+        case resumed
+        case cancelled
+    }
+    private var timer = Timer()
+    
+    var totalTimeForCurrentSelection: Int {
+        (selectedHoursAmount * 3600) + (selectedMinutesAmount * 60) + selectedSecondsAmount
+    }
 
-class TimerManager: ObservableObject {
-    @Published var state: TimerState = .initial
-    @Published var remainingTime: Int = 0
-    private var timer: Timer?
-    
-    init() {
-        self.timer = Timer()
+    @Published var selectedHoursAmount = 0
+    @Published var selectedMinutesAmount = 0
+    @Published var selectedSecondsAmount = 0
+    @Published var state: TimerState = .cancelled {
+        didSet {
+            switch state {
+            case .cancelled:
+                timer.invalidate()
+                secondsToCompletion = 0
+                progress = 0
+
+            case .active:
+                startTimer()
+
+                secondsToCompletion = totalTimeForCurrentSelection
+                progress = 1.0
+
+                updateCompletionDate()
+
+            case .paused:
+                timer.invalidate()
+
+            case .resumed:
+                startTimer()
+                updateCompletionDate()
+            }
+        }
     }
-    
-    func start(minutes seconds: Int) -> Result<TimerState, TimerError> {
-        guard state == .reset || state == .initial else { return .failure(.unintended) }
-        remainingTime = seconds * 60
-        runTimer()
-        
-        return .success(TimerState.run)
-    }
-    
-    func pause() -> Result<TimerState, TimerError> {
-        guard state == .run else { return .failure(.unintended) }
-        timer?.invalidate()
-        updateTimerState(.pause)
-        
-        return .success(TimerState.pause)
-    }
-    
-    func resume() -> Result<TimerState, TimerError> {
-        guard state == .pause else { return .failure(.unintended) }
-        runTimer()
-        
-        return .success(TimerState.run)
-    }
-    
-    func reset() -> Result<TimerState, TimerError> {
-        guard state == .pause else { return .failure(.unintended) }
-        timer?.invalidate()
-        timer = nil
-        remainingTime = 0
-        updateTimerState(.reset)
-        
-        return .success(TimerState.reset)
-    }
-    
-    private func runTimer() {
+
+    @Published var secondsToCompletion = 0
+    @Published var progress: Float = 0.0
+    @Published var completionDate = Date.now
+
+    let hoursRange = stride(from: 0, through: 23, by: 1)
+    let minutesRange = stride(from: 0, through: 59, by: 5)
+    let secondsRange = stride(from: 0, through: 59, by: 1)
+
+    private func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] _ in
             guard let self else { return }
-            if remainingTime > 0 {
-                remainingTime -= 1
-            } else {
-                timer?.invalidate()
-                self.updateTimerState(.reset)
-            }
+
+            self.secondsToCompletion -= 1
+            self.progress = Float(self.secondsToCompletion) / Float(self.totalTimeForCurrentSelection)
             
+            if self.secondsToCompletion < 0 {
+                self.state = .cancelled
+            }
         })
-        updateTimerState(.run)
     }
-    
-    private func updateTimerState(_ state: TimerState) {
-        self.state = state
+
+    private func updateCompletionDate() {
+        completionDate = Date.now.addingTimeInterval(Double(secondsToCompletion))
     }
 }
-
