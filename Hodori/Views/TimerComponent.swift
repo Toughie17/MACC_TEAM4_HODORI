@@ -27,7 +27,7 @@ struct TimerComponent: View {
             Text(errorMessage)
         }
         .sheet(isPresented: $isFinished, content: {
-            MeetingEndCheckView()
+//            MeetingEndCheckView()
         })
         .padding()
         .onReceive(meetingModel.timer.$state, perform: { state in

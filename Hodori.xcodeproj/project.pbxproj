@@ -29,6 +29,7 @@
 		860A6B192ADD986900D79481 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 860A6B162ADD986900D79481 /* Pretendard-Regular.otf */; };
 		860A6B1A2ADD986900D79481 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 860A6B172ADD986900D79481 /* Pretendard-Medium.otf */; };
 		860A6B1D2ADD98B200D79481 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A6B1C2ADD98B200D79481 /* Font+.swift */; };
+		860A6B202ADE4E6E00D79481 /* TimerTestDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A6B1F2ADE4E6E00D79481 /* TimerTestDummy.swift */; };
 		867907112ADD066C006397FD /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867907102ADD066C006397FD /* Color+.swift */; };
 		867907132ADD075D006397FD /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867907122ADD075D006397FD /* UIColor+.swift */; };
 /* End PBXBuildFile section */
@@ -54,6 +55,7 @@
 		860A6B172ADD986900D79481 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		860A6B1B2ADD987B00D79481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		860A6B1C2ADD98B200D79481 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
+		860A6B1F2ADE4E6E00D79481 /* TimerTestDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTestDummy.swift; sourceTree = "<group>"; };
 		867907102ADD066C006397FD /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		867907122ADD075D006397FD /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,10 +146,9 @@
 		079E76E02ADBD53A009052B3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				860A6B1E2ADE4E3600D79481 /* MeetingEndCheck */,
 				079E76E12ADBD546009052B3 /* TimerComponent.swift */,
-				079E76E32ADBD578009052B3 /* MeetingEndCheckView.swift */,
 				079E76E52ADBD593009052B3 /* AfterMeetingView.swift */,
-				079E76E72ADBD5D1009052B3 /* ExtendMeetingView.swift */,
 				079E76EE2ADBD9DE009052B3 /* EvaluationCell.swift */,
 			);
 			path = Views;
@@ -170,6 +171,16 @@
 				860A6B152ADD986900D79481 /* Pretendard-SemiBold.otf */,
 			);
 			path = Pretendard;
+			sourceTree = "<group>";
+		};
+		860A6B1E2ADE4E3600D79481 /* MeetingEndCheck */ = {
+			isa = PBXGroup;
+			children = (
+				079E76E32ADBD578009052B3 /* MeetingEndCheckView.swift */,
+				079E76E72ADBD5D1009052B3 /* ExtendMeetingView.swift */,
+				860A6B1F2ADE4E6E00D79481 /* TimerTestDummy.swift */,
+			);
+			path = MeetingEndCheck;
 			sourceTree = "<group>";
 		};
 		8679070F2ADD063A006397FD /* Extensions */ = {
@@ -273,6 +284,7 @@
 				079E76E22ADBD546009052B3 /* TimerComponent.swift in Sources */,
 				079E76E42ADBD578009052B3 /* MeetingEndCheckView.swift in Sources */,
 				079E76ED2ADBD67E009052B3 /* Meeting.swift in Sources */,
+				860A6B202ADE4E6E00D79481 /* TimerTestDummy.swift in Sources */,
 				860A6B1D2ADD98B200D79481 /* Font+.swift in Sources */,
 				079E76DF2ADBD51A009052B3 /* TimerError.swift in Sources */,
 				0736DC1B2AD502CE002F1FE0 /* HodoriApp.swift in Sources */,
