@@ -35,6 +35,7 @@ struct AfterMeetingView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.presentationMode) var presentationMode
     
+    // MARK: 추가된 코드
     @Binding var firstSheetOpen: Bool
     
     var body: some View {
@@ -51,10 +52,14 @@ struct AfterMeetingView: View {
                 .padding(.bottom, 30)
             
         }
+        // MARK: 추가된 코드
+        .navigationBarHidden(true)
+        
         .ignoresSafeArea()
         .interactiveDismissDisabled()
         .padding(.horizontal, 25)
     }
+    
     
     private var headLine: some View {
         VStack(spacing: 0) {
@@ -121,9 +126,8 @@ struct AfterMeetingView: View {
     
     private var finishButton: some View {
         Button {
+            // MARK: 추가된 코드
             firstSheetOpen = false
-//            dismiss()
-//            presentationMode.wrappedValue.dismiss()
         } label: {
             Text("저장하고 회의 마치기")
                 .fontWeight(.semibold)

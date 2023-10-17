@@ -9,12 +9,7 @@ import SwiftUI
 
 struct ExtendMeetingView: View {
     @State private var extendTime: Int = 0
-    @State private var isFinished: Bool = false
-    
     @Binding var firstSheetOpen: Bool
-    
-    @Environment(\.dismiss) var dismiss
-    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         
@@ -22,31 +17,20 @@ struct ExtendMeetingView: View {
             Color.sheetBackgroundGray.ignoresSafeArea()
             
             VStack(spacing: 0) {
-
                 headLineBlock
                     .padding(.top, 48)
                     .padding(.bottom, 80)
-                
                 addTimeBlock
                     .padding(.bottom, 26)
-                
                 showTimeBlock
-                    .padding(.bottom, 81)
-                
+                    .padding(.bottom, 113)
                 buttonBlock
-                
+                    .padding(.bottom, 40)
             }
-//            .ignoresSafeArea()
             .interactiveDismissDisabled()
             .padding(.horizontal, 40)
         }
         .navigationBarHidden(true)
-        .sheet(isPresented: $isFinished, onDismiss: {
-            dismiss()
-        }, content: {
-            AfterMeetingView(firstSheetOpen:$firstSheetOpen)
-        })
-
     }
 }
 
@@ -149,28 +133,25 @@ extension ExtendMeetingView {
             }
     }
     
-    
     private var buttonBlock: some View {
         HStack(spacing: 21) {
-            Button {
-                isFinished = true
+            NavigationLink {
+                AfterMeetingView(firstSheetOpen: $firstSheetOpen)
             } label: {
                 makeButtonLabel(text: "그만 마칠래요", isStroked: true)
             }
             
             Button {
-                // MARK: 시간 추가하는 코드
-                presentationMode.wrappedValue.dismiss()
-//                dismiss()
+                // MARK: 타이머에 시간 추가하는 코드 추가 필요
+                // extendTime을 넘겨줘야함.
+                firstSheetOpen = false
+                
             } label: {
                 makeButtonLabel(text: "회의 이어하기", isStroked: false)
             }
-
-
         }
     }
 
-    
     private func makeButtonLabel(text: String, isStroked: Bool) -> some View {
         Group {
             if isStroked {
@@ -189,7 +170,6 @@ extension ExtendMeetingView {
                 .foregroundStyle(.white)
         }
     }
-    
 }
 
 //struct ExtendMeetingView_Previews: PreviewProvider {
@@ -199,11 +179,11 @@ extension ExtendMeetingView {
 //    }
 //}
 
-//struct MeetingEndCheckView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TimerTestDummy()
-//            .environmentObject(MeetingManager(timer: TimerManager()))
-//            .previewInterfaceOrientation(.landscapeLeft)
-//            .preferredColorScheme(.dark)
-//    }
-//}
+struct ExtendMeetingView_Previews: PreviewProvider {
+    static var previews: some View {
+        TimerTestDummy()
+            .environmentObject(MeetingManager(timer: TimerManager()))
+            .previewInterfaceOrientation(.landscapeLeft)
+            .preferredColorScheme(.dark)
+    }
+}

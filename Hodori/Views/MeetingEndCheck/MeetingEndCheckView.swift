@@ -8,19 +8,11 @@
 import SwiftUI
 
 struct MeetingEndCheckView: View {
-    //MARK: 타이머뷰의 잔여 시간에 따라 하단 버튼의 종류를 변경해주기 위한 변수입니다.
-    
-    // 회의 조기 종료
-    // 회의 정상 종료 (remainingTime이 0일 때 -> ExpectedTime을 보여준다.)
+    // MARK: 타이머뷰의 잔여 시간에 따라 하단 버튼의 종류를 변경해주기 위한 변수입니다.
     @Binding var remainingTime: Int
     @Binding var firstSheetOpen: Bool
     
-    @State private var isFinished = false
-    @State private var isExtended = false
-    
     @EnvironmentObject var meetingManager: MeetingManager
-    
-    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationStack {
@@ -30,40 +22,19 @@ struct MeetingEndCheckView: View {
                 VStack(spacing: 0) {
                     headLineBlock
                         .padding(.top, 48)
-                        .padding(.bottom, 70)
-                    
+                        .padding(.bottom, 58)
                     topicTimeBlock
                         .padding(.bottom, 81)
-                    
                     buttonBlock
                         .padding(.bottom, 40)
-                    
                 }
                 .padding(.horizontal, 40)
                 .interactiveDismissDisabled()
-                
-    //            .sheet(isPresented: $isFinished, content: {
-    //                AfterMeetingView()
-    //            })
-                .sheet(isPresented: $isFinished, onDismiss: {
-                    dismiss()
-                }, content: {
-                    AfterMeetingView(firstSheetOpen:$firstSheetOpen)
-                })
-    //            .sheet(isPresented: $isExtended, content: {
-    //                ExtendMeetingView()
-    //            })
-                .sheet(isPresented: $isExtended, onDismiss: {
-                    dismiss()
-                } ,content: {
-                    ExtendMeetingView(firstSheetOpen: $firstSheetOpen)
-                })
             }
         }
         .navigationBarHidden(true)
     }
 }
-
 
 extension MeetingEndCheckView {
     
@@ -106,7 +77,7 @@ extension MeetingEndCheckView {
                         .foregroundColor(.sheetFontLightGray)
                         .padding(.top, 30)
                     
-                    Text(meetingManager.meeting?.topic ?? "토끼와 고양이: 누가 더 귀여운가")
+                    Text(meetingManager.meeting?.topic ?? "미팅 모델에 안건이 없습니다.")
                         .font(.pretendMedium24)
                         .foregroundColor(.white)
                         .padding(.top, 24)
@@ -127,21 +98,20 @@ extension MeetingEndCheckView {
                             .foregroundColor(.sheetFontLightGray)
                         
                         Text(
-                            ((meetingManager.meeting?.expectedTime ?? 0) - (remainingTime)).asTimestamp
+                            ((meetingManager.meeting?.expectedTime ?? -1) - (remainingTime)).asTimestamp
                         )
                         .font(.system(size: 36, weight: .light))
                         .foregroundColor(.white)
-                        
                     }
-                    
                     // MARK: 타이머에서 추가되는 시간 로직에 따라 수정 필요
+                    // 현재는 미팅 모델에 추가된 상황을 가정함
                     if meetingManager.meeting?.addedTime ?? 0 > 0 {
                         VStack(spacing: 20) {
                             Text("추가한 시간")
                                 .font(.pretendMedium16)
                                 .foregroundColor(.sheetFontLightGray)
                             
-                            Text("02:30:00")
+                            Text((meetingManager.meeting?.addedTime ?? -1).asTimestamp)
                                 .font(.system(size: 36, weight: .light))
                                 .foregroundColor(.sheetSmallTimerPink)
                         }
@@ -152,32 +122,21 @@ extension MeetingEndCheckView {
 
     private var buttonBlock: some View {
         HStack(spacing: 21) {
-//            Group {
-                if remainingTime > 0 {
-                    Button {
-//                        dismiss()
-                        // MARK: 타이머 재작동 함수 실행
-                        
-                    } label: {
-                        makeButtonLabel(text: "회의 이어서 진행하기", isStroked: true)
-                    }
-                }
-                else {
-//                    Button {
-//                        isExtended = true
-//                    } label: {
-//                        makeButtonLabel(text: "회의 연장하기", isStroked: true)
-//                    }
+            if remainingTime > 0 {
+                Button {
+                    firstSheetOpen = false
                     
-                    NavigationLink(destination: ExtendMeetingView(firstSheetOpen: $firstSheetOpen)) {
-                        makeButtonLabel(text: "회의 연장하기", isStroked: true)
-                    }
+                } label: {
+                    makeButtonLabel(text: "회의 이어서 진행하기", isStroked: true)
                 }
-//            }
+            } else {
+                NavigationLink(destination: ExtendMeetingView(firstSheetOpen: $firstSheetOpen)) {
+                    makeButtonLabel(text: "회의 연장하기", isStroked: true)
+                }
+            }
             
-            Button {
-                isFinished = true
-               
+            NavigationLink {
+                AfterMeetingView(firstSheetOpen: $firstSheetOpen)
             } label: {
                 makeButtonLabel(text: "회의 종료하기", isStroked: false)
             }
@@ -214,6 +173,7 @@ extension MeetingEndCheckView {
 //    }
 //}
 
+// 시트 테스트 해보려고 프리뷰 아래 코드 사용했습니다.
 struct MeetingEndCheckView_Previews: PreviewProvider {
     static var previews: some View {
         TimerTestDummy()
@@ -222,6 +182,3 @@ struct MeetingEndCheckView_Previews: PreviewProvider {
             .preferredColorScheme(.dark)
     }
 }
-
-
-
