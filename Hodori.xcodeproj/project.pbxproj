@@ -18,13 +18,19 @@
 		0736DC472AD5F05D002F1FE0 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0736DC462AD5F05D002F1FE0 /* FirebaseFirestoreSwift */; };
 		079E76DC2ADBD4D3009052B3 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76DB2ADBD4D3009052B3 /* TimerManager.swift */; };
 		079E76DF2ADBD51A009052B3 /* TimerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76DE2ADBD51A009052B3 /* TimerError.swift */; };
-		079E76E22ADBD546009052B3 /* TimerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76E12ADBD546009052B3 /* TimerComponent.swift */; };
+		079E76E22ADBD546009052B3 /* TimerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76E12ADBD546009052B3 /* TimerCell.swift */; };
 		079E76E42ADBD578009052B3 /* MeetingEndCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76E32ADBD578009052B3 /* MeetingEndCheckView.swift */; };
 		079E76E62ADBD593009052B3 /* AfterMeetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76E52ADBD593009052B3 /* AfterMeetingView.swift */; };
 		079E76E82ADBD5D1009052B3 /* ExtendMeetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76E72ADBD5D1009052B3 /* ExtendMeetingView.swift */; };
 		079E76EB2ADBD672009052B3 /* MeetingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76EA2ADBD672009052B3 /* MeetingManager.swift */; };
 		079E76ED2ADBD67E009052B3 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76EC2ADBD67E009052B3 /* Meeting.swift */; };
 		079E76EF2ADBD9DE009052B3 /* EvaluationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76EE2ADBD9DE009052B3 /* EvaluationCell.swift */; };
+		079E76F12ADE4EF0009052B3 /* NewMeetingSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76F02ADE4EF0009052B3 /* NewMeetingSetupView.swift */; };
+		079E76F32ADE60FC009052B3 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76F22ADE60FC009052B3 /* TimePickerView.swift */; };
+		079E76F52ADEB35F009052B3 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76F42ADEB35F009052B3 /* String+.swift */; };
+		079E76F72ADEC0E6009052B3 /* ConfirmationAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76F62ADEC0E6009052B3 /* ConfirmationAlert.swift */; };
+		079E76F92ADEC1A2009052B3 /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76F82ADEC1A2009052B3 /* Int+.swift */; };
+		079E76FB2ADECEB7009052B3 /* MeetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76FA2ADECEB7009052B3 /* MeetingView.swift */; };
 		860A6B182ADD986900D79481 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 860A6B152ADD986900D79481 /* Pretendard-SemiBold.otf */; };
 		860A6B192ADD986900D79481 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 860A6B162ADD986900D79481 /* Pretendard-Regular.otf */; };
 		860A6B1A2ADD986900D79481 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 860A6B172ADD986900D79481 /* Pretendard-Medium.otf */; };
@@ -42,13 +48,19 @@
 		0736DC222AD502CF002F1FE0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		079E76DB2ADBD4D3009052B3 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		079E76DE2ADBD51A009052B3 /* TimerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerError.swift; sourceTree = "<group>"; };
-		079E76E12ADBD546009052B3 /* TimerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerComponent.swift; sourceTree = "<group>"; };
+		079E76E12ADBD546009052B3 /* TimerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCell.swift; sourceTree = "<group>"; };
 		079E76E32ADBD578009052B3 /* MeetingEndCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingEndCheckView.swift; sourceTree = "<group>"; };
 		079E76E52ADBD593009052B3 /* AfterMeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterMeetingView.swift; sourceTree = "<group>"; };
 		079E76E72ADBD5D1009052B3 /* ExtendMeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendMeetingView.swift; sourceTree = "<group>"; };
 		079E76EA2ADBD672009052B3 /* MeetingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingManager.swift; sourceTree = "<group>"; };
 		079E76EC2ADBD67E009052B3 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		079E76EE2ADBD9DE009052B3 /* EvaluationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCell.swift; sourceTree = "<group>"; };
+		079E76F02ADE4EF0009052B3 /* NewMeetingSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMeetingSetupView.swift; sourceTree = "<group>"; };
+		079E76F22ADE60FC009052B3 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
+		079E76F42ADEB35F009052B3 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		079E76F62ADEC0E6009052B3 /* ConfirmationAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationAlert.swift; sourceTree = "<group>"; };
+		079E76F82ADEC1A2009052B3 /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
+		079E76FA2ADECEB7009052B3 /* MeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingView.swift; sourceTree = "<group>"; };
 		860A6B152ADD986900D79481 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		860A6B162ADD986900D79481 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		860A6B172ADD986900D79481 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
@@ -144,11 +156,15 @@
 		079E76E02ADBD53A009052B3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				079E76E12ADBD546009052B3 /* TimerComponent.swift */,
+				079E76E12ADBD546009052B3 /* TimerCell.swift */,
 				079E76E32ADBD578009052B3 /* MeetingEndCheckView.swift */,
 				079E76E52ADBD593009052B3 /* AfterMeetingView.swift */,
 				079E76E72ADBD5D1009052B3 /* ExtendMeetingView.swift */,
 				079E76EE2ADBD9DE009052B3 /* EvaluationCell.swift */,
+				079E76F02ADE4EF0009052B3 /* NewMeetingSetupView.swift */,
+				079E76F22ADE60FC009052B3 /* TimePickerView.swift */,
+				079E76F62ADEC0E6009052B3 /* ConfirmationAlert.swift */,
+				079E76FA2ADECEB7009052B3 /* MeetingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,6 +194,8 @@
 				867907102ADD066C006397FD /* Color+.swift */,
 				867907122ADD075D006397FD /* UIColor+.swift */,
 				860A6B1C2ADD98B200D79481 /* Font+.swift */,
+				079E76F42ADEB35F009052B3 /* String+.swift */,
+				079E76F82ADEC1A2009052B3 /* Int+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -268,15 +286,21 @@
 				079E76DC2ADBD4D3009052B3 /* TimerManager.swift in Sources */,
 				867907112ADD066C006397FD /* Color+.swift in Sources */,
 				0736DC1D2AD502CE002F1FE0 /* ContentView.swift in Sources */,
+				079E76F72ADEC0E6009052B3 /* ConfirmationAlert.swift in Sources */,
 				079E76EB2ADBD672009052B3 /* MeetingManager.swift in Sources */,
+				079E76F12ADE4EF0009052B3 /* NewMeetingSetupView.swift in Sources */,
 				079E76EF2ADBD9DE009052B3 /* EvaluationCell.swift in Sources */,
-				079E76E22ADBD546009052B3 /* TimerComponent.swift in Sources */,
+				079E76E22ADBD546009052B3 /* TimerCell.swift in Sources */,
+				079E76F32ADE60FC009052B3 /* TimePickerView.swift in Sources */,
 				079E76E42ADBD578009052B3 /* MeetingEndCheckView.swift in Sources */,
+				079E76F92ADEC1A2009052B3 /* Int+.swift in Sources */,
 				079E76ED2ADBD67E009052B3 /* Meeting.swift in Sources */,
+				079E76FB2ADECEB7009052B3 /* MeetingView.swift in Sources */,
 				860A6B1D2ADD98B200D79481 /* Font+.swift in Sources */,
 				079E76DF2ADBD51A009052B3 /* TimerError.swift in Sources */,
 				0736DC1B2AD502CE002F1FE0 /* HodoriApp.swift in Sources */,
 				867907132ADD075D006397FD /* UIColor+.swift in Sources */,
+				079E76F52ADEB35F009052B3 /* String+.swift in Sources */,
 				079E76E82ADBD5D1009052B3 /* ExtendMeetingView.swift in Sources */,
 				079E76E62ADBD593009052B3 /* AfterMeetingView.swift in Sources */,
 			);
