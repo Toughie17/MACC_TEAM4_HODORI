@@ -8,182 +8,202 @@
 import SwiftUI
 
 struct ExtendMeetingView: View {
-    @State private var time: Int = 0
+    @State private var extendTime: Int = 0
+    @State private var isFinished: Bool = false
+    
+    @Binding var firstSheetOpen: Bool
+    
     @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        VStack(spacing: 0) {
-            headLine
-                .padding(.bottom, 82)
+        
+        ZStack {
+            Color.sheetBackgroundGray.ignoresSafeArea()
             
-            HStack(spacing: 14) {
-                fiveTimeAddButton
-                tenTimeAddButton
-                resetButton
+            VStack(spacing: 0) {
+
+                headLineBlock
+                    .padding(.top, 48)
+                    .padding(.bottom, 80)
+                
+                addTimeBlock
+                    .padding(.bottom, 26)
+                
+                showTimeBlock
+                    .padding(.bottom, 81)
+                
+                buttonBlock
+                
             }
-            .foregroundStyle(.white)
-            .padding(.bottom, 24)
-            
-            timeStepper
-                .padding(.bottom, 60)
-            
-            warningText
-                .padding(.bottom, 35)
-            
-            HStack(spacing: 18) {
-                extendButton
-                finishButton
-            }
-            .padding(.bottom, 25)
-            
+//            .ignoresSafeArea()
+            .interactiveDismissDisabled()
+            .padding(.horizontal, 40)
         }
-        .ignoresSafeArea()
-        .interactiveDismissDisabled()
-        .padding(.horizontal, 25)
+        .navigationBarHidden(true)
+        .sheet(isPresented: $isFinished, onDismiss: {
+            dismiss()
+        }, content: {
+            AfterMeetingView(firstSheetOpen:$firstSheetOpen)
+        })
+
     }
+}
+
+extension ExtendMeetingView {
     
-    var formattedTime: String {
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.hour, .minute, .second]
-        formatter.unitsStyle = .positional
-        return formatter.string(from: TimeInterval(time*60))!
-    }
-    
-    private var headLine: some View {
+    private var headLineBlock: some View {
         VStack(spacing: 0) {
             Image(systemName: "plus.circle")
                 .aspectRatio(contentMode: .fit)
                 .font(.system(size: 36))
-                .padding(.top, 40)
-                .padding(.bottom, 29)
-                .foregroundStyle(.blue)
+                .frame(width: 43, height: 43)
+                .padding(.bottom, 26)
+                .foregroundColor(Color.sheetIconBlue)
+            
             Text("회의 종료!")
-                .font(.system(size: 20.16))
-                .fontWeight(.medium)
-                .padding(.bottom, 11)
-                .foregroundStyle(.gray)
+                .font(.pretendMedium20)
+                .padding(.bottom, 16)
+                .foregroundColor(.sheetFontLightGray)
+            
             Text("회의 시간을 추가할까요?")
-                .font(.system(size: 30.25))
-                .fontWeight(.semibold)
+                .font(.pretendSemibold30)
+                .foregroundColor(.sheetFontWhite)
+        }
+    }
+
+    private var addTimeBlock: some View {
+        HStack(spacing: 12) {
+            fiveMinutesButton
+            tenMinutesButton
+            resetButton
         }
     }
     
-    private var fiveTimeAddButton: some View {
+    private var fiveMinutesButton: some View {
         Button {
-            time += 5
+            extendTime += 300
         } label: {
             Text("+5분")
-                .padding(.vertical, 5)
-                .padding(.horizontal, 14)
-                .background {
+                .font(.pretendRegular20)
+                .foregroundColor(.sheetFontWhite)
+                .padding(.vertical,6)
+                .padding(.horizontal,15)
+                .background(
                     RoundedRectangle(cornerRadius: 18)
-                        .fill(Color.dargray)
-                }
-                .font(.system(size: 20))
+                        .fill(Color.sheetCellBackgroundGray)
+                )
+                .frame(width: 72, height: 36)
         }
     }
     
-    private var tenTimeAddButton: some View {
+    private var tenMinutesButton: some View {
         Button {
-            time += 10
+            extendTime += 600
         } label: {
             Text("+10분")
-                .padding(.vertical, 5)
-                .padding(.horizontal, 14)
-                .background {
+                .font(.pretendRegular20)
+                .foregroundColor(.sheetFontWhite)
+                .padding(.vertical,6)
+                .padding(.horizontal,15)
+                .background(
                     RoundedRectangle(cornerRadius: 18)
-                        .fill(Color.dargray)
-                }
-                .font(.system(size: 20))
+                        .fill(Color.sheetCellBackgroundGray)
+                )
+                .frame(width: 82, height: 36)
         }
     }
     
     private var resetButton: some View {
         Button {
-            time = 0
+            extendTime = 0
         } label: {
             Image(systemName: "arrow.counterclockwise")
-                .aspectRatio(contentMode: .fit)
-                .font(.system(size: 20))
-                .padding(.top, 5.54)
-                .padding(.bottom, 5.46)
-                .padding(.horizontal, 7)
+                .font(.system(size: 20, weight: .regular))
+                .foregroundColor(.white)
+                .padding(7)
                 .background {
-                    RoundedRectangle(cornerRadius: 18)
-                        .fill(Color.dargray)
+                    Circle()
+                        .fill(Color.sheetCellBackgroundGray)
                 }
+                .frame(width: 36, height: 36)
         }
-        
-        
     }
     
-    private var timeStepper: some View {
-        RoundedRectangle(cornerRadius: 14)
-            .fill(Color.dargray)
-            .frame(maxWidth: .infinity)
-            .aspectRatio(3, contentMode: .fit)
-            .overlay {
-                VStack(spacing: 28) {
+    private var showTimeBlock: some View {
+        RoundedRectangle(cornerRadius: 8)
+            .fill(Color.sheetCellBackgroundGray)
+            .frame(width: .infinity)
+            .frame(height: 218)
+            .overlay(alignment: .top) {
+                VStack(spacing: 29) {
                     Text("추가된 시간")
-                        .fontWeight(.medium)
-                        .font(.system(size: 17))
-                        .foregroundStyle(.gray)
+                        .font(.pretendMedium16)
+                        .foregroundColor(.sheetFontLightGray)
                         .padding(.top, 43)
                     
-                    Text("+ \(formattedTime)")
-                        .fontWeight(.light)
-                        .font(.system(size: 48))
-                        .padding(.bottom, 69)
-            }
-            }
-    }
-    
-    private var warningText: some View {
-        Text("시간 추가는 한 번밖에 못해")
-            .fontWeight(.medium)
-            .font(.system(size: 17))
-            .foregroundStyle(.red)
-    }
-    
-    private var extendButton: some View {
-        Button {
-            dismiss()
-        } label: {
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(.blue, lineWidth: 1)
-                .frame(maxWidth: .infinity)
-                .aspectRatio(6.36, contentMode: .fit)
-                .overlay {
-                    Text("그만 마칠래요")
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.white)
-                        .font(.system(size: 16))
+                    Text("+ \(extendTime.asTimestamp)")
+                        .font(.system(size: 48, weight: .light))
+                        .foregroundColor(.sheetBigTimerWhite)
                 }
+            }
+    }
+    
+    
+    private var buttonBlock: some View {
+        HStack(spacing: 21) {
+            Button {
+                isFinished = true
+            } label: {
+                makeButtonLabel(text: "그만 마칠래요", isStroked: true)
+            }
+            
+            Button {
+                // MARK: 시간 추가하는 코드
+                presentationMode.wrappedValue.dismiss()
+//                dismiss()
+            } label: {
+                makeButtonLabel(text: "회의 이어하기", isStroked: false)
+            }
+
+
+        }
+    }
+
+    
+    private func makeButtonLabel(text: String, isStroked: Bool) -> some View {
+        Group {
+            if isStroked {
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.sheetIconBlue, lineWidth: 2)
+            } else {
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color.sheetIconBlue)
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height:50)
+        .overlay {
+            Text(text)
+                .font(.pretendSemibold16)
+                .foregroundStyle(.white)
         }
     }
     
-    private var finishButton: some View {
-        Button {
-            dismiss()
-        } label: {
-            RoundedRectangle(cornerRadius: 12)
-                .fill(.blue)
-                .frame(maxWidth: .infinity)
-                .aspectRatio(6.36, contentMode: .fit)
-                .overlay {
-                    Text("회의 이어가기")
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.white)
-                        .font(.system(size: 16))
-                }
-        }
-    }
 }
 
-struct ExtendMeetingView_Previews: PreviewProvider {
-    static var previews: some View {
-        ExtendMeetingView()
-            .preferredColorScheme(.dark)
-            .previewInterfaceOrientation(.landscapeLeft)
-    }
-}
+//struct ExtendMeetingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ExtendMeetingView()
+//            .previewInterfaceOrientation(.landscapeLeft)
+//    }
+//}
+
+//struct MeetingEndCheckView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TimerTestDummy()
+//            .environmentObject(MeetingManager(timer: TimerManager()))
+//            .previewInterfaceOrientation(.landscapeLeft)
+//            .preferredColorScheme(.dark)
+//    }
+//}

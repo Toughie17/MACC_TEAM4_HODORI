@@ -30,6 +30,7 @@
 		860A6B1A2ADD986900D79481 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 860A6B172ADD986900D79481 /* Pretendard-Medium.otf */; };
 		860A6B1D2ADD98B200D79481 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A6B1C2ADD98B200D79481 /* Font+.swift */; };
 		860A6B202ADE4E6E00D79481 /* TimerTestDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A6B1F2ADE4E6E00D79481 /* TimerTestDummy.swift */; };
+		860A6B222ADE7A7700D79481 /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A6B212ADE7A7700D79481 /* Int+.swift */; };
 		867907112ADD066C006397FD /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867907102ADD066C006397FD /* Color+.swift */; };
 		867907132ADD075D006397FD /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867907122ADD075D006397FD /* UIColor+.swift */; };
 /* End PBXBuildFile section */
@@ -56,6 +57,7 @@
 		860A6B1B2ADD987B00D79481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		860A6B1C2ADD98B200D79481 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		860A6B1F2ADE4E6E00D79481 /* TimerTestDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTestDummy.swift; sourceTree = "<group>"; };
+		860A6B212ADE7A7700D79481 /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
 		867907102ADD066C006397FD /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		867907122ADD075D006397FD /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,6 +191,7 @@
 				867907102ADD066C006397FD /* Color+.swift */,
 				867907122ADD075D006397FD /* UIColor+.swift */,
 				860A6B1C2ADD98B200D79481 /* Font+.swift */,
+				860A6B212ADE7A7700D79481 /* Int+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				860A6B202ADE4E6E00D79481 /* TimerTestDummy.swift in Sources */,
 				860A6B1D2ADD98B200D79481 /* Font+.swift in Sources */,
 				079E76DF2ADBD51A009052B3 /* TimerError.swift in Sources */,
+				860A6B222ADE7A7700D79481 /* Int+.swift in Sources */,
 				0736DC1B2AD502CE002F1FE0 /* HodoriApp.swift in Sources */,
 				867907132ADD075D006397FD /* UIColor+.swift in Sources */,
 				079E76E82ADBD5D1009052B3 /* ExtendMeetingView.swift in Sources */,

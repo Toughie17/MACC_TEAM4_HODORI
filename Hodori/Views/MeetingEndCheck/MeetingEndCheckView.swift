@@ -11,8 +11,9 @@ struct MeetingEndCheckView: View {
     //MARK: 타이머뷰의 잔여 시간에 따라 하단 버튼의 종류를 변경해주기 위한 변수입니다.
     
     // 회의 조기 종료
-    // 회의 정상 종료
+    // 회의 정상 종료 (remainingTime이 0일 때 -> ExpectedTime을 보여준다.)
     @Binding var remainingTime: Int
+    @Binding var firstSheetOpen: Bool
     
     @State private var isFinished = false
     @State private var isExtended = false
@@ -22,35 +23,44 @@ struct MeetingEndCheckView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        ZStack {
-            Color.sheetBackgroundGray.ignoresSafeArea()
-            
-            VStack(spacing: 0) {
-                headLineBlock
-                    .padding(.top, 48)
-                    .padding(.bottom, 70)
+        NavigationStack {
+            ZStack {
+                Color.sheetBackgroundGray.ignoresSafeArea()
                 
-                topicTimeBlock
-                    .padding(.bottom, 81)
+                VStack(spacing: 0) {
+                    headLineBlock
+                        .padding(.top, 48)
+                        .padding(.bottom, 70)
+                    
+                    topicTimeBlock
+                        .padding(.bottom, 81)
+                    
+                    buttonBlock
+                        .padding(.bottom, 40)
+                    
+                }
+                .padding(.horizontal, 40)
+                .interactiveDismissDisabled()
                 
-                buttonBlock
-                    .padding(.bottom, 40)
-                
+    //            .sheet(isPresented: $isFinished, content: {
+    //                AfterMeetingView()
+    //            })
+                .sheet(isPresented: $isFinished, onDismiss: {
+                    dismiss()
+                }, content: {
+                    AfterMeetingView(firstSheetOpen:$firstSheetOpen)
+                })
+    //            .sheet(isPresented: $isExtended, content: {
+    //                ExtendMeetingView()
+    //            })
+                .sheet(isPresented: $isExtended, onDismiss: {
+                    dismiss()
+                } ,content: {
+                    ExtendMeetingView(firstSheetOpen: $firstSheetOpen)
+                })
             }
-            .padding(.horizontal, 40)
-            .interactiveDismissDisabled()
-            
-            .sheet(isPresented: $isFinished, onDismiss: {
-                dismiss()
-            }, content: {
-                AfterMeetingView()
-            })
-            .sheet(isPresented: $isExtended, onDismiss: {
-                dismiss()
-            } ,content: {
-                ExtendMeetingView()
-            })
         }
+        .navigationBarHidden(true)
     }
 }
 
@@ -63,7 +73,6 @@ extension MeetingEndCheckView {
                 .aspectRatio(contentMode: .fit)
                 .font(.system(size: 36))
                 .frame(width: 45, height: 43)
-//                .padding(.top, 48)
                 .padding(.bottom, 26)
                 .foregroundColor(Color.sheetIconBlue)
             
@@ -117,13 +126,16 @@ extension MeetingEndCheckView {
                             .font(.pretendMedium16)
                             .foregroundColor(.sheetFontLightGray)
                         
-                        Text("02:30:00")
-                            .font(.system(size: 36, weight: .light))
-                            .foregroundColor(.white)
+                        Text(
+                            ((meetingManager.meeting?.expectedTime ?? 0) - (remainingTime)).asTimestamp
+                        )
+                        .font(.system(size: 36, weight: .light))
+                        .foregroundColor(.white)
                         
                     }
                     
-                    if meetingManager.meeting?.addedTime != 0 {
+                    // MARK: 타이머에서 추가되는 시간 로직에 따라 수정 필요
+                    if meetingManager.meeting?.addedTime ?? 0 > 0 {
                         VStack(spacing: 20) {
                             Text("추가한 시간")
                                 .font(.pretendMedium16)
@@ -140,35 +152,40 @@ extension MeetingEndCheckView {
 
     private var buttonBlock: some View {
         HStack(spacing: 21) {
-            Group {
-                if remainingTime != 0 {
+//            Group {
+                if remainingTime > 0 {
                     Button {
-                        dismiss()
+//                        dismiss()
+                        // MARK: 타이머 재작동 함수 실행
+                        
                     } label: {
-                        makeButton(text: "회의 이어서 진행하기", isStroked: true)
+                        makeButtonLabel(text: "회의 이어서 진행하기", isStroked: true)
                     }
-
                 }
                 else {
-                    Button {
-                        isExtended = true
-                    } label: {
-                        makeButton(text: "회의 연장하기", isStroked: true)
+//                    Button {
+//                        isExtended = true
+//                    } label: {
+//                        makeButtonLabel(text: "회의 연장하기", isStroked: true)
+//                    }
+                    
+                    NavigationLink(destination: ExtendMeetingView(firstSheetOpen: $firstSheetOpen)) {
+                        makeButtonLabel(text: "회의 연장하기", isStroked: true)
                     }
-
                 }
-            }
+//            }
             
             Button {
                 isFinished = true
+               
             } label: {
-                makeButton(text: "회의 종료하기", isStroked: false)
+                makeButtonLabel(text: "회의 종료하기", isStroked: false)
             }
         }
     }
     
     
-    private func makeButton(text: String, isStroked: Bool) -> some View {
+    private func makeButtonLabel(text: String, isStroked: Bool) -> some View {
         Group {
             if isStroked {
                 RoundedRectangle(cornerRadius: 12)

@@ -9,22 +9,22 @@ import SwiftUI
 
 struct TimerTestDummy: View {
     @EnvironmentObject var meetingModel: MeetingManager
+    
     @State var remainingTime: Int = 0
     
-    @State private var stopButtonTapped: Bool = false
-//    @State private var isNotFinished: Bool =  false
+    @State private var firstSheetOpen: Bool = false
     
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
             
             VStack(spacing: 50) {
-                Text("남은시간: \(remainingTime)")
+                Text("남은시간: \(remainingTime.asTimestamp)")
                     .font(.pretendSemibold64)
                     .foregroundColor(.white)
                 
                 Button {
-                    stopButtonTapped.toggle()
+                    firstSheetOpen.toggle()
                 } label: {
                     Text("회의 정지 버튼")
                         .foregroundColor(.blue)
@@ -32,13 +32,18 @@ struct TimerTestDummy: View {
                 }
 
             }
-            .sheet(isPresented: $stopButtonTapped) {
-                MeetingEndCheckView(remainingTime: $remainingTime)
+            .sheet(isPresented: $firstSheetOpen) {
+                MeetingEndCheckView(remainingTime: $remainingTime, firstSheetOpen: $firstSheetOpen)
         }
         }
+//        .onAppear {
+//            remainingTime = meetingModel.meeting?.expectedTime ?? 0
+//        }
     }
+
     
 }
+
 
 struct TimerTestDummy_Previews: PreviewProvider {
     static var previews: some View {

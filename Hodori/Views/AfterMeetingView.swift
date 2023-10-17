@@ -33,6 +33,9 @@ struct AfterMeetingView: View {
     @State private var reviewText = ""
     @State private var selectedEvaluation: Evaluate?
     @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
+    
+    @Binding var firstSheetOpen: Bool
     
     var body: some View {
         VStack(spacing: 0) {
@@ -118,7 +121,9 @@ struct AfterMeetingView: View {
     
     private var finishButton: some View {
         Button {
-            dismiss()
+            firstSheetOpen = false
+//            dismiss()
+//            presentationMode.wrappedValue.dismiss()
         } label: {
             Text("저장하고 회의 마치기")
                 .fontWeight(.semibold)
@@ -136,10 +141,10 @@ struct AfterMeetingView: View {
 }
 
 
-struct AfterMeetingView_Previews: PreviewProvider {
-    static var previews: some View {
-        AfterMeetingView()
-            .preferredColorScheme(.dark)
-            .previewInterfaceOrientation(.landscapeLeft)
-    }
-}
+//struct AfterMeetingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AfterMeetingView()
+//            .preferredColorScheme(.dark)
+//            .previewInterfaceOrientation(.landscapeLeft)
+//    }
+//}
