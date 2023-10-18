@@ -17,4 +17,5 @@ extension Color {
     static let sheetBlockBackgroundGray = Color(UIColor(hexCode: "262629"))
     static let meetingViewCategoryTextGray = Color(UIColor(hexCode: "797979"))
     static let pauseButtonRed = Color(UIColor(hexCode: "D63939"))
+    static let timeYellow = Color(UIColor(hexCode: "FFC120"))
 }
