@@ -118,7 +118,7 @@ extension ExtendMeetingView {
     private var showTimeBlock: some View {
         RoundedRectangle(cornerRadius: 8)
             .fill(Color.sheetCellBackgroundGray)
-            .frame(width: .infinity)
+            .frame(maxWidth: .infinity)
             .frame(height: 218)
             .overlay(alignment: .top) {
                 VStack(spacing: 29) {

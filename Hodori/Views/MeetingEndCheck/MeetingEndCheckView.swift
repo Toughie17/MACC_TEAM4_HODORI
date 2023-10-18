@@ -67,7 +67,7 @@ extension MeetingEndCheckView {
     private var topicCell: some View {
         RoundedRectangle(cornerRadius: 8)
             .fill(Color.sheetCellBackgroundGray)
-            .frame(width: .infinity)
+            .frame(maxWidth: .infinity)
             .frame(height: 155)
             .overlay(alignment: .top) {
                 VStack(spacing: 0) {
@@ -87,7 +87,7 @@ extension MeetingEndCheckView {
     private var timeCell: some View {
         RoundedRectangle(cornerRadius: 8)
             .fill(Color.sheetCellBackgroundGray)
-            .frame(width: .infinity)
+            .frame(maxWidth: .infinity)
             .frame(height: 155)
             .overlay {
                 HStack(spacing: 72.8) {

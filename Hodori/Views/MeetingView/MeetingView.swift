@@ -9,9 +9,9 @@ import AVFAudio
 import SwiftUI
 
 struct MeetingView: View {
+
     @EnvironmentObject var meetingManager: MeetingManager
     @State private var firstSheetOpen = false
-    @State private var audioPlayer: AVAudioPlayer?
     
     var body: some View {
         VStack(spacing: 0) {
@@ -51,24 +51,6 @@ struct MeetingView: View {
                 .font(.pretendSemibold64)
                 .foregroundStyle(.white)
         }
-    }
-}
-
-// MARK: Sound Logic
-extension MeetingView {
-    private func playSound() {
-        guard let soundPath = Bundle.main.path(forResource: "", ofType: "") else { return }
-        let url = URL(filePath: soundPath)
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.play()
-        } catch {
-            print(error)
-        }
-    }
-    
-    private func stopSound() {
-        audioPlayer?.stop()
     }
 }
 
