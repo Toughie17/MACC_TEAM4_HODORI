@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ExtendMeetingView: View {
     @State private var time: Int = 0
+    @EnvironmentObject var meetingManager: MeetingManager
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -77,7 +78,6 @@ struct ExtendMeetingView: View {
                 .padding(.horizontal, 14)
                 .background {
                     RoundedRectangle(cornerRadius: 18)
-                        .fill(Color.dargray)
                 }
                 .font(.system(size: 20))
         }
@@ -92,7 +92,6 @@ struct ExtendMeetingView: View {
                 .padding(.horizontal, 14)
                 .background {
                     RoundedRectangle(cornerRadius: 18)
-                        .fill(Color.dargray)
                 }
                 .font(.system(size: 20))
         }
@@ -110,7 +109,6 @@ struct ExtendMeetingView: View {
                 .padding(.horizontal, 7)
                 .background {
                     RoundedRectangle(cornerRadius: 18)
-                        .fill(Color.dargray)
                 }
         }
         
@@ -119,7 +117,6 @@ struct ExtendMeetingView: View {
     
     private var timeStepper: some View {
         RoundedRectangle(cornerRadius: 14)
-            .fill(Color.dargray)
             .frame(maxWidth: .infinity)
             .aspectRatio(3, contentMode: .fit)
             .overlay {
@@ -165,6 +162,7 @@ struct ExtendMeetingView: View {
     private var finishButton: some View {
         Button {
             dismiss()
+            meetingManager.timer.addTime(time)
         } label: {
             RoundedRectangle(cornerRadius: 12)
                 .fill(.blue)

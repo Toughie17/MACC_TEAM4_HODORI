@@ -7,71 +7,92 @@
 
 import SwiftUI
 
-enum TimerState {
-    case initial
-    case run
-    case pause
-    case reset
-}
+final class TimerManager: ObservableObject {
+    enum TimerState {
+        case active
+        case paused
+        case resumed
+        case cancelled
+    }
+    private var timer = Timer()
+    
+    @Published var selectedHoursAmount = 0
+    @Published var selectedMinutesAmount = 0
+    @Published var selectedSecondsAmount = 0
+    @Published var state: TimerState? = nil {
+        didSet {
+            switch state {
+            case .cancelled:
+                timer.invalidate()
+                totalUsedTime = totalTime - secondsToCompletion
+                
+            case .active:
+                startTimer()
+                
+                secondsToCompletion = startTime
+                totalTime = startTime
+                progress = 1.0
 
-class TimerManager: ObservableObject {
-    @Published var state: TimerState = .initial
-    @Published var remainingTime: Int = 0
-    private var timer: Timer?
-    
-    init() {
-        self.timer = Timer()
+            case .paused:
+                timer.invalidate()
+
+            case .resumed:
+                startTimer()
+
+            case nil:
+                progress = 1.0
+            }
+        }
     }
     
-    func start(minutes seconds: Int) -> Result<TimerState, TimerError> {
-        guard state == .reset || state == .initial else { return .failure(.unintended) }
-        remainingTime = seconds * 60
-        runTimer()
-        
-        return .success(TimerState.run)
+    // MARK: 유저가 회의 생성 시점에 Picker로 생성한 시간.
+    var startTime: Int {
+        (selectedHoursAmount * 3600) + (selectedMinutesAmount * 60) + selectedSecondsAmount
+    }
+
+    // MARK: 유저가 추가한 모든 시간. 처음엔 startTime 값과 같음. 추후에 startTime + addedTime
+    @Published var totalTime: Int = 0
+    
+    // MARK: 실제로 MeetingView에 보여지는 남은 시간. 처음엔 startTime 값과 같음. 추후에 secondsToCompletion + addedTime
+    @Published var secondsToCompletion = 0
+    
+    // MARK: 유저가 시간을 추가했을 때, 이 프로퍼티에 값이 들어감.
+    @Published var addedTime: Int = 0 {
+        didSet {
+            secondsToCompletion += addedTime
+            totalTime += addedTime
+        }
     }
     
-    func pause() -> Result<TimerState, TimerError> {
-        guard state == .run else { return .failure(.unintended) }
-        timer?.invalidate()
-        updateTimerState(.pause)
-        
-        return .success(TimerState.pause)
-    }
+    //MARK: 유저가 실제로 사용한 추가 시간.
+    @Published var usedAddedTime: Int = 0
     
-    func resume() -> Result<TimerState, TimerError> {
-        guard state == .pause else { return .failure(.unintended) }
-        runTimer()
-        
-        return .success(TimerState.run)
-    }
-    
-    func reset() -> Result<TimerState, TimerError> {
-        guard state == .pause else { return .failure(.unintended) }
-        timer?.invalidate()
-        timer = nil
-        remainingTime = 0
-        updateTimerState(.reset)
-        
-        return .success(TimerState.reset)
-    }
-    
-    private func runTimer() {
+    // MARK: 총 소요시간. 딱 유저가 쓴 시간. totalTime - secondToCompletion
+    @Published var totalUsedTime: Int = 0
+    @Published var progress: Float = 1.0
+
+    let hoursRange = stride(from: 0, through: 23, by: 1)
+    let minutesRange = stride(from: 0, through: 59, by: 5)
+    let secondsRange = stride(from: 0, through: 59, by: 1)
+
+    private func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] _ in
             guard let self else { return }
-            if remainingTime > 0 {
-                remainingTime -= 1
-            } else {
-                timer?.invalidate()
-                self.updateTimerState(.reset)
+            if self.secondsToCompletion <= 0 {
+                self.state = .cancelled
+                return
             }
             
+            if self.addedTime > 0 {
+                self.usedAddedTime += 1
+            }
+            
+            self.secondsToCompletion -= 1
+            self.progress = Float(self.secondsToCompletion) / Float(self.totalTime)
         })
-        updateTimerState(.run)
     }
     
-    private func updateTimerState(_ state: TimerState) {
-        self.state = state
+    func addTime(_ seconds: Int) {
+        self.addedTime += seconds
     }
 }
-

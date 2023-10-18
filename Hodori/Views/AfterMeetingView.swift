@@ -95,7 +95,6 @@ struct AfterMeetingView: View {
                 .padding(.leading, 6)
                 .background {
                     RoundedRectangle(cornerRadius: 14)
-                        .fill(Color.dargray)
                 }
         }
     }
@@ -111,7 +110,6 @@ struct AfterMeetingView: View {
                 .padding(.bottom, 43)
                 .background {
                     RoundedRectangle(cornerRadius: 14)
-                        .fill(Color.dargray)
                 }
         }
     }
