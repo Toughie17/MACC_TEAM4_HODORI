@@ -35,14 +35,12 @@ struct MeetingView: View {
             meetingManager.timer.state = .active
         }
         .onChange(of: meetingManager.timer.state) { state  in
-            switch state {
-            case .cancelled:
+            if state == .cancelled {
                 firstSheetOpen = true
-            default:
-                break
             }
         }
-        .sheet(isPresented: $firstSheetOpen) {
+        .sheet(isPresented: $firstSheetOpen, onDismiss: {
+            timerStateTo(.paused)
         }) {
             MeetingEndCheckView(firstSheetOpen: $firstSheetOpen)
         }
