@@ -14,16 +14,21 @@ struct MeetingView: View {
     @State private var audioPlayer: AVAudioPlayer?
     
     var body: some View {
-        VStack(spacing: 0) {
-            Spacer()
-            topicCell
-            Spacer()
-            ProgressBarCell(progress: $meetingManager.timer.progress)
-            Spacer()
-            TimerCell()
-                .padding(.horizontal, 86)
-            Spacer()
+        ZStack {
+            Color.black
+                .ignoresSafeArea()
             
+            VStack(spacing: 0) {
+                topicCell
+                    .padding(.top, 119)
+                    .padding(.bottom, 154)
+                ProgressBarCell(progress: $meetingManager.timer.progress)
+                    .padding(.bottom, 86)
+                TimerCell()
+                    .padding(.horizontal, 86)
+                    .padding(.bottom, 144)
+                
+            }
         }
         .ignoresSafeArea()
         .onAppear {
@@ -38,6 +43,7 @@ struct MeetingView: View {
             }
         }
         .sheet(isPresented: $firstSheetOpen) {
+        }) {
             MeetingEndCheckView(firstSheetOpen: $firstSheetOpen)
         }
     }
@@ -51,6 +57,10 @@ struct MeetingView: View {
                 .font(.pretendSemibold64)
                 .foregroundStyle(.white)
         }
+    }
+    
+    private func timerStateTo(_ state: TimerState) {
+        self.meetingManager.timer.state = state
     }
 }
 
