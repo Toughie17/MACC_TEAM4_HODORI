@@ -7,13 +7,15 @@
 
 import SwiftUI
 
+enum TimerState {
+    case active
+    case paused
+    case resumed
+    case cancelled
+}
+
 final class TimerManager: ObservableObject {
-    enum TimerState {
-        case active
-        case paused
-        case resumed
-        case cancelled
-    }
+    
     private var timer = Timer()
     
     @Published var selectedHoursAmount = 0
@@ -31,6 +33,7 @@ final class TimerManager: ObservableObject {
                 
                 secondsToCompletion = startTime
                 totalTime = startTime
+                currentTime = startTime
                 progress = 1.0
 
             case .paused:
@@ -56,6 +59,8 @@ final class TimerManager: ObservableObject {
     // MARK: 실제로 MeetingView에 보여지는 남은 시간. 처음엔 startTime 값과 같음. 추후에 secondsToCompletion + addedTime
     @Published var secondsToCompletion = 0
     
+    var currentTime: Int = 0
+    
     // MARK: 유저가 시간을 추가했을 때, 이 프로퍼티에 값이 들어감.
     @Published var addedTime: Int = 0 {
         didSet {
@@ -69,8 +74,9 @@ final class TimerManager: ObservableObject {
     
     // MARK: 총 소요시간. 딱 유저가 쓴 시간. totalTime - secondToCompletion
     @Published var totalUsedTime: Int = 0
+    
     @Published var progress: Float = 1.0
-
+    
     let hoursRange = stride(from: 0, through: 23, by: 1)
     let minutesRange = stride(from: 0, through: 59, by: 5)
     let secondsRange = stride(from: 0, through: 59, by: 1)
@@ -88,11 +94,13 @@ final class TimerManager: ObservableObject {
             }
             
             self.secondsToCompletion -= 1
-            self.progress = Float(self.secondsToCompletion) / Float(self.totalTime)
+            self.progress = Float(self.secondsToCompletion) / Float(self.currentTime)
         })
     }
     
     func addTime(_ seconds: Int) {
-        self.addedTime += seconds
+        self.addedTime = seconds
+        self.currentTime = seconds
+        self.progress = Float(self.secondsToCompletion) / Float(self.currentTime)
     }
 }
