@@ -5,25 +5,29 @@
 //  Created by Eric on 10/17/23.
 //
 
+import AVFAudio
 import SwiftUI
 
 struct MeetingView: View {
     @EnvironmentObject var meetingManager: MeetingManager
     @State private var firstSheetOpen = false
+    @State private var audioPlayer: AVAudioPlayer?
     
     var body: some View {
         VStack(spacing: 0) {
+            Spacer()
             topicCell
             Spacer()
-            progressBar
+            ProgressBarCell(progress: $meetingManager.timer.progress)
             Spacer()
             TimerCell()
                 .padding(.horizontal, 86)
-                .padding(.bottom, 144)
+            Spacer()
             
         }
+        .ignoresSafeArea()
         .onAppear {
-            meetingManager.timer.secondsToCompletion = meetingManager.timer.totalTimeForCurrentSelection
+            meetingManager.timer.state = .active
         }
         .onChange(of: meetingManager.timer.state) { state  in
             switch state {
@@ -47,11 +51,24 @@ struct MeetingView: View {
                 .font(.pretendSemibold64)
                 .foregroundStyle(.white)
         }
-        .padding(.top, 119)
+    }
+}
+
+// MARK: Sound Logic
+extension MeetingView {
+    private func playSound() {
+        guard let soundPath = Bundle.main.path(forResource: "", ofType: "") else { return }
+        let url = URL(filePath: soundPath)
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+        } catch {
+            print(error)
+        }
     }
     
-    private var progressBar: some View {
-        VStack { }
+    private func stopSound() {
+        audioPlayer?.stop()
     }
 }
 
