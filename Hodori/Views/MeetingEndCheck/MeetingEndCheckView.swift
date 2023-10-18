@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MeetingEndCheckView: View {
     // MARK: 타이머뷰의 잔여 시간에 따라 하단 버튼의 종류를 변경해주기 위한 변수입니다.
-    @Binding var remainingTime: Int
     @Binding var firstSheetOpen: Bool
     
     @EnvironmentObject var meetingManager: MeetingManager
@@ -97,21 +96,19 @@ extension MeetingEndCheckView {
                             .font(.pretendMedium16)
                             .foregroundColor(.sheetFontLightGray)
                         
-                        Text(
-                            ((meetingManager.meeting?.expectedTime ?? -1) - (remainingTime)).asTimestamp
-                        )
+                        Text(meetingManager.timer.totalUsedTime.asTimestamp)
                         .font(.system(size: 36, weight: .light))
                         .foregroundColor(.white)
                     }
                     // MARK: 타이머에서 추가되는 시간 로직에 따라 수정 필요
                     // 현재는 미팅 모델에 추가된 상황을 가정함
-                    if meetingManager.meeting?.addedTime ?? 0 > 0 {
+                    if meetingManager.timer.addedTime > 0 {
                         VStack(spacing: 20) {
                             Text("추가한 시간")
                                 .font(.pretendMedium16)
                                 .foregroundColor(.sheetFontLightGray)
                             
-                            Text((meetingManager.meeting?.addedTime ?? -1).asTimestamp)
+                            Text(meetingManager.timer.usedAddedTime.asTimestamp)
                                 .font(.system(size: 36, weight: .light))
                                 .foregroundColor(.sheetSmallTimerPink)
                         }
@@ -122,7 +119,7 @@ extension MeetingEndCheckView {
 
     private var buttonBlock: some View {
         HStack(spacing: 21) {
-            if remainingTime > 0 {
+            if meetingManager.timer.secondsToCompletion > 0 {
                 Button {
                     firstSheetOpen = false
                     
@@ -161,24 +158,5 @@ extension MeetingEndCheckView {
                 .font(.pretendSemibold16)
                 .foregroundStyle(.white)
         }
-    }
-}
-
-//struct MeetingEndCheckView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MeetingEndCheckView(remainingTime: .constant(10))
-//            .environmentObject(MeetingManager(timer: TimerManager()))
-//            .preferredColorScheme(.light)
-//            .previewInterfaceOrientation(.landscapeLeft)
-//    }
-//}
-
-// 시트 테스트 해보려고 프리뷰 아래 코드 사용했습니다.
-struct MeetingEndCheckView_Previews: PreviewProvider {
-    static var previews: some View {
-        TimerTestDummy()
-            .environmentObject(MeetingManager(timer: TimerManager()))
-            .previewInterfaceOrientation(.landscapeLeft)
-            .preferredColorScheme(.dark)
     }
 }

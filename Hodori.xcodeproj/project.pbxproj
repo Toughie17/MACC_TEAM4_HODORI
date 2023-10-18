@@ -16,10 +16,10 @@
 		0736DC432AD5F05D002F1FE0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0736DC422AD5F05D002F1FE0 /* FirebaseFirestore */; };
 		0736DC452AD5F05D002F1FE0 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 0736DC442AD5F05D002F1FE0 /* FirebaseFirestoreCombine-Community */; };
 		0736DC472AD5F05D002F1FE0 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0736DC462AD5F05D002F1FE0 /* FirebaseFirestoreSwift */; };
+		0785AF882ADFC19300791CC8 /* TimerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0785AF872ADFC19300791CC8 /* TimerCell.swift */; };
+		0785AF8A2ADFC19D00791CC8 /* MeetingEndCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0785AF892ADFC19D00791CC8 /* MeetingEndCheckView.swift */; };
 		079E76DC2ADBD4D3009052B3 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76DB2ADBD4D3009052B3 /* TimerManager.swift */; };
 		079E76DF2ADBD51A009052B3 /* TimerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76DE2ADBD51A009052B3 /* TimerError.swift */; };
-		079E76E22ADBD546009052B3 /* TimerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76E12ADBD546009052B3 /* TimerCell.swift */; };
-		079E76E42ADBD578009052B3 /* MeetingEndCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76E32ADBD578009052B3 /* MeetingEndCheckView.swift */; };
 		079E76E62ADBD593009052B3 /* AfterMeetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76E52ADBD593009052B3 /* AfterMeetingView.swift */; };
 		079E76E82ADBD5D1009052B3 /* ExtendMeetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76E72ADBD5D1009052B3 /* ExtendMeetingView.swift */; };
 		079E76EB2ADBD672009052B3 /* MeetingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079E76EA2ADBD672009052B3 /* MeetingManager.swift */; };
@@ -36,8 +36,6 @@
 		860A6B192ADD986900D79481 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 860A6B162ADD986900D79481 /* Pretendard-Regular.otf */; };
 		860A6B1A2ADD986900D79481 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 860A6B172ADD986900D79481 /* Pretendard-Medium.otf */; };
 		860A6B1D2ADD98B200D79481 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A6B1C2ADD98B200D79481 /* Font+.swift */; };
-		860A6B202ADE4E6E00D79481 /* TimerTestDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A6B1F2ADE4E6E00D79481 /* TimerTestDummy.swift */; };
-		860A6B222ADE7A7700D79481 /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A6B212ADE7A7700D79481 /* Int+.swift */; };
 		867907112ADD066C006397FD /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867907102ADD066C006397FD /* Color+.swift */; };
 		867907132ADD075D006397FD /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867907122ADD075D006397FD /* UIColor+.swift */; };
 /* End PBXBuildFile section */
@@ -49,10 +47,10 @@
 		0736DC1E2AD502CF002F1FE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0736DC202AD502CF002F1FE0 /* Hodori.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hodori.entitlements; sourceTree = "<group>"; };
 		0736DC222AD502CF002F1FE0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0785AF872ADFC19300791CC8 /* TimerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerCell.swift; sourceTree = "<group>"; };
+		0785AF892ADFC19D00791CC8 /* MeetingEndCheckView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeetingEndCheckView.swift; path = MeetingEndCheck/MeetingEndCheckView.swift; sourceTree = "<group>"; };
 		079E76DB2ADBD4D3009052B3 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		079E76DE2ADBD51A009052B3 /* TimerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerError.swift; sourceTree = "<group>"; };
-		079E76E12ADBD546009052B3 /* TimerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCell.swift; sourceTree = "<group>"; };
-		079E76E32ADBD578009052B3 /* MeetingEndCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingEndCheckView.swift; sourceTree = "<group>"; };
 		079E76E52ADBD593009052B3 /* AfterMeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterMeetingView.swift; sourceTree = "<group>"; };
 		079E76E72ADBD5D1009052B3 /* ExtendMeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendMeetingView.swift; sourceTree = "<group>"; };
 		079E76EA2ADBD672009052B3 /* MeetingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingManager.swift; sourceTree = "<group>"; };
@@ -97,6 +95,7 @@
 			children = (
 				0736DC192AD502CE002F1FE0 /* Hodori */,
 				0736DC182AD502CE002F1FE0 /* Products */,
+				0785AF862ADFC14800791CC8 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,6 +142,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		0785AF862ADFC14800791CC8 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				860A6B212ADE7A7700D79481 /* Int+.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		078C499F2ADF61A9001408B0 /* NewMeetingSetupView */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,8 +163,8 @@
 		078C49A02ADF61BE001408B0 /* MeetingView */ = {
 			isa = PBXGroup;
 			children = (
-				079E76E12ADBD546009052B3 /* TimerCell.swift */,
 				07D7D8642ADF24400074A4FE /* ProgressBarCell.swift */,
+				0785AF872ADFC19300791CC8 /* TimerCell.swift */,
 				079E76FA2ADECEB7009052B3 /* MeetingView.swift */,
 			);
 			path = MeetingView;
@@ -183,14 +190,10 @@
 		079E76E02ADBD53A009052B3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				860A6B1E2ADE4E3600D79481 /* MeetingEndCheck */,
-				079E76E12ADBD546009052B3 /* TimerComponent.swift */,
-=======
 				078C49A02ADF61BE001408B0 /* MeetingView */,
 				078C499F2ADF61A9001408B0 /* NewMeetingSetupView */,
-				079E76E32ADBD578009052B3 /* MeetingEndCheckView.swift */,
->>>>>>> sprint1
+				0785AF892ADFC19D00791CC8 /* MeetingEndCheckView.swift */,
 				079E76E52ADBD593009052B3 /* AfterMeetingView.swift */,
 				079E76EE2ADBD9DE009052B3 /* EvaluationCell.swift */,
 			);
@@ -218,7 +221,6 @@
 		860A6B1E2ADE4E3600D79481 /* MeetingEndCheck */ = {
 			isa = PBXGroup;
 			children = (
-				079E76E32ADBD578009052B3 /* MeetingEndCheckView.swift */,
 				079E76E72ADBD5D1009052B3 /* ExtendMeetingView.swift */,
 				860A6B1F2ADE4E6E00D79481 /* TimerTestDummy.swift */,
 			);
@@ -231,12 +233,8 @@
 				867907102ADD066C006397FD /* Color+.swift */,
 				867907122ADD075D006397FD /* UIColor+.swift */,
 				860A6B1C2ADD98B200D79481 /* Font+.swift */,
-<<<<<<< HEAD
-				860A6B212ADE7A7700D79481 /* Int+.swift */,
-=======
 				079E76F42ADEB35F009052B3 /* String+.swift */,
 				079E76F82ADEC1A2009052B3 /* Int+.swift */,
->>>>>>> sprint1
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -331,21 +329,16 @@
 				079E76EB2ADBD672009052B3 /* MeetingManager.swift in Sources */,
 				079E76F12ADE4EF0009052B3 /* NewMeetingSetupView.swift in Sources */,
 				079E76EF2ADBD9DE009052B3 /* EvaluationCell.swift in Sources */,
-				079E76E22ADBD546009052B3 /* TimerCell.swift in Sources */,
 				079E76F32ADE60FC009052B3 /* TimePickerView.swift in Sources */,
-				079E76E42ADBD578009052B3 /* MeetingEndCheckView.swift in Sources */,
+				0785AF8A2ADFC19D00791CC8 /* MeetingEndCheckView.swift in Sources */,
 				079E76F92ADEC1A2009052B3 /* Int+.swift in Sources */,
 				079E76ED2ADBD67E009052B3 /* Meeting.swift in Sources */,
-<<<<<<< HEAD
-				860A6B202ADE4E6E00D79481 /* TimerTestDummy.swift in Sources */,
-=======
 				079E76FB2ADECEB7009052B3 /* MeetingView.swift in Sources */,
 				07D7D8652ADF24400074A4FE /* ProgressBarCell.swift in Sources */,
->>>>>>> sprint1
 				860A6B1D2ADD98B200D79481 /* Font+.swift in Sources */,
 				079E76DF2ADBD51A009052B3 /* TimerError.swift in Sources */,
-				860A6B222ADE7A7700D79481 /* Int+.swift in Sources */,
 				0736DC1B2AD502CE002F1FE0 /* HodoriApp.swift in Sources */,
+				0785AF882ADFC19300791CC8 /* TimerCell.swift in Sources */,
 				867907132ADD075D006397FD /* UIColor+.swift in Sources */,
 				079E76F52ADEB35F009052B3 /* String+.swift in Sources */,
 				079E76E82ADBD5D1009052B3 /* ExtendMeetingView.swift in Sources */,
@@ -479,12 +472,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Hodori/Hodori.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hodori/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = VGKCD7Q8NW;
+				DEVELOPMENT_TEAM = VGKCD7Q8NW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hodori/Info.plist;
@@ -507,7 +498,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodori;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = EricProvisioningFile;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -524,12 +514,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Hodori/Hodori.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hodori/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = VGKCD7Q8NW;
+				DEVELOPMENT_TEAM = VGKCD7Q8NW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hodori/Info.plist;
@@ -552,7 +540,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodori;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = EricProvisioningFile;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

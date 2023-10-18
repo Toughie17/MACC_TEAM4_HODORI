@@ -38,7 +38,7 @@ struct MeetingView: View {
             }
         }
         .sheet(isPresented: $firstSheetOpen) {
-            MeetingEndCheckView()
+            MeetingEndCheckView(firstSheetOpen: $firstSheetOpen)
         }
     }
     

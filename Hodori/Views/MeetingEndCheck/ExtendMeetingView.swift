@@ -10,6 +10,7 @@ import SwiftUI
 struct ExtendMeetingView: View {
     @State private var extendTime: Int = 0
     @Binding var firstSheetOpen: Bool
+    @EnvironmentObject var meetingManager: MeetingManager
     
     var body: some View {
         
@@ -144,6 +145,7 @@ extension ExtendMeetingView {
             Button {
                 // MARK: 타이머에 시간 추가하는 코드 추가 필요
                 // extendTime을 넘겨줘야함.
+                meetingManager.timer.addTime(extendTime)
                 firstSheetOpen = false
                 
             } label: {
@@ -179,11 +181,11 @@ extension ExtendMeetingView {
 //    }
 //}
 
-struct ExtendMeetingView_Previews: PreviewProvider {
-    static var previews: some View {
-        TimerTestDummy()
-            .environmentObject(MeetingManager(timer: TimerManager()))
-            .previewInterfaceOrientation(.landscapeLeft)
-            .preferredColorScheme(.dark)
-    }
-}
+//struct ExtendMeetingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TimerTestDummy()
+//            .environmentObject(MeetingManager(timer: TimerManager()))
+//            .previewInterfaceOrientation(.landscapeLeft)
+//            .preferredColorScheme(.dark)
+//    }
+//}

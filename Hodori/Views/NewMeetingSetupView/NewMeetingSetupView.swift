@@ -86,6 +86,7 @@ struct NewMeetingSetupView: View {
                 }
             
         }
+        .ignoresSafeArea(.keyboard)
         .disabled(isNotValid)
         .padding(.bottom, 70)
     }
