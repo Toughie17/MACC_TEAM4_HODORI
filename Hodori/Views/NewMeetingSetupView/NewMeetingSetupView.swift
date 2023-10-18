@@ -17,6 +17,8 @@ struct NewMeetingSetupView: View {
     
     var body: some View {
         ZStack {
+            Color.black
+            
             VStack(spacing: 20) {
                 topicBlock
                 timerBlock
@@ -103,6 +105,7 @@ extension NewMeetingSetupView {
     private var topicComment: some View {
         Text("이번 회의 안건을 알려주세요")
             .font(.pretendSemibold24)
+            .foregroundStyle(.white)
     }
     
     private var textField: some View {
@@ -121,7 +124,7 @@ extension NewMeetingSetupView {
             }
             .padding(EdgeInsets(top: 10, leading: 13, bottom: 9, trailing: 0))
             .frame(maxWidth: .infinity)
-        
+            .foregroundStyle(.white)
             .background {
                 RoundedRectangle(cornerRadius: 8)
                     .foregroundStyle(Color.sheetBlockBackgroundGray)
@@ -141,6 +144,7 @@ extension NewMeetingSetupView {
     private var timerComment: some View {
         Text("예상 회의 시간을 알려주세요")
             .font(.pretendSemibold24)
+            .foregroundStyle(.white)
     }
     
     private var timePicker: some View {
@@ -149,6 +153,7 @@ extension NewMeetingSetupView {
             TimePickerView(title: "분", range: meetingManager.timer.minutesRange, binding: $meetingManager.timer.selectedMinutesAmount)
             TimePickerView(title: "초", range: meetingManager.timer.secondsRange, binding: $meetingManager.timer.selectedSecondsAmount)
         }
+        .foregroundStyle(.white)
     }
 }
 
@@ -173,8 +178,9 @@ extension NewMeetingSetupView {
 struct NewMeetingSetupView_Previews: PreviewProvider {
     static var previews: some View {
         NewMeetingSetupView()
-            .preferredColorScheme(.dark)
+//            .preferredColorScheme(.dark)
             .previewInterfaceOrientation(.landscapeLeft)
+            .environmentObject(MeetingManager(timer: TimerManager()))
     }
 }
 
