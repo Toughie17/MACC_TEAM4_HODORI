@@ -37,8 +37,8 @@
 		860A6B1A2ADD986900D79481 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 860A6B172ADD986900D79481 /* Pretendard-Medium.otf */; };
 		860A6B1D2ADD98B200D79481 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A6B1C2ADD98B200D79481 /* Font+.swift */; };
 		866111282ADFFB9E002E1623 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866111272ADFFB9E002E1623 /* SoundManager.swift */; };
-		8661112A2ADFFD29002E1623 /* sample.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 866111292ADFFD29002E1623 /* sample.mp3 */; };
-		8661112C2ADFFED6002E1623 /* sample2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8661112B2ADFFED6002E1623 /* sample2.mp3 */; };
+		8661112E2AE00E4D002E1623 /* timerEndSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8661112D2AE00E4C002E1623 /* timerEndSound.mp3 */; };
+		866111302AE00E54002E1623 /* leftMinutesSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8661112F2AE00E54002E1623 /* leftMinutesSound.mp3 */; };
 		867907112ADD066C006397FD /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867907102ADD066C006397FD /* Color+.swift */; };
 		867907132ADD075D006397FD /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867907122ADD075D006397FD /* UIColor+.swift */; };
 /* End PBXBuildFile section */
@@ -74,8 +74,8 @@
 		860A6B1F2ADE4E6E00D79481 /* TimerTestDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTestDummy.swift; sourceTree = "<group>"; };
 		860A6B212ADE7A7700D79481 /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
 		866111272ADFFB9E002E1623 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
-		866111292ADFFD29002E1623 /* sample.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sample.mp3; sourceTree = "<group>"; };
-		8661112B2ADFFED6002E1623 /* sample2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sample2.mp3; sourceTree = "<group>"; };
+		8661112D2AE00E4C002E1623 /* timerEndSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timerEndSound.mp3; sourceTree = "<group>"; };
+		8661112F2AE00E54002E1623 /* leftMinutesSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = leftMinutesSound.mp3; sourceTree = "<group>"; };
 		867907102ADD066C006397FD /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		867907122ADD075D006397FD /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,8 +142,8 @@
 		0736DC4D2AD5F084002F1FE0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				866111292ADFFD29002E1623 /* sample.mp3 */,
-				8661112B2ADFFED6002E1623 /* sample2.mp3 */,
+				8661112D2AE00E4C002E1623 /* timerEndSound.mp3 */,
+				8661112F2AE00E54002E1623 /* leftMinutesSound.mp3 */,
 				860A6B142ADD985700D79481 /* Pretendard */,
 				0736DC1E2AD502CF002F1FE0 /* Assets.xcassets */,
 			);
@@ -316,13 +316,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8661112E2AE00E4D002E1623 /* timerEndSound.mp3 in Resources */,
 				860A6B182ADD986900D79481 /* Pretendard-SemiBold.otf in Resources */,
 				860A6B1A2ADD986900D79481 /* Pretendard-Medium.otf in Resources */,
 				860A6B192ADD986900D79481 /* Pretendard-Regular.otf in Resources */,
 				0736DC232AD502CF002F1FE0 /* Preview Assets.xcassets in Resources */,
-				8661112C2ADFFED6002E1623 /* sample2.mp3 in Resources */,
 				0736DC1F2AD502CF002F1FE0 /* Assets.xcassets in Resources */,
-				8661112A2ADFFD29002E1623 /* sample.mp3 in Resources */,
+				866111302AE00E54002E1623 /* leftMinutesSound.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

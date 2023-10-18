@@ -10,8 +10,8 @@ import AVFoundation
 final class SoundManager: ObservableObject {
     
     enum SoundNames: String {
-        case sample
-        case sample2
+        case timerEndSound
+        case leftMinutesSound
     }
     
     private var audioPlayer: AVAudioPlayer?

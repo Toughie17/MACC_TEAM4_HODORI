@@ -60,9 +60,9 @@ final class TimerManager: ObservableObject {
     @Published var secondsToCompletion = 0 {
         didSet {
             if oldValue == 601 && secondsToCompletion == 600 {
-                soundPlayer.playSound(fileName: .sample2)
+                soundPlayer.playSound(fileName: .leftMinutesSound)
             } else if oldValue == 181 && secondsToCompletion == 180 {
-                soundPlayer.playSound(fileName: .sample2)
+                soundPlayer.playSound(fileName: .leftMinutesSound)
             }
         }
     }
@@ -91,8 +91,8 @@ final class TimerManager: ObservableObject {
             guard let self else { return }
             if self.secondsToCompletion <= 0 {
                 self.state = .cancelled
-                soundPlayer.playSound(fileName: .sample)
-                soundPlayer.stopSoundAfterDelay(seconds: 5)
+                soundPlayer.playSound(fileName: .timerEndSound)
+                soundPlayer.stopSoundAfterDelay(seconds: 7)
                 return
             }
             
