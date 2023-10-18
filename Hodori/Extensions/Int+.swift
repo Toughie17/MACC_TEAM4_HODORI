@@ -2,7 +2,7 @@
 //  Int+.swift
 //  Hodori
 //
-//  Created by Toughie on 2023/10/17.
+//  Created by Eric on 10/17/23.
 //
 
 import Foundation
