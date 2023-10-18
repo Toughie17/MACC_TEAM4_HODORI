@@ -16,4 +16,3 @@ extension Int {
         return String(format: "%02i:%02i:%02i", hour, minute, second)
     }
 }
-

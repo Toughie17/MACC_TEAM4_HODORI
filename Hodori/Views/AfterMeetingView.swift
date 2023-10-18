@@ -33,6 +33,10 @@ struct AfterMeetingView: View {
     @State private var reviewText = ""
     @State private var selectedEvaluation: Evaluate?
     @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
+    
+    // MARK: 추가된 코드
+    @Binding var firstSheetOpen: Bool
     
     var body: some View {
         VStack(spacing: 0) {
@@ -48,10 +52,14 @@ struct AfterMeetingView: View {
                 .padding(.bottom, 30)
             
         }
+        // MARK: 추가된 코드
+        .navigationBarHidden(true)
+        
         .ignoresSafeArea()
         .interactiveDismissDisabled()
         .padding(.horizontal, 25)
     }
+    
     
     private var headLine: some View {
         VStack(spacing: 0) {
@@ -116,7 +124,8 @@ struct AfterMeetingView: View {
     
     private var finishButton: some View {
         Button {
-            dismiss()
+            // MARK: 추가된 코드
+            firstSheetOpen = false
         } label: {
             Text("저장하고 회의 마치기")
                 .fontWeight(.semibold)
@@ -134,10 +143,10 @@ struct AfterMeetingView: View {
 }
 
 
-struct AfterMeetingView_Previews: PreviewProvider {
-    static var previews: some View {
-        AfterMeetingView()
-            .preferredColorScheme(.dark)
-            .previewInterfaceOrientation(.landscapeLeft)
-    }
-}
+//struct AfterMeetingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AfterMeetingView()
+//            .preferredColorScheme(.dark)
+//            .previewInterfaceOrientation(.landscapeLeft)
+//    }
+//}
