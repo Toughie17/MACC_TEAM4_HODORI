@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProgressBarCell: View {
     @Binding var progress: Float
+    @EnvironmentObject var meetingManager: MeetingManager
 
     var body: some View {
         ZStack(alignment: .leading) {
@@ -19,7 +20,7 @@ struct ProgressBarCell: View {
             Rectangle()
             .frame(maxWidth: CGFloat(progress) * UIScreen.main.bounds.width, maxHeight: 7)
                 .foregroundStyle(Color.progressbarRed)
-                .animation(.interactiveSpring(response: 2.0, dampingFraction: 1.0, blendDuration: 0.1), value: progress)
+                .animation(meetingManager.state == .extend ? .none : .interactiveSpring(response: 2.0, dampingFraction: 1.0, blendDuration: 0.1), value: progress)
         }
     }
 }
