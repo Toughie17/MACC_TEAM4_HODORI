@@ -16,6 +16,9 @@ final class TimerManager: ObservableObject {
     }
     private var timer = Timer()
     
+    // MARK: 우선 여기에 사운드매니저 객체 생성할게요..
+    private var soundPlayer = SoundManager()
+    
     @Published var selectedHoursAmount = 0
     @Published var selectedMinutesAmount = 0
     @Published var selectedSecondsAmount = 0
@@ -54,7 +57,15 @@ final class TimerManager: ObservableObject {
     @Published var totalTime: Int = 0
     
     // MARK: 실제로 MeetingView에 보여지는 남은 시간. 처음엔 startTime 값과 같음. 추후에 secondsToCompletion + addedTime
-    @Published var secondsToCompletion = 0
+    @Published var secondsToCompletion = 0 {
+        didSet {
+            if oldValue == 601 && secondsToCompletion == 600 {
+                soundPlayer.playSound(fileName: .sample2)
+            } else if oldValue == 181 && secondsToCompletion == 180 {
+                soundPlayer.playSound(fileName: .sample2)
+            }
+        }
+    }
     
     // MARK: 유저가 시간을 추가했을 때, 이 프로퍼티에 값이 들어감.
     @Published var addedTime: Int = 0 {
@@ -80,6 +91,8 @@ final class TimerManager: ObservableObject {
             guard let self else { return }
             if self.secondsToCompletion <= 0 {
                 self.state = .cancelled
+                soundPlayer.playSound(fileName: .sample)
+                soundPlayer.stopSoundAfterDelay(seconds: 5)
                 return
             }
             

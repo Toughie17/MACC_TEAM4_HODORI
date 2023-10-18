@@ -7,7 +7,7 @@
 
 import AVFoundation
 
-final class SoundManager {
+final class SoundManager: ObservableObject {
     
     enum SoundNames: String {
         case sample
