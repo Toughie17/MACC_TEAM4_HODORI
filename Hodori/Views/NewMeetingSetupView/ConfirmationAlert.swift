@@ -123,7 +123,7 @@ struct ConfirmationAlert: View {
     
     private func startMeeting() {
         isStart = true
-        meetingManager.createMeeting(meeting: Meeting(topic: topic, expectedTime: meetingManager.totalMeetingTime()))
+        meetingManager.createMeeting(meeting: Meeting(topic: topic, expectedTime: meetingManager.startTime()))
     }
 }
 

@@ -31,7 +31,7 @@ struct NewMeetingSetupView: View {
             isFocused = false
         }
         .sheet(isPresented: $isChecked, content: {
-            ConfirmationAlert(topic: topic, time: meetingManager.totalMeetingTime())
+            ConfirmationAlert(topic: topic, time: meetingManager.startTime())
         })
     }
     
@@ -162,7 +162,7 @@ extension NewMeetingSetupView {
     }
     
     private var isValid: Bool {
-        meetingManager.timer.totalTimeForCurrentSelection != 0 && topic.isNotEmpty
+        meetingManager.timer.startTime != 0 && topic.isNotEmpty
     }
 }
 

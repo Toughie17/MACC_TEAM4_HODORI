@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ExtendMeetingView: View {
     @State private var time: Int = 0
+    @EnvironmentObject var meetingManager: MeetingManager
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -161,6 +162,7 @@ struct ExtendMeetingView: View {
     private var finishButton: some View {
         Button {
             dismiss()
+            meetingManager.timer.addTime(time)
         } label: {
             RoundedRectangle(cornerRadius: 12)
                 .fill(.blue)

@@ -11,6 +11,7 @@ struct MeetingEndCheckView: View {
     @State private var isFinished = false
     @State private var isExtended = false
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var meetingManager: MeetingManager
     
     var body: some View {
         VStack(spacing: 0) {
@@ -93,9 +94,10 @@ struct MeetingEndCheckView: View {
                             .font(.system(size: 17))
                             .padding(.bottom, 11)
                         
-                        Text("02:30:00")
+                        Text(meetingManager.timer.totalUsedTime.asTimestamp)
                             .fontWeight(.light)
                             .font(.system(size: 36))
+                            .foregroundStyle(.black)
                     }
                     
                     VStack(spacing: 0) {
@@ -105,7 +107,7 @@ struct MeetingEndCheckView: View {
                             .font(.system(size: 17))
                             .padding(.bottom, 11)
                         
-                        Text("+00:15:00")
+                        Text(meetingManager.timer.usedAddedTime.asTimestamp)
                             .foregroundStyle(.red)
                             .fontWeight(.light)
                             .font(.system(size: 36))
