@@ -33,8 +33,8 @@ final class MeetingManager: ObservableObject {
         self.meeting = nil
     }
     
-    func totalMeetingTime() -> Int {
-        timer.totalTimeForCurrentSelection
+    func startTime() -> Int {
+        timer.startTime
     }
     
     // + a 미팅 객체를 솔팅하는 함수
