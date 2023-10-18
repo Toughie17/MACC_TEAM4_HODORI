@@ -19,13 +19,12 @@ final class TimerManager: ObservableObject {
     @Published var selectedHoursAmount = 0
     @Published var selectedMinutesAmount = 0
     @Published var selectedSecondsAmount = 0
-    @Published var state: TimerState = .cancelled {
+    @Published var state: TimerState? = nil {
         didSet {
             switch state {
             case .cancelled:
                 timer.invalidate()
                 totalUsedTime = totalTime - secondsToCompletion
-                progress = 0
                 
             case .active:
                 startTimer()
@@ -34,14 +33,14 @@ final class TimerManager: ObservableObject {
                 totalTime = startTime
                 progress = 1.0
 
-                updateCompletionDate()
-
             case .paused:
                 timer.invalidate()
 
             case .resumed:
                 startTimer()
-                updateCompletionDate()
+
+            case nil:
+                progress = 1.0
             }
         }
     }
@@ -70,6 +69,7 @@ final class TimerManager: ObservableObject {
     
     // MARK: 총 소요시간. 딱 유저가 쓴 시간. totalTime - secondToCompletion
     @Published var totalUsedTime: Int = 0
+    @Published var progress: Float = 1.0
 
     let hoursRange = stride(from: 0, through: 23, by: 1)
     let minutesRange = stride(from: 0, through: 59, by: 5)
@@ -92,13 +92,7 @@ final class TimerManager: ObservableObject {
         })
     }
     
-            if self.secondsToCompletion < 0 {
-                self.state = .cancelled
-            }
-        })
-    }
-
-    private func updateCompletionDate() {
-        completionDate = Date.now.addingTimeInterval(Double(secondsToCompletion))
+    func addTime(_ seconds: Int) {
+        self.addedTime += seconds
     }
 }
