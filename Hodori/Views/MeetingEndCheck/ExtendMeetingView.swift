@@ -13,7 +13,6 @@ struct ExtendMeetingView: View {
     @EnvironmentObject var meetingManager: MeetingManager
     
     var body: some View {
-        
         ZStack {
             Color.sheetBackgroundGray.ignoresSafeArea()
             
@@ -31,7 +30,21 @@ struct ExtendMeetingView: View {
             .interactiveDismissDisabled()
             .padding(.horizontal, 40)
         }
+        .onChange(of: extendTime) { newValue in
+            if extendTime > 0 {
+                meetingStateTo(.extend)
+            } else {
+                meetingStateTo(.normal)
+            }
+        }
+        .onDisappear {
+            meetingStateTo(.normal)
+        }
         .navigationBarHidden(true)
+    }
+    
+    private func meetingStateTo(_ state: MeetingState) {
+        meetingManager.state = state
     }
 }
 

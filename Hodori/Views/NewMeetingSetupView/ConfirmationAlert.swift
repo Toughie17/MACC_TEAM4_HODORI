@@ -15,23 +15,28 @@ struct ConfirmationAlert: View {
     let time: Int
     
     var body: some View {
-        VStack(spacing: 0) {
-            checkComment
-                .padding(.bottom, 58)
-            topicBlock
-                .padding(.bottom, 24)
-            timerBlock
-                .padding(.bottom, 84)
-            HStack(spacing: 21) {
-                fixButton
-                startButton
+        ZStack {
+            Color.sheetBackgroundGray
+                .ignoresSafeArea()
+            
+            VStack(spacing: 0) {
+                checkComment
+                    .padding(.bottom, 58)
+                topicBlock
+                    .padding(.bottom, 24)
+                timerBlock
+                    .padding(.bottom, 84)
+                HStack(spacing: 21) {
+                    fixButton
+                    startButton
+                }
+                .padding(.bottom, 37)
             }
-            .padding(.bottom, 37)
-        }
-        .padding(.horizontal, 40)
-        .fullScreenCover(isPresented: $isStart) {
-            MeetingView()
-        }
+            .padding(.horizontal, 40)
+            .fullScreenCover(isPresented: $isStart) {
+                MeetingView()
+            }
+    }
     }
     
     private var checkComment: some View {
@@ -48,6 +53,7 @@ struct ConfirmationAlert: View {
                 .padding(.bottom, 16)
             Text("아래 내용으로 회의를 시작할까요?")
                 .font(.pretendSemibold30)
+                .foregroundStyle(.white)
         }
     }
     
@@ -60,6 +66,7 @@ struct ConfirmationAlert: View {
                 .padding(.bottom, 25)
             Text(topic)
                 .font(.pretendMedium24)
+                .foregroundStyle(.white)
                 .padding(.bottom, 57)
                 
         }
@@ -79,6 +86,7 @@ struct ConfirmationAlert: View {
             Text(time.asTimestamp)
                 .font(.system(size: 36))
                 .fontWeight(.light)
+                .foregroundStyle(.white)
                 .padding(.bottom, 42)
         }
         .frame(maxWidth: .infinity)

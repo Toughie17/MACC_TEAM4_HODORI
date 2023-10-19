@@ -8,10 +8,16 @@
 import Combine
 import SwiftUI
 
+enum MeetingState {
+    case normal
+    case extend
+}
+
 final class MeetingManager: ObservableObject {
     @Published var meetings: [Meeting] = []
     @Published var timer: TimerManager
     @Published var meeting: Meeting?
+    @Published var state: MeetingState? = nil
     
     init(timer: TimerManager) {
         self.timer = timer
@@ -19,7 +25,6 @@ final class MeetingManager: ObservableObject {
             .sink { [weak self] _ in
                 self?.objectWillChange.send() }
             .store(in: &cancellables)
-        self.meeting = Meeting(topic: "테스트입니다", expectedTime: 600, addedTime: 30, earlyEndingTime: 0, satisfaction: "", review: "", keywords: [], id: UUID().uuidString)
     }
     
     private var cancellables = Set<AnyCancellable>()

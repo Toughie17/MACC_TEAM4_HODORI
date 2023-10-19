@@ -23,7 +23,7 @@ struct TimerCell: View {
             }
         }
         .onChange(of: meetingManager.timer.state) { state in
-            if state == .paused {
+            if state == .paused || state == .cancelled {
                 withAnimation(.default.repeatForever()) {
                     isStopped = true
                 }
@@ -74,6 +74,7 @@ struct TimerCell: View {
     private var cancelButton: some View {
         Button {
             meetingManager.timer.state = .cancelled
+            
         } label: {
             Image("cancelButton")
                 .resizable()

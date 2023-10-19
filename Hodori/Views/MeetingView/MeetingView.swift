@@ -14,30 +14,34 @@ struct MeetingView: View {
     @State private var firstSheetOpen = false
     
     var body: some View {
-        VStack(spacing: 0) {
-            Spacer()
-            topicCell
-            Spacer()
-            ProgressBarCell(progress: $meetingManager.timer.progress)
-            Spacer()
-            TimerCell()
-                .padding(.horizontal, 86)
-            Spacer()
+        ZStack {
+            Color.black
+                .ignoresSafeArea()
             
+            VStack(spacing: 0) {
+                topicCell
+                    .padding(.top, 119)
+                    .padding(.bottom, 154)
+                ProgressBarCell(progress: $meetingManager.timer.progress)
+                    .padding(.bottom, 86)
+                TimerCell()
+                    .padding(.horizontal, 86)
+                    .padding(.bottom, 144)
+                
+            }
         }
         .ignoresSafeArea()
         .onAppear {
             meetingManager.timer.state = .active
         }
         .onChange(of: meetingManager.timer.state) { state  in
-            switch state {
-            case .cancelled:
+            if state == .cancelled {
                 firstSheetOpen = true
-            default:
-                break
             }
         }
-        .sheet(isPresented: $firstSheetOpen) {
+        .sheet(isPresented: $firstSheetOpen, onDismiss: {
+            timerStateTo(.paused)
+        }) {
             MeetingEndCheckView(firstSheetOpen: $firstSheetOpen)
         }
     }
@@ -51,6 +55,10 @@ struct MeetingView: View {
                 .font(.pretendSemibold64)
                 .foregroundStyle(.white)
         }
+    }
+    
+    private func timerStateTo(_ state: TimerState) {
+        self.meetingManager.timer.state = state
     }
 }
 
