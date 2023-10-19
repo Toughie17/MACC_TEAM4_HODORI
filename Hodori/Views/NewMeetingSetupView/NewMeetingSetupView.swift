@@ -178,10 +178,7 @@ extension NewMeetingSetupView {
 struct NewMeetingSetupView_Previews: PreviewProvider {
     static var previews: some View {
         NewMeetingSetupView()
-//            .preferredColorScheme(.dark)
             .previewInterfaceOrientation(.landscapeLeft)
             .environmentObject(MeetingManager(timer: TimerManager()))
     }
 }
-
-
