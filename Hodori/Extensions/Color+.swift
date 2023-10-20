@@ -19,7 +19,8 @@ extension Color {
     static let sheetFontWhite = Color(UIColor(hexCode: "E3E3E3"))
     static let sheetSmallTimerPink = Color(UIColor(hexCode: "FF6767"))
     static let sheetBigTimerWhite = Color(UIColor(hexCode: "D9D9D9"))
-
+    
+    static let sheetPlaceholder = Color(UIColor(hexCode: "86868D"))
     static let pointBlue = Color(UIColor(hexCode: "3C6EEE"))
     static let mainViewBlockGray = Color(UIColor(hexCode: "1C1C1E"))
     static let buttonTextDisabled = Color(UIColor(hexCode: "667399"))

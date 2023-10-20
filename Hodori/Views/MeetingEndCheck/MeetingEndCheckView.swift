@@ -133,7 +133,7 @@ extension MeetingEndCheckView {
             }
             
             NavigationLink {
-                AfterMeetingView(firstSheetOpen: $firstSheetOpen)
+                MeetingAfterView(firstSheetOpen: $firstSheetOpen)
             } label: {
                 makeButtonLabel(text: "회의 종료하기", isStroked: false)
             }

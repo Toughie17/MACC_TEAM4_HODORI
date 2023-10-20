@@ -41,6 +41,7 @@
 		866111302AE00E54002E1623 /* leftMinutesSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8661112F2AE00E54002E1623 /* leftMinutesSound.mp3 */; };
 		867907112ADD066C006397FD /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867907102ADD066C006397FD /* Color+.swift */; };
 		867907132ADD075D006397FD /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867907122ADD075D006397FD /* UIColor+.swift */; };
+		A56EBF282AE245CA0044F481 /* MeetingAfterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56EBF272AE245CA0044F481 /* MeetingAfterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		8661112F2AE00E54002E1623 /* leftMinutesSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = leftMinutesSound.mp3; sourceTree = "<group>"; };
 		867907102ADD066C006397FD /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		867907122ADD075D006397FD /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		A56EBF272AE245CA0044F481 /* MeetingAfterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAfterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 				0785AF892ADFC19D00791CC8 /* MeetingEndCheckView.swift */,
 				079E76E52ADBD593009052B3 /* AfterMeetingView.swift */,
 				079E76EE2ADBD9DE009052B3 /* EvaluationCell.swift */,
+				A56EBF272AE245CA0044F481 /* MeetingAfterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				079E76F92ADEC1A2009052B3 /* Int+.swift in Sources */,
 				079E76ED2ADBD67E009052B3 /* Meeting.swift in Sources */,
 				079E76FB2ADECEB7009052B3 /* MeetingView.swift in Sources */,
+				A56EBF282AE245CA0044F481 /* MeetingAfterView.swift in Sources */,
 				07D7D8652ADF24400074A4FE /* ProgressBarCell.swift in Sources */,
 				860A6B1D2ADD98B200D79481 /* Font+.swift in Sources */,
 				079E76DF2ADBD51A009052B3 /* TimerError.swift in Sources */,
