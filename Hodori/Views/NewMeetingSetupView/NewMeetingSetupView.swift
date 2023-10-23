@@ -80,7 +80,8 @@ struct NewMeetingSetupView: View {
             Text("새 회의 시작하기")
                 .font(.pretendSemibold16)
                 .foregroundStyle(isValid ? .white : .buttonTextDisabled)
-                .frame(maxWidth: .infinity, maxHeight: 50)
+                .frame(maxWidth: .infinity)
+                .frame(height: 50)
                 .background {
                     RoundedRectangle(cornerRadius: 13)
                         .fill(isValid ? Color.pointBlue : Color.buttonDisabled )

@@ -16,12 +16,9 @@ struct TimePickerView: View {
         HStack(spacing: 0) {
             Picker(title, selection: binding) {
                 ForEach(Array(range), id: \.self) { timeIncrement in
-                    HStack(spacing: 0) {
-                        Spacer()
                         Text("\(timeIncrement)")
                             .foregroundColor(.white)
                             .multilineTextAlignment(.trailing)
-                    }
                 }
             }
             .pickerStyle(.wheel)
