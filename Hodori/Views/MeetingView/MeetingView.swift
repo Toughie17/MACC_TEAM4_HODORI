@@ -9,7 +9,7 @@ import AVFAudio
 import SwiftUI
 
 struct MeetingView: View {
-
+    @Binding var isStart: Bool
     @EnvironmentObject var meetingManager: MeetingManager
     @State private var firstSheetOpen = false
     
@@ -41,6 +41,7 @@ struct MeetingView: View {
         }
         .sheet(isPresented: $firstSheetOpen, onDismiss: {
             timerStateTo(.paused)
+            isStart = false
         }) {
             MeetingEndCheckView(firstSheetOpen: $firstSheetOpen)
         }
@@ -62,8 +63,8 @@ struct MeetingView: View {
     }
 }
 
-struct MeetingView_Previews: PreviewProvider {
-    static var previews: some View {
-        MeetingView()
-    }
-}
+//struct MeetingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MeetingView()
+//    }
+//}

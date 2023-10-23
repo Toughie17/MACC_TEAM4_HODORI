@@ -238,6 +238,7 @@ struct MeetingAfterView: View {
     
     private var finishButton: some View {
         Button(action: {
+            firstSheetOpen = false
         })
         {
             Text("저장하고 회의 마치기")

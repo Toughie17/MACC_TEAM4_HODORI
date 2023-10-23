@@ -34,7 +34,7 @@ struct ConfirmationAlert: View {
             }
             .padding(.horizontal, 40)
             .fullScreenCover(isPresented: $isStart) {
-                MeetingView()
+                MeetingView(isStart: $isStart)
             }
     }
     }
