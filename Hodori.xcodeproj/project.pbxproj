@@ -264,7 +264,6 @@
 		0736DC272AD502CF002F1FE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Hodori/Hodori.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -303,7 +302,6 @@
 		0736DC282AD502CF002F1FE0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Hodori/Hodori.entitlements;
 				CODE_SIGN_STYLE = Automatic;
