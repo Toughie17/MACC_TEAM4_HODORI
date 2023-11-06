@@ -10,5 +10,15 @@ import Foundation
 struct Agenda {
     var title: String
     var detail: [String]
-    var isComplete: Bool
+    var isComplete: Bool = false
 }
+
+// 얘를 계속 넘겨줌
+//@State agendas [Agenda]
+//
+//
+////세부 회의 안건은
+//@State current Title
+//@State current detail
+//
+//agendas.append(

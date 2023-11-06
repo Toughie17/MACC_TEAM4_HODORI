@@ -12,9 +12,12 @@ final class NavigationManager: ObservableObject {
 }
 
 enum AppScreen: Hashable, Identifiable, CaseIterable {
-    case view1
-    case view2
-    case view3
+    case start
+    case agendaSetting
+    case prioritySetting
+    case meeting
+    case allAgenda
+    case history
     
     var id: AppScreen { self }
 }
@@ -24,13 +27,18 @@ extension AppScreen {
     @ViewBuilder
     var destination: some View {
         switch self {
-        case .view1:
+        case .start:
             EmptyView()
-        case .view2:
+        case .agendaSetting:
             EmptyView()
-        case .view3:
+        case .prioritySetting:
+            EmptyView()
+        case.meeting:
+            EmptyView()
+        case.allAgenda:
+            EmptyView()
+        case.history:
             EmptyView()
         }
     }
-    
 }

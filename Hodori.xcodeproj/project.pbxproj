@@ -13,6 +13,7 @@
 		07D736622AF6AD1500C04D11 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736612AF6AD1500C04D11 /* Meeting.swift */; };
 		07D736642AF6AD1C00C04D11 /* Agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736632AF6AD1C00C04D11 /* Agenda.swift */; };
 		86B5DADE2AF8AF5A00AD5F56 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */; };
+		86B5DAE62AF8B39000AD5F56 /* MeetingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		07D736612AF6AD1500C04D11 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		07D736632AF6AD1C00C04D11 /* Agenda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agenda.swift; sourceTree = "<group>"; };
 		86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
+		86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */,
+				86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				0736DC1B2AD502CE002F1FE0 /* HodoriApp.swift in Sources */,
 				07D736642AF6AD1C00C04D11 /* Agenda.swift in Sources */,
 				86B5DADE2AF8AF5A00AD5F56 /* NavigationManager.swift in Sources */,
+				86B5DAE62AF8B39000AD5F56 /* MeetingManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
