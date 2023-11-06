@@ -56,8 +56,12 @@
 		0736DC192AD502CE002F1FE0 /* Hodori */ = {
 			isa = PBXGroup;
 			children = (
-				86B5DADC2AF8AF1000AD5F56 /* Managers */,
 				07D736602AF6AD0D00C04D11 /* Models */,
+				86B5DADC2AF8AF1000AD5F56 /* Managers */,
+				86B5DAE12AF8B1D000AD5F56 /* Views */,
+				86B5DADF2AF8B1B300AD5F56 /* Extensions */,
+				86B5DAE22AF8B1E200AD5F56 /* Errors */,
+				86B5DAE42AF8B25800AD5F56 /* Resources */,
 				0736DC1A2AD502CE002F1FE0 /* HodoriApp.swift */,
 				0736DC1C2AD502CE002F1FE0 /* ContentView.swift */,
 				0736DC202AD502CF002F1FE0 /* Hodori.entitlements */,
@@ -89,6 +93,34 @@
 				86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		86B5DADF2AF8B1B300AD5F56 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		86B5DAE12AF8B1D000AD5F56 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		86B5DAE22AF8B1E200AD5F56 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		86B5DAE42AF8B25800AD5F56 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
