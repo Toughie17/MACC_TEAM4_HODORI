@@ -82,11 +82,7 @@ struct TestMeetingView: View {
                     } label: {
                         Text("전체안건")
                     }
-//                    Button(action: {}, label: {
-//                        Text("전체안건")
-//                    })
                 }
-                
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {}, label: {
                         Text("회의종료")
