@@ -35,11 +35,14 @@ struct AllAgendaView: View {
                 Text("지금은 \(currentTab + 1)번째 안건 회의 중이에요")
                     .padding(.bottom, 60)
                 
-                
-                
-                
-                
-                
+                ForEach(agendas.indices, id: \.self) { index in
+                    if index == currentTab {
+                        AllAgendaCell(agenda: agendas[index], target: true)
+                    } else {
+                        AllAgendaCell(agenda: agendas[index], target: false)
+                    }
+                }
+                .padding(.horizontal, 20)
                 
                 Spacer()
             }
@@ -48,7 +51,6 @@ struct AllAgendaView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        // Handle button tap
                     }) {
                         Image(systemName: "xmark")
                             .font(.title)
@@ -60,7 +62,6 @@ struct AllAgendaView: View {
                 }
                 Spacer()
             }
-
         }
     }
 }
@@ -69,3 +70,40 @@ struct AllAgendaView: View {
     AllAgendaView()
 }
 
+struct AllAgendaCell: View {
+    let agenda: Agenda
+    var target: Bool
+    
+    var body: some View {
+        ZStack(alignment: .center) {
+            HStack(alignment: .center) {
+                if agenda.isComplete {
+                    Image(systemName: "checkmark")
+                        .foregroundStyle(.blue)
+                        .frame(width: 12)
+                } else {
+                    Image(systemName: "circle")
+                        .frame(width: 12)
+                }
+                
+                Text(agenda.title)
+                    .padding(.leading, 16)
+                
+                Spacer()
+            }
+            .padding(.horizontal,24)
+
+            
+            if target {
+                RoundedRectangle(cornerRadius: 8)
+                    .foregroundStyle(.blue.opacity(0.2))
+                    .frame(height: 31)
+            }
+        }
+        .padding(.bottom, 12)
+    }
+}
+
+//#Preview {
+//    AllAgendaCell(agenda: Agenda(title: "테스트 안건입니다. 테스형", detail: [], isComplete: true), target: true)
+//}
