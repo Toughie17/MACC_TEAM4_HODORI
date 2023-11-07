@@ -10,7 +10,6 @@ import SwiftUI
 struct TestMeetingView: View {
     
     @State var agendas = [
-        
         Agenda(title: "안건1", detail: [], isComplete: false),
         Agenda(title: "안건2", detail: [], isComplete: true),
         Agenda(title: "안건3", detail: [], isComplete: false),
