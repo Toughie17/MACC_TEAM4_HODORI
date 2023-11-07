@@ -78,8 +78,8 @@ extension PrioritySettingView {
     
     private var startButton: some View {
         
-        NavigationLink {
-//            BindingView(cells: agendas)
+        Button {
+            navigationManager.screenPath.append(.testMeetingView)
         } label: {
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color.blue)
@@ -89,6 +89,19 @@ extension PrioritySettingView {
                         .foregroundColor(.white)
                 }
         }
+        
+//        
+//        NavigationLink {
+////            BindingView(cells: agendas)
+//        } label: {
+//            RoundedRectangle(cornerRadius: 16)
+//                .fill(Color.blue)
+//                .frame(height: 66)
+//                .overlay {
+//                    Text("회의 시작")
+//                        .foregroundColor(.white)
+//                }
+//        }
     }
     
     private var backButton: some View {

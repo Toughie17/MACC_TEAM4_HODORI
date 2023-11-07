@@ -20,10 +20,12 @@ struct TestMeetingView: View {
     @State var showAlert: Bool = false
     @State var alert: Alert?
     
+    @State var showSheet: Bool = false
+    
     @State private var selectedTab: Int = 0
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             ZStack {
                 VStack {
                     TabView(selection: $selectedTab) {
@@ -64,13 +66,22 @@ struct TestMeetingView: View {
                 }
                 
             }
+            .sheet(isPresented: $showSheet, content: {
+                AllAgendaView(showSheet: $showSheet, agendas: self.agendas, currentTab: selectedTab)
+            })
             .navigationBarBackButtonHidden()
             .navigationBarTitle("지금은 회의 중", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button(action: {}, label: {
+                    
+                    Button {
+                        showSheet = true
+                    } label: {
                         Text("전체안건")
-                    })
+                    }
+//                    Button(action: {}, label: {
+//                        Text("전체안건")
+//                    })
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
@@ -79,7 +90,7 @@ struct TestMeetingView: View {
                     })
                 }
             }
-        }
+//        }
     }
 }
 

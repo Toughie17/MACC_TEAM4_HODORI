@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AllAgendaView: View {
     
+    @Binding var showSheet: Bool
+    
     @State var agendas: [Agenda] = [
         
         Agenda(title: "안건1", detail: [], isComplete: false),
@@ -51,6 +53,7 @@ struct AllAgendaView: View {
                 HStack {
                     Spacer()
                     Button(action: {
+                        showSheet = false
                     }) {
                         Image(systemName: "xmark")
                             .font(.title)
@@ -66,9 +69,9 @@ struct AllAgendaView: View {
     }
 }
 
-#Preview {
-    AllAgendaView()
-}
+//#Preview {
+//    AllAgendaView()
+//}
 
 struct AllAgendaCell: View {
     let agenda: Agenda
