@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct HodoriApp: App {
+    @StateObject var navigationManager = NavigationManager()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(navigationManager)
         }
     }
 }
