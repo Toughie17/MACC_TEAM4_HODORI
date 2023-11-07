@@ -17,10 +17,12 @@ struct ContentView: View {
             
             Group {
                 VStack {
-                    Image(systemName: "globe")
-                        .imageScale(.large)
-                        .foregroundStyle(.tint)
-                    Text("Hello, world!")
+                    Text("스타트뷰")
+                    
+                    Button(action: {navigationManager.screenPath.append(.prioritySetting)}, label: {
+                        Text("Button")
+                    })
+                    
                 }
             }
             .navigationDestination(for: AppScreen.self) { appScreen in

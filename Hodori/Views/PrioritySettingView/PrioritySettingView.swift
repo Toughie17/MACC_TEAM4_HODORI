@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PrioritySettingView: View {
+    @EnvironmentObject var navigationManager: NavigationManager
     //MARK: 모크데이터
     @State var agendas: [Agenda] = [Agenda(title: "안건1", detail: []),Agenda(title: "안건2", detail: []),Agenda(title: "안건3", detail: []),Agenda(title: "안건4", detail: []),Agenda(title: "안건5", detail: []),Agenda(title: "안건6", detail: []),Agenda(title: "안건7", detail: []),Agenda(title: "안건8", detail: []),Agenda(title: "안건9", detail: []),Agenda(title: "안건10", detail: [])]
     
@@ -16,7 +17,7 @@ struct PrioritySettingView: View {
     private let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             
             VStack {
                 infoText
@@ -34,7 +35,7 @@ struct PrioritySettingView: View {
                     .padding(.top, 38)
             }
             .padding(.horizontal,20)
-        }
+//        }
     }
 }
 
@@ -92,7 +93,7 @@ extension PrioritySettingView {
     
     private var backButton: some View {
         Button {
-            
+            navigationManager.screenPath.removeLast()
         } label: {
             Image(systemName: "chevron.left")
                 .foregroundColor(.gray)

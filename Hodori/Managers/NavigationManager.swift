@@ -28,17 +28,17 @@ extension AppScreen {
     var destination: some View {
         switch self {
         case .start:
-            EmptyView()
+            Text("1번")
         case .agendaSetting:
-            EmptyView()
+            Text("2번")
         case .prioritySetting:
-            EmptyView()
+            PrioritySettingView()
         case.meeting:
-            EmptyView()
+            Text("3번")
         case.allAgenda:
-            EmptyView()
+            Text("4번")
         case.history:
-            EmptyView()
+            Text("5번")
         }
     }
 }
