@@ -11,16 +11,9 @@ struct AllAgendaView: View {
     
     @Binding var showSheet: Bool
     
-    @State var agendas: [Agenda] = [
-        
-        Agenda(title: "안건1", detail: [], isComplete: false),
-        Agenda(title: "안건2", detail: [], isComplete: true),
-        Agenda(title: "안건3", detail: [], isComplete: false),
-        Agenda(title: "안건4", detail: [], isComplete: true),
-        Agenda(title: "안건5", detail: [], isComplete: false)
-    ]
+    @Binding var agendas: [Agenda]
     
-    @State var currentTab: Int = 0
+    @Binding var currentTab: Int
     
     var body: some View {
         ZStack {
@@ -94,16 +87,17 @@ struct AllAgendaCell: View {
                 
                 Spacer()
             }
+            .frame(height: 22)
             .padding(.horizontal,24)
 
             
             if target {
                 RoundedRectangle(cornerRadius: 8)
                     .foregroundStyle(.blue.opacity(0.2))
-                    .frame(height: 31)
+                    .frame(height: 35)
             }
         }
-        .padding(.bottom, 12)
+        .padding(.vertical, 6)
     }
 }
 

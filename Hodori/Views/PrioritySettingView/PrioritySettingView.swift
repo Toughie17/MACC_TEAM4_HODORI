@@ -10,7 +10,14 @@ import SwiftUI
 struct PrioritySettingView: View {
     @EnvironmentObject var navigationManager: NavigationManager
     //MARK: 모크데이터
-    @State var agendas: [Agenda] = [Agenda(title: "안건1", detail: []),Agenda(title: "안건2", detail: []),Agenda(title: "안건3", detail: []),Agenda(title: "안건4", detail: []),Agenda(title: "안건5", detail: []),Agenda(title: "안건6", detail: []),Agenda(title: "안건7", detail: []),Agenda(title: "안건8", detail: []),Agenda(title: "안건9", detail: []),Agenda(title: "안건10", detail: [])]
+    @State var agendas: [Agenda] = [
+        Agenda(title: "안건1", detail: [],isComplete: false),
+        Agenda(title: "안건2", detail: [],isComplete: false),
+        Agenda(title: "안건3", detail: [],isComplete: false),
+        Agenda(title: "안건4", detail: [],isComplete: true),
+        Agenda(title: "안건5", detail: [],isComplete: false)
+    
+    ]
     
     @State private var draggingItem: Agenda?
     
@@ -78,8 +85,8 @@ extension PrioritySettingView {
     
     private var startButton: some View {
         
-        Button {
-            navigationManager.screenPath.append(.testMeetingView)
+        NavigationLink {
+            TestMeetingView(agendas: self.agendas)
         } label: {
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color.blue)
@@ -89,6 +96,21 @@ extension PrioritySettingView {
                         .foregroundColor(.white)
                 }
         }
+
+        
+        
+        
+//        Button {
+//            navigationManager.screenPath.append(.testMeetingView)
+//        } label: {
+//            RoundedRectangle(cornerRadius: 16)
+//                .fill(Color.blue)
+//                .frame(height: 66)
+//                .overlay {
+//                    Text("회의 시작")
+//                        .foregroundColor(.white)
+//                }
+//        }
         
 //        
 //        NavigationLink {

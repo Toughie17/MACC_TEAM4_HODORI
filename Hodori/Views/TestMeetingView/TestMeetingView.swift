@@ -8,21 +8,24 @@
 import SwiftUI
 
 struct TestMeetingView: View {
+    @EnvironmentObject var navigationManager: NavigationManager
     
-    @State var agendas = [
-        Agenda(title: "안건1", detail: [], isComplete: false),
-        Agenda(title: "안건2", detail: [], isComplete: true),
-        Agenda(title: "안건3", detail: [], isComplete: false),
-        Agenda(title: "안건4", detail: [], isComplete: true),
-        Agenda(title: "안건5", detail: [], isComplete: false)
-    ]
+    @State var agendas: [Agenda]
+    
+//    @State var agendas = [
+//        Agenda(title: "안건1", detail: [], isComplete: false),
+//        Agenda(title: "안건2", detail: [], isComplete: true),
+//        Agenda(title: "안건3", detail: [], isComplete: false),
+//        Agenda(title: "안건4", detail: [], isComplete: true),
+//        Agenda(title: "안건5", detail: [], isComplete: false)
+//    ]
     
     @State var showAlert: Bool = false
     @State var alert: Alert?
     
     @State var showSheet: Bool = false
     
-    @State private var selectedTab: Int = 0
+    @State var selectedTab: Int = 0
     
     var body: some View {
 //        NavigationStack {
@@ -67,7 +70,7 @@ struct TestMeetingView: View {
                 
             }
             .sheet(isPresented: $showSheet, content: {
-                AllAgendaView(showSheet: $showSheet, agendas: self.agendas, currentTab: selectedTab)
+                AllAgendaView(showSheet: $showSheet, agendas: $agendas, currentTab: $selectedTab)
             })
             .navigationBarBackButtonHidden()
             .navigationBarTitle("지금은 회의 중", displayMode: .inline)
@@ -94,6 +97,6 @@ struct TestMeetingView: View {
     }
 }
 
-#Preview {
-    TestMeetingView()
-}
+//#Preview {
+//    TestMeetingView()
+//}

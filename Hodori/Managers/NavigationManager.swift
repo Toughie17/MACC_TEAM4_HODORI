@@ -41,7 +41,8 @@ extension AppScreen {
         case.history:
             Text("5번")
         case.testMeetingView:
-            TestMeetingView()
+            Text("hi")
+//            TestMeetingView()
         }
     }
 }
