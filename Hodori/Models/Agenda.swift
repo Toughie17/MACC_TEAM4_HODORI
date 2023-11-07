@@ -5,20 +5,21 @@
 //  Created by 송지혁 on 11/5/23.
 //
 
-import Foundation
+import SwiftUI
 
-struct Agenda {
+struct Agenda: Hashable, Codable, Transferable {
     var title: String
     var detail: [String]
     var isComplete: Bool = false
+    
+    static var transferRepresentation: some TransferRepresentation {
+        CodableRepresentation(contentType: .content)
+        ProxyRepresentation(exporting: \.title)
+    }
+    
 }
-
-// 얘를 계속 넘겨줌
-//@State agendas [Agenda]
-//
-//
-////세부 회의 안건은
-//@State current Title
-//@State current detail
-//
-//agendas.append(
+extension Agenda {
+    static var typeIdentifier: String {
+        String(describing: self)
+    }
+}
