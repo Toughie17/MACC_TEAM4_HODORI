@@ -17,6 +17,7 @@
 		8637023D2AFA7001004A8A34 /* TestMeetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8637023C2AFA7001004A8A34 /* TestMeetingView.swift */; };
 		8637023F2AFA7039004A8A34 /* MeetingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8637023E2AFA7039004A8A34 /* MeetingAlert.swift */; };
 		863702412AFA737B004A8A34 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863702402AFA737B004A8A34 /* PieChartView.swift */; };
+		863702432AFA7534004A8A34 /* AllAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863702422AFA7534004A8A34 /* AllAgendaView.swift */; };
 		86B5DADE2AF8AF5A00AD5F56 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */; };
 		86B5DAE62AF8B39000AD5F56 /* MeetingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,7 @@
 		8637023C2AFA7001004A8A34 /* TestMeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMeetingView.swift; sourceTree = "<group>"; };
 		8637023E2AFA7039004A8A34 /* MeetingAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAlert.swift; sourceTree = "<group>"; };
 		863702402AFA737B004A8A34 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
+		863702422AFA7534004A8A34 /* AllAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAgendaView.swift; sourceTree = "<group>"; };
 		86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +116,7 @@
 				8637023C2AFA7001004A8A34 /* TestMeetingView.swift */,
 				8637023E2AFA7039004A8A34 /* MeetingAlert.swift */,
 				863702402AFA737B004A8A34 /* PieChartView.swift */,
+				863702422AFA7534004A8A34 /* AllAgendaView.swift */,
 			);
 			path = TestMeetingView;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				863702372AFA107A004A8A34 /* PriorityCell.swift in Sources */,
 				863702412AFA737B004A8A34 /* PieChartView.swift in Sources */,
 				0736DC1B2AD502CE002F1FE0 /* HodoriApp.swift in Sources */,
+				863702432AFA7534004A8A34 /* AllAgendaView.swift in Sources */,
 				07D736642AF6AD1C00C04D11 /* Agenda.swift in Sources */,
 				8637023F2AFA7039004A8A34 /* MeetingAlert.swift in Sources */,
 				86B5DADE2AF8AF5A00AD5F56 /* NavigationManager.swift in Sources */,
