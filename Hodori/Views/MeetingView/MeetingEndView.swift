@@ -10,11 +10,8 @@ import SwiftUI
 struct MeetingEndView: View {
 
     var agendas: [Agenda]
-    
-    var doneCount: Int {
-        (agendas.filter { $0.isComplete == true}.count)
-    }
-    
+    let completedAgendaCount: Int
+
     var currentDateText: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy년 MM월 dd일"
@@ -33,7 +30,7 @@ struct MeetingEndView: View {
                 PieChartView(agendas: agendas)
                     .padding(.bottom, 24)
                 
-                Text("\(agendas.count)개 중에 \(doneCount)개 안건을 완료했어요")
+                Text("\(agendas.count)개 중에 \(completedAgendaCount)개 안건을 완료했어요")
                     .padding(.bottom, 60)
                 
                 ForEach(agendas.indices, id: \.self) { index in
@@ -71,5 +68,5 @@ struct MeetingEndView: View {
         Agenda(title: "안건3", detail: [],isComplete: false),
         Agenda(title: "안건4", detail: [],isComplete: true),
         Agenda(title: "안건5", detail: [],isComplete: false)
-    ])
+    ], completedAgendaCount: 1)
 }

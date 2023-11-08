@@ -99,7 +99,7 @@ extension PrioritySettingView {
     private var startButton: some View {
         
         NavigationLink {
-            TestMeetingView(agendas: self.agendas)
+            MeetingView(agendas: self.agendas)
         } label: {
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color.blue)

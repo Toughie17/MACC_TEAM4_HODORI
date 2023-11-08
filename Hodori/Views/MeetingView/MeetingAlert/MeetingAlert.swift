@@ -10,7 +10,7 @@ import SwiftUI
 struct MeetingAlert: View {
     @Binding var showAlert: Bool
     //MARK: 미팅뷰에서 계산을 하거나, 미팅 매니저에서 카운트 값을 가지고 있으면 좋을듯
-    let leftAgenda: Int = 3
+    let leftAgenda: Int
     
     var body: some View {
         ZStack {
@@ -18,16 +18,12 @@ struct MeetingAlert: View {
                 .fill(.white)
             
             VStack(spacing: 0) {
-                
                 triangleImage
-                    .padding(.top, 25)
-                    .padding(.bottom, 21)
-                
+                    .padding(.top, 28)
+                    .padding(.bottom, 16)
                 textBox
-                    .padding(.bottom, 38)
-                
+                    .padding(.bottom, 42)
                 Divider()
-                
                 buttonBox
             }
         }
@@ -41,15 +37,19 @@ extension MeetingAlert {
         Image(systemName: "exclamationmark.triangle")
             .fontWeight(.bold)
             .font(.system(size: 32))
-            .foregroundColor(.blue)
+            .foregroundColor(.pink)
     }
     
     private var textBox: some View {
         VStack(spacing: 0) {
-            Text("아직 안 끝낸 \(leftAgenda)개의 안건이 있어요")
-                .padding(.bottom, 6)
-            Text("진짜 종료하시겠어요?")
+            Text("종료하시겠어요?")
                 .fontWeight(.bold)
+                .padding(.bottom, 8)
+            if leftAgenda == 0 {
+                Text("설정한 모든 안건을 완료했어요!")
+            } else {
+                Text("아직 안 끝낸 \(leftAgenda)개의 안건이 있어요")
+            }
         }
     }
     
@@ -97,6 +97,6 @@ extension MeetingAlert {
 }
 
 #Preview {
-    MeetingAlert(showAlert: .constant(true))
+    MeetingAlert(showAlert: .constant(true), leftAgenda: 0)
 }
 

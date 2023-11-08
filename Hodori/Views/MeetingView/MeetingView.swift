@@ -7,10 +7,17 @@
 
 import SwiftUI
 
-struct TestMeetingView: View {
+struct MeetingView: View {
 //    @EnvironmentObject var navigationManager: NavigationManager
     
     @State var agendas: [Agenda]
+    
+    var completedAgendaCount: Int {
+        agendas.filter { $0.isComplete }.count }
+    
+    var leftAgendaCount: Int {
+        agendas.count - completedAgendaCount
+    }
     
     let backColor = #colorLiteral(red: 0.9593991637, green: 0.9593990445, blue: 0.9593991637, alpha: 1)
 
@@ -26,7 +33,7 @@ struct TestMeetingView: View {
     
     var body: some View {
         //MARK: 네비게이션 스택 테스트
-//        NavigationStack {
+        NavigationStack {
             ZStack {
                 VStack(spacing: 0) {
                     //MARK: 타이머 뷰
@@ -39,21 +46,18 @@ struct TestMeetingView: View {
                     TabView(selection: $selectedTab) {
                         ForEach(agendas.indices, id: \.self) { index in
                             //MARK: 내부 탭뷰 구현 ----
-                            TabViewCell(agenda: agendas[index], index: index)
+                            MeetingTabViewCell(agenda: agendas[index], index: index)
                         }
                     }
                     .frame(maxHeight: .infinity)
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                     .padding(.top, 16)
                     
-                    //MARK: 커스텀 페이지 컨트롤 들어올 자리
+                    //MARK: 커스텀 페이지 컨트롤
                     CustomPageControl(selectedTab: $selectedTab, totalTabs: agendas.count)
                         .padding(.bottom, 12)
 
-                    // 타이머 및 안건 완료 버튼 박스
-                    
                     buttonBox
-//                    Spacer()
                 }
                 .padding(.horizontal, 20)
                 .zIndex(1)
@@ -64,7 +68,7 @@ struct TestMeetingView: View {
                         .ignoresSafeArea()
                         .zIndex(2)
                     
-                    MeetingAlert(showAlert: $showAlert)
+                    MeetingAlert(showAlert: $showAlert, leftAgenda: leftAgendaCount)
                         .transition(.scale)
                         .zIndex(3)
                 }
@@ -81,7 +85,9 @@ struct TestMeetingView: View {
                     Button {
                         showSheet = true
                     } label: {
-                        Text("전체안건")
+                        Image(systemName: "line.3.horizontal")
+                            .frame(width: 27, height: 22)
+                            .foregroundStyle(.gray)
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
@@ -97,17 +103,15 @@ struct TestMeetingView: View {
                 }
             }
             //MARK: 네비게이션 스택 테스트
-//        }
+        }
     }
 }
 
-extension TestMeetingView {
+extension MeetingView {
     private var tempTimerView: some View {
-//        if showTimer {
             RoundedRectangle(cornerRadius: 22)
                 .fill(.orange)
                 .frame(height: 80)
-//        }
     }
     
     //나중에 스트럭트로 따로 빼주는게 좋을듯함
@@ -125,6 +129,11 @@ extension TestMeetingView {
             
             Button {
                 agendas[selectedTab].isComplete = true
+
+                if selectedTab < agendas.count && selectedTab != agendas.count - 1 {
+                    selectedTab += 1
+                }
+
             } label: {
                 ZStack(alignment: .center) {
                     RoundedRectangle(cornerRadius: 16)
@@ -146,106 +155,12 @@ extension TestMeetingView {
             .disabled(agendas[selectedTab].isComplete)
         }
     }
-    
-    
-    
 }
 
-struct TabViewCell: View {
-    let agenda: Agenda
-    let index: Int
-    let backColor = #colorLiteral(red: 0.9593991637, green: 0.9593990445, blue: 0.9593991637, alpha: 1)
-    var body: some View {
-        ZStack {
-            // 배경
-            RoundedRectangle(cornerRadius: 16)
-                .foregroundStyle(Color(backColor))
-            //내부 스택
-            VStack(alignment: .leading, spacing: 0) {
-                //첫 줄(도형, 안건)
-                HStack {
-                    if agenda.isComplete {
-                        Image(systemName: "checkmark")
-                    } else {
-                        Image(systemName: "circle")
-                    }
-                    //
-                    Text(agendaTitle(forIndex: index))
-                        .padding(.leading, 12)
-                    Spacer()
-                }
-                .padding(.bottom, 12)
-                // 큰 안건 제목
-                Text(agenda.title)
-                    .padding(.bottom, 20)
-                
-                ForEach(agenda.detail, id: \.self) { detail in
-                    HStack(spacing: 0) {
-                        Image(systemName: "circle.fill")
-                            .resizable()
-                            .frame(width: 3, height: 3)
-                        Text(detail)
-                            .padding(.leading, 8)
-                    }
-                    .padding(.bottom, 4)
-                }
-                Spacer()
-            }
-            .padding(.horizontal, 20)
-            .padding(.top, 28)
-        }
-    }
-    
-    func agendaTitle(forIndex index: Int) -> String {
-        switch index {
-        case 0:
-            return "첫번째 안건"
-        case 1:
-            return "두번째 안건"
-        case 2:
-            return "세번째 안건"
-        case 3:
-            return "네번째 안건"
-        case 5:
-            return "다섯번째 안건"
-        case 6:
-            return "여섯번째 안건"
-        case 7:
-            return "일곱번째 안건"
-        case 8:
-            return "여덟번째 안건"
-        case 9:
-            return "아홉번째 안건"
-        default:
-            return "알 수 없는 안건"
-        }
-    }
-}
 
-struct CustomPageControl: View {
-    @Binding var selectedTab: Int
-    let totalTabs: Int
-
-    var body: some View {
-        ZStack(alignment: .center) {
-            HStack(spacing: 0) {
-                ForEach(0..<totalTabs, id: \.self) { index in
-                    Circle()
-                        .fill(index == selectedTab ? Color.black : Color.gray) // 선택된 페이지는 파란색, 그 외에는 회색
-                        .frame(width: 8, height: 8) // 원의 크기 조정
-                        .padding(8) // 원 사이의 간격 조정
-                        .onTapGesture {
-                            selectedTab = index
-                        }
-                }
-            }
-        }
-        .frame(height: 44)
-    }
-}
 
 #Preview {
-    TestMeetingView(agendas: [
+    MeetingView(agendas: [
         Agenda(title: "오늘의 첫번째 회의안건은 이것이 되겠네요",
                detail: [
                 "세부 회의 안건 1",
@@ -257,7 +172,7 @@ struct CustomPageControl: View {
                isComplete: false),
         Agenda(title: "안건2", detail: [],isComplete: false),
         Agenda(title: "안건3", detail: [],isComplete: false),
-        Agenda(title: "안건4", detail: [],isComplete: true),
+        Agenda(title: "안건4", detail: [],isComplete: false),
         Agenda(title: "안건5", detail: [],isComplete: false)
     ])
 }
