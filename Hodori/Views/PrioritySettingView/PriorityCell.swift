@@ -30,7 +30,7 @@ struct PriorityCell: View {
                     .padding(.trailing, 14)
             }
         }
-        .frame(height: 50)
+        .frame(height: 52)
         .frame(maxWidth: .infinity)
     }
 }

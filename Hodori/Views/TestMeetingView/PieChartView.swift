@@ -22,7 +22,7 @@ struct PieChartView: View {
     var startPercent: CGFloat = 0
     
     var endPercent: CGFloat  {
-        CGFloat(degreePerAgenda * doneCount)
+        CGFloat(degreePerAgenda * doneCount) - 0.01
     }
     
     var backgroundColor: Color = .white

@@ -22,7 +22,12 @@ struct PrioritySettingView: View {
         Agenda(title: "안건2", detail: [],isComplete: false),
         Agenda(title: "안건3", detail: [],isComplete: false),
         Agenda(title: "안건4", detail: [],isComplete: true),
-        Agenda(title: "안건5", detail: [],isComplete: false)
+        Agenda(title: "안건5", detail: [],isComplete: false),
+        Agenda(title: "안건6", detail: [],isComplete: false),
+        Agenda(title: "안건7", detail: [],isComplete: false),
+        Agenda(title: "안건8", detail: [],isComplete: false),
+        Agenda(title: "안건9", detail: [],isComplete: false),
+        Agenda(title: "안건10", detail: [],isComplete: false)
     ]
     
     @State private var draggingItem: Agenda?
@@ -37,7 +42,6 @@ struct PrioritySettingView: View {
                     .padding(.top,8)
                 cells
                     .padding(.top)
-                
                     .navigationBarBackButtonHidden()
                     .navigationBarItems(leading: backButton)
                     .navigationBarTitle("우선순위 설정", displayMode: .inline)
@@ -45,7 +49,7 @@ struct PrioritySettingView: View {
                 Spacer()
                 
                 startButton
-                    .padding(.top, 38)
+                Spacer()
             }
             .padding(.horizontal,20)
 //        }
@@ -60,32 +64,34 @@ extension PrioritySettingView {
     }
     
     private var cells: some View {
-        ForEach(agendas, id: \.self) { agenda in
-            PriorityCell(title: agenda.title)
-            
-                .draggable(agenda) {
-                    EmptyView()
-                        .frame(width: 1, height: 1)
-                        .onAppear {
-                            draggingItem = agenda
-                            impactFeedback.impactOccurred()
-                        }
-                }
-                .dropDestination(for: Agenda.self) { items, location in
-                    draggingItem = nil
-                    return true
-                } isTargeted: { status in
-                    if let draggingItem, status, draggingItem != agenda {
-                        if let sourceIndex = agendas.firstIndex(of: draggingItem),
-                           let destinationIndex = agendas.firstIndex(of: agenda) {
-                            
-                            withAnimation(.bouncy) {
-                                self.agendas.move(fromOffsets: IndexSet(integer: sourceIndex), toOffset: destinationIndex > sourceIndex ? destinationIndex + 1 : destinationIndex)
+        ScrollView {
+            ForEach(agendas, id: \.self) { agenda in
+                PriorityCell(title: agenda.title)
+                
+                    .draggable(agenda) {
+                        EmptyView()
+                            .frame(width: 1, height: 1)
+                            .onAppear {
+                                draggingItem = agenda
+                                impactFeedback.impactOccurred()
                             }
-                            impactFeedback.impactOccurred()
+                    }
+                    .dropDestination(for: Agenda.self) { items, location in
+                        draggingItem = nil
+                        return true
+                    } isTargeted: { status in
+                        if let draggingItem, status, draggingItem != agenda {
+                            if let sourceIndex = agendas.firstIndex(of: draggingItem),
+                               let destinationIndex = agendas.firstIndex(of: agenda) {
+                                
+                                withAnimation(.bouncy) {
+                                    self.agendas.move(fromOffsets: IndexSet(integer: sourceIndex), toOffset: destinationIndex > sourceIndex ? destinationIndex + 1 : destinationIndex)
+                                }
+                                impactFeedback.impactOccurred()
+                            }
                         }
                     }
-                }
+            }
         }
     }
     

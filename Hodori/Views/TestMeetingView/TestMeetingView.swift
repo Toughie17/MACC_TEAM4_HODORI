@@ -23,7 +23,7 @@ struct TestMeetingView: View {
     
     var body: some View {
         //MARK: 네비게이션 스택 테스트
-        NavigationStack {
+//        NavigationStack {
             ZStack {
                 VStack(spacing: 0) {
                     //MARK: 타이머 뷰
@@ -91,7 +91,7 @@ struct TestMeetingView: View {
                 }
             }
             //MARK: 네비게이션 스택 테스트
-        }
+//        }
     }
 }
 
@@ -141,12 +141,12 @@ extension TestMeetingView {
 struct TabViewCell: View {
     let agenda: Agenda
     let index: Int
-    
+    let backColor = #colorLiteral(red: 0.9593991637, green: 0.9593990445, blue: 0.9593991637, alpha: 1)
     var body: some View {
         ZStack {
             // 배경
             RoundedRectangle(cornerRadius: 16)
-                .foregroundStyle(Color(.cyan))
+                .foregroundStyle(Color(backColor))
             //내부 스택
             VStack(alignment: .leading, spacing: 0) {
                 //첫 줄(도형, 안건)
@@ -215,7 +215,7 @@ struct CustomPageControl: View {
 
     var body: some View {
         ZStack(alignment: .center) {
-            HStack {
+            HStack(spacing: 0) {
                 ForEach(0..<totalTabs, id: \.self) { index in
                     Circle()
                         .fill(index == selectedTab ? Color.black : Color.gray) // 선택된 페이지는 파란색, 그 외에는 회색
