@@ -12,23 +12,23 @@ struct PrioritySettingView: View {
     @Environment(\.dismiss) private var dismiss
     //MARK: 모크데이터
     @State var agendas: [Agenda] = [
-        Agenda(title: "오늘의 첫번째 회의안건은 이것이 되겠네요",
+        Agenda(title: "춘식이의 고구마",
                detail: [
-                "세부 회의 안건 1",
-                "세부 회의 안건 2",
-                "세부 회의 안건 3",
-                "세부 회의 안건 4",
-                "세부 회의 안건은 이걸루 끝인가요 마지막"
+                "감자",
+                "계란",
+                "닭가슴살",
+                "돈까스",
+                "라멘"
         ], isComplete: false),
-        Agenda(title: "안건2", detail: [],isComplete: false),
-        Agenda(title: "안건3", detail: [],isComplete: false),
-        Agenda(title: "안건4", detail: [],isComplete: true),
-        Agenda(title: "안건5", detail: [],isComplete: false),
-        Agenda(title: "안건6", detail: [],isComplete: false),
-        Agenda(title: "안건7", detail: [],isComplete: false),
-        Agenda(title: "안건8", detail: [],isComplete: false),
-        Agenda(title: "안건9", detail: [],isComplete: false),
-        Agenda(title: "안건10", detail: [],isComplete: false)
+        Agenda(title: "춘식이의 파자마", detail: [],isComplete: false),
+        Agenda(title: "제주도 감귤", detail: [],isComplete: false),
+        Agenda(title: "참서리 제육볶음", detail: [],isComplete: false),
+        Agenda(title: "커미 아메리카노", detail: [],isComplete: false),
+        Agenda(title: "메로메로 돈까스", detail: [],isComplete: false),
+        Agenda(title: "버거킹", detail: [],isComplete: false),
+        Agenda(title: "치즈냥이", detail: [],isComplete: false),
+        Agenda(title: "메인랩", detail: [],isComplete: false),
+        Agenda(title: "체육관", detail: [],isComplete: false)
     ]
     
     @State private var draggingItem: Agenda?

@@ -73,16 +73,18 @@ extension MeetingTabViewCell {
             return "세번째 안건"
         case 3:
             return "네번째 안건"
-        case 5:
+        case 4:
             return "다섯번째 안건"
-        case 6:
+        case 5:
             return "여섯번째 안건"
-        case 7:
+        case 6:
             return "일곱번째 안건"
-        case 8:
+        case 7:
             return "여덟번째 안건"
-        case 9:
+        case 8:
             return "아홉번째 안건"
+        case 9:
+            return "열번째 안건"
         default:
             return "알 수 없는 안건"
         }
