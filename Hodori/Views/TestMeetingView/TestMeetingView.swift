@@ -8,18 +8,12 @@
 import SwiftUI
 
 struct TestMeetingView: View {
-    @EnvironmentObject var navigationManager: NavigationManager
+//    @EnvironmentObject var navigationManager: NavigationManager
     
     @State var agendas: [Agenda]
     
-//    @State var agendas = [
-//        Agenda(title: "안건1", detail: [], isComplete: false),
-//        Agenda(title: "안건2", detail: [], isComplete: true),
-//        Agenda(title: "안건3", detail: [], isComplete: false),
-//        Agenda(title: "안건4", detail: [], isComplete: true),
-//        Agenda(title: "안건5", detail: [], isComplete: false)
-//    ]
-    
+    let backColor = #colorLiteral(red: 0.9593991637, green: 0.9593990445, blue: 0.9593991637, alpha: 1)
+
     @State var showAlert: Bool = false
     @State var alert: Alert?
     
@@ -28,22 +22,32 @@ struct TestMeetingView: View {
     @State var selectedTab: Int = 0
     
     var body: some View {
-//        NavigationStack {
+        //MARK: 네비게이션 스택 테스트
+        NavigationStack {
             ZStack {
-                VStack {
+                VStack(spacing: 0) {
+                    //MARK: 타이머 뷰
+                    tempTimerView
+                        .padding(.top, 24)
+                    
                     TabView(selection: $selectedTab) {
                         ForEach(agendas.indices, id: \.self) { index in
-                            Text(agendas[index].title)
+                            //MARK: 내부 탭뷰 구현 ----
+                            TabViewCell(agenda: agendas[index], index: index)
                         }
                     }
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(.gray)
-                    )
-                    .frame(height: 600)
+                    .frame(height: 480)
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-                    .padding(.top, 44)
-                    .padding(.horizontal,24)
+                    
+                    
+                    
+                    .padding(.top, 16)
+//                    .padding(.horizontal,24)
+                    //MARK: 내부 탭뷰 구현 ____
+                    
+                    //MARK: 커스텀 페이지 컨트롤 들어올 자리
+                    
+                    
                     
                     Spacer()
                     
@@ -55,6 +59,7 @@ struct TestMeetingView: View {
                         Text("회의 종료")
                     }
                 }
+                .padding(.horizontal, 20)
                 .zIndex(1)
                 
                 if showAlert {
@@ -89,10 +94,105 @@ struct TestMeetingView: View {
                     })
                 }
             }
-//        }
+            //MARK: 네비게이션 스택 테스트
+        }
     }
 }
 
-//#Preview {
-//    TestMeetingView()
-//}
+extension TestMeetingView {
+    private var tempTimerView: some View {
+        RoundedRectangle(cornerRadius: 22)
+            .fill(.orange)
+            .frame(height: 80)
+    }
+}
+
+struct TabViewCell: View {
+    let agenda: Agenda
+    let index: Int
+    
+    var body: some View {
+        ZStack {
+            // 배경
+            RoundedRectangle(cornerRadius: 16)
+                .foregroundStyle(Color(.cyan))
+            //내부 스택
+            VStack(alignment: .leading, spacing: 0) {
+                //첫 줄(도형, 안건)
+                HStack {
+                    if agenda.isComplete {
+                        Image(systemName: "checkmark")
+                    } else {
+                        Image(systemName: "circle")
+                    }
+                    //
+                    Text(agendaTitle(forIndex: index))
+                        .padding(.leading, 12)
+                    Spacer()
+                }
+                .padding(.bottom, 12)
+                // 큰 안건 제목
+                Text(agenda.title)
+                    .padding(.bottom, 20)
+                
+                ForEach(agenda.detail, id: \.self) { detail in
+                    HStack(spacing: 0) {
+                        Image(systemName: "circle.fill")
+                            .resizable()
+                            .frame(width: 3, height: 3)
+                        Text(detail)
+                            .padding(.leading, 8)
+                    }
+                    .padding(.bottom, 4)
+                }
+                Spacer()
+            }
+            .padding(.horizontal, 20)
+            .padding(.top, 28)
+        }
+    }
+    
+    func agendaTitle(forIndex index: Int) -> String {
+        switch index {
+        case 0:
+            return "첫번째 안건"
+        case 1:
+            return "두번째 안건"
+        case 2:
+            return "세번째 안건"
+        case 3:
+            return "네번째 안건"
+        case 5:
+            return "다섯번째 안건"
+        case 6:
+            return "여섯번째 안건"
+        case 7:
+            return "일곱번째 안건"
+        case 8:
+            return "여덟번째 안건"
+        case 9:
+            return "아홉번째 안건"
+        default:
+            return "알 수 없는 안건"
+        }
+    }
+}
+
+
+#Preview {
+    TestMeetingView(agendas: [
+        Agenda(title: "오늘의 첫번째 회의안건은 이것이 되겠네요",
+               detail: [
+                "세부 회의 안건 1",
+                "세부 회의 안건 2",
+                "세부 회의 안건 3",
+                "세부 회의 안건 4",
+                "세부 회의 안건은 이걸루 끝인가요 마지막"
+        ],
+               isComplete: false),
+        Agenda(title: "안건2", detail: [],isComplete: false),
+        Agenda(title: "안건3", detail: [],isComplete: false),
+        Agenda(title: "안건4", detail: [],isComplete: true),
+        Agenda(title: "안건5", detail: [],isComplete: false)
+    ])
+}

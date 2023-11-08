@@ -24,6 +24,7 @@ struct AllAgendaCell: View {
                 }
                 
                 Text(agenda.title)
+                    .foregroundStyle(agenda.isComplete ? .gray : .black)
                     .padding(.leading, 16)
                 
                 Spacer()
@@ -41,3 +42,6 @@ struct AllAgendaCell: View {
     }
 }
 
+#Preview {
+    AllAgendaCell(agenda: Agenda(title: "hi", detail: [], isComplete: true), target: false)
+}

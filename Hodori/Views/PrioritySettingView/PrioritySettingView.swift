@@ -11,12 +11,18 @@ struct PrioritySettingView: View {
     @EnvironmentObject var navigationManager: NavigationManager
     //MARK: 모크데이터
     @State var agendas: [Agenda] = [
-        Agenda(title: "안건1", detail: [],isComplete: false),
+        Agenda(title: "오늘의 첫번째 회의안건은 이것이 되겠네요",
+               detail: [
+                "세부 회의 안건 1",
+                "세부 회의 안건 2",
+                "세부 회의 안건 3",
+                "세부 회의 안건 4",
+                "세부 회의 안건은 이걸루 끝인가요 마지막"
+        ], isComplete: false),
         Agenda(title: "안건2", detail: [],isComplete: false),
         Agenda(title: "안건3", detail: [],isComplete: false),
         Agenda(title: "안건4", detail: [],isComplete: true),
         Agenda(title: "안건5", detail: [],isComplete: false)
-    
     ]
     
     @State private var draggingItem: Agenda?
