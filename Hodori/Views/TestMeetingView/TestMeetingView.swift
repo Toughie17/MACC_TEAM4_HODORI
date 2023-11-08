@@ -42,27 +42,11 @@ struct TestMeetingView: View {
                     
                     //MARK: 커스텀 페이지 컨트롤 들어올 자리
                     CustomPageControl(selectedTab: $selectedTab, totalTabs: agendas.count)
-                    
-                    
-                    Spacer()
+                        .padding(.bottom, 12)
+
                     // 타이머 및 안건 완료 버튼 박스
                     
-                    HStack {
-                        RoundedRectangle(cornerRadius: 22)
-                            .fill(.gray)
-                            .frame(width: 70, height: 56)
-                            .padding(.trailing, 12)
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(.blue)
-                            .overlay (
-                                Text("안건 완료")
-                            )
-                            .onTapGesture {
-                                agendas[selectedTab].isComplete = true
-                            }
-                            .frame(height: 56)
-                    }
-                    
+                    buttonBox
                     
                 }
                 .padding(.horizontal, 20)
@@ -117,6 +101,41 @@ extension TestMeetingView {
             .fill(.orange)
             .frame(height: 80)
     }
+    
+    //나중에 스트럭트로 따로 빼주는게 좋을듯함
+    private var buttonBox: some View {
+        HStack {
+            RoundedRectangle(cornerRadius: 22)
+                .fill(.gray)
+                .frame(width: 70, height: 56)
+                .padding(.trailing, 12)
+            
+            Button {
+                agendas[selectedTab].isComplete = true
+            } label: {
+                ZStack(alignment: .center) {
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(agendas[selectedTab].isComplete ? .gray : .blue)
+                    HStack(spacing: 0) {
+                        Spacer()
+                        Text("안건 완료")
+
+                        if agendas[selectedTab].isComplete {
+                            Image(systemName: "checkmark")
+                                .padding(.leading, 10)
+                        }
+                        Spacer()
+                    }
+                }
+                .foregroundStyle(.white)
+                .frame(height: 56)
+            }
+            .disabled(agendas[selectedTab].isComplete)
+        }
+    }
+    
+    
+    
 }
 
 struct TabViewCell: View {
