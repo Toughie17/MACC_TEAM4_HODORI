@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct PrioritySettingView: View {
-    @EnvironmentObject var navigationManager: NavigationManager
+//    @EnvironmentObject var navigationManager: NavigationManager
+    @Environment(\.dismiss) private var dismiss
     //MARK: 모크데이터
     @State var agendas: [Agenda] = [
         Agenda(title: "오늘의 첫번째 회의안건은 이것이 되겠네요",
@@ -41,7 +42,7 @@ struct PrioritySettingView: View {
                 infoText
                     .padding(.top,8)
                 cells
-                    .padding(.top)
+                    .padding(.top, 16)
                     .navigationBarBackButtonHidden()
                     .navigationBarItems(leading: backButton)
                     .navigationBarTitle("우선순위 설정", displayMode: .inline)
@@ -49,7 +50,7 @@ struct PrioritySettingView: View {
                 Spacer()
                 
                 startButton
-                Spacer()
+//                Spacer()
             }
             .padding(.horizontal,20)
 //        }
@@ -67,7 +68,7 @@ extension PrioritySettingView {
         ScrollView {
             ForEach(agendas, id: \.self) { agenda in
                 PriorityCell(title: agenda.title)
-                
+//                    .padding(.bottom, 8)
                     .draggable(agenda) {
                         EmptyView()
                             .frame(width: 1, height: 1)
@@ -108,39 +109,12 @@ extension PrioritySettingView {
                         .foregroundColor(.white)
                 }
         }
-
-        
-        
-        
-//        Button {
-//            navigationManager.screenPath.append(.testMeetingView)
-//        } label: {
-//            RoundedRectangle(cornerRadius: 16)
-//                .fill(Color.blue)
-//                .frame(height: 66)
-//                .overlay {
-//                    Text("회의 시작")
-//                        .foregroundColor(.white)
-//                }
-//        }
-        
-//        
-//        NavigationLink {
-////            BindingView(cells: agendas)
-//        } label: {
-//            RoundedRectangle(cornerRadius: 16)
-//                .fill(Color.blue)
-//                .frame(height: 66)
-//                .overlay {
-//                    Text("회의 시작")
-//                        .foregroundColor(.white)
-//                }
-//        }
     }
     
     private var backButton: some View {
         Button {
-            navigationManager.screenPath.removeLast()
+//            navigationManager.screenPath.removeLast()
+            dismiss()
         } label: {
             Image(systemName: "chevron.left")
                 .foregroundColor(.gray)

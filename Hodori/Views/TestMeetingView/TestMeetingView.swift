@@ -21,14 +21,20 @@ struct TestMeetingView: View {
     
     @State var selectedTab: Int = 0
     
+    @State var showTimer: Bool = false
+    
+    
     var body: some View {
         //MARK: 네비게이션 스택 테스트
 //        NavigationStack {
             ZStack {
                 VStack(spacing: 0) {
                     //MARK: 타이머 뷰
-                    tempTimerView
-                        .padding(.top, 24)
+                    Spacer()
+                    if showTimer {
+                        tempTimerView
+                            .padding(.top, 24)
+                    }
                     
                     TabView(selection: $selectedTab) {
                         ForEach(agendas.indices, id: \.self) { index in
@@ -36,7 +42,7 @@ struct TestMeetingView: View {
                             TabViewCell(agenda: agendas[index], index: index)
                         }
                     }
-                    .frame(height: 480)
+                    .frame(maxHeight: .infinity)
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                     .padding(.top, 16)
                     
@@ -47,7 +53,7 @@ struct TestMeetingView: View {
                     // 타이머 및 안건 완료 버튼 박스
                     
                     buttonBox
-                    
+//                    Spacer()
                 }
                 .padding(.horizontal, 20)
                 .zIndex(1)
@@ -97,9 +103,11 @@ struct TestMeetingView: View {
 
 extension TestMeetingView {
     private var tempTimerView: some View {
-        RoundedRectangle(cornerRadius: 22)
-            .fill(.orange)
-            .frame(height: 80)
+//        if showTimer {
+            RoundedRectangle(cornerRadius: 22)
+                .fill(.orange)
+                .frame(height: 80)
+//        }
     }
     
     //나중에 스트럭트로 따로 빼주는게 좋을듯함
@@ -109,6 +117,11 @@ extension TestMeetingView {
                 .fill(.gray)
                 .frame(width: 70, height: 56)
                 .padding(.trailing, 12)
+                .onTapGesture {
+                    withAnimation(.bouncy) {
+                        showTimer.toggle()
+                    }
+                }
             
             Button {
                 agendas[selectedTab].isComplete = true
