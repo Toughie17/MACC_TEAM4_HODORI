@@ -37,27 +37,33 @@ struct TestMeetingView: View {
                         }
                     }
                     .frame(height: 480)
-                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-                    
-                    
-                    
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                     .padding(.top, 16)
-//                    .padding(.horizontal,24)
-                    //MARK: 내부 탭뷰 구현 ____
                     
                     //MARK: 커스텀 페이지 컨트롤 들어올 자리
-                    
+                    CustomPageControl(selectedTab: $selectedTab, totalTabs: agendas.count)
                     
                     
                     Spacer()
+                    // 타이머 및 안건 완료 버튼 박스
                     
-                    Button {
-                        withAnimation(.bouncy) {
-                            showAlert = true
-                        }
-                    } label: {
-                        Text("회의 종료")
+                    HStack {
+                        RoundedRectangle(cornerRadius: 22)
+                            .fill(.gray)
+                            .frame(width: 70, height: 56)
+                            .padding(.trailing, 12)
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(.blue)
+                            .overlay (
+                                Text("안건 완료")
+                            )
+                            .onTapGesture {
+                                agendas[selectedTab].isComplete = true
+                            }
+                            .frame(height: 56)
                     }
+                    
+                    
                 }
                 .padding(.horizontal, 20)
                 .zIndex(1)
@@ -89,9 +95,15 @@ struct TestMeetingView: View {
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: {}, label: {
-                        Text("회의종료")
-                    })
+                    
+                    Button {
+                        withAnimation(.bouncy) {
+                            showAlert = true
+                        }
+                    } label: {
+                        Text("회의 종료")
+                    }
+
                 }
             }
             //MARK: 네비게이션 스택 테스트
@@ -178,6 +190,27 @@ struct TabViewCell: View {
     }
 }
 
+struct CustomPageControl: View {
+    @Binding var selectedTab: Int
+    let totalTabs: Int
+
+    var body: some View {
+        ZStack(alignment: .center) {
+            HStack {
+                ForEach(0..<totalTabs, id: \.self) { index in
+                    Circle()
+                        .fill(index == selectedTab ? Color.black : Color.gray) // 선택된 페이지는 파란색, 그 외에는 회색
+                        .frame(width: 8, height: 8) // 원의 크기 조정
+                        .padding(8) // 원 사이의 간격 조정
+                        .onTapGesture {
+                            selectedTab = index
+                        }
+                }
+            }
+        }
+        .frame(height: 44)
+    }
+}
 
 #Preview {
     TestMeetingView(agendas: [
