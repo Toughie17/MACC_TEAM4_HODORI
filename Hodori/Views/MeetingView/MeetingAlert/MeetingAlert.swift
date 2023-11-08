@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MeetingAlert: View {
     @Binding var showAlert: Bool
+    @Binding var toMeetingEndView: Bool
     //MARK: 미팅뷰에서 계산을 하거나, 미팅 매니저에서 카운트 값을 가지고 있으면 좋을듯
     let leftAgenda: Int
     
@@ -92,11 +93,12 @@ extension MeetingAlert {
             )
             .onTapGesture {
                 showAlert = false
+                toMeetingEndView = true
             }
     }
 }
 
-#Preview {
-    MeetingAlert(showAlert: .constant(true), leftAgenda: 0)
-}
+//#Preview {
+//    MeetingAlert(showAlert: .constant(true), leftAgenda: 0)
+//}
 

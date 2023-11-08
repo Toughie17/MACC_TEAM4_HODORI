@@ -36,7 +36,7 @@ struct MeetingEndView: View {
                 ForEach(agendas.indices, id: \.self) { index in
                         AllAgendaCell(agenda: agendas[index], target: false)
                 }
-                .padding(.horizontal, 20)
+//                .padding(.horizontal, 20)
                 
                 Spacer()
                 
@@ -57,7 +57,8 @@ struct MeetingEndView: View {
                 .padding(.bottom, 42)
             }
         }
-        .padding(.horizontal, 20)
+        .padding(.horizontal, 44)
+        .navigationBarBackButtonHidden()
     }
 }
 

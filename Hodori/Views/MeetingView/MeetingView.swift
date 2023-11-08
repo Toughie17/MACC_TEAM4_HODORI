@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MeetingView: View {
-//    @EnvironmentObject var navigationManager: NavigationManager
     
     @State var agendas: [Agenda]
     
@@ -30,31 +29,24 @@ struct MeetingView: View {
     
     @State var showTimer: Bool = false
     
+    @State var toMeetingEndView: Bool = false
     
     var body: some View {
         //MARK: 네비게이션 스택 테스트
-        NavigationStack {
+//        NavigationStack {
             ZStack {
                 VStack(spacing: 0) {
-                    //MARK: 타이머 뷰
+
                     Spacer()
+                    
                     if showTimer {
                         tempTimerView
                             .padding(.top, 24)
                     }
-                    
-                    TabView(selection: $selectedTab) {
-                        ForEach(agendas.indices, id: \.self) { index in
-                            //MARK: 내부 탭뷰 구현 ----
-                            MeetingTabViewCell(agenda: agendas[index], index: index)
-                        }
-                    }
-                    .frame(maxHeight: .infinity)
-                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                    mainTabView
                     .padding(.top, 16)
                     
-                    //MARK: 커스텀 페이지 컨트롤
-                    CustomPageControl(selectedTab: $selectedTab, totalTabs: agendas.count)
+                    pageControl
                         .padding(.bottom, 12)
 
                     buttonBox
@@ -67,12 +59,10 @@ struct MeetingView: View {
                         .opacity(0.5)
                         .ignoresSafeArea()
                         .zIndex(2)
-                    
-                    MeetingAlert(showAlert: $showAlert, leftAgenda: leftAgendaCount)
+                    MeetingAlert(showAlert: $showAlert, toMeetingEndView: $toMeetingEndView, leftAgenda: leftAgendaCount)
                         .transition(.scale)
                         .zIndex(3)
                 }
-                
             }
             .sheet(isPresented: $showSheet, content: {
                 AllAgendaView(showSheet: $showSheet, agendas: $agendas, currentTab: $selectedTab)
@@ -102,8 +92,11 @@ struct MeetingView: View {
 
                 }
             }
+            .navigationDestination(isPresented: $toMeetingEndView) {
+                MeetingEndView(agendas: agendas, completedAgendaCount: completedAgendaCount)
+           }
             //MARK: 네비게이션 스택 테스트
-        }
+//        }
     }
 }
 
@@ -114,7 +107,20 @@ extension MeetingView {
                 .frame(height: 80)
     }
     
-    //나중에 스트럭트로 따로 빼주는게 좋을듯함
+    private var mainTabView: some View {
+        TabView(selection: $selectedTab) {
+            ForEach(agendas.indices, id: \.self) { index in
+                MeetingTabViewCell(agenda: agendas[index], index: index)
+            }
+        }
+        .frame(maxHeight: .infinity)
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+    }
+    
+    private var pageControl: some View {
+        CustomPageControl(selectedTab: $selectedTab, totalTabs: agendas.count)
+    }
+
     private var buttonBox: some View {
         HStack {
             RoundedRectangle(cornerRadius: 22)
@@ -156,8 +162,6 @@ extension MeetingView {
         }
     }
 }
-
-
 
 #Preview {
     MeetingView(agendas: [
