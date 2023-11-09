@@ -148,12 +148,17 @@ extension MeetingView {
             } label: {
                 ZStack(alignment: .center) {
                     RoundedRectangle(cornerRadius: 16)
-                        .fill(agendas[selectedTab].isComplete ? .gray : .blue)
+                        .fill(showLottie || agendas[selectedTab].isComplete ? .gray : .blue)
                     HStack(spacing: 0) {
                         Spacer()
                         Text("안건 완료")
+//                            .padding(.leading, 10)
 
-                        if agendas[selectedTab].isComplete {
+//                        Image(systemName: "checkmark")
+//                            .padding(.leading, 10)
+//                            .opacity(showLottie || agendas[selectedTab].isComplete ? 1 : 0)
+//
+                        if showLottie || agendas[selectedTab].isComplete {
                             Image(systemName: "checkmark")
                                 .padding(.leading, 10)
                         }
@@ -163,7 +168,7 @@ extension MeetingView {
                 .foregroundStyle(.white)
                 .frame(height: 56)
             }
-            .disabled(agendas[selectedTab].isComplete)
+            .disabled(showLottie || agendas[selectedTab].isComplete)
         }
     }
     
