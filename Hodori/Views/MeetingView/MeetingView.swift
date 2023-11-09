@@ -33,6 +33,9 @@ struct MeetingView: View {
     
     @State var showLottie: Bool = false
     
+    private let heavyHaptic = UIImpactFeedbackGenerator(style: .heavy)
+    private let mediumHaptic = UIImpactFeedbackGenerator(style: .medium)
+    
     var body: some View {
         //MARK: 네비게이션 스택 테스트
 //        NavigationStack {
@@ -75,6 +78,7 @@ struct MeetingView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     
                     Button {
+                        mediumHaptic.impactOccurred()
                         showSheet = true
                     } label: {
                         Image(systemName: "line.3.horizontal")
@@ -85,6 +89,7 @@ struct MeetingView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     
                     Button {
+                        mediumHaptic.impactOccurred()
                         withAnimation(.bouncy) {
                             showAlert = true
                         }
@@ -126,7 +131,7 @@ extension MeetingView {
     private var buttonBox: some View {
         HStack {
             RoundedRectangle(cornerRadius: 22)
-                .fill(.gray)
+                .stroke(Color.blue, lineWidth: 2)
                 .frame(width: 70, height: 56)
                 .padding(.trailing, 12)
                 .onTapGesture {
@@ -136,6 +141,7 @@ extension MeetingView {
                 }
             
             Button {
+                heavyHaptic.impactOccurred()
                 withAnimation(.bouncy) {
                     showLottie = true
                     print(selectedTab)

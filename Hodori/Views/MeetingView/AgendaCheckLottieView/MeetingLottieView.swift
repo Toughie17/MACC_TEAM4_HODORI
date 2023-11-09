@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct MeetingLottieView: View {
-    
+    let backColor = #colorLiteral(red: 0.9593991637, green: 0.9593990445, blue: 0.9593991637, alpha: 1)
     let index: Int
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16)
-                .foregroundStyle(.gray)
+                .foregroundStyle(Color(backColor))
             
             VStack(alignment: .center, spacing: 0) {
                 Spacer()
