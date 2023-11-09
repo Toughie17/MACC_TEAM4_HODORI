@@ -30,15 +30,16 @@ struct AllAgendaCell: View {
                 Spacer()
             }
             .frame(height: 22)
+            .padding(.vertical, 5)
             .padding(.horizontal,24)
 
-            if target {
+//            if target {
                 RoundedRectangle(cornerRadius: 8)
-                    .foregroundStyle(.blue.opacity(0.2))
+                .foregroundStyle(target ? .blue.opacity(0.2) : .white.opacity(0.1))
                     .frame(height: 35)
-            }
+//            }
         }
-        .padding(.vertical, 6)
+//        .padding(.bottom, 3)
     }
 }
 

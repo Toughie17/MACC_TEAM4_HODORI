@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MeetingLottieView: View {
     
-    @Binding var index: Int
+    let index: Int
     
     var body: some View {
         ZStack {
@@ -62,5 +62,5 @@ extension MeetingLottieView {
                 
                 
 #Preview {
-    MeetingLottieView(index: .constant(3))
+    MeetingLottieView(index: 3)
 }

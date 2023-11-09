@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MeetingTabViewCell: View {
     let agenda: Agenda
-    @Binding var index: Int
+    let index: Int
     let backColor = #colorLiteral(red: 0.9593991637, green: 0.9593990445, blue: 0.9593991637, alpha: 1)
     @Binding var showLottie: Bool
     
@@ -30,7 +30,7 @@ struct MeetingTabViewCell: View {
             .padding(.top, 28)
             
             if showLottie {
-                MeetingLottieView(index: $index)
+                MeetingLottieView(index: index)
             }
         }
     }
@@ -97,5 +97,5 @@ extension MeetingTabViewCell {
 }
 
 #Preview {
-    MeetingTabViewCell(agenda: Agenda(title: "텝뷰 테스트", detail: ["1", "2", "3", "4", "5"], isComplete: false), index: .constant(0), showLottie: .constant(false))
+    MeetingTabViewCell(agenda: Agenda(title: "텝뷰 테스트", detail: ["1", "2", "3", "4", "5"], isComplete: false), index: 0, showLottie: .constant(false))
 }

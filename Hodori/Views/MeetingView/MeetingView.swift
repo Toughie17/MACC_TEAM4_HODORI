@@ -112,7 +112,7 @@ extension MeetingView {
     private var mainTabView: some View {
         TabView(selection: $selectedTab) {
             ForEach(agendas.indices, id: \.self) { index in
-                MeetingTabViewCell(agenda: agendas[index], index: $selectedTab, showLottie: $showLottie)
+                MeetingTabViewCell(agenda: agendas[index], index: selectedTab, showLottie: $showLottie)
             }
         }
         .frame(maxHeight: .infinity)
@@ -141,10 +141,7 @@ extension MeetingView {
                     print(selectedTab)
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
                         showLottie = false
-                        agendas[selectedTab].isComplete = true
-                        if selectedTab < agendas.count && selectedTab != agendas.count - 1 {
-                            selectedTab += 1
-                        }
+                        updateAgendas()
                     }
                 }
                 
@@ -167,6 +164,13 @@ extension MeetingView {
                 .frame(height: 56)
             }
             .disabled(agendas[selectedTab].isComplete)
+        }
+    }
+    
+    private func updateAgendas() {
+        agendas[selectedTab].isComplete = true
+        if selectedTab < agendas.count && selectedTab != agendas.count - 1 {
+            selectedTab += 1
         }
     }
 }
