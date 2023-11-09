@@ -22,6 +22,11 @@
 		863702472AFA8971004A8A34 /* MeetingEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863702462AFA8971004A8A34 /* MeetingEndView.swift */; };
 		86855EEF2AFBB07E0051794C /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855EEE2AFBB07E0051794C /* PageControl.swift */; };
 		86855EF52AFBB3500051794C /* MeetingTabViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855EF42AFBB3500051794C /* MeetingTabViewCell.swift */; };
+		86855EFA2AFCB2880051794C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 86855EF92AFCB2880051794C /* Lottie */; };
+		86855EFC2AFCB2BB0051794C /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855EFB2AFCB2BB0051794C /* LottieView.swift */; };
+		86855EFE2AFCB33E0051794C /* CheckLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 86855EFD2AFCB33E0051794C /* CheckLottie.json */; };
+		86855F002AFCB35A0051794C /* LottieTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855EFF2AFCB35A0051794C /* LottieTestView.swift */; };
+		86855F022AFCB3B90051794C /* MeetingLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855F012AFCB3B90051794C /* MeetingLottieView.swift */; };
 		86B5DADE2AF8AF5A00AD5F56 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */; };
 		86B5DAE62AF8B39000AD5F56 /* MeetingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +49,10 @@
 		863702462AFA8971004A8A34 /* MeetingEndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingEndView.swift; sourceTree = "<group>"; };
 		86855EEE2AFBB07E0051794C /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		86855EF42AFBB3500051794C /* MeetingTabViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingTabViewCell.swift; sourceTree = "<group>"; };
+		86855EFB2AFCB2BB0051794C /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		86855EFD2AFCB33E0051794C /* CheckLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CheckLottie.json; sourceTree = "<group>"; };
+		86855EFF2AFCB35A0051794C /* LottieTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieTestView.swift; sourceTree = "<group>"; };
+		86855F012AFCB3B90051794C /* MeetingLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingLottieView.swift; sourceTree = "<group>"; };
 		86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -53,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86855EFA2AFCB2880051794C /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				8637023C2AFA7001004A8A34 /* MeetingView.swift */,
+				86855EF72AFCB0270051794C /* AgendaCheckLottieView */,
 				86855EF62AFBB4C20051794C /* MeetingViewComponent */,
 				86855EEC2AFBB0260051794C /* AllAgendaView */,
 				86855EF02AFBB0EC0051794C /* MeetingAlert */,
@@ -165,6 +176,16 @@
 			path = MeetingViewComponent;
 			sourceTree = "<group>";
 		};
+		86855EF72AFCB0270051794C /* AgendaCheckLottieView */ = {
+			isa = PBXGroup;
+			children = (
+				86855EFB2AFCB2BB0051794C /* LottieView.swift */,
+				86855EFF2AFCB35A0051794C /* LottieTestView.swift */,
+				86855F012AFCB3B90051794C /* MeetingLottieView.swift */,
+			);
+			path = AgendaCheckLottieView;
+			sourceTree = "<group>";
+		};
 		86B5DADC2AF8AF1000AD5F56 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +221,7 @@
 		86B5DAE42AF8B25800AD5F56 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				86855EFD2AFCB33E0051794C /* CheckLottie.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -221,6 +243,7 @@
 			);
 			name = Hodori;
 			packageProductDependencies = (
+				86855EF92AFCB2880051794C /* Lottie */,
 			);
 			productName = Hodori;
 			productReference = 0736DC172AD502CE002F1FE0 /* Hodori.app */;
@@ -251,6 +274,7 @@
 			);
 			mainGroup = 0736DC0E2AD502CE002F1FE0;
 			packageReferences = (
+				86855EF82AFCB2880051794C /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 0736DC182AD502CE002F1FE0 /* Products */;
 			projectDirPath = "";
@@ -267,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0736DC232AD502CF002F1FE0 /* Preview Assets.xcassets in Resources */,
+				86855EFE2AFCB33E0051794C /* CheckLottie.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +306,8 @@
 				0736DC1D2AD502CE002F1FE0 /* ContentView.swift in Sources */,
 				07D736622AF6AD1500C04D11 /* Meeting.swift in Sources */,
 				8637023D2AFA7001004A8A34 /* MeetingView.swift in Sources */,
+				86855EFC2AFCB2BB0051794C /* LottieView.swift in Sources */,
+				86855F002AFCB35A0051794C /* LottieTestView.swift in Sources */,
 				863702372AFA107A004A8A34 /* PriorityCell.swift in Sources */,
 				86855EEF2AFBB07E0051794C /* PageControl.swift in Sources */,
 				863702412AFA737B004A8A34 /* PieChartView.swift in Sources */,
@@ -292,6 +319,7 @@
 				86B5DADE2AF8AF5A00AD5F56 /* NavigationManager.swift in Sources */,
 				86B5DAE62AF8B39000AD5F56 /* MeetingManager.swift in Sources */,
 				86855EF52AFBB3500051794C /* MeetingTabViewCell.swift in Sources */,
+				86855F022AFCB3B90051794C /* MeetingLottieView.swift in Sources */,
 				863702392AFA162A004A8A34 /* PrioritySettingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,6 +539,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		86855EF82AFCB2880051794C /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		86855EF92AFCB2880051794C /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86855EF82AFCB2880051794C /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0736DC0F2AD502CE002F1FE0 /* Project object */;
 }

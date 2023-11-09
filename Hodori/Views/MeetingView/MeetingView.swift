@@ -28,8 +28,10 @@ struct MeetingView: View {
     @State var selectedTab: Int = 0
     
     @State var showTimer: Bool = false
-    
+
     @State var toMeetingEndView: Bool = false
+    
+    @State var showLottie: Bool = false
     
     var body: some View {
         //MARK: 네비게이션 스택 테스트
@@ -110,7 +112,7 @@ extension MeetingView {
     private var mainTabView: some View {
         TabView(selection: $selectedTab) {
             ForEach(agendas.indices, id: \.self) { index in
-                MeetingTabViewCell(agenda: agendas[index], index: index)
+                MeetingTabViewCell(agenda: agendas[index], index: $selectedTab, showLottie: $showLottie)
             }
         }
         .frame(maxHeight: .infinity)
@@ -134,12 +136,18 @@ extension MeetingView {
                 }
             
             Button {
-                agendas[selectedTab].isComplete = true
-
-                if selectedTab < agendas.count && selectedTab != agendas.count - 1 {
-                    selectedTab += 1
+                withAnimation(.bouncy) {
+                    showLottie = true
+                    print(selectedTab)
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+                        showLottie = false
+                        agendas[selectedTab].isComplete = true
+                        if selectedTab < agendas.count && selectedTab != agendas.count - 1 {
+                            selectedTab += 1
+                        }
+                    }
                 }
-
+                
             } label: {
                 ZStack(alignment: .center) {
                     RoundedRectangle(cornerRadius: 16)
