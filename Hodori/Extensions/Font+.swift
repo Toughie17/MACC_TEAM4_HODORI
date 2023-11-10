@@ -10,6 +10,7 @@ import SwiftUI
 extension Font {
     // MARK: BOLD
     static let pretendBold32: Font = .custom("Pretendard-Bold", size: 32)
+    static let pretendBold24: Font = .custom("Pretendard-Bold", size: 24)
     static let pretendBold20: Font = .custom("Pretendard-Bold", size: 20)
     static let pretendBold16: Font = .custom("Pretendard-Bold", size: 16)
     

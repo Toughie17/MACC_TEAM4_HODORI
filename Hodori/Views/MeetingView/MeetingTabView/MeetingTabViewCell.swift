@@ -39,20 +39,24 @@ struct MeetingTabViewCell: View {
 extension MeetingTabViewCell {
     
     private var agendaOrderText: some View {
-        HStack {
-            if agenda.isComplete {
-                Image(systemName: "checkmark")
-            } else {
-                Image(systemName: "circle")
-            }
+        HStack(spacing: 0) {
+            
+            Image(systemName: agenda.isComplete ? "checkmark.circle" : "circle")
+                .fontWeight(agenda.isComplete ? .medium : .heavy)
+                .frame(width: 19, height: 19)
+
             Text(agendaTitle(forIndex: index))
-                .padding(.leading, 12)
+                .font(.pretendRegular16)
+                .padding(.leading, 11.57)
             Spacer()
         }
+        .foregroundStyle(agenda.isComplete ? Color.primaryBlue : Color.gray5)
     }
     
     private var currentAgendaTitle: some View {
         Text(agenda.title)
+            .font(.pretendBold24)
+            .foregroundStyle(agenda.isComplete ? Color.gray3 : Color.black)
     }
     
     private var agendaDetails: some View {
@@ -62,9 +66,11 @@ extension MeetingTabViewCell {
                     .resizable()
                     .frame(width: 3, height: 3)
                 Text(detail)
+                    .font(.pretendRegular16)
                     .padding(.leading, 8)
             }
-            .padding(.bottom, 4)
+            .foregroundStyle(agenda.isComplete ? Color.gray5 : Color.gray2)
+            .padding(.bottom, 6)
         }
     }
     
@@ -97,5 +103,5 @@ extension MeetingTabViewCell {
 }
 
 #Preview {
-    MeetingTabViewCell(agenda: Agenda(title: "텝뷰 테스트", detail: ["1", "2", "3", "4", "5"], isComplete: false), index: 0, showLottie: .constant(false))
+    MeetingTabViewCell(agenda: Agenda(title: "오늘의 첫번째 회의안건은 이것이 되겠네요", detail: ["세부 회의 안건", "세부 회의 안건", "세부 회의 안건", "세부 회의 안건", "세부 회의 안건은 이걸루 끝인가요 이게 마지막"], isComplete: false), index: 0, showLottie: .constant(false))
 }

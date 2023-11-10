@@ -169,6 +169,7 @@ extension MeetingView {
                         .font(.pretendBold20)
                     if showLottie || agendas[selectedTab].isComplete {
                         Image(systemName: "checkmark")
+                            .font(.system(size: 16, weight: .semibold))
                             .padding(.leading, 10)
                     }
                     Spacer()
