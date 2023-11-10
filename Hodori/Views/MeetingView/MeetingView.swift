@@ -78,7 +78,6 @@ struct MeetingView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     
                     Button {
-                        mediumHaptic.impactOccurred()
                         showSheet = true
                     } label: {
                         Image(systemName: "line.3.horizontal")
