@@ -7,10 +7,11 @@
 
 import Foundation
 
-struct Agenda {
+struct Agenda: Identifiable, Hashable {
     var title: String
     var detail: [String]
     var isComplete: Bool = false
+    var id = UUID().uuidString
 }
 
 // 얘를 계속 넘겨줌
