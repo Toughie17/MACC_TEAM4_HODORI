@@ -13,18 +13,15 @@ struct AllAgendaCell: View {
     
     var body: some View {
         ZStack(alignment: .center) {
-            HStack(alignment: .center) {
-                if agenda.isComplete {
-                    Image(systemName: "checkmark")
-                        .foregroundStyle(.blue)
-                        .frame(width: 12)
-                } else {
-                    Image(systemName: "circle")
-                        .frame(width: 12)
-                }
+            HStack(alignment: .center, spacing: 0) {
+                
+                Image(systemName: agenda.isComplete ? "checkmark" : "circle")
+                    .foregroundStyle(agenda.isComplete ? .blue : Color.gray5)
+                    .frame(width: 12, height: 12)
                 
                 Text(agenda.title)
-                    .foregroundStyle(agenda.isComplete ? .gray : .black)
+                    .foregroundStyle(agenda.isComplete ? Color.gray5 : Color.gray1)
+                    .font(.pretendMedium16)
                     .padding(.leading, 16)
                 
                 Spacer()
@@ -33,16 +30,14 @@ struct AllAgendaCell: View {
             .padding(.vertical, 5)
             .padding(.horizontal,24)
 
-//            if target {
                 RoundedRectangle(cornerRadius: 8)
                 .foregroundStyle(target ? .blue.opacity(0.2) : .white.opacity(0.1))
-                    .frame(height: 35)
-//            }
+                    .frame(height: 31)
+
         }
-//        .padding(.bottom, 3)
     }
 }
 
 #Preview {
-    AllAgendaCell(agenda: Agenda(title: "hi", detail: [], isComplete: true), target: false)
+    AllAgendaCell(agenda: Agenda(title: "hi", detail: [], isComplete: true), target: true)
 }

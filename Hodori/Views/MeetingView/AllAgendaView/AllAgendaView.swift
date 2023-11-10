@@ -19,16 +19,16 @@ struct AllAgendaView: View {
         ZStack {
             VStack {
                 Text("회의 전체 안건")
-                    .font(.title2)
-                    .fontWeight(.bold)
+                    .font(.pretendBold20)
                     .padding(.top, 32)
-                    .padding(.bottom, 64)
+                    .padding(.bottom, 59)
                 
                 PieChartView(agendas: agendas)
-                    .padding(.bottom, 24)
+                    .padding(.bottom, 20)
                 
                 Text("지금은 \(currentTab + 1)번째 안건 회의 중이에요")
-                    .padding(.bottom, 60)
+                    .font(.pretendBold20)
+                    .padding(.bottom, 82)
                 
                 ForEach(agendas.indices, id: \.self) { index in
                     if index == currentTab {
@@ -49,8 +49,8 @@ struct AllAgendaView: View {
                         showSheet = false
                     }) {
                         Image(systemName: "xmark")
-                            .font(.title)
-                            .foregroundColor(.gray)
+                            .font(.system(size: 24, weight: .regular))
+                            .foregroundStyle(Color.gray3)
                     }
                     .padding(.trailing, 19)
                     .padding(.top, 32)
@@ -62,6 +62,6 @@ struct AllAgendaView: View {
     }
 }
 
-//#Preview {
-//    AllAgendaView()
-//}
+#Preview {
+    AllAgendaView(showSheet: .constant(true), agendas: .constant([Agenda(title: "춘식이의 파자마", detail: [],isComplete: false)]), currentTab: .constant(0))
+}

@@ -17,7 +17,7 @@ struct CustomPageControl: View {
             HStack(spacing: 0) {
                 ForEach(0..<totalTabs, id: \.self) { index in
                     Circle()
-                        .fill(index == selectedTab ? Color.black : Color.gray)
+                        .fill(index == selectedTab ? Color.black : Color.black.opacity(0.3))
                         .frame(width: 8, height: 8)
                         .padding(8)
                         .onTapGesture {
