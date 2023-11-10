@@ -10,13 +10,13 @@ import SwiftUI
 struct MeetingTabViewCell: View {
     let agenda: Agenda
     let index: Int
-    let backColor = #colorLiteral(red: 0.9593991637, green: 0.9593990445, blue: 0.9593991637, alpha: 1)
+    
     @Binding var showLottie: Bool
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16)
-                .foregroundStyle(Color(backColor))
+                .foregroundStyle(Color.gray10)
             
             VStack(alignment: .leading, spacing: 0) {
                 agendaOrderText

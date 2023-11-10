@@ -14,17 +14,19 @@ struct MeetingLottieView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16)
-                .foregroundStyle(Color(backColor))
+                .foregroundStyle(Color.gray10)
             
             VStack(alignment: .center, spacing: 0) {
                 Spacer()
                 LottieView(jsonName: "CheckLottie", loopMode: .loop)
                     .frame(width: 67, height: 67)
+                    .padding(.bottom, 32)
                 Text(agendaEndTitle(forIndex: index))
+                    .foregroundStyle(Color.gray2)
+                    .font(.pretendRegular20)
                 Spacer()
             }
             .padding(.horizontal, 20)
-            .padding(.top, 28)
         }
     }
 }

@@ -25,7 +25,6 @@
 		86855EFA2AFCB2880051794C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 86855EF92AFCB2880051794C /* Lottie */; };
 		86855EFC2AFCB2BB0051794C /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855EFB2AFCB2BB0051794C /* LottieView.swift */; };
 		86855EFE2AFCB33E0051794C /* CheckLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 86855EFD2AFCB33E0051794C /* CheckLottie.json */; };
-		86855F002AFCB35A0051794C /* LottieTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855EFF2AFCB35A0051794C /* LottieTestView.swift */; };
 		86855F022AFCB3B90051794C /* MeetingLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855F012AFCB3B90051794C /* MeetingLottieView.swift */; };
 		86855F082AFDFC6B0051794C /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86855F042AFDFC6A0051794C /* Pretendard-Regular.otf */; };
 		86855F092AFDFC6B0051794C /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86855F052AFDFC6B0051794C /* Pretendard-Medium.otf */; };
@@ -58,7 +57,6 @@
 		86855EF42AFBB3500051794C /* MeetingTabViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingTabViewCell.swift; sourceTree = "<group>"; };
 		86855EFB2AFCB2BB0051794C /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		86855EFD2AFCB33E0051794C /* CheckLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CheckLottie.json; sourceTree = "<group>"; };
-		86855EFF2AFCB35A0051794C /* LottieTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieTestView.swift; sourceTree = "<group>"; };
 		86855F012AFCB3B90051794C /* MeetingLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingLottieView.swift; sourceTree = "<group>"; };
 		86855F042AFDFC6A0051794C /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		86855F052AFDFC6B0051794C /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
@@ -196,7 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				86855EFB2AFCB2BB0051794C /* LottieView.swift */,
-				86855EFF2AFCB35A0051794C /* LottieTestView.swift */,
 				86855F012AFCB3B90051794C /* MeetingLottieView.swift */,
 			);
 			path = AgendaCheckLottieView;
@@ -342,7 +339,6 @@
 				07D736622AF6AD1500C04D11 /* Meeting.swift in Sources */,
 				8637023D2AFA7001004A8A34 /* MeetingView.swift in Sources */,
 				86855EFC2AFCB2BB0051794C /* LottieView.swift in Sources */,
-				86855F002AFCB35A0051794C /* LottieTestView.swift in Sources */,
 				863702372AFA107A004A8A34 /* PriorityCell.swift in Sources */,
 				86855EEF2AFBB07E0051794C /* PageControl.swift in Sources */,
 				863702412AFA737B004A8A34 /* PieChartView.swift in Sources */,
