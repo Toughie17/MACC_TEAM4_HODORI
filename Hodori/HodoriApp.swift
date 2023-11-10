@@ -10,9 +10,14 @@ import SwiftUI
 @main
 struct HodoriApp: App {
 
+    init() {
+        UIScrollView.appearance().bounces = false
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(NavigationManager())
         }
     }
 }
