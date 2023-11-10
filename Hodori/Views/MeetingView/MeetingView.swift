@@ -77,6 +77,7 @@ struct MeetingView: View {
                             .frame(width: 28, height: 22)
                             .foregroundStyle(Color.primaryBlue)
                     }
+                    .disabled(showAlert)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     
@@ -90,6 +91,7 @@ struct MeetingView: View {
                             .font(.system(size: 17, weight: .regular))
                             .foregroundStyle(Color.gray2)
                     }
+                    .disabled(showAlert)
 
                 }
             }
