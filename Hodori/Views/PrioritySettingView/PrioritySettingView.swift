@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PrioritySettingView: View {
-//    @EnvironmentObject var navigationManager: NavigationManager
+    //    @EnvironmentObject var navigationManager: NavigationManager
     @Environment(\.dismiss) private var dismiss
     //MARK: 모크데이터
     @State var agendas: [Agenda] = [
@@ -19,7 +19,7 @@ struct PrioritySettingView: View {
                 "닭가슴살",
                 "돈까스",
                 "라멘"
-        ], isComplete: false),
+               ], isComplete: false),
         Agenda(title: "춘식이의 파자마", detail: [],isComplete: false),
         Agenda(title: "제주도 감귤", detail: [],isComplete: false),
         Agenda(title: "참서리 제육볶음", detail: [],isComplete: false),
@@ -36,9 +36,9 @@ struct PrioritySettingView: View {
     private let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
     
     var body: some View {
-//        NavigationStack {
+        NavigationStack {
             
-            VStack {
+            VStack(spacing: 0) {
                 infoText
                     .padding(.top,8)
                 cells
@@ -50,25 +50,25 @@ struct PrioritySettingView: View {
                 Spacer()
                 
                 startButton
-//                Spacer()
+                    .padding(.bottom, 21)
             }
             .padding(.horizontal,20)
-//        }
+        }
     }
 }
 
 extension PrioritySettingView {
     
     private var infoText: some View {
-        Text("진행할 순서에 맞춰 이동하고 회의를 시작해주세요")
-            .font(.caption)
+        Text("진행할 순서에 맞춰 이동하고 회의를 시작하세요!")
+            .foregroundStyle(Color.gray5)
+            .font(.pretendRegular14)
     }
     
     private var cells: some View {
         ScrollView {
             ForEach(agendas, id: \.self) { agenda in
                 PriorityCell(title: agenda.title)
-//                    .padding(.bottom, 8)
                     .draggable(agenda) {
                         EmptyView()
                             .frame(width: 1, height: 1)
@@ -102,10 +102,11 @@ extension PrioritySettingView {
             MeetingView(agendas: self.agendas)
         } label: {
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color.blue)
-                .frame(height: 66)
+                .fill(Color.primaryBlue)
+                .frame(height: 56)
                 .overlay {
                     Text("회의 시작")
+                        .font(.pretendBold20)
                         .foregroundColor(.white)
                 }
         }
@@ -113,11 +114,11 @@ extension PrioritySettingView {
     
     private var backButton: some View {
         Button {
-//            navigationManager.screenPath.removeLast()
             dismiss()
         } label: {
             Image(systemName: "chevron.left")
-                .foregroundColor(.gray)
+                .foregroundStyle(Color.gray3)
+                .font(.system(size: 17, weight: .semibold))
                 .padding(.trailing, 30)
         }
     }

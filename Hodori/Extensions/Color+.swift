@@ -29,34 +29,3 @@ extension Color {
     static let blue4 = Color(UIColor(hexCode: "#9CBEFF"))
     static let subRed = Color(UIColor(hexCode: "#FF7068"))
 }
-
-
-struct ColorPalete: View {
-    
-    var body: some View {
-        VStack {
-            Rectangle()
-                .frame(width: 300, height: 300)
-//                .foregroundStyle(Color.gray1)
-//                .foregroundStyle(Color.gray2)
-//                .foregroundStyle(Color.gray3)
-//                .foregroundStyle(Color.gray4)
-//                .foregroundStyle(Color.gray5)
-//                .foregroundStyle(Color.gray6)
-//                .foregroundStyle(Color.gray7)
-//                .foregroundStyle(Color.gray8)
-//                .foregroundStyle(Color.gray9)
-//                .foregroundStyle(Color.gray10)
-//                .foregroundStyle(Color.primaryBlue)
-//                .foregroundStyle(Color.blue1)
-//                .foregroundStyle(Color.blue2)
-//                .foregroundStyle(Color.blue3)
-//                .foregroundStyle(Color.blue4)
-                .foregroundStyle(Color.subRed)
-        }
-    }
-}
-
-#Preview {
-    ColorPalete()
-}
