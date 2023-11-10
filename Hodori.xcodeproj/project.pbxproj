@@ -32,6 +32,8 @@
 		86855F0A2AFDFC6B0051794C /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86855F062AFDFC6B0051794C /* Pretendard-Bold.otf */; };
 		86855F0B2AFDFC6B0051794C /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86855F072AFDFC6B0051794C /* Pretendard-SemiBold.otf */; };
 		86855F0E2AFDFD660051794C /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855F0D2AFDFD660051794C /* Font+.swift */; };
+		86855F102AFE06F60051794C /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855F0F2AFE06F60051794C /* UIColor+.swift */; };
+		86855F122AFE07200051794C /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855F112AFE07200051794C /* Color+.swift */; };
 		86B5DADE2AF8AF5A00AD5F56 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */; };
 		86B5DAE62AF8B39000AD5F56 /* MeetingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */; };
 /* End PBXBuildFile section */
@@ -64,6 +66,8 @@
 		86855F072AFDFC6B0051794C /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		86855F0C2AFDFCB00051794C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		86855F0D2AFDFD660051794C /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
+		86855F0F2AFE06F60051794C /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		86855F112AFE07200051794C /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -222,6 +226,8 @@
 			isa = PBXGroup;
 			children = (
 				86855F0D2AFDFD660051794C /* Font+.swift */,
+				86855F112AFE07200051794C /* Color+.swift */,
+				86855F0F2AFE06F60051794C /* UIColor+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -350,7 +356,9 @@
 				86855F0E2AFDFD660051794C /* Font+.swift in Sources */,
 				86855EF52AFBB3500051794C /* MeetingTabViewCell.swift in Sources */,
 				86855F022AFCB3B90051794C /* MeetingLottieView.swift in Sources */,
+				86855F122AFE07200051794C /* Color+.swift in Sources */,
 				863702392AFA162A004A8A34 /* PrioritySettingView.swift in Sources */,
+				86855F102AFE06F60051794C /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
