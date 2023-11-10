@@ -17,28 +17,21 @@ struct MeetingView: View {
     var leftAgendaCount: Int {
         agendas.count - completedAgendaCount
     }
-    
-    let backColor = #colorLiteral(red: 0.9593991637, green: 0.9593990445, blue: 0.9593991637, alpha: 1)
 
     @State var showAlert: Bool = false
     @State var alert: Alert?
-    
     @State var showSheet: Bool = false
-    
-    @State var selectedTab: Int = 0
-    
+    @State var showLottie: Bool = false
     @State var showTimer: Bool = false
-
     @State var toMeetingEndView: Bool = false
     
-    @State var showLottie: Bool = false
-    
+    @State var selectedTab: Int = 0
+
     private let heavyHaptic = UIImpactFeedbackGenerator(style: .heavy)
     private let mediumHaptic = UIImpactFeedbackGenerator(style: .medium)
     
     var body: some View {
-        //MARK: 네비게이션 스택 테스트
-//        NavigationStack {
+        
             ZStack {
                 VStack(spacing: 0) {
 
@@ -73,16 +66,16 @@ struct MeetingView: View {
                 AllAgendaView(showSheet: $showSheet, agendas: $agendas, currentTab: $selectedTab)
             })
             .navigationBarBackButtonHidden()
-            .navigationBarTitle("지금은 회의 중", displayMode: .inline)
+            .navigationBarTitle("회의 진행 중", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     
                     Button {
                         showSheet = true
                     } label: {
-                        Image(systemName: "line.3.horizontal")
-                            .frame(width: 27, height: 22)
-                            .foregroundStyle(.gray)
+                        Image(systemName: "list.bullet")
+                            .frame(width: 28, height: 22)
+                            .foregroundStyle(Color.primaryBlue)
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
@@ -94,6 +87,8 @@ struct MeetingView: View {
                         }
                     } label: {
                         Text("회의 종료")
+                            .font(.system(size: 17, weight: .regular))
+                            .foregroundStyle(Color.gray2)
                     }
 
                 }
@@ -101,8 +96,6 @@ struct MeetingView: View {
             .navigationDestination(isPresented: $toMeetingEndView) {
                 MeetingEndView(agendas: agendas, completedAgendaCount: completedAgendaCount)
            }
-            //MARK: 네비게이션 스택 테스트
-//        }
     }
 }
 
@@ -128,53 +121,63 @@ extension MeetingView {
     }
 
     private var buttonBox: some View {
-        HStack {
-            RoundedRectangle(cornerRadius: 22)
-                .stroke(Color.blue, lineWidth: 2)
-                .frame(width: 70, height: 56)
-                .padding(.trailing, 12)
-                .onTapGesture {
-                    withAnimation(.bouncy) {
-                        showTimer.toggle()
-                    }
-                }
-            
-            Button {
-                heavyHaptic.impactOccurred()
-                withAnimation(.bouncy) {
-                    showLottie = true
-                    print(selectedTab)
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
-                        showLottie = false
-                        updateAgendas()
-                    }
-                }
-                
-            } label: {
-                ZStack(alignment: .center) {
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(showLottie || agendas[selectedTab].isComplete ? .gray : .blue)
-                    HStack(spacing: 0) {
-                        Spacer()
-                        Text("안건 완료")
-//                            .padding(.leading, 10)
-
-//                        Image(systemName: "checkmark")
-//                            .padding(.leading, 10)
-//                            .opacity(showLottie || agendas[selectedTab].isComplete ? 1 : 0)
-//
-                        if showLottie || agendas[selectedTab].isComplete {
-                            Image(systemName: "checkmark")
-                                .padding(.leading, 10)
-                        }
-                        Spacer()
-                    }
-                }
-                .foregroundStyle(.white)
-                .frame(height: 56)
-            }
-            .disabled(showLottie || agendas[selectedTab].isComplete)
+        HStack(spacing: 12) {
+            timerButton
+            agendCompleteButton
         }
+    }
+    
+    
+    private var timerButton: some View {
+        Button {
+            withAnimation(.bouncy) {
+                showTimer.toggle()
+            }
+        } label: {
+            ZStack(alignment: .center) {
+                RoundedRectangle(cornerRadius: 22)
+                    .stroke(Color.primaryBlue, lineWidth: 1)
+                    .frame(width: 70, height: 56)
+                
+                Image(systemName: "stopwatch")
+                    .font(.system(size: 24, weight: .regular))
+                    .foregroundStyle(Color.primaryBlue)
+                    .frame(width: 29, height: 29)
+            }
+        }
+    }
+    
+    private var agendCompleteButton: some View {
+        Button {
+            heavyHaptic.impactOccurred()
+            withAnimation(.bouncy) {
+                showLottie = true
+                print(selectedTab)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+                    showLottie = false
+                    updateAgendas()
+                }
+            }
+            
+        } label: {
+            ZStack(alignment: .center) {
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(showLottie || agendas[selectedTab].isComplete ? .gray : .blue)
+                HStack(spacing: 0) {
+                    Spacer()
+                    Text("안건 완료")
+                        .font(.pretendBold20)
+                    if showLottie || agendas[selectedTab].isComplete {
+                        Image(systemName: "checkmark")
+                            .padding(.leading, 10)
+                    }
+                    Spacer()
+                }
+            }
+            .foregroundStyle(.white)
+            .frame(height: 56)
+        }
+        .disabled(showLottie || agendas[selectedTab].isComplete)
     }
     
     private func updateAgendas() {
@@ -186,19 +189,21 @@ extension MeetingView {
 }
 
 #Preview {
-    MeetingView(agendas: [
-        Agenda(title: "오늘의 첫번째 회의안건은 이것이 되겠네요",
-               detail: [
-                "세부 회의 안건 1",
-                "세부 회의 안건 2",
-                "세부 회의 안건 3",
-                "세부 회의 안건 4",
-                "세부 회의 안건은 이걸루 끝인가요 마지막"
-        ],
-               isComplete: false),
-        Agenda(title: "안건2", detail: [],isComplete: false),
-        Agenda(title: "안건3", detail: [],isComplete: false),
-        Agenda(title: "안건4", detail: [],isComplete: false),
-        Agenda(title: "안건5", detail: [],isComplete: false)
-    ])
+    NavigationStack {
+        MeetingView(agendas: [
+            Agenda(title: "오늘의 첫번째 회의안건은 이것이 되겠네요",
+                   detail: [
+                    "세부 회의 안건 1",
+                    "세부 회의 안건 2",
+                    "세부 회의 안건 3",
+                    "세부 회의 안건 4",
+                    "세부 회의 안건은 이걸루 끝인가요 마지막"
+            ],
+                   isComplete: false),
+            Agenda(title: "안건2", detail: [],isComplete: false),
+            Agenda(title: "안건3", detail: [],isComplete: false),
+            Agenda(title: "안건4", detail: [],isComplete: false),
+            Agenda(title: "안건5", detail: [],isComplete: false)
+        ])
+    }
 }

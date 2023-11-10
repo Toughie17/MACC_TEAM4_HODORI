@@ -36,8 +36,6 @@ struct PrioritySettingView: View {
     private let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
     
     var body: some View {
-        NavigationStack {
-            
             VStack(spacing: 0) {
                 infoText
                     .padding(.top,8)
@@ -53,7 +51,6 @@ struct PrioritySettingView: View {
                     .padding(.bottom, 21)
             }
             .padding(.horizontal,20)
-        }
     }
 }
 
@@ -125,5 +122,7 @@ extension PrioritySettingView {
 }
 
 #Preview {
-    PrioritySettingView()
+    NavigationStack {
+        PrioritySettingView()
+    }
 }
