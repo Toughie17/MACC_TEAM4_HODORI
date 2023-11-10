@@ -30,7 +30,7 @@ extension AppScreen {
         case .start:
             EmptyView()
         case .agendaSetting:
-            EmptyView()
+            AgendaSettingView()
         case .prioritySetting:
             EmptyView()
         case.meeting:
