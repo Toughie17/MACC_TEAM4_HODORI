@@ -5,9 +5,11 @@
 //  Created by 송지혁 on 11/9/23.
 //
 
+import CoreData
 import SwiftUI
 
 struct PrioritySettingTestView: View {
+    @EnvironmentObject var meetingManager: MeetingManger
     @Binding var agendas: [Agenda]
     
     var body: some View {
@@ -26,6 +28,10 @@ struct PrioritySettingTestView: View {
                 Color.gray
             }
             .padding(.bottom, 15)
+        }
+        .onAppear {
+            CoreDataManager.shared.save(meeting: Meeting(agendas: agendas, startDate: Date()))
+            meetingManager.fetchMeetings()
         }
     }
 }
