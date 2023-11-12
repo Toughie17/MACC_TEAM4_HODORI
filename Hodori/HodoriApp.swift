@@ -9,7 +9,9 @@ import SwiftUI
 
 @main
 struct HodoriApp: App {
-
+    
+    let coreDataManager = CoreDataManager.shared
+    
     init() {
         UIScrollView.appearance().bounces = false
     }
@@ -18,6 +20,8 @@ struct HodoriApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(NavigationManager())
+                .environmentObject(MeetingManger())
+                .environment(\.managedObjectContext, coreDataManager.viewContext)
         }
     }
 }
