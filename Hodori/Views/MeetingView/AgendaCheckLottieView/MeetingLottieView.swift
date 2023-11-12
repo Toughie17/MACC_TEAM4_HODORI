@@ -15,6 +15,8 @@ struct MeetingLottieView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 16)
                 .foregroundStyle(Color.gray10)
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(.white, lineWidth: 10)
             
             VStack(alignment: .center, spacing: 0) {
                 Spacer()
@@ -26,7 +28,8 @@ struct MeetingLottieView: View {
                     .font(.pretendRegular20)
                 Spacer()
             }
-            .padding(.horizontal, 20)
+            //MARK: 디자인 요청사항 반영 패딩 조정(수정 가능성 존재)
+            //            .padding(.horizontal, 20)
         }
     }
 }
@@ -60,9 +63,6 @@ extension MeetingLottieView {
     }
 }
 
-                
-                
-                
 #Preview {
     MeetingLottieView(index: 3)
 }

@@ -17,7 +17,7 @@ struct MeetingView: View {
     var leftAgendaCount: Int {
         agendas.count - completedAgendaCount
     }
-
+    
     @State var showAlert: Bool = false
     @State var alert: Alert?
     @State var showSheet: Bool = false
@@ -26,86 +26,90 @@ struct MeetingView: View {
     @State var toMeetingEndView: Bool = false
     
     @State var selectedTab: Int = 0
-
+    
     private let heavyHaptic = UIImpactFeedbackGenerator(style: .heavy)
     private let mediumHaptic = UIImpactFeedbackGenerator(style: .medium)
     
     var body: some View {
         
-            ZStack {
-                VStack(spacing: 0) {
-
-                    Spacer()
-                    
-                    if showTimer {
-                        tempTimerView
-                            .padding(.top, 24)
-                    }
-                    mainTabView
-                    .padding(.top, 16)
-                    
-                    pageControl
-                        .padding(.bottom, 12)
-
-                    buttonBox
-                }
-                .padding(.horizontal, 20)
-                .zIndex(1)
+        ZStack {
+            VStack(spacing: 0) {
                 
-                if showAlert {
-                    Color.black
-                        .opacity(0.5)
-                        .ignoresSafeArea()
-                        .zIndex(2)
-                    MeetingAlert(showAlert: $showAlert, toMeetingEndView: $toMeetingEndView, leftAgenda: leftAgendaCount)
-                        .transition(.scale)
-                        .zIndex(3)
+                Spacer()
+                
+                if showTimer {
+                    tempTimerView
+                        .padding(.top, 24)
+                        .padding(.horizontal, 20)
                 }
+                mainTabView
+                    .padding(.top, 16)
+                
+                pageControl
+                    .padding(.bottom, 12)
+                    .padding(.horizontal, 20)
+                
+                buttonBox
+                    .padding(.horizontal, 20)
             }
-            .sheet(isPresented: $showSheet, content: {
-                AllAgendaView(showSheet: $showSheet, agendas: $agendas, currentTab: $selectedTab)
-            })
-            .navigationBarBackButtonHidden()
-            .navigationBarTitle("회의 진행 중", displayMode: .inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    
-                    Button {
-                        showSheet = true
-                    } label: {
-                        Image(systemName: "list.bullet")
-                            .frame(width: 28, height: 22)
-                            .foregroundStyle(Color.primaryBlue)
-                    }
-                    .disabled(showAlert)
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    
-                    Button {
-                        mediumHaptic.impactOccurred()
-                        withAnimation(.bouncy) {
-                            showAlert = true
-                        }
-                    } label: {
-                        Text("회의 종료")
-                            .font(.system(size: 17, weight: .regular))
-                            .foregroundStyle(Color.gray2)
-                    }
-                    .disabled(showAlert)
-
-                }
+            //MARK: 디자인 요청사항 반영 패딩 조정(수정 가능성 존재)
+            //                .padding(.horizontal, 20)
+            .zIndex(1)
+            
+            if showAlert {
+                Color.black
+                    .opacity(0.5)
+                    .ignoresSafeArea()
+                    .zIndex(2)
+                MeetingAlert(showAlert: $showAlert, toMeetingEndView: $toMeetingEndView, leftAgenda: leftAgendaCount)
+                    .transition(.scale)
+                    .zIndex(3)
             }
-            .navigationDestination(isPresented: $toMeetingEndView) {
-                MeetingEndView(agendas: agendas, completedAgendaCount: completedAgendaCount)
-           }
+        }
+        .sheet(isPresented: $showSheet, content: {
+            AllAgendaView(showSheet: $showSheet, agendas: $agendas, currentTab: $selectedTab)
+        })
+        .navigationBarBackButtonHidden()
+        .navigationBarTitle("회의 진행 중", displayMode: .inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                
+                Button {
+                    showSheet = true
+                } label: {
+                    Image(systemName: "list.bullet")
+                        .frame(width: 28, height: 22)
+                        .foregroundStyle(Color.primaryBlue)
+                }
+                .disabled(showAlert)
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                
+                Button {
+                    mediumHaptic.impactOccurred()
+                    withAnimation(.bouncy) {
+                        showAlert = true
+                    }
+                } label: {
+                    Text("회의 종료")
+                        .font(.system(size: 17, weight: .regular))
+                        .foregroundStyle(Color.gray2)
+                }
+                .disabled(showAlert)
+                
+            }
+        }
+        .navigationDestination(isPresented: $toMeetingEndView) {
+            MeetingEndView(agendas: agendas, completedAgendaCount: completedAgendaCount)
+        }
     }
 }
 
 extension MeetingView {
     private var tempTimerView: some View {
-            RoundedRectangle(cornerRadius: 22)
-                .fill(.orange)
-                .frame(height: 80)
+        RoundedRectangle(cornerRadius: 22)
+            .fill(.orange)
+            .frame(height: 80)
     }
     
     private var mainTabView: some View {
@@ -121,7 +125,7 @@ extension MeetingView {
     private var pageControl: some View {
         CustomPageControl(selectedTab: $selectedTab, totalTabs: agendas.count)
     }
-
+    
     private var buttonBox: some View {
         HStack(spacing: 12) {
             timerButton
@@ -201,7 +205,7 @@ extension MeetingView {
                     "세부 회의 안건 3",
                     "세부 회의 안건 4",
                     "세부 회의 안건은 이걸루 끝인가요 마지막"
-            ],
+                   ],
                    isComplete: false),
             Agenda(title: "안건2", detail: [],isComplete: false),
             Agenda(title: "안건3", detail: [],isComplete: false),

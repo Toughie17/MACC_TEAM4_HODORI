@@ -29,11 +29,11 @@ struct AllAgendaCell: View {
             .frame(height: 22)
             .padding(.vertical, 5)
             .padding(.horizontal,24)
-
-                RoundedRectangle(cornerRadius: 8)
+            
+            RoundedRectangle(cornerRadius: 8)
                 .foregroundStyle(target ? .blue.opacity(0.2) : .white.opacity(0.1))
-                    .frame(height: 31)
-
+                .frame(height: 31)
+            
         }
     }
 }

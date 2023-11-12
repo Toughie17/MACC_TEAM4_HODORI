@@ -17,6 +17,8 @@ struct MeetingTabViewCell: View {
         ZStack {
             RoundedRectangle(cornerRadius: 16)
                 .foregroundStyle(Color.gray10)
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(.white, lineWidth: 10)
             
             VStack(alignment: .leading, spacing: 0) {
                 agendaOrderText
@@ -44,7 +46,7 @@ extension MeetingTabViewCell {
             Image(systemName: agenda.isComplete ? "checkmark.circle" : "circle")
                 .fontWeight(agenda.isComplete ? .medium : .heavy)
                 .frame(width: 19, height: 19)
-
+            
             Text(agendaTitle(forIndex: index))
                 .font(.pretendRegular16)
                 .padding(.leading, 11.57)

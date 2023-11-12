@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct MeetingEndView: View {
-
+    
     var agendas: [Agenda]
     let completedAgendaCount: Int
-
+    
     var currentDateText: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy년 MM월 dd일"
@@ -37,7 +37,7 @@ struct MeetingEndView: View {
                 .padding(.bottom, 56)
                 
                 ForEach(agendas.indices, id: \.self) { index in
-                        AllAgendaCell(agenda: agendas[index], target: false)
+                    AllAgendaCell(agenda: agendas[index], target: false)
                 }
                 
                 Spacer()
@@ -50,9 +50,9 @@ struct MeetingEndView: View {
                         .frame(height: 56)
                         .frame(maxWidth: .infinity)
                         .overlay (
-                        Text("회의 마치기")
-                            .foregroundStyle(.white)
-                            .font(.pretendBold20)
+                            Text("회의 마치기")
+                                .foregroundStyle(.white)
+                                .font(.pretendBold20)
                         )
                 }
                 .padding(.bottom, 21)

@@ -11,7 +11,7 @@ struct CustomPageControl: View {
     
     @Binding var selectedTab: Int
     let totalTabs: Int
-
+    
     var body: some View {
         ZStack(alignment: .center) {
             HStack(spacing: 0) {

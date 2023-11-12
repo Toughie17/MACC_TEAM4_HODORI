@@ -10,7 +10,7 @@ import SwiftUI
 struct PieChartView: View {
     
     let agendas: [Agenda]
-
+    
     var degreePerAgenda: Double {
         Double(360 / (agendas.count))
     }

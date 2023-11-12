@@ -42,5 +42,3 @@ struct PriorityCell: View {
 #Preview {
     PriorityCell(title: "테스트 안건입니다.")
 }
-
-// 컬러 적용 완료_231110

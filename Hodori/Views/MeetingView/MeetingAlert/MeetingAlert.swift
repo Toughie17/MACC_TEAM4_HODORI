@@ -49,7 +49,7 @@ extension MeetingAlert {
             Text(leftAgenda == 0 ? "설정한 모든 안건을 완료했어요!" : "아직 안 끝낸 \(leftAgenda)개의 안건이 있어요" )
                 .font(.pretendRegular16)
                 .foregroundStyle(Color.gray4)
-
+            
         }
     }
     

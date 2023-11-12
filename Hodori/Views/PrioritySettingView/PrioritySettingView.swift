@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PrioritySettingView: View {
-    //    @EnvironmentObject var navigationManager: NavigationManager
+    
     @Environment(\.dismiss) private var dismiss
     //MARK: 모크데이터
     @State var agendas: [Agenda] = [
@@ -36,21 +36,21 @@ struct PrioritySettingView: View {
     private let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
     
     var body: some View {
-            VStack(spacing: 0) {
-                infoText
-                    .padding(.top,8)
-                cells
-                    .padding(.top, 16)
-                    .navigationBarBackButtonHidden()
-                    .navigationBarItems(leading: backButton)
-                    .navigationBarTitle("우선순위 설정", displayMode: .inline)
-                
-                Spacer()
-                
-                startButton
-                    .padding(.bottom, 21)
-            }
-            .padding(.horizontal,20)
+        VStack(spacing: 0) {
+            infoText
+                .padding(.top,8)
+            cells
+                .padding(.top, 16)
+                .navigationBarBackButtonHidden()
+                .navigationBarItems(leading: backButton)
+                .navigationBarTitle("우선순위 설정", displayMode: .inline)
+            
+            Spacer()
+            
+            startButton
+                .padding(.bottom, 21)
+        }
+        .padding(.horizontal,20)
     }
 }
 

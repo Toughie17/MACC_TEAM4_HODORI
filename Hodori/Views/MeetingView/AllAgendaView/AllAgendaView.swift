@@ -54,7 +54,7 @@ struct AllAgendaView: View {
                     }
                     .padding(.trailing, 19)
                     .padding(.top, 32)
-
+                    
                 }
                 Spacer()
             }
