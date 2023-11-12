@@ -10,8 +10,16 @@
 		0736DC1B2AD502CE002F1FE0 /* HodoriApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0736DC1A2AD502CE002F1FE0 /* HodoriApp.swift */; };
 		0736DC1D2AD502CE002F1FE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0736DC1C2AD502CE002F1FE0 /* ContentView.swift */; };
 		0736DC232AD502CF002F1FE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0736DC222AD502CF002F1FE0 /* Preview Assets.xcassets */; };
+		0742D8C82AFF863200FBF183 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0742D8C72AFF863200FBF183 /* KeyboardManager.swift */; };
+		079F1A792B00CB0D00A00E18 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F1A782B00CB0D00A00E18 /* String+.swift */; };
+		07D25F562AFC151800541584 /* PrioritySettingTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D25F552AFC151800541584 /* PrioritySettingTestView.swift */; };
 		07D736622AF6AD1500C04D11 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736612AF6AD1500C04D11 /* Meeting.swift */; };
 		07D736642AF6AD1C00C04D11 /* Agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736632AF6AD1C00C04D11 /* Agenda.swift */; };
+		07D736722AF8DB6A00C04D11 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736712AF8DB6A00C04D11 /* StartView.swift */; };
+		07D736742AF8DB8600C04D11 /* AgendaSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736732AF8DB8600C04D11 /* AgendaSettingView.swift */; };
+		07D736762AF8DBA700C04D11 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736752AF8DBA700C04D11 /* HistoryView.swift */; };
+		07D736782AF8DBB700C04D11 /* HistoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736772AF8DBB700C04D11 /* HistoryDetailView.swift */; };
+		07D7367B2AF91D3200C04D11 /* AgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D7367A2AF91D3200C04D11 /* AgendaView.swift */; };
 		86B5DADE2AF8AF5A00AD5F56 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */; };
 		86B5DAE62AF8B39000AD5F56 /* MeetingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */; };
 /* End PBXBuildFile section */
@@ -22,8 +30,16 @@
 		0736DC1C2AD502CE002F1FE0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0736DC202AD502CF002F1FE0 /* Hodori.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hodori.entitlements; sourceTree = "<group>"; };
 		0736DC222AD502CF002F1FE0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0742D8C72AFF863200FBF183 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
+		079F1A782B00CB0D00A00E18 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		07D25F552AFC151800541584 /* PrioritySettingTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioritySettingTestView.swift; sourceTree = "<group>"; };
 		07D736612AF6AD1500C04D11 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		07D736632AF6AD1C00C04D11 /* Agenda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agenda.swift; sourceTree = "<group>"; };
+		07D736712AF8DB6A00C04D11 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		07D736732AF8DB8600C04D11 /* AgendaSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaSettingView.swift; sourceTree = "<group>"; };
+		07D736752AF8DBA700C04D11 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		07D736772AF8DBB700C04D11 /* HistoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailView.swift; sourceTree = "<group>"; };
+		07D7367A2AF91D3200C04D11 /* AgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaView.swift; sourceTree = "<group>"; };
 		86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,11 +105,21 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		07D736792AF91D1900C04D11 /* AgendaSetting */ = {
+			isa = PBXGroup;
+			children = (
+				07D736732AF8DB8600C04D11 /* AgendaSettingView.swift */,
+				07D7367A2AF91D3200C04D11 /* AgendaView.swift */,
+			);
+			path = AgendaSetting;
+			sourceTree = "<group>";
+		};
 		86B5DADC2AF8AF1000AD5F56 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */,
 				86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */,
+				0742D8C72AFF863200FBF183 /* KeyboardManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -101,6 +127,7 @@
 		86B5DADF2AF8B1B300AD5F56 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				079F1A782B00CB0D00A00E18 /* String+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -108,6 +135,11 @@
 		86B5DAE12AF8B1D000AD5F56 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				07D736792AF91D1900C04D11 /* AgendaSetting */,
+				07D736712AF8DB6A00C04D11 /* StartView.swift */,
+				07D736752AF8DBA700C04D11 /* HistoryView.swift */,
+				07D736772AF8DBB700C04D11 /* HistoryDetailView.swift */,
+				07D25F552AFC151800541584 /* PrioritySettingTestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -199,12 +231,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D25F562AFC151800541584 /* PrioritySettingTestView.swift in Sources */,
+				0742D8C82AFF863200FBF183 /* KeyboardManager.swift in Sources */,
+				07D7367B2AF91D3200C04D11 /* AgendaView.swift in Sources */,
 				0736DC1D2AD502CE002F1FE0 /* ContentView.swift in Sources */,
 				07D736622AF6AD1500C04D11 /* Meeting.swift in Sources */,
+				07D736782AF8DBB700C04D11 /* HistoryDetailView.swift in Sources */,
 				0736DC1B2AD502CE002F1FE0 /* HodoriApp.swift in Sources */,
+				07D736742AF8DB8600C04D11 /* AgendaSettingView.swift in Sources */,
 				07D736642AF6AD1C00C04D11 /* Agenda.swift in Sources */,
 				86B5DADE2AF8AF5A00AD5F56 /* NavigationManager.swift in Sources */,
 				86B5DAE62AF8B39000AD5F56 /* MeetingManager.swift in Sources */,
+				07D736762AF8DBA700C04D11 /* HistoryView.swift in Sources */,
+				079F1A792B00CB0D00A00E18 /* String+.swift in Sources */,
+				07D736722AF8DB6A00C04D11 /* StartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +399,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -397,7 +437,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
