@@ -10,146 +10,64 @@ import SwiftUI
 struct AgendaSettingView: View {
     @State private var agendas: [Agenda] = []
     @EnvironmentObject var navigationManager: NavigationManager
-    @State private var keyboardHeight: CGFloat = 0
+    @StateObject var keyboardManager = KeyboardManager()
+
     @State private var buttonHeight: CGFloat = 0
     
     @State private var selectedAgenda: Agenda = .init(title: "", detail: [""])
-    @State private var isKeyboardDissmissed = true
     let autoCorrectionHeight: CGFloat = 57
-    
-    @Namespace var anchor
     @State private var isAddCellClicked = false
-    
     @State private var isFocused: Bool = false
+    @Namespace var anchor
     
     var scrollElement: [Agenda: Bool] {
-        [selectedAgenda: isKeyboardDissmissed]
+        [selectedAgenda: keyboardManager.isKeyboardDissmissed]
     }
     
-    private func updateAgenda(oldAgenda: Agenda, newAgenda: Agenda) {
-        guard let index = agendas.firstIndex(where: { $0 == oldAgenda } ) else { return }
-        agendas[index] = newAgenda
-    }
     
-    private var keyboardAvoidance: CGFloat {
-        guard isKeyboardDissmissed else { return keyboardHeight - buttonHeight - autoCorrectionHeight }
-        return 0
-    }
     
     var body: some View {
         VStack(spacing: 0) {
             ScrollView(showsIndicators: false) {
                 ScrollViewReader { scrollviewProxy in
-                    VStack(alignment: .leading, spacing: 20) {
-                        ForEach(agendas.indices, id: \.self) { index in
-                            let agenda = agendas[index]
-                            
-                            AgendaCell(viewState: .normal, agenda: agenda.title, detailAgendas: agenda.detail, isFocused: $isFocused) { agendaTitle, detailAgendas in
-                                if agendaTitle.isEmpty, detailAgendas.filter({ $0 != "" && $0 != "\u{200B}" }).isEmpty {
-                                    updateAgenda(oldAgenda: agenda, newAgenda: Agenda(title: agendaTitle, detail: detailAgendas))
-                                    agendas.remove(at: index)
-                                } else {
-                                    updateAgenda(oldAgenda: agenda, newAgenda: Agenda(title: agendaTitle, detail: detailAgendas))
+                    agendaField
+                        .onChange(of: selectedAgenda) { newValue in
+                            guard !keyboardManager.isKeyboardDissmissed else { return }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                withAnimation(.easeOut(duration: 0.5)) {
+                                    scrollviewProxy.scrollTo(selectedAgenda.id, anchor: .bottom)
                                 }
                             }
-                            .simultaneousGesture(TapGesture().onEnded {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                    selectedAgenda = agenda
+                        }
+                        .onChange(of: agendas.count) { _ in
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                withAnimation(.easeOut(duration: 0.5)) {
+                                    scrollviewProxy.scrollTo(anchor)
                                 }
-                            })
-                            
-                            HStack { Spacer() }
-                                .frame(height: 1)
-                                .background {
-                                    Color.red
-                                }
-                                .id(agenda.id)
-                        }
-                        
-                        if agendas.count < 10 {
-                            AgendaCell(viewState: .add, agenda: "", detailAgendas: [""], isFocused: $isFocused) { agenda, detailAgendas in
-                                agendas.append(Agenda(title: agenda, detail: detailAgendas))
-                            }
-                            .simultaneousGesture(TapGesture().onEnded {
-                                isAddCellClicked.toggle()
-                            })
-                        }
-                        
-                        HStack { Spacer() }
-                            .id(anchor)
-                        
-                    }
-                    .onChange(of: scrollElement) { newValue in
-                        let selectedAgenda = newValue.first!.key
-                        let isKeyboardDismissed = newValue.first!.value
-                        
-                        guard !isKeyboardDismissed else { return }
-                        withAnimation(.easeOut(duration: 0.2)) {
-                            scrollviewProxy.scrollTo(selectedAgenda.id, anchor: .bottom)
-                        }
-                    }
-                    .onChange(of: agendas.count) { _ in
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                            withAnimation(.easeOut(duration: 0.5)) {
-                                scrollviewProxy.scrollTo(anchor)
                             }
                         }
-                    }
-                    .onChange(of: isAddCellClicked) { _ in
-                        withAnimation(.easeOut(duration: 0.5)) {
-                            scrollviewProxy.scrollTo(anchor)
+                        .onChange(of: isAddCellClicked) { _ in
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                withAnimation(.easeOut(duration: 0.5)) {
+                                    scrollviewProxy.scrollTo(anchor)
+                                }
+                            }
                         }
-                    }
                 }
-            }
+            } // ScrollView
             .padding(.top, 27)
             .background {
-                Color.clear
-                    .contentShape(Rectangle())
+                touchableArea
             }
             .onTapGesture {
                 isFocused.toggle()
             }
             
-            Color.clear
-                .frame(maxHeight: keyboardAvoidance)
-
+            keyboardArea
             completeButton
                 .padding(.bottom, 42)
-        }
-
+        } // VStack
         .ignoresSafeArea(edges: .bottom)
-        .onAppear {
-            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
-                let value = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
-                let height = value.height
-                withAnimation(.linear) {
-                    self.keyboardHeight = height
-                }
-            }
-            
-            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification, object: nil, queue: .main) { notification in
-                let value = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
-                let height = value.height
-                withAnimation(.linear) {
-                    self.keyboardHeight = height
-                }
-            }
-            
-            NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidShowNotification, object: nil, queue: .main) { notification in
-                let value = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
-                let height = value.height
-                withAnimation(.linear) {
-                    isKeyboardDissmissed = false
-                }
-            }
-            
-            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { notification in
-                withAnimation(.linear(duration: 0.1)) {
-                    isKeyboardDissmissed = true
-                }
-            }
-        }
         .navigationTitle("새 회의 시작하기")
         .navigationBarBackButtonHidden()
         .toolbar {
@@ -163,6 +81,72 @@ struct AgendaSettingView: View {
             }
         }
         .padding(.horizontal, 20)
+    }
+    
+    private var touchableArea: some View {
+        Color.clear
+            .contentShape(Rectangle())
+    }
+    
+    private func updateAgenda(oldAgenda: Agenda, newAgenda: Agenda) {
+        guard let index = agendas.firstIndex(where: { $0 == oldAgenda } ) else { return }
+        agendas[index] = newAgenda
+
+    }
+    
+    private var keyboardAvoidance: CGFloat {
+        guard keyboardManager.isKeyboardDissmissed else { return keyboardManager.keyboardHeight - buttonHeight - autoCorrectionHeight }
+        return 0
+    }
+    
+    private var keyboardArea: some View {
+        Color.clear
+            .frame(maxHeight: keyboardAvoidance)
+    }
+    
+    private var agendaList: some View {
+        ForEach(agendas) { agenda in
+            
+            AgendaView(viewState: .normal, agenda: agenda.title, detailAgendas: agenda.detail, isFocused: $isFocused) { agendaTitle, detailAgendas in
+                if agendaTitle.isEmpty, detailAgendas.filter({ $0 != "" && $0 != "\u{200B}" }).isEmpty {
+                    updateAgenda(oldAgenda: agenda, newAgenda: Agenda(title: agendaTitle, detail: detailAgendas))
+                    agendas.removeAll(where: { $0.title == "" })
+                } else {
+                    updateAgenda(oldAgenda: agenda, newAgenda: Agenda(title: agendaTitle, detail: detailAgendas))
+                }
+            }
+            .simultaneousGesture(TapGesture().onEnded {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    selectedAgenda = agenda
+                }
+            })
+            
+            HStack { Spacer() }
+                .id(agenda.id)
+            }
+    }
+    
+    private var agendaAddCell: some View {
+            AgendaView(viewState: .add, agenda: "", detailAgendas: [""], isFocused: $isFocused) { agenda, detailAgendas in
+                agendas.append(Agenda(title: agenda, detail: detailAgendas))
+            }
+            .simultaneousGesture(TapGesture().onEnded {
+                isAddCellClicked.toggle()
+            })
+    }
+    
+    private var agendaField: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            agendaList
+            
+            if agendas.count < 10 {
+                agendaAddCell
+            }
+            
+            HStack { Spacer() }
+                .id(anchor)
+            
+        }
     }
     
     private var completeButton: some View {
