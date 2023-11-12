@@ -13,16 +13,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack(path: $navigationManager.screenPath) {
             Group {
-                VStack {
-                    Image(systemName: "globe")
-                        .imageScale(.large)
-                        .foregroundStyle(.tint)
-                    Text("Hello, world!")
-                    
-                    Button("뷰 이동") {
-                        navigationManager.screenPath.append(.agendaSetting)
-                    }
-                }
+                StartView()
             }
             .navigationDestination(for: AppScreen.self) { appScreen in
                 appScreen.destination
