@@ -20,17 +20,18 @@ struct PriorityCell: View {
                 Image(systemName: "circle")
                     .foregroundColor(.blue)
                     .fontWeight(.bold)
-                    .padding(.leading, 17)
+                    .padding(.leading, 16)
                 
                 Text(title)
+                    .padding(.trailing, 12)
                 
                 Spacer()
                 
                 Image(systemName: "line.3.horizontal")
-                    .padding(.trailing, 14)
+                    .padding(.trailing, 12)
             }
         }
-        .frame(height: 50)
+        .frame(height: 52)
         .frame(maxWidth: .infinity)
     }
 }
@@ -38,3 +39,5 @@ struct PriorityCell: View {
 #Preview {
     PriorityCell(title: "테스트 안건입니다.")
 }
+
+// 디자인 체크(1)

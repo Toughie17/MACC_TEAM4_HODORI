@@ -8,9 +8,28 @@
 import SwiftUI
 
 struct PrioritySettingView: View {
-    @EnvironmentObject var navigationManager: NavigationManager
+//    @EnvironmentObject var navigationManager: NavigationManager
+    @Environment(\.dismiss) private var dismiss
     //MARK: 모크데이터
-    @State var agendas: [Agenda] = [Agenda(title: "안건1", detail: []),Agenda(title: "안건2", detail: []),Agenda(title: "안건3", detail: []),Agenda(title: "안건4", detail: []),Agenda(title: "안건5", detail: []),Agenda(title: "안건6", detail: []),Agenda(title: "안건7", detail: []),Agenda(title: "안건8", detail: []),Agenda(title: "안건9", detail: []),Agenda(title: "안건10", detail: [])]
+    @State var agendas: [Agenda] = [
+        Agenda(title: "춘식이의 고구마",
+               detail: [
+                "감자",
+                "계란",
+                "닭가슴살",
+                "돈까스",
+                "라멘"
+        ], isComplete: false),
+        Agenda(title: "춘식이의 파자마", detail: [],isComplete: false),
+        Agenda(title: "제주도 감귤", detail: [],isComplete: false),
+        Agenda(title: "참서리 제육볶음", detail: [],isComplete: false),
+        Agenda(title: "커미 아메리카노", detail: [],isComplete: false),
+        Agenda(title: "메로메로 돈까스", detail: [],isComplete: false),
+        Agenda(title: "버거킹", detail: [],isComplete: false),
+        Agenda(title: "치즈냥이", detail: [],isComplete: false),
+        Agenda(title: "메인랩", detail: [],isComplete: false),
+        Agenda(title: "체육관", detail: [],isComplete: false)
+    ]
     
     @State private var draggingItem: Agenda?
     
@@ -23,8 +42,7 @@ struct PrioritySettingView: View {
                 infoText
                     .padding(.top,8)
                 cells
-                    .padding(.top)
-                
+                    .padding(.top, 16)
                     .navigationBarBackButtonHidden()
                     .navigationBarItems(leading: backButton)
                     .navigationBarTitle("우선순위 설정", displayMode: .inline)
@@ -32,7 +50,7 @@ struct PrioritySettingView: View {
                 Spacer()
                 
                 startButton
-                    .padding(.top, 38)
+//                Spacer()
             }
             .padding(.horizontal,20)
 //        }
@@ -47,39 +65,41 @@ extension PrioritySettingView {
     }
     
     private var cells: some View {
-        ForEach(agendas, id: \.self) { agenda in
-            PriorityCell(title: agenda.title)
-            
-                .draggable(agenda) {
-                    EmptyView()
-                        .frame(width: 1, height: 1)
-                        .onAppear {
-                            draggingItem = agenda
-                            impactFeedback.impactOccurred()
-                        }
-                }
-                .dropDestination(for: Agenda.self) { items, location in
-                    draggingItem = nil
-                    return true
-                } isTargeted: { status in
-                    if let draggingItem, status, draggingItem != agenda {
-                        if let sourceIndex = agendas.firstIndex(of: draggingItem),
-                           let destinationIndex = agendas.firstIndex(of: agenda) {
-                            
-                            withAnimation(.bouncy) {
-                                self.agendas.move(fromOffsets: IndexSet(integer: sourceIndex), toOffset: destinationIndex > sourceIndex ? destinationIndex + 1 : destinationIndex)
+        ScrollView {
+            ForEach(agendas, id: \.self) { agenda in
+                PriorityCell(title: agenda.title)
+//                    .padding(.bottom, 8)
+                    .draggable(agenda) {
+                        EmptyView()
+                            .frame(width: 1, height: 1)
+                            .onAppear {
+                                draggingItem = agenda
+                                impactFeedback.impactOccurred()
                             }
-                            impactFeedback.impactOccurred()
+                    }
+                    .dropDestination(for: Agenda.self) { items, location in
+                        draggingItem = nil
+                        return true
+                    } isTargeted: { status in
+                        if let draggingItem, status, draggingItem != agenda {
+                            if let sourceIndex = agendas.firstIndex(of: draggingItem),
+                               let destinationIndex = agendas.firstIndex(of: agenda) {
+                                
+                                withAnimation(.bouncy) {
+                                    self.agendas.move(fromOffsets: IndexSet(integer: sourceIndex), toOffset: destinationIndex > sourceIndex ? destinationIndex + 1 : destinationIndex)
+                                }
+                                impactFeedback.impactOccurred()
+                            }
                         }
                     }
-                }
+            }
         }
     }
     
     private var startButton: some View {
         
         NavigationLink {
-//            BindingView(cells: agendas)
+            MeetingView(agendas: self.agendas)
         } label: {
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color.blue)
@@ -93,7 +113,8 @@ extension PrioritySettingView {
     
     private var backButton: some View {
         Button {
-            navigationManager.screenPath.removeLast()
+//            navigationManager.screenPath.removeLast()
+            dismiss()
         } label: {
             Image(systemName: "chevron.left")
                 .foregroundColor(.gray)

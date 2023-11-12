@@ -18,6 +18,7 @@ enum AppScreen: Hashable, Identifiable, CaseIterable {
     case meeting
     case allAgenda
     case history
+    case testMeetingView
     
     var id: AppScreen { self }
 }
@@ -39,6 +40,9 @@ extension AppScreen {
             Text("4번")
         case.history:
             Text("5번")
+        case.testMeetingView:
+            Text("hi")
+//            TestMeetingView()
         }
     }
 }
