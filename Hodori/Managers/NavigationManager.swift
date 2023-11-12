@@ -28,7 +28,7 @@ extension AppScreen {
     var destination: some View {
         switch self {
         case .start:
-            EmptyView()
+            StartView()
         case .agendaSetting:
             AgendaSettingView()
         case .prioritySetting:
@@ -38,7 +38,7 @@ extension AppScreen {
         case.allAgenda:
             EmptyView()
         case.history:
-            EmptyView()
+            HistoryView()
         }
     }
 }
