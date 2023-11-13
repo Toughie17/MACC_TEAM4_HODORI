@@ -10,6 +10,7 @@
 		071F8DA02B016579004A6C7A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071F8D9F2B016579004A6C7A /* CoreDataManager.swift */; };
 		071F8DA32B01659A004A6C7A /* MeetingModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 071F8DA12B01659A004A6C7A /* MeetingModel.xcdatamodeld */; };
 		071F8DA52B017950004A6C7A /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071F8DA42B017950004A6C7A /* HistoryView.swift */; };
+		071F8DA72B017C56004A6C7A /* HistoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071F8DA62B017C56004A6C7A /* HistoryDetailView.swift */; };
 		0736DC1B2AD502CE002F1FE0 /* HodoriApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0736DC1A2AD502CE002F1FE0 /* HodoriApp.swift */; };
 		0736DC1D2AD502CE002F1FE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0736DC1C2AD502CE002F1FE0 /* ContentView.swift */; };
 		0736DC232AD502CF002F1FE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0736DC222AD502CF002F1FE0 /* Preview Assets.xcassets */; };
@@ -30,6 +31,7 @@
 		071F8D9F2B016579004A6C7A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		071F8DA22B01659A004A6C7A /* Meeting.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Meeting.xcdatamodel; sourceTree = "<group>"; };
 		071F8DA42B017950004A6C7A /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		071F8DA62B017C56004A6C7A /* HistoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailView.swift; sourceTree = "<group>"; };
 		0736DC172AD502CE002F1FE0 /* Hodori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hodori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0736DC1A2AD502CE002F1FE0 /* HodoriApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HodoriApp.swift; sourceTree = "<group>"; };
 		0736DC1C2AD502CE002F1FE0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				071F8DA42B017950004A6C7A /* HistoryView.swift */,
+				071F8DA62B017C56004A6C7A /* HistoryDetailView.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				071F8DA32B01659A004A6C7A /* MeetingModel.xcdatamodeld in Sources */,
 				079F1A7C2B00EEDB00A00E18 /* StartView.swift in Sources */,
 				0736DC1D2AD502CE002F1FE0 /* ContentView.swift in Sources */,
+				071F8DA72B017C56004A6C7A /* HistoryDetailView.swift in Sources */,
 				07D736622AF6AD1500C04D11 /* Meeting.swift in Sources */,
 				0736DC1B2AD502CE002F1FE0 /* HodoriApp.swift in Sources */,
 				071F8DA52B017950004A6C7A /* HistoryView.swift in Sources */,
