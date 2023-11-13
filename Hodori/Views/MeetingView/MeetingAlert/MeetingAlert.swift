@@ -36,21 +36,20 @@ extension MeetingAlert {
     
     private var triangleImage: some View {
         Image(systemName: "exclamationmark.triangle")
-            .fontWeight(.bold)
-            .font(.system(size: 32))
-            .foregroundColor(.pink)
+            .font(.system(size: 32, weight: .semibold))
+            .foregroundStyle(Color.subRed)
     }
     
     private var textBox: some View {
         VStack(spacing: 0) {
             Text("종료하시겠어요?")
-                .fontWeight(.bold)
+                .font(.pretendBold20)
                 .padding(.bottom, 8)
-            if leftAgenda == 0 {
-                Text("설정한 모든 안건을 완료했어요!")
-            } else {
-                Text("아직 안 끝낸 \(leftAgenda)개의 안건이 있어요")
-            }
+            
+            Text(leftAgenda == 0 ? "설정한 모든 안건을 완료했어요!" : "아직 안 끝낸 \(leftAgenda)개의 안건이 있어요" )
+                .font(.pretendRegular16)
+                .foregroundStyle(Color.gray4)
+            
         }
     }
     
@@ -71,6 +70,8 @@ extension MeetingAlert {
                 VStack {
                     Spacer()
                     Text("취소")
+                        .font(.pretendMedium20)
+                        .foregroundStyle(Color.gray3)
                     
                     Spacer()
                 }
@@ -87,7 +88,8 @@ extension MeetingAlert {
                 VStack {
                     Spacer()
                     Text("종료하기")
-                        .foregroundColor(.blue)
+                        .font(.pretendMedium20)
+                        .foregroundStyle(Color.primaryBlue)
                     Spacer()
                 }
             )
@@ -98,7 +100,7 @@ extension MeetingAlert {
     }
 }
 
-//#Preview {
-//    MeetingAlert(showAlert: .constant(true), leftAgenda: 0)
-//}
+#Preview {
+    MeetingAlert(showAlert: .constant(true), toMeetingEndView: .constant(false), leftAgenda: 3)
+}
 

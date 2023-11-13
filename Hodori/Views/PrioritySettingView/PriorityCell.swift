@@ -14,20 +14,23 @@ struct PriorityCell: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color(backColor))
+                .fill(Color.gray10)
             
             HStack {
                 Image(systemName: "circle")
-                    .foregroundColor(.blue)
-                    .fontWeight(.bold)
+                    .foregroundStyle(Color.primaryBlue)
+                    .font(.pretendRegular14)
+                    .fontWeight(.heavy)
                     .padding(.leading, 16)
                 
                 Text(title)
+                    .font(.pretendBold16)
                     .padding(.trailing, 12)
                 
                 Spacer()
                 
                 Image(systemName: "line.3.horizontal")
+                    .foregroundStyle(Color.gray5)
                     .padding(.trailing, 12)
             }
         }
@@ -39,5 +42,3 @@ struct PriorityCell: View {
 #Preview {
     PriorityCell(title: "테스트 안건입니다.")
 }
-
-// 디자인 체크(1)

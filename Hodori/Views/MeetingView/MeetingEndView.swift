@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct MeetingEndView: View {
-
+    
     var agendas: [Agenda]
     let completedAgendaCount: Int
-
+    
     var currentDateText: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy년 MM월 dd일"
@@ -22,21 +22,23 @@ struct MeetingEndView: View {
         ZStack {
             VStack {
                 Text("\(currentDateText) 회의")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .padding(.top, 32)
-                    .padding(.bottom, 64)
+                    .font(.system(size: 17, weight: .semibold))
+                    .padding(.top, 11)
+                    .padding(.bottom, 44)
                 
                 PieChartView(agendas: agendas)
-                    .padding(.bottom, 24)
+                    .padding(.bottom, 26)
                 
-                Text("\(agendas.count)개 중에 \(completedAgendaCount)개 안건을 완료했어요")
-                    .padding(.bottom, 60)
+                VStack {
+                    Text("\(agendas.count)개 중에 \(completedAgendaCount)개 안건을")
+                    Text("완료했어요")
+                }
+                .font(.pretendBold20)
+                .padding(.bottom, 56)
                 
                 ForEach(agendas.indices, id: \.self) { index in
-                        AllAgendaCell(agenda: agendas[index], target: false)
+                    AllAgendaCell(agenda: agendas[index], target: false)
                 }
-//                .padding(.horizontal, 20)
                 
                 Spacer()
                 
@@ -48,13 +50,12 @@ struct MeetingEndView: View {
                         .frame(height: 56)
                         .frame(maxWidth: .infinity)
                         .overlay (
-                        Text("회의 마치기")
-                            .foregroundStyle(.white)
-                            .font(.title2)
-                            .fontWeight(.bold)
+                            Text("회의 마치기")
+                                .foregroundStyle(.white)
+                                .font(.pretendBold20)
                         )
                 }
-                .padding(.bottom, 42)
+                .padding(.bottom, 21)
             }
         }
         .padding(.horizontal, 44)
@@ -64,7 +65,7 @@ struct MeetingEndView: View {
 
 #Preview {
     MeetingEndView(agendas: [
-        Agenda(title: "안건1", detail: [],isComplete: false),
+        Agenda(title: "이전 회의 안건 첫번째는 이걸로 할게요", detail: [],isComplete: false),
         Agenda(title: "안건2", detail: [],isComplete: false),
         Agenda(title: "안건3", detail: [],isComplete: false),
         Agenda(title: "안건4", detail: [],isComplete: true),

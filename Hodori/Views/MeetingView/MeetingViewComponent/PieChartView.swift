@@ -10,7 +10,7 @@ import SwiftUI
 struct PieChartView: View {
     
     let agendas: [Agenda]
-
+    
     var degreePerAgenda: Double {
         Double(360 / (agendas.count))
     }
@@ -22,10 +22,12 @@ struct PieChartView: View {
     var startPercent: CGFloat = 0
     
     var endPercent: CGFloat  {
-        CGFloat(degreePerAgenda * doneCount) - 0.01
+        if doneCount == 0 {
+            0.01
+        } else {
+            CGFloat(degreePerAgenda * doneCount) - 0.01
+        }
     }
-    
-    var backgroundColor: Color = .white
     
     var body: some View {
         GeometryReader { geometryProxy in
@@ -48,7 +50,8 @@ struct PieChartView: View {
                                 clockwise: true)
                 }
                 .rotation(.init(degrees: 270))
-                .foregroundColor(self.backgroundColor)
+                .foregroundColor(.white)
+                
                 .frame(width: geometryProxy.size.width,
                        height: geometryProxy.size.height,
                        alignment: .center)
@@ -61,9 +64,8 @@ struct PieChartView: View {
 #Preview {
     PieChartView(agendas: [
         Agenda(title: "안건1", detail: [], isComplete: false),
-        Agenda(title: "안건2", detail: [], isComplete: true),
+        Agenda(title: "안건2", detail: [], isComplete: false),
         Agenda(title: "안건3", detail: [], isComplete: false),
-        Agenda(title: "안건4", detail: [], isComplete: true),
-        Agenda(title: "안건5", detail: [], isComplete: false)
+        Agenda(title: "안건4", detail: [], isComplete: false),
     ])
 }
