@@ -29,13 +29,15 @@ struct PieChartView: View {
         }
     }
     
+    var backgroundColor: Color = .blue
+    
     var body: some View {
         GeometryReader { geometryProxy in
             ZStack(alignment: .center) {
                 Circle()
-                    .foregroundColor(.blue)
+                    .foregroundColor(.clear)
                 Circle()
-                    .stroke(Color.blue, lineWidth: 10)
+                    .stroke(Color.blue, lineWidth: 2)
                 
                 Path { path in
                     let size = geometryProxy.size
@@ -47,17 +49,17 @@ struct PieChartView: View {
                                 radius: radius,
                                 startAngle: .init(degrees: Double(self.startPercent)),
                                 endAngle: .init(degrees: Double(self.endPercent)),
-                                clockwise: true)
+                                clockwise: false)
                 }
                 .rotation(.init(degrees: 270))
-                .foregroundColor(.white)
+                .foregroundColor(backgroundColor)
                 
                 .frame(width: geometryProxy.size.width,
                        height: geometryProxy.size.height,
                        alignment: .center)
             }
         }
-        .frame(width: 45, height: 45)
+//        .frame(width: 45, height: 45)
     }
 }
 
