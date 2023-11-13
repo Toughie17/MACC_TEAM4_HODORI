@@ -10,26 +10,27 @@ import SwiftUI
 struct PrioritySettingView: View {
     
     @Environment(\.dismiss) private var dismiss
+    @Binding var agendas: [Agenda]
     //MARK: 모크데이터
-    @State var agendas: [Agenda] = [
-        Agenda(title: "춘식이의 고구마",
-               detail: [
-                "감자",
-                "계란",
-                "닭가슴살",
-                "돈까스",
-                "라멘"
-               ], isComplete: false),
-        Agenda(title: "춘식이의 파자마", detail: [],isComplete: false),
-        Agenda(title: "제주도 감귤", detail: [],isComplete: false),
-        Agenda(title: "참서리 제육볶음", detail: [],isComplete: false),
-        Agenda(title: "커미 아메리카노", detail: [],isComplete: false),
-        Agenda(title: "메로메로 돈까스", detail: [],isComplete: false),
-        Agenda(title: "버거킹", detail: [],isComplete: false),
-        Agenda(title: "치즈냥이", detail: [],isComplete: false),
-        Agenda(title: "메인랩", detail: [],isComplete: false),
-        Agenda(title: "체육관", detail: [],isComplete: false)
-    ]
+//    @State var agendas: [Agenda] = [
+//        Agenda(title: "춘식이의 고구마",
+//               detail: [
+//                "감자",
+//                "계란",
+//                "닭가슴살",
+//                "돈까스",
+//                "라멘"
+//               ], isComplete: false),
+//        Agenda(title: "춘식이의 파자마", detail: [],isComplete: false),
+//        Agenda(title: "제주도 감귤", detail: [],isComplete: false),
+//        Agenda(title: "참서리 제육볶음", detail: [],isComplete: false),
+//        Agenda(title: "커미 아메리카노", detail: [],isComplete: false),
+//        Agenda(title: "메로메로 돈까스", detail: [],isComplete: false),
+//        Agenda(title: "버거킹", detail: [],isComplete: false),
+//        Agenda(title: "치즈냥이", detail: [],isComplete: false),
+//        Agenda(title: "메인랩", detail: [],isComplete: false),
+//        Agenda(title: "체육관", detail: [],isComplete: false)
+//    ]
     
     @State private var draggingItem: Agenda?
     
@@ -123,6 +124,6 @@ extension PrioritySettingView {
 
 #Preview {
     NavigationStack {
-        PrioritySettingView()
+        PrioritySettingView(agendas: .constant([Agenda(title: "", detail: [""])]))
     }
 }
