@@ -18,11 +18,10 @@
 		079F1A792B00CB0D00A00E18 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F1A782B00CB0D00A00E18 /* String+.swift */; };
 		079F1A7C2B00EEDB00A00E18 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F1A7B2B00EEDB00A00E18 /* StartView.swift */; };
 		079F1A852B01324E00A00E18 /* MeetingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F1A842B01324E00A00E18 /* MeetingCard.swift */; };
-		07D25F562AFC151800541584 /* PrioritySettingTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D25F552AFC151800541584 /* PrioritySettingTestView.swift */; };
+		07A129172B020F1700290E05 /* AgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A129152B020F1700290E05 /* AgendaView.swift */; };
+		07A129182B020F1700290E05 /* AgendaSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A129162B020F1700290E05 /* AgendaSettingView.swift */; };
 		07D736622AF6AD1500C04D11 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736612AF6AD1500C04D11 /* Meeting.swift */; };
 		07D736642AF6AD1C00C04D11 /* Agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736632AF6AD1C00C04D11 /* Agenda.swift */; };
-		07D736742AF8DB8600C04D11 /* AgendaSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736732AF8DB8600C04D11 /* AgendaSettingView.swift */; };
-		07D7367B2AF91D3200C04D11 /* AgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D7367A2AF91D3200C04D11 /* AgendaView.swift */; };
 		863702372AFA107A004A8A34 /* PriorityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863702362AFA107A004A8A34 /* PriorityCell.swift */; };
 		863702392AFA162A004A8A34 /* PrioritySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863702382AFA162A004A8A34 /* PrioritySettingView.swift */; };
 		8637023D2AFA7001004A8A34 /* MeetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8637023C2AFA7001004A8A34 /* MeetingView.swift */; };
@@ -62,11 +61,10 @@
 		079F1A782B00CB0D00A00E18 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		079F1A7B2B00EEDB00A00E18 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		079F1A842B01324E00A00E18 /* MeetingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCard.swift; sourceTree = "<group>"; };
-		07D25F552AFC151800541584 /* PrioritySettingTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioritySettingTestView.swift; sourceTree = "<group>"; };
+		07A129152B020F1700290E05 /* AgendaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaView.swift; sourceTree = "<group>"; };
+		07A129162B020F1700290E05 /* AgendaSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaSettingView.swift; sourceTree = "<group>"; };
 		07D736612AF6AD1500C04D11 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		07D736632AF6AD1C00C04D11 /* Agenda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agenda.swift; sourceTree = "<group>"; };
-		07D736732AF8DB8600C04D11 /* AgendaSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaSettingView.swift; sourceTree = "<group>"; };
-		07D7367A2AF91D3200C04D11 /* AgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaView.swift; sourceTree = "<group>"; };
 		863702362AFA107A004A8A34 /* PriorityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityCell.swift; sourceTree = "<group>"; };
 		863702382AFA162A004A8A34 /* PrioritySettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioritySettingView.swift; sourceTree = "<group>"; };
 		8637023C2AFA7001004A8A34 /* MeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingView.swift; sourceTree = "<group>"; };
@@ -164,6 +162,16 @@
 			path = History;
 			sourceTree = "<group>";
 		};
+		07A129142B020F1700290E05 /* AgendaSetting */ = {
+			isa = PBXGroup;
+			children = (
+				07A129152B020F1700290E05 /* AgendaView.swift */,
+				07A129162B020F1700290E05 /* AgendaSettingView.swift */,
+			);
+			name = AgendaSetting;
+			path = ../../../../../AgendaSetting;
+			sourceTree = "<group>";
+		};
 		07D736602AF6AD0D00C04D11 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,13 +181,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		07D736792AF91D1900C04D11 /* AgendaSetting */ = {
-			isa = PBXGroup;
-			children = (
-				07D736732AF8DB8600C04D11 /* AgendaSettingView.swift */,
-				07D7367A2AF91D3200C04D11 /* AgendaView.swift */,
-			);
-			path = AgendaSetting;
 		863702352AFA104B004A8A34 /* PrioritySettingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,10 +283,9 @@
 		86B5DAE12AF8B1D000AD5F56 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				07A129142B020F1700290E05 /* AgendaSetting */,
 				079F1A7D2B00F53600A00E18 /* History */,
 				079F1A7A2B00EED000A00E18 /* Start */,
-				07D736792AF91D1900C04D11 /* AgendaSetting */,
-				07D25F552AFC151800541584 /* PrioritySettingTestView.swift */,
 				863702352AFA104B004A8A34 /* PrioritySettingView */,
 				8637023B2AFA6FA9004A8A34 /* MeetingView */,
 			);
@@ -389,10 +389,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07D25F562AFC151800541584 /* PrioritySettingTestView.swift in Sources */,
 				079F1A852B01324E00A00E18 /* MeetingCard.swift in Sources */,
 				0742D8C82AFF863200FBF183 /* KeyboardManager.swift in Sources */,
-				07D7367B2AF91D3200C04D11 /* AgendaView.swift in Sources */,
 				071F8DA32B01659A004A6C7A /* MeetingModel.xcdatamodeld in Sources */,
 				079F1A7C2B00EEDB00A00E18 /* StartView.swift in Sources */,
 				863702472AFA8971004A8A34 /* MeetingEndView.swift in Sources */,
@@ -401,12 +399,12 @@
 				07D736622AF6AD1500C04D11 /* Meeting.swift in Sources */,
 				8637023D2AFA7001004A8A34 /* MeetingView.swift in Sources */,
 				86855EFC2AFCB2BB0051794C /* LottieView.swift in Sources */,
+				07A129182B020F1700290E05 /* AgendaSettingView.swift in Sources */,
 				863702372AFA107A004A8A34 /* PriorityCell.swift in Sources */,
 				86855EEF2AFBB07E0051794C /* PageControl.swift in Sources */,
 				863702412AFA737B004A8A34 /* PieChartView.swift in Sources */,
 				0736DC1B2AD502CE002F1FE0 /* HodoriApp.swift in Sources */,
 				071F8DA52B017950004A6C7A /* HistoryView.swift in Sources */,
-				07D736742AF8DB8600C04D11 /* AgendaSettingView.swift in Sources */,
 				863702432AFA7534004A8A34 /* AllAgendaView.swift in Sources */,
 				863702452AFA872E004A8A34 /* AllAgendaCell.swift in Sources */,
 				07D736642AF6AD1C00C04D11 /* Agenda.swift in Sources */,
@@ -421,6 +419,7 @@
 				86855F122AFE07200051794C /* Color+.swift in Sources */,
 				863702392AFA162A004A8A34 /* PrioritySettingView.swift in Sources */,
 				86855F102AFE06F60051794C /* UIColor+.swift in Sources */,
+				07A129172B020F1700290E05 /* AgendaView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,7 +548,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hodori/Preview Content\"";
-				DEVELOPMENT_TEAM = 27567HRR46;
+				DEVELOPMENT_TEAM = VGKCD7Q8NW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hodori/Info.plist;
@@ -569,7 +568,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodoris;
+				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodori;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -588,7 +587,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hodori/Preview Content\"";
-				DEVELOPMENT_TEAM = 27567HRR46;
+				DEVELOPMENT_TEAM = VGKCD7Q8NW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hodori/Info.plist;
@@ -608,7 +607,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodoris;
+				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodori;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -642,18 +641,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCVersionGroup section */
-		071F8DA12B01659A004A6C7A /* MeetingModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				071F8DA22B01659A004A6C7A /* Meeting.xcdatamodel */,
-			);
-			currentVersion = 071F8DA22B01659A004A6C7A /* Meeting.xcdatamodel */;
-			path = MeetingModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 /* Begin XCRemoteSwiftPackageReference section */
 		86855EF82AFCB2880051794C /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -672,6 +659,19 @@
 			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		071F8DA12B01659A004A6C7A /* MeetingModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				071F8DA22B01659A004A6C7A /* Meeting.xcdatamodel */,
+			);
+			currentVersion = 071F8DA22B01659A004A6C7A /* Meeting.xcdatamodel */;
+			path = MeetingModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0736DC0F2AD502CE002F1FE0 /* Project object */;
 }
