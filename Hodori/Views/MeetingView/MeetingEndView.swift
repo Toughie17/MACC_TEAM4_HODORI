@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MeetingEndView: View {
-    
+    @EnvironmentObject var navigationManager: NavigationManager
+    @EnvironmentObject var meetingManager: MeetingManager
     var agendas: [Agenda]
     let completedAgendaCount: Int
     
@@ -27,6 +28,7 @@ struct MeetingEndView: View {
                     .padding(.bottom, 44)
                 
                 PieChartView(agendas: agendas)
+                    .frame(width: 45, height: 45)
                     .padding(.bottom, 26)
                 
                 VStack {
@@ -43,7 +45,7 @@ struct MeetingEndView: View {
                 Spacer()
                 
                 Button {
-                    
+                    navigationManager.screenPath = []
                 } label: {
                     RoundedRectangle(cornerRadius: 16)
                         .fill(.blue)
@@ -57,6 +59,10 @@ struct MeetingEndView: View {
                 }
                 .padding(.bottom, 21)
             }
+        }
+        .onAppear {
+            CoreDataManager.shared.save(meeting: Meeting(agendas: agendas, startDate: Date()))
+            meetingManager.fetchMeetings()
         }
         .padding(.horizontal, 44)
         .navigationBarBackButtonHidden()
