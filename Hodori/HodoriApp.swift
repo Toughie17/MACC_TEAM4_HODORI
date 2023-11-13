@@ -19,7 +19,7 @@ struct HodoriApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(NavigationManager())
-                .environmentObject(MeetingManger())
+                .environmentObject(MeetingManager())
                 .environment(\.managedObjectContext, coreDataManager.viewContext)
         }
     }
