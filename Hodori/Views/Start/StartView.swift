@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StartView: View {
-    @EnvironmentObject var meetingManager: MeetingManger
+    @EnvironmentObject var meetingManager: MeetingManager
     @EnvironmentObject var navigationManager: NavigationManager
     
     private var today: String {
@@ -112,6 +112,6 @@ struct StartView: View {
 
 #Preview {
     StartView()
-        .environmentObject(MeetingManger())
+        .environmentObject(MeetingManager())
         .environmentObject(NavigationManager())
 }

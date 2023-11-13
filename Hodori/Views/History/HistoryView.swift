@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HistoryView: View {
-    @EnvironmentObject var meetingManager: MeetingManger
+    @EnvironmentObject var meetingManager: MeetingManager
     @EnvironmentObject var navigationManager: NavigationManager
     
     private var meetings: [Meeting] {

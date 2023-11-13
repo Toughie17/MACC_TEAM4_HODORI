@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class MeetingManger: ObservableObject {
+final class MeetingManager: ObservableObject {
     @Published var meetingHistory: [Meeting] = []
     @Published var currentMeeting: Meeting?
     
