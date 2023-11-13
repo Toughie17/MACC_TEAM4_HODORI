@@ -8,22 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     @EnvironmentObject var navigationManager: NavigationManager
     
     var body: some View {
-        
         NavigationStack(path: $navigationManager.screenPath) {
-            
             Group {
-                VStack {
-                    Text("스타트뷰")
-                    
-                    Button(action: {navigationManager.screenPath.append(.prioritySetting)}, label: {
-                        Text("Button")
-                    })
-                    
-                }
+                StartView()
             }
             .navigationDestination(for: AppScreen.self) { appScreen in
                 appScreen.destination

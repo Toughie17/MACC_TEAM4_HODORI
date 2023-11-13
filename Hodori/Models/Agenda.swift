@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct Agenda: Hashable, Codable, Transferable {
+struct Agenda: Identifiable, Hashable, Codable, Transferable {
     var title: String
     var detail: [String]
     var isComplete: Bool = false
+    var id = UUID().uuidString
     
     static var transferRepresentation: some TransferRepresentation {
         CodableRepresentation(contentType: .content)

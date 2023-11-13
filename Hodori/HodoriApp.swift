@@ -8,13 +8,19 @@
 import SwiftUI
 
 @main
-struct HodoriApp: App {
-    @StateObject var navigationManager = NavigationManager()
-
+struct HodoriApp: App {    
+    let coreDataManager = CoreDataManager.shared
+    
+    init() {
+        UIScrollView.appearance().bounces = false
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(navigationManager)
+                .environmentObject(NavigationManager())
+                .environmentObject(MeetingManger())
+                .environment(\.managedObjectContext, coreDataManager.viewContext)
         }
     }
 }
