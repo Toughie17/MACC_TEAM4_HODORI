@@ -8,8 +8,7 @@
 import SwiftUI
 
 @main
-struct HodoriApp: App {
-    
+struct HodoriApp: App {    
     let coreDataManager = CoreDataManager.shared
     
     init() {
