@@ -18,8 +18,9 @@
 		079F1A792B00CB0D00A00E18 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F1A782B00CB0D00A00E18 /* String+.swift */; };
 		079F1A7C2B00EEDB00A00E18 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F1A7B2B00EEDB00A00E18 /* StartView.swift */; };
 		079F1A852B01324E00A00E18 /* MeetingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F1A842B01324E00A00E18 /* MeetingCard.swift */; };
-		07A129172B020F1700290E05 /* AgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A129152B020F1700290E05 /* AgendaView.swift */; };
-		07A129182B020F1700290E05 /* AgendaSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A129162B020F1700290E05 /* AgendaSettingView.swift */; };
+		07A129202B02AF2900290E05 /* AgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A1291E2B02AF2900290E05 /* AgendaView.swift */; };
+		07A129212B02AF2900290E05 /* AgendaSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A1291F2B02AF2900290E05 /* AgendaSettingView.swift */; };
+		07A1292B2B02C60100290E05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07A1292A2B02C60100290E05 /* Assets.xcassets */; };
 		07D736622AF6AD1500C04D11 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736612AF6AD1500C04D11 /* Meeting.swift */; };
 		07D736642AF6AD1C00C04D11 /* Agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736632AF6AD1C00C04D11 /* Agenda.swift */; };
 		863702372AFA107A004A8A34 /* PriorityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863702362AFA107A004A8A34 /* PriorityCell.swift */; };
@@ -61,8 +62,9 @@
 		079F1A782B00CB0D00A00E18 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		079F1A7B2B00EEDB00A00E18 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		079F1A842B01324E00A00E18 /* MeetingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCard.swift; sourceTree = "<group>"; };
-		07A129152B020F1700290E05 /* AgendaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaView.swift; sourceTree = "<group>"; };
-		07A129162B020F1700290E05 /* AgendaSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaSettingView.swift; sourceTree = "<group>"; };
+		07A1291E2B02AF2900290E05 /* AgendaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaView.swift; sourceTree = "<group>"; };
+		07A1291F2B02AF2900290E05 /* AgendaSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaSettingView.swift; sourceTree = "<group>"; };
+		07A1292A2B02C60100290E05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07D736612AF6AD1500C04D11 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		07D736632AF6AD1C00C04D11 /* Agenda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agenda.swift; sourceTree = "<group>"; };
 		863702362AFA107A004A8A34 /* PriorityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityCell.swift; sourceTree = "<group>"; };
@@ -162,14 +164,13 @@
 			path = History;
 			sourceTree = "<group>";
 		};
-		07A129142B020F1700290E05 /* AgendaSetting */ = {
+		07A1291D2B02AF2900290E05 /* AgendaSetting */ = {
 			isa = PBXGroup;
 			children = (
-				07A129152B020F1700290E05 /* AgendaView.swift */,
-				07A129162B020F1700290E05 /* AgendaSettingView.swift */,
+				07A1291E2B02AF2900290E05 /* AgendaView.swift */,
+				07A1291F2B02AF2900290E05 /* AgendaSettingView.swift */,
 			);
-			name = AgendaSetting;
-			path = ../../../../../AgendaSetting;
+			path = AgendaSetting;
 			sourceTree = "<group>";
 		};
 		07D736602AF6AD0D00C04D11 /* Models */ = {
@@ -283,7 +284,7 @@
 		86B5DAE12AF8B1D000AD5F56 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				07A129142B020F1700290E05 /* AgendaSetting */,
+				07A1291D2B02AF2900290E05 /* AgendaSetting */,
 				079F1A7D2B00F53600A00E18 /* History */,
 				079F1A7A2B00EED000A00E18 /* Start */,
 				863702352AFA104B004A8A34 /* PrioritySettingView */,
@@ -302,6 +303,7 @@
 		86B5DAE42AF8B25800AD5F56 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				07A1292A2B02C60100290E05 /* Assets.xcassets */,
 				071F8DA12B01659A004A6C7A /* MeetingModel.xcdatamodeld */,
 				86855F032AFDFC460051794C /* Pretendard */,
 				86855EFD2AFCB33E0051794C /* CheckLottie.json */,
@@ -377,6 +379,7 @@
 				86855F0A2AFDFC6B0051794C /* Pretendard-Bold.otf in Resources */,
 				86855F082AFDFC6B0051794C /* Pretendard-Regular.otf in Resources */,
 				86855F0B2AFDFC6B0051794C /* Pretendard-SemiBold.otf in Resources */,
+				07A1292B2B02C60100290E05 /* Assets.xcassets in Resources */,
 				86855EFE2AFCB33E0051794C /* CheckLottie.json in Resources */,
 				86855F092AFDFC6B0051794C /* Pretendard-Medium.otf in Resources */,
 			);
@@ -395,11 +398,12 @@
 				079F1A7C2B00EEDB00A00E18 /* StartView.swift in Sources */,
 				863702472AFA8971004A8A34 /* MeetingEndView.swift in Sources */,
 				0736DC1D2AD502CE002F1FE0 /* ContentView.swift in Sources */,
+				07A129202B02AF2900290E05 /* AgendaView.swift in Sources */,
 				071F8DA72B017C56004A6C7A /* HistoryDetailView.swift in Sources */,
+				07A129212B02AF2900290E05 /* AgendaSettingView.swift in Sources */,
 				07D736622AF6AD1500C04D11 /* Meeting.swift in Sources */,
 				8637023D2AFA7001004A8A34 /* MeetingView.swift in Sources */,
 				86855EFC2AFCB2BB0051794C /* LottieView.swift in Sources */,
-				07A129182B020F1700290E05 /* AgendaSettingView.swift in Sources */,
 				863702372AFA107A004A8A34 /* PriorityCell.swift in Sources */,
 				86855EEF2AFBB07E0051794C /* PageControl.swift in Sources */,
 				863702412AFA737B004A8A34 /* PieChartView.swift in Sources */,
@@ -419,7 +423,6 @@
 				86855F122AFE07200051794C /* Color+.swift in Sources */,
 				863702392AFA162A004A8A34 /* PrioritySettingView.swift in Sources */,
 				86855F102AFE06F60051794C /* UIColor+.swift in Sources */,
-				07A129172B020F1700290E05 /* AgendaView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +481,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -533,6 +537,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -543,7 +548,9 @@
 		0736DC272AD502CF002F1FE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Hodori/Hodori.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -567,7 +574,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodori;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -582,7 +589,9 @@
 		0736DC282AD502CF002F1FE0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Hodori/Hodori.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -606,7 +615,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodori;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
