@@ -14,11 +14,10 @@ final class NavigationManager: ObservableObject {
 enum AppScreen: Hashable, Identifiable, CaseIterable {
     case start
     case agendaSetting
-    case prioritySetting
+//    case prioritySetting
     case meeting
     case allAgenda
     case history
-    case testMeetingView
     
     var id: AppScreen { self }
 }
@@ -32,8 +31,8 @@ extension AppScreen {
             StartView()
         case .agendaSetting:
             AgendaSettingView()
-        case .prioritySetting:
-            PrioritySettingView()
+//        case .prioritySetting:
+//            PrioritySettingView()
         case.meeting:
             Text("3번")
         case.allAgenda:
