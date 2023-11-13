@@ -7,7 +7,13 @@
 
 import SwiftUI
 
-struct MeetingCard: View {
+enum CardState {
+    case last
+    case history
+}
+
+struct MeetingCard: View {   
+    let cardState: CardState
     let meeting: Meeting
     @State private var textHeight: CGFloat = 0
     
@@ -16,10 +22,32 @@ struct MeetingCard: View {
         return firstAgenda.title.isNotEmpty
     }
     
-    private var startDate: String {
+    private var fullDate: String {
+        return dateFormat(meeting.startDate, format: "yyyy년 MM월 dd일 HH:mm")
+    }
+    
+    private var year: String {
+        return dateFormat(meeting.startDate, format: "yyyy년")
+    }
+    
+    private var dayMonth: String {
+        return dateFormat(meeting.startDate, format: "M월 d일")
+    }
+    
+    private var time: String {
+        return dateFormat(meeting.startDate, format: "HH:mm")
+    }
+    
+    init(_ cardState: CardState, meeting: Meeting) {
+        self.cardState = cardState
+        self.meeting = meeting
+        
+    }
+    
+    private func dateFormat(_ date: Date, format: String) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy년 MM월 dd일 HH:mm"
-        let date = meeting.startDate
+        dateFormatter.dateFormat = format
+        let date = date
         let dateString = dateFormatter.string(from: date)
         return dateString
     }
@@ -38,8 +66,9 @@ struct MeetingCard: View {
                 PieChartView(agendas: Array(meeting.agendas))
                     .frame(width: 20, height: 20)
                 
+                
                 HStack(alignment: .bottom, spacing: 8) {
-                    Text("이전 회의")
+                    Text(cardState == .last ? "이전 회의" : dayMonth)
                         .font(.system(size: 20))
                         .bold()
                         .foregroundStyle(.black)
@@ -49,9 +78,21 @@ struct MeetingCard: View {
                                     textHeight = proxy.size.height
                                 }
                         }}
-                    Text(startDate)
+                    Text(cardState == .last ? fullDate : time)
                         .font(.system(size: 14))
                         .foregroundStyle(.gray)
+                }
+                
+                Spacer()
+                
+                if cardState == .history {
+                    NavigationLink {
+                        HistoryDetailView(meeting: meeting)
+                    } label: {
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 16))
+                            .foregroundStyle(.black)
+                    }
                 }
             }
             
@@ -64,7 +105,7 @@ struct MeetingCard: View {
                         Text(agenda.title)
                             .font(.system(size: 16))
                             .fontWeight(.medium)
-                            .foregroundStyle(agenda.isComplete ? .gray : .black)
+                            .foregroundStyle(agenda.isComplete ? .black : .gray)
                     }
                 }
             }
