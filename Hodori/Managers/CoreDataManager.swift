@@ -56,7 +56,8 @@ class CoreDataManager {
                 }
                 return nil
             }
-            return meetings
+            let sortedMeetings = meetings.sorted(by: { $0.startDate > $1.startDate })
+            return sortedMeetings
         } catch {
             return []
         }
