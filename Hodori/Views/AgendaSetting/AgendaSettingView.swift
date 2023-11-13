@@ -153,7 +153,7 @@ struct AgendaSettingView: View {
     
     private var completeButton: some View {
         NavigationLink {
-            PrioritySettingTestView(agendas: $agendas)
+            PrioritySettingView(agendas: $agendas)
         } label: {
             Text("작성 완료")
                 .font(.system(size: 16))
