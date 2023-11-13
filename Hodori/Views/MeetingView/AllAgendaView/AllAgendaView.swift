@@ -24,7 +24,9 @@ struct AllAgendaView: View {
                     .padding(.bottom, 59)
                 
                 PieChartView(agendas: agendas)
+                    .frame(width: 45, height: 45)
                     .padding(.bottom, 20)
+                
                 
                 Text("지금은 \(currentTab + 1)번째 안건 회의 중이에요")
                     .font(.pretendBold20)
