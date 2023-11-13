@@ -19,7 +19,7 @@ struct StartView: View {
     }
     
     var lastMeeting: Meeting {
-        guard let lastMeeting = meetingManager.meetingHistory.last else { return
+        guard let lastMeeting = meetingManager.meetingHistory.first else { return
             Meeting(agendas: [.init(title: "", detail: [""])], startDate: Date()) }
         return lastMeeting
     }
@@ -37,24 +37,22 @@ struct StartView: View {
                     .font(.system(size: 20))
                     .foregroundStyle(.gray)
                 Spacer()
-                Image(systemName: "clock.arrow.circlepath")
-                    .font(.system(size: 20))
-                    .onTapGesture {
-                        navigationManager.screenPath.append(.history)
-                    }
+                historyNavigationButton
             }
-            .padding(.bottom, 12)
+            .padding(.bottom, 8)
             
             header
-                .padding(.bottom, 73)
+                .padding(.bottom, isMeetingExist ? 28 : 76)
             
-            MeetingCard(meeting: lastMeeting)
+            MeetingCard(.last, meeting: lastMeeting)
             
             Spacer()
             
             meetingStartButton
+                .padding(.bottom, 42)
             
         }
+        .ignoresSafeArea(edges: .bottom)
         .padding(.horizontal, 20)
         .padding(.top, 40)
     }
@@ -63,6 +61,7 @@ struct StartView: View {
         Text(headerText)
             .font(.system(size: 32))
             .bold()
+            .lineSpacing(10)
     }
     
     private var placeholder: some View {
@@ -79,16 +78,24 @@ struct StartView: View {
             .multilineTextAlignment(.center)
     }
     
+    private var historyNavigationButton: some View {
+        Image(systemName: "clock.arrow.circlepath")
+            .font(.system(size: 20))
+            .onTapGesture {
+                navigationManager.screenPath.append(.history)
+            }
+    }
+    
     private var meetingStartButton: some View {
         Button {
             navigationManager.screenPath.append(.agendaSetting)
         } label: {
             Text("새 회의 시작하기")
-                .font(.system(size: 20))
+                .font(.system(size: 16))
                 .bold()
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, 14)
+                .padding(.vertical, 16)
                 .background {
                     RoundedRectangle(cornerRadius: 16)
                         .fill(.blue)
