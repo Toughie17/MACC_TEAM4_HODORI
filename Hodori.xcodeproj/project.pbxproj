@@ -46,6 +46,7 @@
 		86855F122AFE07200051794C /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855F112AFE07200051794C /* Color+.swift */; };
 		86B5DADE2AF8AF5A00AD5F56 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */; };
 		86B5DAE62AF8B39000AD5F56 /* MeetingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */; };
+		A53AD55A2B034D2B006B9F16 /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD5592B034D2B006B9F16 /* CustomPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		86855F112AFE07200051794C /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingManager.swift; sourceTree = "<group>"; };
+		A53AD5592B034D2B006B9F16 /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +286,7 @@
 		86B5DAE12AF8B1D000AD5F56 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A53AD5582B034CC5006B9F16 /* TimerView */,
 				07A1291D2B02AF2900290E05 /* AgendaSetting */,
 				079F1A7D2B00F53600A00E18 /* History */,
 				079F1A7A2B00EED000A00E18 /* Start */,
@@ -309,6 +312,14 @@
 				86855EFD2AFCB33E0051794C /* CheckLottie.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		A53AD5582B034CC5006B9F16 /* TimerView */ = {
+			isa = PBXGroup;
+			children = (
+				A53AD5592B034D2B006B9F16 /* CustomPicker.swift */,
+			);
+			path = TimerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,6 +409,7 @@
 				079F1A7C2B00EEDB00A00E18 /* StartView.swift in Sources */,
 				863702472AFA8971004A8A34 /* MeetingEndView.swift in Sources */,
 				0736DC1D2AD502CE002F1FE0 /* ContentView.swift in Sources */,
+				A53AD55A2B034D2B006B9F16 /* CustomPicker.swift in Sources */,
 				07A129202B02AF2900290E05 /* AgendaView.swift in Sources */,
 				071F8DA72B017C56004A6C7A /* HistoryDetailView.swift in Sources */,
 				07A129212B02AF2900290E05 /* AgendaSettingView.swift in Sources */,
