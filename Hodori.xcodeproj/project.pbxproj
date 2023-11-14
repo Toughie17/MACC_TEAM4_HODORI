@@ -49,6 +49,7 @@
 		A53AD55A2B034D2B006B9F16 /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD5592B034D2B006B9F16 /* CustomPicker.swift */; };
 		A53AD55C2B034D91006B9F16 /* TimerSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55B2B034D91006B9F16 /* TimerSettingView.swift */; };
 		A53AD55E2B034DD0006B9F16 /* TimerRunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */; };
+		A53AD5602B034E24006B9F16 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55F2B034E24006B9F16 /* SoundManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		A53AD5592B034D2B006B9F16 /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
 		A53AD55B2B034D91006B9F16 /* TimerSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettingView.swift; sourceTree = "<group>"; };
 		A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRunningView.swift; sourceTree = "<group>"; };
+		A53AD55F2B034E24006B9F16 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +274,7 @@
 				86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */,
 				0742D8C72AFF863200FBF183 /* KeyboardManager.swift */,
 				071F8D9F2B016579004A6C7A /* CoreDataManager.swift */,
+				A53AD55F2B034E24006B9F16 /* SoundManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				863702412AFA737B004A8A34 /* PieChartView.swift in Sources */,
 				0736DC1B2AD502CE002F1FE0 /* HodoriApp.swift in Sources */,
 				071F8DA52B017950004A6C7A /* HistoryView.swift in Sources */,
+				A53AD5602B034E24006B9F16 /* SoundManager.swift in Sources */,
 				863702432AFA7534004A8A34 /* AllAgendaView.swift in Sources */,
 				863702452AFA872E004A8A34 /* AllAgendaCell.swift in Sources */,
 				07D736642AF6AD1C00C04D11 /* Agenda.swift in Sources */,
