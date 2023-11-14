@@ -48,6 +48,7 @@
 		86B5DAE62AF8B39000AD5F56 /* MeetingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */; };
 		A53AD55A2B034D2B006B9F16 /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD5592B034D2B006B9F16 /* CustomPicker.swift */; };
 		A53AD55C2B034D91006B9F16 /* TimerSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55B2B034D91006B9F16 /* TimerSettingView.swift */; };
+		A53AD55E2B034DD0006B9F16 /* TimerRunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingManager.swift; sourceTree = "<group>"; };
 		A53AD5592B034D2B006B9F16 /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
 		A53AD55B2B034D91006B9F16 /* TimerSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettingView.swift; sourceTree = "<group>"; };
+		A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRunningView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +323,7 @@
 			children = (
 				A53AD5592B034D2B006B9F16 /* CustomPicker.swift */,
 				A53AD55B2B034D91006B9F16 /* TimerSettingView.swift */,
+				A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */,
 			);
 			path = TimerView;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				071F8DA02B016579004A6C7A /* CoreDataManager.swift in Sources */,
 				079F1A792B00CB0D00A00E18 /* String+.swift in Sources */,
 				86855F0E2AFDFD660051794C /* Font+.swift in Sources */,
+				A53AD55E2B034DD0006B9F16 /* TimerRunningView.swift in Sources */,
 				86855EF52AFBB3500051794C /* MeetingTabViewCell.swift in Sources */,
 				86855F022AFCB3B90051794C /* MeetingLottieView.swift in Sources */,
 				86855F122AFE07200051794C /* Color+.swift in Sources */,
