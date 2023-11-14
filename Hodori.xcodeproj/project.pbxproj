@@ -50,6 +50,7 @@
 		A53AD55C2B034D91006B9F16 /* TimerSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55B2B034D91006B9F16 /* TimerSettingView.swift */; };
 		A53AD55E2B034DD0006B9F16 /* TimerRunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */; };
 		A53AD5602B034E24006B9F16 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55F2B034E24006B9F16 /* SoundManager.swift */; };
+		A53AD5622B034E73006B9F16 /* TimerButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD5612B034E73006B9F16 /* TimerButtonStyles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,7 @@
 		A53AD55B2B034D91006B9F16 /* TimerSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettingView.swift; sourceTree = "<group>"; };
 		A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRunningView.swift; sourceTree = "<group>"; };
 		A53AD55F2B034E24006B9F16 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		A53AD5612B034E73006B9F16 /* TimerButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerButtonStyles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,6 +329,7 @@
 				A53AD5592B034D2B006B9F16 /* CustomPicker.swift */,
 				A53AD55B2B034D91006B9F16 /* TimerSettingView.swift */,
 				A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */,
+				A53AD5612B034E73006B9F16 /* TimerButtonStyles.swift */,
 			);
 			path = TimerView;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				86855F0E2AFDFD660051794C /* Font+.swift in Sources */,
 				A53AD55E2B034DD0006B9F16 /* TimerRunningView.swift in Sources */,
 				86855EF52AFBB3500051794C /* MeetingTabViewCell.swift in Sources */,
+				A53AD5622B034E73006B9F16 /* TimerButtonStyles.swift in Sources */,
 				86855F022AFCB3B90051794C /* MeetingLottieView.swift in Sources */,
 				86855F122AFE07200051794C /* Color+.swift in Sources */,
 				863702392AFA162A004A8A34 /* PrioritySettingView.swift in Sources */,

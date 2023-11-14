@@ -42,7 +42,7 @@ struct TimerSettingView: View {
                 
                 
                 // 타이머 시작 버튼
-                NavigationLink{TimerView(sec: $sec)}label: {
+                NavigationLink{TimerRunningView(sec: $sec)}label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 16)
                             .fill(.blue)
