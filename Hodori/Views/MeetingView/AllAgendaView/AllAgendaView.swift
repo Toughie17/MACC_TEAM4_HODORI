@@ -18,21 +18,21 @@ struct AllAgendaView: View {
     var body: some View {
         ZStack {
             VStack(alignment: .center, spacing: 0) {
-                Text("회의 전체 안건")
+                Text("전체 안건")
                     .font(.pretendBold20)
-                    .padding(.top, 32)
-                    .padding(.bottom, 59)
+                    .foregroundStyle(Color.gray2)
+                    .padding(.top, 21)
+                    .padding(.bottom, 44)
                 
                 PieChartView(agendas: agendas)
-                    .frame(width: 45, height: 45)
+                    .frame(width: 30, height: 30)
                     .padding(.bottom, 20)
                 
-                
-                Text("지금은 \(currentTab + 1)번째 안건 회의 중이에요")
-                    .font(.pretendBold20)
+                Text("지금은 \(currentTab + 1)번째 안건\n회의 중이에요")
+                    .multilineTextAlignment(.center)
+                    .font(.pretendBold24)
                     .padding(.bottom, 50)
-                
-                
+
                 if !agendas.isEmpty {
                     let firstIndex = agendas.startIndex
                     let lastIndex = agendas.index(before: agendas.endIndex)
@@ -77,7 +77,7 @@ struct AllAgendaView: View {
                             .foregroundStyle(Color.gray3)
                     }
                     .padding(.trailing, 19)
-                    .padding(.top, 32)
+                    .padding(.top, 21)
                     
                 }
                 Spacer()
