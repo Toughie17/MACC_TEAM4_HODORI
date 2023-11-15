@@ -37,7 +37,7 @@ struct PieChartView: View {
                 Circle()
                     .foregroundColor(.clear)
                 Circle()
-                    .stroke(Color.blue, lineWidth: 2)
+                    .stroke(Color.blue, lineWidth: 3)
                 
                 Path { path in
                     let size = geometryProxy.size

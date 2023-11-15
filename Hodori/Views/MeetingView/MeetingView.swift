@@ -49,7 +49,7 @@ struct MeetingView: View {
                         .padding(.horizontal, 20)
                 }
                 mainTabView
-//                    .padding(.top, 16)
+                    .padding(.top, 16)
                 
                 pageControl
                     .padding(.bottom, 12)
@@ -148,22 +148,24 @@ extension MeetingView {
     
     private var timerButton: some View {
         Button {
+            mediumHaptic.impactOccurred()
             withAnimation(.bouncy) {
                 showModal.toggle() // modal 여기서 뜸
             }
         } label: {
             ZStack(alignment: .center) {
                 RoundedRectangle(cornerRadius: 22)
-                    .stroke((showModal || showTimer) ? Color.gray : Color.primaryBlue, lineWidth: 1)
+                    .stroke((showModal || showTimer) ? Color.gray5 : Color.gray1, lineWidth: 2)
                     .frame(width: 70, height: 56)
                 
                 Image(systemName: "stopwatch")
                     .font(.system(size: 24, weight: .regular))
-                    .foregroundStyle((showModal || showTimer) ? Color.gray : Color.primaryBlue)
+                    .foregroundStyle((showModal || showTimer) ? Color.gray5 : Color.gray1)
                     .frame(width: 29, height: 29)
             }
-
-        }.disabled(showModal || showTimer)
+            .cornerRadius(21)
+        }
+        .disabled(showModal || showTimer)
     }
     
     private var agendCompleteButton: some View {

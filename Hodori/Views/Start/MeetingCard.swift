@@ -17,11 +17,6 @@ struct MeetingCard: View {
     let meeting: Meeting
     @State private var textHeight: CGFloat = 0
     
-    private var isMeetingExist: Bool {
-        guard let firstAgenda = meeting.agendas.first else { return false }
-        return firstAgenda.title.isNotEmpty
-    }
-    
     private var fullDate: String {
         return dateFormat(meeting.startDate, format: "yyyy년 MM월 dd일 HH:mm")
     }
@@ -53,83 +48,57 @@ struct MeetingCard: View {
     }
     
     var body: some View {
-        if isMeetingExist {
-            meetingCard
-        } else {
-            placeholder
+        VStack(alignment: .leading, spacing: 27) {
+            header
+            agendas
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(24)
+        .cardBackground(opacity: cardState == .last ? 0.1 : 0.05, radius: cardState == .last ? 20 : 40, y: 4)
     }
     
-    private var meetingCard: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            HStack(spacing: 8) {
-                PieChartView(agendas: Array(meeting.agendas))
-                    .frame(width: 20, height: 20)
-                
-                
-                HStack(alignment: .bottom, spacing: 8) {
-                    Text(cardState == .last ? "이전 회의" : dayMonth)
-                        .font(.system(size: 20))
-                        .bold()
-                        .foregroundStyle(.black)
-                        .background { GeometryReader { proxy in
-                            Color.clear
-                                .onAppear {
-                                    textHeight = proxy.size.height
-                                }
-                        }}
-                    Text(cardState == .last ? fullDate : time)
-                        .font(.system(size: 14))
-                        .foregroundStyle(.gray)
-                }
-                
-                Spacer()
-                
-                if cardState == .history {
-                    NavigationLink {
-                        HistoryDetailView(meeting: meeting)
-                    } label: {
-                        Image(systemName: "chevron.right")
-                            .font(.system(size: 16))
-                            .foregroundStyle(.black)
-                    }
-                }
+    private var header: some View {
+        HStack(spacing: 12) {
+            PieChartView(agendas: Array(meeting.agendas))
+                .frame(width: 24, height: 24)
+            
+            
+            HStack(alignment: .bottom, spacing: 8) {
+                Text(cardState == .last ? "이전 회의" : dayMonth)
+                    .font(.pretendBold20)
+                    .foregroundStyle(.black)
+                    .background { GeometryReader { proxy in
+                        Color.clear
+                            .onAppear {
+                                textHeight = proxy.size.height
+                            }
+                    }}
+                Text(cardState == .last ? fullDate : time)
+                    .font(.pretendRegular14)
+                    .foregroundStyle(Color.gray6)
             }
             
-            VStack(alignment: .leading, spacing: 12) {
-                ForEach(meeting.agendas, id: \.self) { agenda in
-                    HStack(spacing: 16) {
-                        Image(systemName: agenda.isComplete ? "checkmark" : "circle")
-                            .foregroundStyle(agenda.isComplete ? .blue : .gray)
-                        
-                        Text(agenda.title)
-                            .font(.system(size: 16))
-                            .fontWeight(.medium)
-                            .foregroundStyle(agenda.isComplete ? .black : .gray)
-                    }
+            Spacer()
+            
+            if cardState == .history {
+                NavigationLink {
+                    HistoryDetailView(meeting: meeting)
+                } label: {
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 16))
+                        .foregroundStyle(.black)
                 }
             }
         }
-        .padding(24)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background {
-            RoundedRectangle(cornerRadius: 16)
-                .fill(.gray)
-                .opacity(0.2)
-        }
     }
     
-    private var placeholder: some View {
-        Text("이전 회의 내역이 아직 없어요\n새 회의를 시작해보세요")
-            .font(.system(size: 16))
-            .foregroundStyle(.secondary)
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 36)
-            .background {
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(.gray)
-                    .opacity(0.2)
+    private var agendas: some View {
+        VStack(spacing: 2) {
+            ForEach(Array(zip(meeting.agendas.indices, meeting.agendas)), id: \.0) { index, agenda in
+                AgendaCell(state: .normal, agenda: agenda, index: index, meeting: meeting, titleFont: .pretendMedium16)
             }
-            .multilineTextAlignment(.center)
+            .padding(.leading, 4)
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
     }
 }

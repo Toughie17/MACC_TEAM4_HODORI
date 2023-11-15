@@ -113,10 +113,10 @@ struct TimerRunningView: View {
                 Image(systemName: isClicked ? "play.fill" : "pause.fill")
                     .resizable()
                     .frame(width: 14, height: 19)
-                    .font(Font.system(size: 24, weight: .ultraLight))
-                    .foregroundColor(.white)
+                    .font(.system(size: 50, weight: .regular, design: .default))
+                    .foregroundColor(.gray5)
                     .padding()
-                    .background(Circle().fill(Color.gray))
+                    .background(Circle().fill(Color.gray9))
                     .frame(width: 40, height: 40)
             }
         }
@@ -135,9 +135,9 @@ struct TimerRunningView: View {
                 Image(systemName: "xmark")
                     .resizable()
                     .frame(width: 14, height: 19)
-                    .foregroundColor(.white)
+                    .foregroundColor(.gray5)
                     .padding()
-                    .background(Circle().fill(Color.gray))
+                    .background(Circle().fill(Color.gray9))
                     .frame(width: 40, height: 40)
             }
         }
@@ -155,7 +155,7 @@ struct TimerRunningView: View {
             .onReceive(timer) { _ in
                 if timeRemaining > 0 {
                     timeRemaining -= 1
-                    if timeRemaining == 0 { // 사실 이거 왜 4인지 잘 모르겠음.
+                    if timeRemaining == 0 {
                         SoundManager.instance.playSound()
                         stopTimer()
                         feedback.impactOccurred()

@@ -23,9 +23,10 @@ struct HistoryView: View {
                     
                     MeetingCard(.history, meeting: meeting)
                 }
-                .padding(.bottom, 16)
+                .padding(.horizontal, 24)
+                .padding(.bottom, 8)
             }
-            .navigationTitle("과거 회의 기록")
+            .navigationTitle("회의 기록")
             .navigationBarBackButtonHidden()
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -38,25 +39,28 @@ struct HistoryView: View {
                 }
             }
         }
-        .padding(.horizontal, 20)
+        
         .ignoresSafeArea(edges: .bottom)
+        .background {
+            Color.gray10
+                .ignoresSafeArea()
+        }
     }
     
     @ViewBuilder
     private func yearSection(_ index: Int) -> some View {
-        if index == 0 {
-            Text(getFormattedYear(from: meetings[index].startDate))
-                .font(.system(size: 24))
-                .bold()
-                .padding(.top, 20)
-                .padding(.bottom, 16)
-        } else if getFormattedYear(from: meetings[index].startDate) != getFormattedYear(from: meetings[index-1].startDate) {
-            Text(getFormattedYear(from: meetings[index].startDate))
-                .font(.system(size: 24))
-                .bold()
-                .padding(.top, 20)
-                .padding(.bottom, 16)
+        Group {
+            if index == 0 {
+                Text(getFormattedYear(from: meetings[index].startDate))
+                    .font(.pretendBold24)
+            } else if getFormattedYear(from: meetings[index].startDate) != getFormattedYear(from: meetings[index-1].startDate) {
+                Text(getFormattedYear(from: meetings[index].startDate))
+                    .font(.pretendBold24)
+                    
+            }
         }
+        .padding(.top, 20)
+        .padding(.bottom, 16)
     }
     
     private func getFormattedYear(from date: Date) -> String {

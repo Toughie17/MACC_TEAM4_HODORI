@@ -12,3 +12,9 @@ extension String {
         !self.isEmpty
     }
 }
+
+extension Array {
+    var isNotEmpty: Bool {
+        !self.isEmpty
+    }
+}

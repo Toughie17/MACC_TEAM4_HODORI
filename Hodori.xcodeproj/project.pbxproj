@@ -11,10 +11,12 @@
 		071F8DA32B01659A004A6C7A /* MeetingModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 071F8DA12B01659A004A6C7A /* MeetingModel.xcdatamodeld */; };
 		071F8DA52B017950004A6C7A /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071F8DA42B017950004A6C7A /* HistoryView.swift */; };
 		071F8DA72B017C56004A6C7A /* HistoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071F8DA62B017C56004A6C7A /* HistoryDetailView.swift */; };
+		072BF4FF2B03FBA80028A274 /* AgendaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072BF4FE2B03FBA80028A274 /* AgendaCell.swift */; };
 		0736DC1B2AD502CE002F1FE0 /* HodoriApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0736DC1A2AD502CE002F1FE0 /* HodoriApp.swift */; };
 		0736DC1D2AD502CE002F1FE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0736DC1C2AD502CE002F1FE0 /* ContentView.swift */; };
 		0736DC232AD502CF002F1FE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0736DC222AD502CF002F1FE0 /* Preview Assets.xcassets */; };
 		0742D8C82AFF863200FBF183 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0742D8C72AFF863200FBF183 /* KeyboardManager.swift */; };
+		0769D4CE2B03CA06005E7527 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0769D4CD2B03CA06005E7527 /* View+.swift */; };
 		079F1A792B00CB0D00A00E18 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F1A782B00CB0D00A00E18 /* String+.swift */; };
 		079F1A7C2B00EEDB00A00E18 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F1A7B2B00EEDB00A00E18 /* StartView.swift */; };
 		079F1A852B01324E00A00E18 /* MeetingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F1A842B01324E00A00E18 /* MeetingCard.swift */; };
@@ -23,6 +25,7 @@
 		07A1292B2B02C60100290E05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07A1292A2B02C60100290E05 /* Assets.xcassets */; };
 		07D736622AF6AD1500C04D11 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736612AF6AD1500C04D11 /* Meeting.swift */; };
 		07D736642AF6AD1C00C04D11 /* Agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736632AF6AD1C00C04D11 /* Agenda.swift */; };
+		07D925E82B041234007BD0E5 /* CardBackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D925E72B041234007BD0E5 /* CardBackgroundModifier.swift */; };
 		863702372AFA107A004A8A34 /* PriorityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863702362AFA107A004A8A34 /* PriorityCell.swift */; };
 		863702392AFA162A004A8A34 /* PrioritySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863702382AFA162A004A8A34 /* PrioritySettingView.swift */; };
 		8637023D2AFA7001004A8A34 /* MeetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8637023C2AFA7001004A8A34 /* MeetingView.swift */; };
@@ -37,10 +40,6 @@
 		86855EFC2AFCB2BB0051794C /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855EFB2AFCB2BB0051794C /* LottieView.swift */; };
 		86855EFE2AFCB33E0051794C /* CheckLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 86855EFD2AFCB33E0051794C /* CheckLottie.json */; };
 		86855F022AFCB3B90051794C /* MeetingLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855F012AFCB3B90051794C /* MeetingLottieView.swift */; };
-		86855F082AFDFC6B0051794C /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86855F042AFDFC6A0051794C /* Pretendard-Regular.otf */; };
-		86855F092AFDFC6B0051794C /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86855F052AFDFC6B0051794C /* Pretendard-Medium.otf */; };
-		86855F0A2AFDFC6B0051794C /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86855F062AFDFC6B0051794C /* Pretendard-Bold.otf */; };
-		86855F0B2AFDFC6B0051794C /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86855F072AFDFC6B0051794C /* Pretendard-SemiBold.otf */; };
 		86855F0E2AFDFD660051794C /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855F0D2AFDFD660051794C /* Font+.swift */; };
 		86855F102AFE06F60051794C /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855F0F2AFE06F60051794C /* UIColor+.swift */; };
 		86855F122AFE07200051794C /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855F112AFE07200051794C /* Color+.swift */; };
@@ -51,7 +50,6 @@
 		A53AD55E2B034DD0006B9F16 /* TimerRunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */; };
 		A53AD5602B034E24006B9F16 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55F2B034E24006B9F16 /* SoundManager.swift */; };
 		A53AD5622B034E73006B9F16 /* TimerButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD5612B034E73006B9F16 /* TimerButtonStyles.swift */; };
-		A53AD5652B034ED9006B9F16 /* loud-alarm-clock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A53AD5642B034ED9006B9F16 /* loud-alarm-clock.mp3 */; };
 		A5A7C5022B03948A005F6281 /* tempview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A7C5012B03948A005F6281 /* tempview.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,12 +58,17 @@
 		071F8DA22B01659A004A6C7A /* Meeting.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Meeting.xcdatamodel; sourceTree = "<group>"; };
 		071F8DA42B017950004A6C7A /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		071F8DA62B017C56004A6C7A /* HistoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailView.swift; sourceTree = "<group>"; };
+		072BF4FE2B03FBA80028A274 /* AgendaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaCell.swift; sourceTree = "<group>"; };
 		0736DC172AD502CE002F1FE0 /* Hodori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hodori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0736DC1A2AD502CE002F1FE0 /* HodoriApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HodoriApp.swift; sourceTree = "<group>"; };
 		0736DC1C2AD502CE002F1FE0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0736DC202AD502CF002F1FE0 /* Hodori.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hodori.entitlements; sourceTree = "<group>"; };
 		0736DC222AD502CF002F1FE0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0742D8C72AFF863200FBF183 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
+		0769D4CD2B03CA06005E7527 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		079DEE6B2B039090009D63B3 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-Medium.otf"; path = "../../../../../../Downloads/Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		079DEE6C2B039090009D63B3 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-Regular.otf"; path = "../../../../../../Downloads/Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		079DEE6D2B039090009D63B3 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pretendard-Bold.otf"; path = "../../../../../../Downloads/Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		079F1A782B00CB0D00A00E18 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		079F1A7B2B00EEDB00A00E18 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		079F1A842B01324E00A00E18 /* MeetingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCard.swift; sourceTree = "<group>"; };
@@ -74,6 +77,7 @@
 		07A1292A2B02C60100290E05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07D736612AF6AD1500C04D11 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		07D736632AF6AD1C00C04D11 /* Agenda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agenda.swift; sourceTree = "<group>"; };
+		07D925E72B041234007BD0E5 /* CardBackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackgroundModifier.swift; sourceTree = "<group>"; };
 		863702362AFA107A004A8A34 /* PriorityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityCell.swift; sourceTree = "<group>"; };
 		863702382AFA162A004A8A34 /* PrioritySettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioritySettingView.swift; sourceTree = "<group>"; };
 		8637023C2AFA7001004A8A34 /* MeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingView.swift; sourceTree = "<group>"; };
@@ -87,10 +91,6 @@
 		86855EFB2AFCB2BB0051794C /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		86855EFD2AFCB33E0051794C /* CheckLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CheckLottie.json; sourceTree = "<group>"; };
 		86855F012AFCB3B90051794C /* MeetingLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingLottieView.swift; sourceTree = "<group>"; };
-		86855F042AFDFC6A0051794C /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
-		86855F052AFDFC6B0051794C /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
-		86855F062AFDFC6B0051794C /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
-		86855F072AFDFC6B0051794C /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		86855F0C2AFDFCB00051794C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		86855F0D2AFDFD660051794C /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		86855F0F2AFE06F60051794C /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
@@ -123,6 +123,7 @@
 			children = (
 				0736DC192AD502CE002F1FE0 /* Hodori */,
 				0736DC182AD502CE002F1FE0 /* Products */,
+				A5A7C5032B04DD86005F6281 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,7 +138,7 @@
 		0736DC192AD502CE002F1FE0 /* Hodori */ = {
 			isa = PBXGroup;
 			children = (
-				A53AD5632B034ED0006B9F16 /* Sounds */,
+				07D925E62B041220007BD0E5 /* Modifiers */,
 				86855F0C2AFDFCB00051794C /* Info.plist */,
 				07D736602AF6AD0D00C04D11 /* Models */,
 				86B5DADC2AF8AF1000AD5F56 /* Managers */,
@@ -166,6 +167,7 @@
 			children = (
 				079F1A7B2B00EEDB00A00E18 /* StartView.swift */,
 				079F1A842B01324E00A00E18 /* MeetingCard.swift */,
+				072BF4FE2B03FBA80028A274 /* AgendaCell.swift */,
 			);
 			path = Start;
 			sourceTree = "<group>";
@@ -195,6 +197,14 @@
 				07D736632AF6AD1C00C04D11 /* Agenda.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		07D925E62B041220007BD0E5 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				07D925E72B041234007BD0E5 /* CardBackgroundModifier.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 		863702352AFA104B004A8A34 /* PrioritySettingView */ = {
@@ -266,10 +276,6 @@
 		86855F032AFDFC460051794C /* Pretendard */ = {
 			isa = PBXGroup;
 			children = (
-				86855F062AFDFC6B0051794C /* Pretendard-Bold.otf */,
-				86855F072AFDFC6B0051794C /* Pretendard-SemiBold.otf */,
-				86855F052AFDFC6B0051794C /* Pretendard-Medium.otf */,
-				86855F042AFDFC6A0051794C /* Pretendard-Regular.otf */,
 			);
 			path = Pretendard;
 			sourceTree = "<group>";
@@ -293,6 +299,7 @@
 				86855F0D2AFDFD660051794C /* Font+.swift */,
 				86855F112AFE07200051794C /* Color+.swift */,
 				86855F0F2AFE06F60051794C /* UIColor+.swift */,
+				0769D4CD2B03CA06005E7527 /* View+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -320,6 +327,9 @@
 		86B5DAE42AF8B25800AD5F56 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				079DEE6D2B039090009D63B3 /* Pretendard-Bold.otf */,
+				079DEE6B2B039090009D63B3 /* Pretendard-Medium.otf */,
+				079DEE6C2B039090009D63B3 /* Pretendard-Regular.otf */,
 				07A1292A2B02C60100290E05 /* Assets.xcassets */,
 				071F8DA12B01659A004A6C7A /* MeetingModel.xcdatamodeld */,
 				86855F032AFDFC460051794C /* Pretendard */,
@@ -340,12 +350,12 @@
 			path = TimerView;
 			sourceTree = "<group>";
 		};
-		A53AD5632B034ED0006B9F16 /* Sounds */ = {
+		A5A7C5032B04DD86005F6281 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
 				A53AD5642B034ED9006B9F16 /* loud-alarm-clock.mp3 */,
 			);
-			path = Sounds;
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,13 +423,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0736DC232AD502CF002F1FE0 /* Preview Assets.xcassets in Resources */,
-				A53AD5652B034ED9006B9F16 /* loud-alarm-clock.mp3 in Resources */,
-				86855F0A2AFDFC6B0051794C /* Pretendard-Bold.otf in Resources */,
-				86855F082AFDFC6B0051794C /* Pretendard-Regular.otf in Resources */,
-				86855F0B2AFDFC6B0051794C /* Pretendard-SemiBold.otf in Resources */,
 				07A1292B2B02C60100290E05 /* Assets.xcassets in Resources */,
 				86855EFE2AFCB33E0051794C /* CheckLottie.json in Resources */,
-				86855F092AFDFC6B0051794C /* Pretendard-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +439,7 @@
 				0742D8C82AFF863200FBF183 /* KeyboardManager.swift in Sources */,
 				071F8DA32B01659A004A6C7A /* MeetingModel.xcdatamodeld in Sources */,
 				079F1A7C2B00EEDB00A00E18 /* StartView.swift in Sources */,
+				07D925E82B041234007BD0E5 /* CardBackgroundModifier.swift in Sources */,
 				863702472AFA8971004A8A34 /* MeetingEndView.swift in Sources */,
 				0736DC1D2AD502CE002F1FE0 /* ContentView.swift in Sources */,
 				A53AD55A2B034D2B006B9F16 /* CustomPicker.swift in Sources */,
@@ -443,7 +449,9 @@
 				07D736622AF6AD1500C04D11 /* Meeting.swift in Sources */,
 				A53AD55C2B034D91006B9F16 /* TimerSettingView.swift in Sources */,
 				8637023D2AFA7001004A8A34 /* MeetingView.swift in Sources */,
+				072BF4FF2B03FBA80028A274 /* AgendaCell.swift in Sources */,
 				86855EFC2AFCB2BB0051794C /* LottieView.swift in Sources */,
+				0769D4CE2B03CA06005E7527 /* View+.swift in Sources */,
 				863702372AFA107A004A8A34 /* PriorityCell.swift in Sources */,
 				86855EEF2AFBB07E0051794C /* PageControl.swift in Sources */,
 				863702412AFA737B004A8A34 /* PieChartView.swift in Sources */,

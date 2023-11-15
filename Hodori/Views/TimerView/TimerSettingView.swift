@@ -26,24 +26,26 @@ struct TimerSettingView: View {
     
     var body: some View {
         NavigationView{
-            VStack {
+            VStack (spacing: 0) {
                 HStack {
-                    Text("타이머 설정하기")
-                        .foregroundColor(.black)
-                        .padding(.top, 27)
-                        .padding(.leading, 140)
-                        .padding(.trailing, 94)
-                    
-                    
+                    Spacer()
+                    VStack {
+                        Text("타이머 설정하기")
+                            .foregroundColor(.gray2)
+                            .font(.pretendBold20)
+                            .multilineTextAlignment(.center)
+                            .padding(.top, 24)
+                    }
                     // 모달 닫기 버튼
                     Button(action: {
                         self.presentation.wrappedValue.dismiss()
                     }) {
                         Image(systemName:"xmark")
-                            .foregroundColor(.black)
-                            .imageScale(.medium)
+                            .foregroundColor(.gray3)
+                            .font(.system(size: 24, weight: .regular))
                             .padding(.top, 23)
-                            .padding(.trailing, 19)
+                            .padding(.leading, 89)
+                            .padding(.trailing, 16)
                     }
                     
                 }
@@ -73,11 +75,13 @@ struct TimerSettingView: View {
                 } label:{
                     ZStack {
                         RoundedRectangle(cornerRadius: 16)
-                            .fill((hourIndex == 0 && minIndex == 0 ) ? .gray : .blue)
-                            .frame(width: 353, height: 56)
-                        Text("시작")
+                            .fill((hourIndex == 0 && minIndex == 0 ) ? Color.gray5 : Color.gray1)
+                            .frame(width: 342, height: 54)
+                        Text("타이머 시작")
                         .foregroundColor(.white)                }
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 24)
+                    .padding(.bottom, 16)
+
                     
                 }
                 .disabled(hourIndex == 0 && minIndex == 0 )
