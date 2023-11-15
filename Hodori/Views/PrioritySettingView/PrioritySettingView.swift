@@ -88,7 +88,7 @@ extension PrioritySettingView {
         } label: {
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color.gray1)
-                .frame(height: 56)
+                .frame(height: 54)
                 .overlay {
                     Text("회의 시작")
                         .font(.pretendBold16)

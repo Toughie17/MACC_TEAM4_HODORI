@@ -33,27 +33,27 @@ struct MeetingView: View {
     var body: some View {
         
         ZStack {
+            Color.gray10.ignoresSafeArea()
+            
             VStack(spacing: 0) {
-                
-                Spacer()
-                
+
                 if showTimer {
                     tempTimerView
                         .padding(.top, 24)
                         .padding(.horizontal, 20)
                 }
+                
                 mainTabView
-                    .padding(.top, 16)
+                    .disabled(showLottie)
                 
                 pageControl
                     .padding(.bottom, 12)
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 24)
                 
                 buttonBox
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 24)
             }
-            //MARK: 디자인 요청사항 반영 패딩 조정(수정 가능성 존재)
-            //                .padding(.horizontal, 20)
+
             .zIndex(1)
             
             if showAlert {
@@ -78,8 +78,8 @@ struct MeetingView: View {
                     showSheet = true
                 } label: {
                     Image(systemName: "list.bullet")
-                        .frame(width: 28, height: 22)
-                        .foregroundStyle(Color.primaryBlue)
+                        .frame(width: 27, height: 22)
+                        .foregroundStyle(Color.gray2)
                 }
                 .disabled(showAlert)
             }
@@ -127,8 +127,9 @@ extension MeetingView {
     }
     
     private var buttonBox: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 0) {
             timerButton
+                .padding(.trailing, 16)
             agendCompleteButton
         }
     }
@@ -142,12 +143,12 @@ extension MeetingView {
         } label: {
             ZStack(alignment: .center) {
                 RoundedRectangle(cornerRadius: 22)
-                    .stroke(Color.primaryBlue, lineWidth: 1)
+                    .stroke(Color.gray1, lineWidth: 2)
                     .frame(width: 70, height: 56)
                 
                 Image(systemName: "stopwatch")
                     .font(.system(size: 24, weight: .regular))
-                    .foregroundStyle(Color.primaryBlue)
+                    .foregroundStyle(Color.gray1)
                     .frame(width: 29, height: 29)
             }
         }
@@ -168,15 +169,16 @@ extension MeetingView {
         } label: {
             ZStack(alignment: .center) {
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(showLottie || agendas[selectedTab].isComplete ? .gray : .blue)
+                    .fill(showLottie || agendas[selectedTab].isComplete ? Color.gray5 : Color.gray1)
                 HStack(spacing: 0) {
                     Spacer()
-                    Text("안건 완료")
-                        .font(.pretendBold20)
+                    Text("\(agendaTitle(forIndex: selectedTab))완료")
+                        .font(.pretendBold16)
+                    
                     if showLottie || agendas[selectedTab].isComplete {
                         Image(systemName: "checkmark")
                             .font(.system(size: 16, weight: .semibold))
-                            .padding(.leading, 10)
+                            .padding(.leading, 12)
                     }
                     Spacer()
                 }
@@ -191,6 +193,33 @@ extension MeetingView {
         agendas[selectedTab].isComplete = true
         if selectedTab < agendas.count && selectedTab != agendas.count - 1 {
             selectedTab += 1
+        }
+    }
+    
+    private func agendaTitle(forIndex index: Int) -> String {
+        switch index {
+        case 0:
+            return "첫번째 안건"
+        case 1:
+            return "두번째 안건"
+        case 2:
+            return "세번째 안건"
+        case 3:
+            return "네번째 안건"
+        case 4:
+            return "다섯번째 안건"
+        case 5:
+            return "여섯번째 안건"
+        case 6:
+            return "일곱번째 안건"
+        case 7:
+            return "여덟번째 안건"
+        case 8:
+            return "아홉번째 안건"
+        case 9:
+            return "열번째 안건"
+        default:
+            return "알 수 없는 안건"
         }
     }
 }
