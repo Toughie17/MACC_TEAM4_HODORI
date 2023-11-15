@@ -44,6 +44,7 @@ struct MeetingView: View {
                 }
                 
                 mainTabView
+                    .padding(.top, 20)
                     .disabled(showLottie)
                 
                 pageControl
@@ -160,7 +161,7 @@ extension MeetingView {
             withAnimation(.bouncy) {
                 showLottie = true
                 print(selectedTab)
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.8) {
                     showLottie = false
                     updateAgendas()
                 }

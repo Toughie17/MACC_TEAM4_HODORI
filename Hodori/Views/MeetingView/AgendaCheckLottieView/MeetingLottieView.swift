@@ -12,23 +12,19 @@ struct MeetingLottieView: View {
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 16)
-                .foregroundStyle(Color.gray10)
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(.white, lineWidth: 10)
-            
+            Rectangle()
+                .foregroundStyle(Color.white)
+
             VStack(alignment: .center, spacing: 0) {
                 Spacer()
-                LottieView(jsonName: "CheckLottie", loopMode: .loop)
-                    .frame(width: 67, height: 67)
+                LottieView(jsonName: "loadingLottie", loopMode: .loop)
+                    .frame(width: 100, height: 100)
                     .padding(.bottom, 32)
                 Text(agendaEndTitle(forIndex: index))
                     .foregroundStyle(Color.gray2)
                     .font(.pretendRegular20)
                 Spacer()
             }
-            //MARK: 디자인 요청사항 반영 패딩 조정(수정 가능성 존재)
-            //            .padding(.horizontal, 20)
         }
     }
 }

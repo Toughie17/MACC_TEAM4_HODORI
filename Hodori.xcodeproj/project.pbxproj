@@ -43,6 +43,7 @@
 		86855F0E2AFDFD660051794C /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855F0D2AFDFD660051794C /* Font+.swift */; };
 		86855F102AFE06F60051794C /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855F0F2AFE06F60051794C /* UIColor+.swift */; };
 		86855F122AFE07200051794C /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86855F112AFE07200051794C /* Color+.swift */; };
+		86A8077A2B05132300BF42DD /* loadingLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 86A807792B05132300BF42DD /* loadingLottie.json */; };
 		86B5DADE2AF8AF5A00AD5F56 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */; };
 		86B5DAE62AF8B39000AD5F56 /* MeetingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */; };
 		86F49BFD2B0494D500AC54DF /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86F49BF92B0494D500AC54DF /* Pretendard-SemiBold.otf */; };
@@ -90,6 +91,7 @@
 		86855F0D2AFDFD660051794C /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		86855F0F2AFE06F60051794C /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		86855F112AFE07200051794C /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		86A807792B05132300BF42DD /* loadingLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingLottie.json; sourceTree = "<group>"; };
 		86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingManager.swift; sourceTree = "<group>"; };
 		86F49BF92B0494D500AC54DF /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 		86B5DAE42AF8B25800AD5F56 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				86A807792B05132300BF42DD /* loadingLottie.json */,
 				86F49BFA2B0494D500AC54DF /* Pretendard-Bold.otf */,
 				86F49BFB2B0494D500AC54DF /* Pretendard-Medium.otf */,
 				86F49BFC2B0494D500AC54DF /* Pretendard-Regular.otf */,
@@ -395,6 +398,7 @@
 				0736DC232AD502CF002F1FE0 /* Preview Assets.xcassets in Resources */,
 				86F49BFE2B0494D500AC54DF /* Pretendard-Bold.otf in Resources */,
 				86F49BFD2B0494D500AC54DF /* Pretendard-SemiBold.otf in Resources */,
+				86A8077A2B05132300BF42DD /* loadingLottie.json in Resources */,
 				07A1292B2B02C60100290E05 /* Assets.xcassets in Resources */,
 				86855EFE2AFCB33E0051794C /* CheckLottie.json in Resources */,
 				86F49C002B0494D500AC54DF /* Pretendard-Regular.otf in Resources */,

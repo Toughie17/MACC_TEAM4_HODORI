@@ -38,9 +38,9 @@ struct MeetingEndView: View {
                 .font(.pretendBold20)
                 .padding(.bottom, 56)
                 
-                ForEach(agendas.indices, id: \.self) { index in
-                    AllAgendaCell(agenda: agendas[index], target: false)
-                }
+//                ForEach(agendas.indices, id: \.self) { index in
+//                    AllAgendaCell(agenda: agendas[index], target: false)
+//                }
                 
                 Spacer()
                 

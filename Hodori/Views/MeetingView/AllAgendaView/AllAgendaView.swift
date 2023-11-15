@@ -17,7 +17,7 @@ struct AllAgendaView: View {
     
     var body: some View {
         ZStack {
-            VStack {
+            VStack(alignment: .center, spacing: 0) {
                 Text("회의 전체 안건")
                     .font(.pretendBold20)
                     .padding(.top, 32)
@@ -30,17 +30,39 @@ struct AllAgendaView: View {
                 
                 Text("지금은 \(currentTab + 1)번째 안건 회의 중이에요")
                     .font(.pretendBold20)
-                    .padding(.bottom, 82)
+                    .padding(.bottom, 50)
                 
-                ForEach(agendas.indices, id: \.self) { index in
-                    if index == currentTab {
-                        AllAgendaCell(agenda: agendas[index], target: true)
-                    } else {
-                        AllAgendaCell(agenda: agendas[index], target: false)
+                
+                if !agendas.isEmpty {
+                    let firstIndex = agendas.startIndex
+                    let lastIndex = agendas.index(before: agendas.endIndex)
+                    
+                    ForEach(agendas.indices, id: \.self) { index in
+                        // 첫번째 요소
+                        if index == firstIndex {
+                            if index == currentTab {
+                                AllAgendaCell(agenda: agendas[index], target: true, needUpperLine: false, needLowerLine: true)
+                            } else {
+                                AllAgendaCell(agenda: agendas[index], target: false, needUpperLine: false, needLowerLine: true)
+                            }
+                        }
+                        
+                        // 마지막 요소
+                        else if index == lastIndex {
+                            if index == currentTab {
+                                AllAgendaCell(agenda: agendas[index], target: true, needUpperLine: true, needLowerLine: false)
+                            } else {
+                                AllAgendaCell(agenda: agendas[index], target: false, needUpperLine: true, needLowerLine: false)
+                            }
+                        } else {
+                            if index == currentTab {
+                                AllAgendaCell(agenda: agendas[index], target: true, needUpperLine: true, needLowerLine: true)
+                            } else {
+                                AllAgendaCell(agenda: agendas[index], target: false, needUpperLine: true, needLowerLine: true)
+                            }
+                        }
                     }
                 }
-                .padding(.horizontal, 20)
-                
                 Spacer()
             }
             
@@ -61,9 +83,10 @@ struct AllAgendaView: View {
                 Spacer()
             }
         }
+        .presentationDragIndicator(.visible)
     }
 }
 
 #Preview {
-    AllAgendaView(showSheet: .constant(true), agendas: .constant([Agenda(title: "춘식이의 파자마", detail: [],isComplete: false)]), currentTab: .constant(0))
+    AllAgendaView(showSheet: .constant(true), agendas: .constant([Agenda(title: "춘식이의 파자마", detail: [],isComplete: false),Agenda(title: "춘식이의 파자마", detail: [],isComplete: false),Agenda(title: "춘식이의 파자마", detail: [],isComplete: true),Agenda(title: "춘식이의 파자마", detail: [],isComplete: false)]), currentTab: .constant(1))
 }
