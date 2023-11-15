@@ -88,5 +88,5 @@ struct AllAgendaView: View {
 }
 
 #Preview {
-    AllAgendaView(showSheet: .constant(true), agendas: .constant([Agenda(title: "춘식이의 파자마", detail: [],isComplete: false),Agenda(title: "춘식이의 파자마", detail: [],isComplete: false),Agenda(title: "춘식이의 파자마", detail: [],isComplete: true),Agenda(title: "춘식이의 파자마", detail: [],isComplete: false)]), currentTab: .constant(1))
+    AllAgendaView(showSheet: .constant(true), agendas: .constant([Agenda(title: "춘식이의파자마춘식이의파자마 춘식이의파자마", detail: [],isComplete: false),Agenda(title: "춘식이의 파자마", detail: [],isComplete: false),Agenda(title: "춘식이의 파자마", detail: [],isComplete: true),Agenda(title: "춘식이의파자마", detail: [],isComplete: false)]), currentTab: .constant(1))
 }

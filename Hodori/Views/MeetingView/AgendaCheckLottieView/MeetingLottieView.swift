@@ -19,7 +19,7 @@ struct MeetingLottieView: View {
                 Spacer()
                 LottieView(jsonName: "loadingLottie", loopMode: .loop)
                     .frame(width: 100, height: 100)
-                    .padding(.bottom, 32)
+                    .padding(.bottom, 16)
                 Text(agendaEndTitle(forIndex: index))
                     .foregroundStyle(Color.gray2)
                     .font(.pretendRegular20)

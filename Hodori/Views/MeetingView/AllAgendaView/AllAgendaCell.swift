@@ -14,8 +14,11 @@ struct AllAgendaCell: View {
     let needUpperLine: Bool
     let needLowerLine: Bool
     
+//    var longerThen10: Bool {
+//        agenda.title.count >= 10
+//    }
+    
     var body: some View {
-        
         
         HStack(alignment: .center, spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
@@ -25,6 +28,7 @@ struct AllAgendaCell: View {
                         RoundedRectangle(cornerRadius: 30)
                             .frame(width: 2)
                             .frame(height: target ? 1 : 8.5)
+                        
                             .foregroundStyle(Color.gray9)
                         Spacer()
                     }
@@ -94,6 +98,6 @@ extension AllAgendaCell {
 
 #Preview {
 //    AllAgendaCell(agenda: Agenda(title: "hi", detail: [], isComplete: true), target: false)
-    AllAgendaCell(agenda: Agenda(title: "hi", detail: [], isComplete: false),target: false, needUpperLine: true, needLowerLine: true)
+    AllAgendaCell(agenda: Agenda(title: "아아아아아아아아아아아아아아아아아", detail: [], isComplete: false),target: false, needUpperLine: true, needLowerLine: true)
     
 }
