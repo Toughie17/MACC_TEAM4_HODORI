@@ -32,22 +32,19 @@ struct TimerRunningView: View {
                     playButton
                     cancelButton
                 }
-                .padding(.leading, 20)
+                .padding(.trailing, 20)
                 timerString
             }
-            .padding(.top, 12)
-            .padding(.horizontal, 20)
+            .padding(.leading, 16)
+            .padding(.vertical, 12)
             .background {
                 RoundedRectangle(cornerRadius: 22)
                     .fill(.white)
             }
-         .padding(.bottom, 24)
-
         }
         .ignoresSafeArea(edges: .top)
 //        .background {
 //            Color.gray.opacity(0.5)
-//                
 //        }
     }
     

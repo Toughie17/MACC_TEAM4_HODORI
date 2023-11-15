@@ -41,7 +41,8 @@ struct MeetingView: View {
         ZStack {
             VStack(spacing: 0) {
                 
-              
+                Spacer()
+                
                 if showTimer {
                    tempTimerView
                         .padding(.top, 24)
