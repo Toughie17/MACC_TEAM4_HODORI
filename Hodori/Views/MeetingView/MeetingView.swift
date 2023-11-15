@@ -17,7 +17,7 @@ struct MeetingView: View {
     var leftAgendaCount: Int {
         agendas.count - completedAgendaCount
     }
-    
+    @State var sec : Double = 0.0 
     @State var showAlert: Bool = false
     @State var alert: Alert?
     @State var showSheet: Bool = false
@@ -25,25 +25,30 @@ struct MeetingView: View {
     @State var showTimer: Bool = false
     @State var toMeetingEndView: Bool = false
     
+    
     @State var selectedTab: Int = 0
+    
+    @State var showModal: Bool = false
+
     
     private let heavyHaptic = UIImpactFeedbackGenerator(style: .heavy)
     private let mediumHaptic = UIImpactFeedbackGenerator(style: .medium)
+    
+    
     
     var body: some View {
         
         ZStack {
             VStack(spacing: 0) {
                 
-                Spacer()
-                
+              
                 if showTimer {
-                    tempTimerView
+                   tempTimerView
                         .padding(.top, 24)
                         .padding(.horizontal, 20)
                 }
                 mainTabView
-                    .padding(.top, 16)
+//                    .padding(.top, 16)
                 
                 pageControl
                     .padding(.bottom, 12)
@@ -89,6 +94,7 @@ struct MeetingView: View {
                     mediumHaptic.impactOccurred()
                     withAnimation(.bouncy) {
                         showAlert = true
+                        showTimer = false
                     }
                 } label: {
                     Text("회의 종료")
@@ -102,14 +108,19 @@ struct MeetingView: View {
         .navigationDestination(isPresented: $toMeetingEndView) {
             MeetingEndView(agendas: agendas, completedAgendaCount: completedAgendaCount)
         }
+        .sheet(isPresented: $showModal) { 
+            TimerSettingView( sec : $sec,showModal: $showModal, showTimer : $showTimer)
+                .presentationDetents([.medium]) // 바텀시트 하프모달로 보이게 하기
+                .presentationDragIndicator(.visible) // grabber 보이게 하기
+            
+            
+        }
     }
 }
 
 extension MeetingView {
     private var tempTimerView: some View {
-        RoundedRectangle(cornerRadius: 22)
-            .fill(.orange)
-            .frame(height: 80)
+                   TimerRunningView(sec: $sec,showTimer: $showTimer)
     }
     
     private var mainTabView: some View {
@@ -137,20 +148,21 @@ extension MeetingView {
     private var timerButton: some View {
         Button {
             withAnimation(.bouncy) {
-                showTimer.toggle()
+                showModal.toggle() // modal 여기서 뜸
             }
         } label: {
             ZStack(alignment: .center) {
                 RoundedRectangle(cornerRadius: 22)
-                    .stroke(Color.primaryBlue, lineWidth: 1)
+                    .stroke((showModal || showTimer) ? Color.gray : Color.primaryBlue, lineWidth: 1)
                     .frame(width: 70, height: 56)
                 
                 Image(systemName: "stopwatch")
                     .font(.system(size: 24, weight: .regular))
-                    .foregroundStyle(Color.primaryBlue)
+                    .foregroundStyle((showModal || showTimer) ? Color.gray : Color.primaryBlue)
                     .frame(width: 29, height: 29)
             }
-        }
+
+        }.disabled(showModal || showTimer)
     }
     
     private var agendCompleteButton: some View {

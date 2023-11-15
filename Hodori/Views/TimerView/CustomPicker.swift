@@ -39,6 +39,8 @@ struct CustomPicker: UIViewRepresentable {
                label2.text = "분"
                label2.textColor = UIColor.lightGray
                pickerView.addSubview(label2)
+    
+
 
 
         return pickerView
@@ -48,14 +50,16 @@ struct CustomPicker: UIViewRepresentable {
         let totalSeconds = Int($sec.wrappedValue)
         let hours = totalSeconds / 3600
         let minutes = (totalSeconds % 3600) / 60
-        //        let seconds = totalSeconds % 60
+ 
         
-        uiView.selectRow(hours, inComponent: 0, animated: false)
-        uiView.selectRow(minutes, inComponent: 1, animated: false)
+//        uiView.selectRow(hours, inComponent: 0, animated: false)
+//        uiView.selectRow(minutes, inComponent: 1, animated: false)
         //        uiView.selectRow(seconds, inComponent: 2, animated: false)
         // 피커뷰에서 시간과 5분 단위로 표시된 분 선택
         uiView.selectRow(hours, inComponent: 0, animated: false)
-        uiView.selectRow(minutes / 5, inComponent: 1, animated: false)
+//        uiView.selectRow(minutes / 5, inComponent: 1, animated: false)
+        uiView.selectRow(minutes, inComponent: 1, animated: false)
+   
     }
     
     func makeCoordinator() -> Coordinator {
@@ -76,7 +80,8 @@ struct CustomPicker: UIViewRepresentable {
         
         // 각 컴포넌트의 행 수 반환
         func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-            return component == 0 ? 24 : 60 / 5 // 5분 간격으로 조정
+//            return component == 0 ? 24 : 60 / 5 // 5분 간격으로 조정
+            return component == 0 ? 24 : 60  // 5분 간격으로 조정
         }
     
     
@@ -85,7 +90,8 @@ struct CustomPicker: UIViewRepresentable {
             return "\(values[row])"
         }
         else {
-            return "\(values[row * 5])" // 5분 간격으로 조정
+//            return "\(values[row * 5])" // 5분 간격으로 조정
+            return "\(values[row])" // 5분 간격으로 조정
         }
     }
 
@@ -94,20 +100,14 @@ struct CustomPicker: UIViewRepresentable {
             let minIndex = pickerView.selectedRow(inComponent: 1)
             //            let secIndex = pickerView.selectedRow(inComponent: 2)
             
-            sec.wrappedValue = Double((minIndex*60 * 5)+(hourIndex*3600))
+            sec.wrappedValue = Double((minIndex*60)+(hourIndex*3600)) // 여기 바뀜
         }
     
     }
     
 }
 
-
-
-
-
-struct CustomPicker_Previews: PreviewProvider {
-    @State static var tempSec: Double = 3600
-    static var previews: some View {
-        CustomPicker(sec: $tempSec)
-    }
+#Preview {
+    CustomPicker(sec : Binding.constant(0))
 }
+

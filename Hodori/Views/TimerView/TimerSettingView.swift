@@ -11,9 +11,18 @@ struct TimerSettingView: View {
     
     @Environment(\.presentationMode) var presentation
     @State private var countSec = 0.0
-    @State var sec : Double = 0.0
+    @Binding var sec : Double
+    @Binding var showModal : Bool
+    @Binding var showTimer : Bool
     
-    
+    var hourIndex: Int {
+        return Int(sec / 3600)
+        }
+
+    var minIndex: Int {
+        return Int(sec / 60)
+        }
+   
     
     var body: some View {
         NavigationView{
@@ -41,30 +50,44 @@ struct TimerSettingView: View {
                 CustomPicker(sec: $sec)
                 
                 
-                // 타이머 시작 버튼
-                NavigationLink{TimerRunningView(sec: $sec)}label: {
+                //                 타이머 시작 버튼
+                //                Button{TimerRunningView(sec: $sec)}label: {
+                //
+                //
+                //                    ZStack {
+                //                        RoundedRectangle(cornerRadius: 16)
+                //                            .fill(.blue)
+                //                            .frame(width: 353, height: 56)
+                //                        Text("시작")
+                //                            .foregroundColor(.white)
+                ////                            .opacity( ? 1: 0.4)
+                //
+                //                    }
+                //
+                
+                Button{
+                    withAnimation(.bouncy){
+                        showModal.toggle()
+                        showTimer.toggle()
+                    }
+                } label:{
                     ZStack {
                         RoundedRectangle(cornerRadius: 16)
-                            .fill(.blue)
+                            .fill((hourIndex == 0 && minIndex == 0 ) ? .gray : .blue)
                             .frame(width: 353, height: 56)
                         Text("시작")
-                            .foregroundColor(.white)
-//                            .opacity( ? 1: 0.4)
-                    }
-                    
-//                    .disabled(! !review.isEmpty))
+                        .foregroundColor(.white)                }
+                    .padding(.horizontal, 20)
                     
                 }
+                .disabled(hourIndex == 0 && minIndex == 0 )
                 .padding(.horizontal, 20)
                 
             }
-            
         }
     }
 }
 
-struct TimepickerTest_Previews: PreviewProvider {
-    static var previews: some View {
-        TimerSettingView()
-    }
+#Preview {
+    TimerSettingView(sec : Binding.constant(0), showModal: Binding.constant(false),showTimer: Binding.constant(false))
 }

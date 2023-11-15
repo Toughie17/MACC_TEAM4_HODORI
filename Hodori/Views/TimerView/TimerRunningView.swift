@@ -11,6 +11,7 @@ struct TimerRunningView: View {
     
     @Binding var sec : Double
     let date = Date()
+
     @State var timeRemaining : Int = 0
     @State private var blinkTimer: Timer?
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -20,107 +21,42 @@ struct TimerRunningView: View {
     @State private var isBlinking = false
     
     //    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
+    @Binding var showTimer: Bool
     
     
     
     var body: some View {
-        ZStack {
-            Color.mint
-                .ignoresSafeArea()
+        VStack {
             HStack {
                 HStack {
-                    Button {
-                        isClicked.toggle()
-                        if isClicked {
-                            stopTimer()
-                            startStopBlinking()
-                        } else {
-                            startTimer()
-                            stopBlinking()
-                        }
-                    } label: {
-                        HStack {
-                            Image(systemName: isClicked ? "play.fill" : "pause.fill")
-                                .resizable()
-                                .frame(width: 14, height: 19)
-                                .font(Font.system(size: 24, weight: .ultraLight))
-                                .foregroundColor(.white)
-                                .padding()
-                                .background(Circle().fill(Color.gray))
-                                .frame(width: 40, height: 40)
-                        }
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    .padding(.trailing, 4)
-                    
-                    
-                    Button {
-                        //                self.stopTimer()
-                        // 들어갈 거 -> 타이머 종료하기 + 시간 값 리셋?
-                        // 들어갈 거 -> 타이머 뷰 사라지기
-                    } label: {
-                        HStack {
-                            Image(systemName: "xmark")
-                                .resizable()
-                                .frame(width: 14, height: 19)
-                                .foregroundColor(.white)
-                                .padding()
-                                .background(Circle().fill(Color.gray))
-                                .frame(width: 40, height: 40)
-                        }
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    .padding(.trailing, 30)
-                    //            .onChange(of: stopTimer) { newValue in
-                    //                print("STOP")
+                    playButton
+                    cancelButton
                 }
                 .padding(.leading, 20)
-                
-                HStack {
-                    Text("남은 시간")
-                        .font(.system(size: 14))
-                    
-                    //                    .font(T##font: Font?##Font?)
-                        .padding(.trailing, 8)
-                        .padding(.top, 38)
-                        .padding(.bottom, 22)
-
-
-                    ZStack {
-                        Text(convertSecondsToTime(timeInSeconds:timeRemaining))
-                            .font(.system(size: 40))
-                            .foregroundColor(isBlinking ? .clear : .black)
-                            .onAppear {
-                                startStopBlinking() // 뷰가 나타날 때 깜빡이기 시작
-                            }
-                            .onReceive(timer) { _ in
-                                if timeRemaining > 0 {
-                                    timeRemaining -= 1
-                                    if timeRemaining == 0 {
-                                        stopTimer()
-                                        feedback.impactOccurred()
-                                        SoundManager.instance.playSound()
-                                        
-                                    }
-                                }
-                            }
-                    }
-                    .onAppear {
-                        calcRemain()
-                    }
-                }
-                .padding(.vertical, 12)
-                .padding(.trailing, 20)
+                timerString
             }
+            .padding(.top, 12)
+            .padding(.horizontal, 20)
+            .background {
+                RoundedRectangle(cornerRadius: 22)
+                    .fill(.white)
+            }
+         .padding(.bottom, 24)
+
         }
+        .ignoresSafeArea(edges: .top)
+//        .background {
+//            Color.gray.opacity(0.5)
+//                
+//        }
     }
+    
         
         func convertSecondsToTime(timeInSeconds: Int) -> String {
             let hours = timeInSeconds / 3600
             let minutes = (timeInSeconds - hours*3600) / 60
-//            let seconds = timeInSeconds % 60
-            return String(format: "%02i:%02i", hours,minutes)
+            let seconds = timeInSeconds % 60
+            return String(format: "%02i:%02i:%02i", hours,minutes,seconds)
         }
         
         
@@ -158,11 +94,99 @@ struct TimerRunningView: View {
                 self.isBlinking = false
             }
         }
+    // 타이머 초기화 함수
+        private func resetTimer() {
+            timeRemaining = 0
+            isClicked = false
+            stopBlinking()
+        }
+    
+    private var playButton: some View {
+        Button {
+            isClicked.toggle()
+            if isClicked {
+                stopTimer()
+                startStopBlinking()
+            } else {
+                startTimer()
+                stopBlinking()
+            }
+        } label: {
+            HStack {
+                Image(systemName: isClicked ? "play.fill" : "pause.fill")
+                    .resizable()
+                    .frame(width: 14, height: 19)
+                    .font(Font.system(size: 24, weight: .ultraLight))
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Circle().fill(Color.gray))
+                    .frame(width: 40, height: 40)
+            }
+        }
+        .buttonStyle(PlainButtonStyle())
+        .padding(.trailing, 4)
+
     }
     
-    struct InputTest_Previews: PreviewProvider {
-        static var previews: some View {
-            TimerRunningView(sec: Binding.constant(0))
+    private var cancelButton: some View {
+        Button {
+            self.stopTimer()
+            showTimer = false
+            
+        } label: {
+            HStack {
+                Image(systemName: "xmark")
+                    .resizable()
+                    .frame(width: 14, height: 19)
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Circle().fill(Color.gray))
+                    .frame(width: 40, height: 40)
+            }
         }
+        .buttonStyle(PlainButtonStyle())
+        .padding(.trailing, 30)
     }
+    
+    private var timerString: some View {
+        Text(convertSecondsToTime(timeInSeconds:timeRemaining))
+            .font(.system(size: 40))
+            .foregroundColor(isBlinking ? .clear : .black)
+            .onAppear {
+                startStopBlinking() // 뷰가 나타날 때 깜빡이기 시작
+            }
+            .onReceive(timer) { _ in
+                if timeRemaining > 0 {
+                    timeRemaining -= 1
+                    if timeRemaining == 0 { // 사실 이거 왜 4인지 잘 모르겠음.
+                        SoundManager.instance.playSound()
+                        stopTimer()
+                        feedback.impactOccurred()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) { //  사운드 fix되면 사운드 길이 확인해서 지속시간 상수로 입력하기.
+                            showTimer = false
+                        } //    10초 지난 후에 showTimer false.
+                        
+                        
+                    }
+                }
+                
+            }
+            .onAppear {
+                calcRemain()
+            }
+            .padding(.vertical, 12)
+            .padding(.trailing, 20)
+    }
+    
+    }
+
+
+
+#Preview {
+    TimerRunningView(sec: Binding.constant(0), showTimer : Binding.constant(false))
+}
+
+
+
+    
 

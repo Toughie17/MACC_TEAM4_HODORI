@@ -30,6 +30,6 @@ struct CustomPageControl: View {
     }
 }
 
-#Preview {
-    CustomPageControl(selectedTab: .constant(3), totalTabs: 5)
-}
+//#Preview {
+//    CustomPageControl(selectedTab: .constant(3), totalTabs: 5)
+//}

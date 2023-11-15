@@ -104,6 +104,6 @@ extension MeetingTabViewCell {
     }
 }
 
-#Preview {
-    MeetingTabViewCell(agenda: Agenda(title: "오늘의 첫번째 회의안건은 이것이 되겠네요", detail: ["세부 회의 안건", "세부 회의 안건", "세부 회의 안건", "세부 회의 안건", "세부 회의 안건은 이걸루 끝인가요 이게 마지막"], isComplete: false), index: 0, showLottie: .constant(false))
-}
+//#Preview {
+//    MeetingTabViewCell(agenda: Agenda(title: "오늘의 첫번째 회의안건은 이것이 되겠네요", detail: ["세부 회의 안건", "세부 회의 안건", "세부 회의 안건", "세부 회의 안건", "세부 회의 안건은 이걸루 끝인가요 이게 마지막"], isComplete: false), index: 0, showLottie: .constant(false))
+//}
