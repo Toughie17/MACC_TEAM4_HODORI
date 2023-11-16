@@ -163,7 +163,6 @@ extension MeetingView {
                     .foregroundStyle((showModal || showTimer) ? Color.gray5 : Color.gray1)
                     .frame(width: 29, height: 29)
             }
-            .cornerRadius(21)
         }
         .disabled(showModal || showTimer)
     }

@@ -22,6 +22,8 @@ struct TimerRunningView: View {
     let feedback = UIImpactFeedbackGenerator(style: .soft)
     @State private var isBlinking = false
         
+    private let mediumHaptic = UIImpactFeedbackGenerator(style: .medium)
+    
     var hours: Int {
             return timeRemaining / 3600
         }
@@ -47,7 +49,7 @@ struct TimerRunningView: View {
                     timerString
                 }
             }
-            .padding(.leading, 26) // 하이파이 참고해서 패딩값 수정 필요.
+            .padding(.leading, 16) // 하이파이 참고해서 패딩값 수정 필요.
             .padding(.vertical, 12)
             .background {
                 RoundedRectangle(cornerRadius: 22)
@@ -109,20 +111,23 @@ struct TimerRunningView: View {
     
     private var playButton: some View {
         Button {
-            isClicked.toggle()
-            if isClicked {
-                stopTimer()
-                startStopBlinking()
-            } else {
-                startTimer()
-                stopBlinking()
+            mediumHaptic.impactOccurred()
+            withAnimation(.bouncy){
+                isClicked.toggle()
+                if isClicked {
+                    stopTimer()
+                    startStopBlinking()
+                } else {
+                    startTimer()
+                    stopBlinking()
+                }
             }
         } label: {
             HStack {
                 Image(systemName: isClicked ? "play.fill" : "pause.fill")
                     .resizable()
                     .frame(width: 14, height: 19)
-                    .font(.system(size: 50, weight: .ultraLight, design: .default))
+                    .font(Font.largeTitle.weight(Font.Weight.thin))
                     .foregroundColor(.gray5)
                     .padding()
                     .background(Circle().fill(Color.gray9))
@@ -136,14 +141,17 @@ struct TimerRunningView: View {
     
     private var cancelButton: some View {
         Button {
-            self.stopTimer()
-            showTimer = false
-            
+            mediumHaptic.impactOccurred()
+            withAnimation(.bouncy){
+                self.stopTimer()
+                showTimer = false
+            }
         } label: {
             HStack {
                 Image(systemName: "xmark")
                     .resizable()
-                    .frame(width: 14, height: 19)
+                    .font(Font.caption.bold())
+                    .frame(width: 17, height: 17)
                     .foregroundColor(.gray5)
                     .padding()
                     .background(Circle().fill(Color.gray9))
@@ -159,41 +167,41 @@ struct TimerRunningView: View {
         ZStack {
             Rectangle()
                 .fill(.white)
-//                .fill(.red)
-                .frame(width: 180, height: 56)
+                .frame(width: 160, height: 56)
                 .alignmentGuide(.top) { $0[VerticalAlignment.center] }
 //            Text(convertSecondsToTime(timeInSeconds:timeRemaining))
             HStack(spacing: 0) {
-                VStack {
+               
                     Text(String(format: "%02d", hours))
-                        .font(.system(size: 40))
+                        .font(Font.system(size: 40).monospacedDigit())
                         .foregroundColor(isBlinking ? .clear : .black)
-                }
-                VStack {
+//                        .frame(width: 50, height: 50)
+                
                     Text(":")
-                        .font(.system(size: 40))
-                        .foregroundColor(.black)
-                    Spacer()
-                        .frame(height: 10)
-                        .offset(y: -18)
-                }
-                VStack {
+                        .font(Font.system(size: 40).monospacedDigit())
+                        .foregroundColor(isBlinking ? .clear : .black)
+                        .padding(.horizontal, 1)
+                        .padding(.bottom, 5)
+                
                     Text(String(format: "%02d", minutes))
-                        .font(.system(size: 40))
+                        .font(Font.system(size: 40).monospacedDigit())
                         .foregroundColor(isBlinking ? .clear : .black)
-                }
-                VStack {
+//                        .frame(width: 50, height: 50)
+
+                
                     Text(":")
-                        .font(.system(size: 40))
-                        .foregroundColor(.black)
-                    Spacer()
-                        .frame(height: 10)
-                }
-                VStack {
-                    Text(String(format: "%02d", seconds))
-                        .font(.system(size: 40))
+                        .font(Font.system(size: 40).monospacedDigit())
                         .foregroundColor(isBlinking ? .clear : .black)
-                }
+                        .padding(.horizontal, 1)
+                        .padding(.bottom, 5)
+
+//                    Spacer()
+              
+                    Text(String(format: "%02d", seconds))
+                        .font(Font.system(size: 40).monospacedDigit())
+                        .foregroundColor(isBlinking ? .clear : .black)
+//                        .frame(width: 50, height: 50)
+                
             }
 //                .font(.system(size: 40))
 //                .foregroundColor(isBlinking ? .clear : .black)
@@ -217,8 +225,8 @@ struct TimerRunningView: View {
                     calcRemain()
                 }
         }
-        .padding(.vertical, 12)
-            .padding(.trailing, 20)
+//        .padding(.vertical, 12)
+//            .padding(.trailing, 20)
     }
 }
 

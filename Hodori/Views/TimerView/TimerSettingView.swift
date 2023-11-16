@@ -15,6 +15,8 @@ struct TimerSettingView: View {
     @Binding var showModal : Bool
     @Binding var showTimer : Bool
     
+    private let mediumHaptic = UIImpactFeedbackGenerator(style: .medium)
+    
     var hourIndex: Int {
         return Int(sec / 3600)
     }
@@ -26,7 +28,7 @@ struct TimerSettingView: View {
     
     var body: some View {
         NavigationView{
-            VStack (spacing: 0) {
+            VStack (spacing: 10) {
                 HStack {
                     Spacer()
                     VStack {
@@ -37,7 +39,8 @@ struct TimerSettingView: View {
                 CustomPicker(sec: $sec)
                 
                 timerStartButton
-                
+                    .padding(.top, 30)
+
             }
         }
     }
@@ -52,19 +55,21 @@ struct TimerSettingView: View {
     
     private var cancelButton: some View {
         Button(action: {
+            mediumHaptic.impactOccurred()
             self.presentation.wrappedValue.dismiss()
         }) {
             Image(systemName:"xmark")
                 .foregroundColor(.gray3)
                 .font(.system(size: 24, weight: .regular))
                 .padding(.top, 23)
-                .padding(.leading, 89)
+                .padding(.leading, 79)
                 .padding(.trailing, 16)
         }
     }
     
     private var timerStartButton: some View {
         Button {
+            mediumHaptic.impactOccurred()
             withAnimation(.bouncy){
                 showModal.toggle()
                 showTimer.toggle()
