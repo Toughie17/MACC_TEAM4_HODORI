@@ -9,6 +9,13 @@ import SwiftUI
 
 struct PrioritySettingView: View {
     
+    init(agendas: Binding<[Agenda]>) {
+        let appearance = UINavigationBarAppearance()
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+        UINavigationBar.appearance().standardAppearance = appearance
+        _agendas = agendas
+    }
+    
     @Environment(\.dismiss) private var dismiss
     @Binding var agendas: [Agenda]
     @State private var draggingItem: Agenda?
@@ -51,34 +58,34 @@ extension PrioritySettingView {
     }
     
     private var cells: some View {
-            ScrollView {
-                ForEach(agendas, id: \.self) { agenda in
-                    PriorityCell(title: agenda.title)
-                        .draggable(agenda) {
-                            EmptyView()
-                                .frame(width: 1, height: 1)
-                                .onAppear {
-                                    draggingItem = agenda
-                                    impactFeedback.impactOccurred()
+        ScrollView {
+            ForEach(agendas, id: \.self) { agenda in
+                PriorityCell(title: agenda.title)
+                    .draggable(agenda) {
+                        EmptyView()
+                            .frame(width: 1, height: 1)
+                            .onAppear {
+                                draggingItem = agenda
+                                impactFeedback.impactOccurred()
+                            }
+                    }
+                    .dropDestination(for: Agenda.self) { items, location in
+                        draggingItem = nil
+                        return true
+                    } isTargeted: { status in
+                        if let draggingItem, status, draggingItem != agenda {
+                            if let sourceIndex = agendas.firstIndex(of: draggingItem),
+                               let destinationIndex = agendas.firstIndex(of: agenda) {
+                                
+                                withAnimation(.bouncy) {
+                                    self.agendas.move(fromOffsets: IndexSet(integer: sourceIndex), toOffset: destinationIndex > sourceIndex ? destinationIndex + 1 : destinationIndex)
                                 }
-                        }
-                        .dropDestination(for: Agenda.self) { items, location in
-                            draggingItem = nil
-                            return true
-                        } isTargeted: { status in
-                            if let draggingItem, status, draggingItem != agenda {
-                                if let sourceIndex = agendas.firstIndex(of: draggingItem),
-                                   let destinationIndex = agendas.firstIndex(of: agenda) {
-                                    
-                                    withAnimation(.bouncy) {
-                                        self.agendas.move(fromOffsets: IndexSet(integer: sourceIndex), toOffset: destinationIndex > sourceIndex ? destinationIndex + 1 : destinationIndex)
-                                    }
-                                    impactFeedback.impactOccurred()
-                                }
+                                impactFeedback.impactOccurred()
                             }
                         }
-                }
+                    }
             }
+        }
     }
     
     private var startButton: some View {
@@ -111,7 +118,7 @@ extension PrioritySettingView {
 
 #Preview {
     NavigationStack {
-        PrioritySettingView(agendas: .constant(
+        PrioritySettingView(agendas:.constant(
             [
                 Agenda(title: "으악", detail: []),
                 Agenda(title: "으악", detail: []),
@@ -119,10 +126,9 @@ extension PrioritySettingView {
                 Agenda(title: "으악", detail: []),
                 Agenda(title: "으악", detail: []),
                 Agenda(title: "으악", detail: [])
-                
             ]
-            
+        
         )
-        )
+                            )
     }
 }

@@ -14,10 +14,10 @@ struct MeetingLottieView: View {
         ZStack {
             Rectangle()
                 .foregroundStyle(Color.white)
-
+            
             VStack(alignment: .center, spacing: 0) {
                 Spacer()
-                LottieView(jsonName: "loadingLottie", loopMode: .loop)
+                LottieView(jsonName: "loadingLottieV3", loopMode: .loop)
                     .frame(width: 100, height: 100)
                     .padding(.bottom, 16)
                 Text(agendaEndTitle(forIndex: index))

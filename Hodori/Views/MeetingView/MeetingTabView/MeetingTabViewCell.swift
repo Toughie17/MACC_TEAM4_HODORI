@@ -51,30 +51,30 @@ extension MeetingTabViewCell {
     private var checkLine: some View {
         HStack(spacing: 0) {
             
-                RoundedRectangle(cornerRadius: 30)
-                    .frame(height: 2)
-                    .frame(width: 24)
-                    .foregroundStyle(needLeftLine ? Color.gray9 : Color.clear)
-                    .padding(.trailing, 12)
-
+            RoundedRectangle(cornerRadius: 30)
+                .frame(height: 2)
+                .frame(width: 24)
+                .foregroundStyle(needLeftLine ? Color.gray9 : Color.clear)
+                .padding(.trailing, 12)
+            
             Image(systemName: agenda.isComplete ? "checkmark.circle.fill" : "circle")
                 .fontWeight(.heavy)
                 .frame(width: 22, height: 22)
                 .foregroundStyle(Color.primaryBlue)
                 .padding(.trailing, 12)
-
-                RoundedRectangle(cornerRadius: 30)
-                    .frame(height: 2)
-                    .frame(maxWidth: .infinity)
-                    .foregroundStyle(needRightLine ? Color.gray9 : Color.clear)
+            
+            RoundedRectangle(cornerRadius: 30)
+                .frame(height: 2)
+                .frame(maxWidth: .infinity)
+                .foregroundStyle(needRightLine ? Color.gray9 : Color.clear)
         }
     }
     
     private var agendaOrderText: some View {
-            Text(agendaTitle(forIndex: index))
-                .font(.pretendMedium20)
-                .foregroundStyle(agenda.isComplete ? Color.gray6 : Color.gray5)
-                .foregroundStyle(Color.gray5)
+        Text(agendaTitle(forIndex: index))
+            .font(.pretendMedium20)
+            .foregroundStyle(agenda.isComplete ? Color.gray6 : Color.gray5)
+            .foregroundStyle(Color.gray5)
     }
     
     private var currentAgendaTitle: some View {
@@ -136,9 +136,6 @@ extension MeetingTabViewCell {
 #Preview {
     ZStack {
         Color.black.ignoresSafeArea()
-//        MeetingTabViewCell(agenda: Agenda(title: "토끼는 설치류인가 아님 만약 안건이 두줄", detail: ["세부 회의 안건", "세부 회의 안건", "세부 회의 안건", "세부 회의 안건", "세부 회의 안건은 이걸루 끝인가요 이게 마지막"], isComplete: false), index: 0, showLottie: .constant(false), needLeftLine: true, needRightLine: true)
-        
-        MeetingTabViewCell(agenda: Agenda(title: "토끼는 설치류인가 아님 만약 안건이 두줄", detail: [], isComplete: false), index: 0, showLottie: .constant(false), needLeftLine: true, needRightLine: true)
+        MeetingTabViewCell(agenda: Agenda(title: "토끼는 설치류인가 아님 만약 안건이 두줄", detail: ["하이", "헤이", "호"], isComplete: false), index: 0, showLottie: .constant(false), needLeftLine: true, needRightLine: true)
     }
-
 }

@@ -22,11 +22,7 @@ struct PieChartView: View {
     var startPercent: CGFloat = 0
     
     var endPercent: CGFloat  {
-        if doneCount == 0 {
-            0.01
-        } else {
-            CGFloat(degreePerAgenda * doneCount) - 0.01
-        }
+        doneCount == 0 ? 0.01 : (CGFloat(degreePerAgenda * doneCount) - 0.01)
     }
     
     var backgroundColor: Color = .blue
@@ -35,7 +31,7 @@ struct PieChartView: View {
         GeometryReader { geometryProxy in
             ZStack(alignment: .center) {
                 Circle()
-                    .foregroundColor(.clear)
+                    .foregroundColor(.white)
                 Circle()
                     .stroke(Color.blue, lineWidth: 3)
                 
@@ -59,13 +55,12 @@ struct PieChartView: View {
                        alignment: .center)
             }
         }
-//        .frame(width: 45, height: 45)
     }
 }
 
 #Preview {
     PieChartView(agendas: [
-        Agenda(title: "안건1", detail: [], isComplete: false),
+        Agenda(title: "안건1", detail: [], isComplete: true),
         Agenda(title: "안건2", detail: [], isComplete: false),
         Agenda(title: "안건3", detail: [], isComplete: false),
         Agenda(title: "안건4", detail: [], isComplete: false),

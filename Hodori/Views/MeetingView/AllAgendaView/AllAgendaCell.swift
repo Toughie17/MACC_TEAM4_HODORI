@@ -14,10 +14,6 @@ struct AllAgendaCell: View {
     let needUpperLine: Bool
     let needLowerLine: Bool
     
-//    var longerThen10: Bool {
-//        agenda.title.count >= 10
-//    }
-    
     var body: some View {
         
         HStack(alignment: .center, spacing: 0) {
@@ -35,7 +31,6 @@ struct AllAgendaCell: View {
                     .padding(.leading, target ? 27 : 7)
                     .padding(.bottom, target ? 4 : 0)
                 }
-
                 
                 HStack(alignment: .center, spacing: 0) {
                     Image(systemName: agenda.isComplete ? "checkmark.circle.fill" : "circle.fill")
@@ -45,11 +40,13 @@ struct AllAgendaCell: View {
                     Text(agenda.title)
                         .foregroundStyle(agenda.isComplete ? Color.gray5 : Color.gray1)
                         .font(.pretendMedium16)
+                        .lineLimit(1)
+                    
                     Spacer()
                 }
                 .padding(.vertical, target ? 8 : 0)
                 .padding(.leading, target ? 20 : 0)
-//                .padding(.trailing, target ? 20 : 0)
+                .padding(.trailing, target ? 20 : 0)
                 .background(
                     RoundedRectangle(cornerRadius: 12)
                         .fill(target ? Color.blue4.opacity(0.3) : Color.clear)
@@ -62,7 +59,7 @@ struct AllAgendaCell: View {
                             .frame(width: 2)
                             .frame(height: target ? 1 : 8.5)
                             .foregroundStyle(Color.gray9)
-
+                        
                         Spacer()
                     }
                     .padding(.leading, target ? 27 : 7)
@@ -72,6 +69,7 @@ struct AllAgendaCell: View {
         }
         .padding(.horizontal, target ? 0 : 20)
         .padding(.horizontal, 24)
+        .background(Color.white)
     }
 }
 
@@ -96,7 +94,5 @@ extension AllAgendaCell {
 }
 
 #Preview {
-//    AllAgendaCell(agenda: Agenda(title: "hi", detail: [], isComplete: true), target: false)
-    AllAgendaCell(agenda: Agenda(title: "아아아아아아아아아아아아아아아아아", detail: [], isComplete: false),target: false, needUpperLine: true, needLowerLine: true)
-    
+    AllAgendaCell(agenda: Agenda(title: "아아아아아아아아아아아아아아아아아아아", detail: [], isComplete: false),target: false, needUpperLine: true, needLowerLine: true)
 }

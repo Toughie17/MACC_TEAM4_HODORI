@@ -10,13 +10,13 @@ import SwiftUI
 struct AllAgendaView: View {
     
     @Binding var showSheet: Bool
-    
     @Binding var agendas: [Agenda]
-    
     @Binding var currentTab: Int
     
     var body: some View {
         ZStack {
+            Color.white.ignoresSafeArea()
+            
             VStack(alignment: .center, spacing: 0) {
                 Text("전체 안건")
                     .font(.pretendBold20)
@@ -31,14 +31,14 @@ struct AllAgendaView: View {
                 Text("지금은 \(currentTab + 1)번째 안건\n회의 중이에요")
                     .multilineTextAlignment(.center)
                     .font(.pretendBold24)
+                    .foregroundStyle(Color.black)
                     .padding(.bottom, 50)
-
-                if !agendas.isEmpty {
+                
+                if agendas.isNotEmpty {
                     let firstIndex = agendas.startIndex
                     let lastIndex = agendas.index(before: agendas.endIndex)
                     
                     ForEach(agendas.indices, id: \.self) { index in
-                        // 첫번째 요소
                         if index == firstIndex {
                             if index == currentTab {
                                 AllAgendaCell(agenda: agendas[index], target: true, needUpperLine: false, needLowerLine: true)
@@ -47,7 +47,6 @@ struct AllAgendaView: View {
                             }
                         }
                         
-                        // 마지막 요소
                         else if index == lastIndex {
                             if index == currentTab {
                                 AllAgendaCell(agenda: agendas[index], target: true, needUpperLine: true, needLowerLine: false)
@@ -78,7 +77,6 @@ struct AllAgendaView: View {
                     }
                     .padding(.trailing, 19)
                     .padding(.top, 21)
-                    
                 }
                 Spacer()
             }

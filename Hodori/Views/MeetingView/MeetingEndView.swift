@@ -23,9 +23,12 @@ struct MeetingEndView: View {
     
     var body: some View {
         ZStack {
+            Color.white.ignoresSafeArea()
+            
             VStack(alignment: .center, spacing: 0) {
                 Text("\(currentDateText) 회의")
                     .font(.system(size: 17, weight: .semibold))
+                    .foregroundStyle(Color.black)
                     .padding(.top, 11)
                     .padding(.bottom, 55)
                 
@@ -35,28 +38,24 @@ struct MeetingEndView: View {
                 
                 Text(agendas.count == completedAgendaCount ? "안건을 모두 완료했어요" : "안건 \(completedAgendaCount)개를 완료했어요")
                     .font(.pretendBold24)
+                    .foregroundStyle(Color.black)
                     .padding(.bottom, 50)
-
-                if !agendas.isEmpty {
+                
+                if agendas.isNotEmpty {
                     let firstIndex = agendas.startIndex
                     let lastIndex = agendas.index(before: agendas.endIndex)
                     
                     ForEach(agendas.indices, id: \.self) { index in
-                        // 첫번째 요소
-                        if index == firstIndex {
-                            
+                        if agendas.count == 1 {
+                            AllAgendaCell(agenda: agendas[index], target: false, needUpperLine: false, needLowerLine: false)
+                        }
+                        else if index == firstIndex {
                             AllAgendaCell(agenda: agendas[index], target: false, needUpperLine: false, needLowerLine: true)
                         }
-                        
-                        // 마지막 요소
                         else if index == lastIndex {
-                            
                             AllAgendaCell(agenda: agendas[index], target: false, needUpperLine: true, needLowerLine: false)
-
                         } else {
-                            
                             AllAgendaCell(agenda: agendas[index], target: false, needUpperLine: true, needLowerLine: true)
-
                         }
                     }
                 }

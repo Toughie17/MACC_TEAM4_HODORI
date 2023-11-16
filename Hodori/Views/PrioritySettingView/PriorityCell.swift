@@ -9,8 +9,6 @@ import SwiftUI
 
 struct PriorityCell: View {
     let title: String
-    // MARK: 아래 컬러 리터럴 지우면 프리뷰가 깨지는데 대체 왜일까요..? 쓰는 곳이 없는데.. 일단 남겨둘게요 ㅜ
-    let backColor = #colorLiteral(red: 0.9436392188, green: 0.9436392188, blue: 0.9436392188, alpha: 1)
     
     var body: some View {
         ZStack {
@@ -29,6 +27,7 @@ struct PriorityCell: View {
                         .padding(.trailing, 12)
                     
                     Text(title)
+                        .foregroundStyle(Color.black)
                         .font(.pretendBold16)
                         .padding(.top, 13)
                         .padding(.bottom, 12)

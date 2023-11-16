@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MeetingView: View {
-    
+
     @State var agendas: [Agenda]
     
     var completedAgendaCount: Int {
@@ -36,7 +36,7 @@ struct MeetingView: View {
             Color.gray10.ignoresSafeArea()
             
             VStack(spacing: 0) {
-
+                
                 if showTimer {
                     tempTimerView
                         .padding(.top, 24)
@@ -54,7 +54,6 @@ struct MeetingView: View {
                 buttonBox
                     .padding(.horizontal, 24)
             }
-
             .zIndex(1)
             
             if showAlert {
@@ -82,8 +81,9 @@ struct MeetingView: View {
                         .frame(width: 27, height: 22)
                         .foregroundStyle(Color.gray2)
                 }
-                .disabled(showAlert)
+                .disabled(showAlert || showLottie)
             }
+            
             ToolbarItem(placement: .topBarTrailing) {
                 
                 Button {
@@ -96,8 +96,7 @@ struct MeetingView: View {
                         .font(.system(size: 17, weight: .regular))
                         .foregroundStyle(Color.gray2)
                 }
-                .disabled(showAlert)
-                
+                .disabled(showAlert || showLottie)
             }
         }
         .navigationDestination(isPresented: $toMeetingEndView) {
@@ -114,27 +113,24 @@ extension MeetingView {
     }
     
     private var mainTabView: some View {
-//        if agendas.isNotEmpty {
-            let firstIndex = agendas.startIndex
-            let lastIndex = agendas.index(before: agendas.endIndex)
-            
+        let firstIndex = agendas.startIndex
+        let lastIndex = agendas.index(before: agendas.endIndex)
+        
         return TabView(selection: $selectedTab) {
-                ForEach(agendas.indices, id: \.self) { index in
-                    
-                    if index == firstIndex {
-                        MeetingTabViewCell(agenda: agendas[index], index: selectedTab, showLottie: $showLottie, needLeftLine: false, needRightLine: true)
-                    } else if index == lastIndex {
-                        MeetingTabViewCell(agenda: agendas[index], index: selectedTab, showLottie: $showLottie, needLeftLine: true, needRightLine: false)
-                    } else {
-                        MeetingTabViewCell(agenda: agendas[index], index: selectedTab, showLottie: $showLottie, needLeftLine: true, needRightLine: true)
-                    }
+            ForEach(agendas.indices, id: \.self) { index in
+                
+                if index == firstIndex {
+                    MeetingTabViewCell(agenda: agendas[index], index: selectedTab, showLottie: $showLottie, needLeftLine: false, needRightLine: true)
+                } else if index == lastIndex {
+                    MeetingTabViewCell(agenda: agendas[index], index: selectedTab, showLottie: $showLottie, needLeftLine: true, needRightLine: false)
+                } else {
+                    MeetingTabViewCell(agenda: agendas[index], index: selectedTab, showLottie: $showLottie, needLeftLine: true, needRightLine: true)
                 }
+            }
             
         }
-            .frame(maxHeight: .infinity)
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-//        }
-        
+        .frame(maxHeight: .infinity)
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
     }
     
     private var pageControl: some View {
@@ -148,7 +144,6 @@ extension MeetingView {
             agendCompleteButton
         }
     }
-    
     
     private var timerButton: some View {
         Button {
@@ -175,12 +170,11 @@ extension MeetingView {
             withAnimation(.bouncy) {
                 showLottie = true
                 print(selectedTab)
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.8) {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.2) {
                     showLottie = false
                     updateAgendas()
                 }
             }
-            
         } label: {
             ZStack(alignment: .center) {
                 RoundedRectangle(cornerRadius: 16)
@@ -205,9 +199,11 @@ extension MeetingView {
     }
     
     private func updateAgendas() {
-        agendas[selectedTab].isComplete = true
-        if selectedTab < agendas.count && selectedTab != agendas.count - 1 {
-            selectedTab += 1
+        withAnimation(.default) {
+            agendas[selectedTab].isComplete = true
+            if selectedTab < agendas.count && selectedTab != agendas.count - 1 {
+                selectedTab += 1
+            }
         }
     }
     
