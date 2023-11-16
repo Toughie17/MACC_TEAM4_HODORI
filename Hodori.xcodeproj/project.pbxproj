@@ -50,6 +50,7 @@
 		A53AD55E2B034DD0006B9F16 /* TimerRunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */; };
 		A53AD5602B034E24006B9F16 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55F2B034E24006B9F16 /* SoundManager.swift */; };
 		A53AD5622B034E73006B9F16 /* TimerButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD5612B034E73006B9F16 /* TimerButtonStyles.swift */; };
+		A5A7C5062B05CCC8005F6281 /* loud-alarm-clock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5A7C5052B05CCC8005F6281 /* loud-alarm-clock.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,7 +102,7 @@
 		A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRunningView.swift; sourceTree = "<group>"; };
 		A53AD55F2B034E24006B9F16 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		A53AD5612B034E73006B9F16 /* TimerButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerButtonStyles.swift; sourceTree = "<group>"; };
-		A53AD5642B034ED9006B9F16 /* loud-alarm-clock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "loud-alarm-clock.mp3"; sourceTree = "<group>"; };
+		A5A7C5052B05CCC8005F6281 /* loud-alarm-clock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "loud-alarm-clock.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +122,6 @@
 			children = (
 				0736DC192AD502CE002F1FE0 /* Hodori */,
 				0736DC182AD502CE002F1FE0 /* Products */,
-				A5A7C5032B04DD86005F6281 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,7 +136,7 @@
 		0736DC192AD502CE002F1FE0 /* Hodori */ = {
 			isa = PBXGroup;
 			children = (
-				A5A7C5042B05CB01005F6281 /* New Group */,
+				A5A7C5042B05CB01005F6281 /* TimerSounds */,
 				07D925E62B041220007BD0E5 /* Modifiers */,
 				86855F0C2AFDFCB00051794C /* Info.plist */,
 				07D736602AF6AD0D00C04D11 /* Models */,
@@ -348,19 +348,12 @@
 			path = TimerView;
 			sourceTree = "<group>";
 		};
-		A5A7C5032B04DD86005F6281 /* Recovered References */ = {
+		A5A7C5042B05CB01005F6281 /* TimerSounds */ = {
 			isa = PBXGroup;
 			children = (
-				A53AD5642B034ED9006B9F16 /* loud-alarm-clock.mp3 */,
+				A5A7C5052B05CCC8005F6281 /* loud-alarm-clock.mp3 */,
 			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		A5A7C5042B05CB01005F6281 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
+			path = TimerSounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -428,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0736DC232AD502CF002F1FE0 /* Preview Assets.xcassets in Resources */,
+				A5A7C5062B05CCC8005F6281 /* loud-alarm-clock.mp3 in Resources */,
 				07A1292B2B02C60100290E05 /* Assets.xcassets in Resources */,
 				86855EFE2AFCB33E0051794C /* CheckLottie.json in Resources */,
 			);

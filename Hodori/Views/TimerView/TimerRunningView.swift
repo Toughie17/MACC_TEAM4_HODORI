@@ -47,7 +47,7 @@ struct TimerRunningView: View {
                     timerString
                 }
             }
-            .padding(.leading, 16)
+            .padding(.leading, 26) // 하이파이 참고해서 패딩값 수정 필요.
             .padding(.vertical, 12)
             .background {
                 RoundedRectangle(cornerRadius: 22)
@@ -207,7 +207,7 @@ struct TimerRunningView: View {
                             SoundManager.instance.playSound()
                             stopTimer()
                             feedback.impactOccurred()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) { //  사운드 fix되면 사운드 길이 확인해서 지속시간 상수로 입력하기.
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) { //  사운드 fix되면 사운드 길이 확인해서 지속시간 상수로 입력하기.
                                 showTimer = false
                             } //    10초 지난 후에 showTimer false.
                         }
