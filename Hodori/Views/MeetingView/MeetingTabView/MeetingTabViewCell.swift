@@ -10,8 +10,10 @@ import SwiftUI
 struct MeetingTabViewCell: View {
     let agenda: Agenda
     let index: Int
-    
     @Binding var showLottie: Bool
+    
+    let needLeftLine: Bool
+    let needRightLine: Bool
     
     var body: some View {
         ZStack {
@@ -35,7 +37,6 @@ struct MeetingTabViewCell: View {
                 }
                 .padding(.leading, 36)
             }
-
             .padding(.top, 28)
             
             if showLottie {
@@ -49,22 +50,23 @@ extension MeetingTabViewCell {
     
     private var checkLine: some View {
         HStack(spacing: 0) {
-            RoundedRectangle(cornerRadius: 30)
-                .frame(height: 2)
-                .frame(width: 24)
-                .foregroundStyle(Color.gray9)
-                .padding(.trailing, 12)
             
+                RoundedRectangle(cornerRadius: 30)
+                    .frame(height: 2)
+                    .frame(width: 24)
+                    .foregroundStyle(needLeftLine ? Color.gray9 : Color.clear)
+                    .padding(.trailing, 12)
+
             Image(systemName: agenda.isComplete ? "checkmark.circle.fill" : "circle")
                 .fontWeight(.heavy)
                 .frame(width: 22, height: 22)
                 .foregroundStyle(Color.primaryBlue)
                 .padding(.trailing, 12)
-            
-            RoundedRectangle(cornerRadius: 30)
-                .frame(height: 2)
-                .frame(maxWidth: .infinity)
-                .foregroundStyle(Color.gray9)
+
+                RoundedRectangle(cornerRadius: 30)
+                    .frame(height: 2)
+                    .frame(maxWidth: .infinity)
+                    .foregroundStyle(needRightLine ? Color.gray9 : Color.clear)
         }
     }
     
@@ -82,18 +84,24 @@ extension MeetingTabViewCell {
     }
     
     private var agendaDetails: some View {
-        ForEach(agenda.detail, id: \.self) { detail in
-            HStack(spacing: 0) {
-                Image(systemName: "circle.fill")
-                    .resizable()
-                    .frame(width: 3, height: 3)
-                    .padding(.trailing, 8)
-                
-                Text(detail)
-                    .font(.pretendRegular16)
+        Group {
+            if agenda.detail != [""] {
+                ForEach(agenda.detail, id: \.self) { detail in
+                    HStack(spacing: 0) {
+                        Image(systemName: "circle.fill")
+                            .resizable()
+                            .frame(width: 3, height: 3)
+                            .padding(.trailing, 8)
+                        
+                        Text(detail)
+                            .font(.pretendRegular16)
+                    }
+                    .foregroundStyle(agenda.isComplete ? Color.gray7 : Color.gray2)
+                    .padding(.bottom, 8)
+                }
+            } else {
+                EmptyView()
             }
-            .foregroundStyle(agenda.isComplete ? Color.gray7 : Color.gray2)
-            .padding(.bottom, 8)
         }
     }
     
@@ -128,7 +136,9 @@ extension MeetingTabViewCell {
 #Preview {
     ZStack {
         Color.black.ignoresSafeArea()
-        MeetingTabViewCell(agenda: Agenda(title: "토끼는 설치류인가 아님 만약 안건이 두줄", detail: ["세부 회의 안건", "세부 회의 안건", "세부 회의 안건", "세부 회의 안건", "세부 회의 안건은 이걸루 끝인가요 이게 마지막"], isComplete: false), index: 0, showLottie: .constant(false))
+//        MeetingTabViewCell(agenda: Agenda(title: "토끼는 설치류인가 아님 만약 안건이 두줄", detail: ["세부 회의 안건", "세부 회의 안건", "세부 회의 안건", "세부 회의 안건", "세부 회의 안건은 이걸루 끝인가요 이게 마지막"], isComplete: false), index: 0, showLottie: .constant(false), needLeftLine: true, needRightLine: true)
+        
+        MeetingTabViewCell(agenda: Agenda(title: "토끼는 설치류인가 아님 만약 안건이 두줄", detail: [], isComplete: false), index: 0, showLottie: .constant(false), needLeftLine: true, needRightLine: true)
     }
 
 }

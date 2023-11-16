@@ -114,13 +114,27 @@ extension MeetingView {
     }
     
     private var mainTabView: some View {
-        TabView(selection: $selectedTab) {
-            ForEach(agendas.indices, id: \.self) { index in
-                MeetingTabViewCell(agenda: agendas[index], index: selectedTab, showLottie: $showLottie)
-            }
+//        if agendas.isNotEmpty {
+            let firstIndex = agendas.startIndex
+            let lastIndex = agendas.index(before: agendas.endIndex)
+            
+        return TabView(selection: $selectedTab) {
+                ForEach(agendas.indices, id: \.self) { index in
+                    
+                    if index == firstIndex {
+                        MeetingTabViewCell(agenda: agendas[index], index: selectedTab, showLottie: $showLottie, needLeftLine: false, needRightLine: true)
+                    } else if index == lastIndex {
+                        MeetingTabViewCell(agenda: agendas[index], index: selectedTab, showLottie: $showLottie, needLeftLine: true, needRightLine: false)
+                    } else {
+                        MeetingTabViewCell(agenda: agendas[index], index: selectedTab, showLottie: $showLottie, needLeftLine: true, needRightLine: true)
+                    }
+                }
+            
         }
-        .frame(maxHeight: .infinity)
-        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            .frame(maxHeight: .infinity)
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+//        }
+        
     }
     
     private var pageControl: some View {
