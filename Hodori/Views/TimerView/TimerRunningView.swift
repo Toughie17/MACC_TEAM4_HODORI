@@ -57,6 +57,7 @@ struct TimerRunningView: View {
             }
         }
         .ignoresSafeArea(edges: .top)
+//        .transition(.move(edge: .top))
     }
     
     
@@ -145,6 +146,7 @@ struct TimerRunningView: View {
             withAnimation(.bouncy){
                 self.stopTimer()
                 showTimer = false
+                sec = 0.0
             }
         } label: {
             HStack {

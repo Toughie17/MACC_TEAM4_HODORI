@@ -113,7 +113,8 @@ struct MeetingView: View {
             TimerSettingView( sec : $sec,showModal: $showModal, showTimer : $showTimer)
                 .presentationDetents([.medium]) // 바텀시트 하프모달로 보이게 하기
                 .presentationDragIndicator(.visible) // grabber 보이게 하기
-            
+//                .presentationCornerRadius(21)
+
             
         }
     }
@@ -122,6 +123,7 @@ struct MeetingView: View {
 extension MeetingView {
     private var tempTimerView: some View {
                    TimerRunningView(sec: $sec,showTimer: $showTimer)
+
     }
     
     private var mainTabView: some View {
@@ -150,7 +152,7 @@ extension MeetingView {
         Button {
             mediumHaptic.impactOccurred()
             withAnimation(.bouncy) {
-                showModal.toggle() // modal 여기서 뜸
+                showModal.toggle()
             }
         } label: {
             ZStack(alignment: .center) {
