@@ -22,6 +22,18 @@ struct TimerRunningView: View {
     let feedback = UIImpactFeedbackGenerator(style: .soft)
     @State private var isBlinking = false
         
+    var hours: Int {
+            return timeRemaining / 3600
+        }
+
+        var minutes: Int {
+            return (timeRemaining - hours * 3600) / 60
+        }
+
+        var seconds: Int {
+            return timeRemaining % 60
+        }
+    
     
     var body: some View {
         VStack {
@@ -31,7 +43,9 @@ struct TimerRunningView: View {
                     cancelButton
                 }
                 .padding(.trailing, 20)
-                timerString
+                VStack {
+                    timerString
+                }
             }
             .padding(.leading, 16)
             .padding(.vertical, 12)
@@ -44,12 +58,12 @@ struct TimerRunningView: View {
     }
     
     
-    func convertSecondsToTime(timeInSeconds: Int) -> String {
-        let hours = timeInSeconds / 3600
-        let minutes = (timeInSeconds - hours*3600) / 60
-        let seconds = timeInSeconds % 60
-        return String(format: "%02i:%02i:%02i", hours,minutes,seconds)
-    }
+//    func convertSecondsToTime(timeInSeconds: Int) -> String {
+//        let hours = timeInSeconds / 3600
+//        let minutes = (timeInSeconds - hours*3600) / 60
+//        let seconds = timeInSeconds % 60
+//        return String(format: "%02i:%02i:%02i", hours,minutes,seconds)
+//    }
     
     
     func calcRemain() {
@@ -108,7 +122,7 @@ struct TimerRunningView: View {
                 Image(systemName: isClicked ? "play.fill" : "pause.fill")
                     .resizable()
                     .frame(width: 14, height: 19)
-                    .font(.system(size: 50, weight: .regular, design: .default))
+                    .font(.system(size: 50, weight: .ultraLight, design: .default))
                     .foregroundColor(.gray5)
                     .padding()
                     .background(Circle().fill(Color.gray9))
@@ -141,29 +155,69 @@ struct TimerRunningView: View {
     }
     
     private var timerString: some View {
-        Text(convertSecondsToTime(timeInSeconds:timeRemaining))
-            .font(.system(size: 40))
-            .foregroundColor(isBlinking ? .clear : .black)
-            .onAppear {
-                startStopBlinking()
-            }
-            .onReceive(timer) { _ in
-                if timeRemaining > 0 {
-                    timeRemaining -= 1
-                    if timeRemaining == 0 {
-                        SoundManager.instance.playSound()
-                        stopTimer()
-                        feedback.impactOccurred()
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) { //  사운드 fix되면 사운드 길이 확인해서 지속시간 상수로 입력하기.
-//                            showTimer = false
-//                        } //    10초 지난 후에 showTimer false.
-                    }
+        
+        ZStack {
+            Rectangle()
+                .fill(.white)
+//                .fill(.red)
+                .frame(width: 180, height: 56)
+                .alignmentGuide(.top) { $0[VerticalAlignment.center] }
+//            Text(convertSecondsToTime(timeInSeconds:timeRemaining))
+            HStack(spacing: 0) {
+                VStack {
+                    Text(String(format: "%02d", hours))
+                        .font(.system(size: 40))
+                        .foregroundColor(isBlinking ? .clear : .black)
+                }
+                VStack {
+                    Text(":")
+                        .font(.system(size: 40))
+                        .foregroundColor(.black)
+                    Spacer()
+                        .frame(height: 10)
+                        .offset(y: -18)
+                }
+                VStack {
+                    Text(String(format: "%02d", minutes))
+                        .font(.system(size: 40))
+                        .foregroundColor(isBlinking ? .clear : .black)
+                }
+                VStack {
+                    Text(":")
+                        .font(.system(size: 40))
+                        .foregroundColor(.black)
+                    Spacer()
+                        .frame(height: 10)
+                }
+                VStack {
+                    Text(String(format: "%02d", seconds))
+                        .font(.system(size: 40))
+                        .foregroundColor(isBlinking ? .clear : .black)
                 }
             }
-            .onAppear {
-                calcRemain()
-            }
-            .padding(.vertical, 12)
+//                .font(.system(size: 40))
+//                .foregroundColor(isBlinking ? .clear : .black)
+                .onAppear {
+                    startStopBlinking()
+                }
+                .onReceive(timer) { _ in
+                    if timeRemaining > 0 {
+                        timeRemaining -= 1
+                        if timeRemaining == 0 {
+                            SoundManager.instance.playSound()
+                            stopTimer()
+                            feedback.impactOccurred()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) { //  사운드 fix되면 사운드 길이 확인해서 지속시간 상수로 입력하기.
+                                showTimer = false
+                            } //    10초 지난 후에 showTimer false.
+                        }
+                    }
+                }
+                .onAppear {
+                    calcRemain()
+                }
+        }
+        .padding(.vertical, 12)
             .padding(.trailing, 20)
     }
 }
