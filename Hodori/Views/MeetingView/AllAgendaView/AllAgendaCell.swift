@@ -69,7 +69,6 @@ struct AllAgendaCell: View {
                     .padding(.top, target ? 4 : 0)
                 }
             }
-            
         }
         .padding(.horizontal, target ? 0 : 20)
         .padding(.horizontal, 24)

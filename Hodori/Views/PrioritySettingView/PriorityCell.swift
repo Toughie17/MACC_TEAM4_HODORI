@@ -17,18 +17,22 @@ struct PriorityCell: View {
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color.white)
             
-            HStack(spacing: 0) {
-                Image(systemName: "circle")
-                    .foregroundStyle(Color.primaryBlue)
-                    .font(.pretendRegular14)
-                    .fontWeight(.heavy)
-                    .padding(.leading, 16)
-                    .padding(.trailing, 12)
+            HStack(alignment: .center, spacing: 0) {
                 
-                Text(title)
-                    .font(.pretendBold16)
-                    .padding(.top, 13)
-                    .padding(.bottom, 12)
+                HStack(alignment: .top, spacing: 0) {
+                    Image(systemName: "circle")
+                        .foregroundStyle(Color.primaryBlue)
+                        .font(.pretendRegular14)
+                        .fontWeight(.heavy)
+                        .padding(.top, 13)
+                        .padding(.leading, 16)
+                        .padding(.trailing, 12)
+                    
+                    Text(title)
+                        .font(.pretendBold16)
+                        .padding(.top, 13)
+                        .padding(.bottom, 12)
+                }
                 
                 Spacer()
                 
@@ -37,7 +41,7 @@ struct PriorityCell: View {
                     .padding(.trailing, 12)
             }
         }
-        .frame(height: 50)
+        .frame(minHeight: 50)
         .frame(maxWidth: .infinity)
     }
 }

@@ -29,6 +29,7 @@ struct MeetingTabViewCell: View {
                         .padding(.bottom, 4)
                     currentAgendaTitle
                         .padding(.bottom, 28)
+                        .padding(.trailing, 80)
                     agendaDetails
                     Spacer()
                 }
