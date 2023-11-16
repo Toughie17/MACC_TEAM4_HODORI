@@ -95,6 +95,7 @@ extension MeetingTabViewCell {
                         
                         Text(detail)
                             .font(.pretendRegular16)
+                            .lineLimit(1)
                     }
                     .foregroundStyle(agenda.isComplete ? Color.gray7 : Color.gray2)
                     .padding(.bottom, 8)
@@ -136,6 +137,6 @@ extension MeetingTabViewCell {
 #Preview {
     ZStack {
         Color.black.ignoresSafeArea()
-        MeetingTabViewCell(agenda: Agenda(title: "토끼는 설치류인가 아님 만약 안건이 두줄", detail: ["하이", "헤이", "호"], isComplete: false), index: 0, showLottie: .constant(false), needLeftLine: true, needRightLine: true)
+        MeetingTabViewCell(agenda: Agenda(title: "토끼는 설치류인가 아님 만약 안건이 두줄", detail: ["하이하이하이하이하이하이하이하이하이", "헤이", "호"], isComplete: false), index: 0, showLottie: .constant(false), needLeftLine: true, needRightLine: true)
     }
 }

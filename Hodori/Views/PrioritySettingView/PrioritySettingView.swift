@@ -11,7 +11,8 @@ struct PrioritySettingView: View {
     
     init(agendas: Binding<[Agenda]>) {
         let appearance = UINavigationBarAppearance()
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+        let font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black, .font: font]
         UINavigationBar.appearance().standardAppearance = appearance
         _agendas = agendas
     }
