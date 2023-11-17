@@ -12,10 +12,9 @@ enum CardState {
     case history
 }
 
-struct MeetingCard: View {   
+struct MeetingCard: View {
     let cardState: CardState
     let meeting: Meeting
-    @State private var textHeight: CGFloat = 0
     
     private var fullDate: String {
         return dateFormat(meeting.startDate, format: "yyyy년 MM월 dd일 HH:mm")
@@ -48,12 +47,15 @@ struct MeetingCard: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 27) {
+        VStack(alignment: .leading, spacing: 31) {
             header
             agendas
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(24)
+        .padding(.leading, 24)
+        .padding(.top, 26)
+        .padding(.bottom, 29)
+        .padding(.trailing, 28)
         .cardBackground(opacity: cardState == .last ? 0.1 : 0.05, radius: cardState == .last ? 20 : 40, y: 4)
     }
     
@@ -62,17 +64,11 @@ struct MeetingCard: View {
             PieChartView(agendas: Array(meeting.agendas))
                 .frame(width: 24, height: 24)
             
-            
             HStack(alignment: .bottom, spacing: 8) {
                 Text(cardState == .last ? "이전 회의" : dayMonth)
                     .font(.pretendBold20)
                     .foregroundStyle(.black)
-                    .background { GeometryReader { proxy in
-                        Color.clear
-                            .onAppear {
-                                textHeight = proxy.size.height
-                            }
-                    }}
+                
                 Text(cardState == .last ? fullDate : time)
                     .font(.pretendRegular14)
                     .foregroundStyle(Color.gray6)
@@ -97,8 +93,6 @@ struct MeetingCard: View {
             ForEach(Array(zip(meeting.agendas.indices, meeting.agendas)), id: \.0) { index, agenda in
                 AgendaCell(state: .normal, agenda: agenda, index: index, meeting: meeting, titleFont: .pretendMedium16)
             }
-            .padding(.leading, 4)
-            .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 }

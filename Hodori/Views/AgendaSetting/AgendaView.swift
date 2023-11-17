@@ -19,7 +19,7 @@ struct AgendaView: View {
     @State var agenda: String
     @State var detailAgendas: [String]
     @State private var isPlaceHolderCilcked = false
-    
+    let currentIndex: Int
     @Binding var isFocused: Bool
     
     @FocusState private var agendaFocusField: Bool
@@ -174,9 +174,9 @@ extension AgendaView {
             
             Spacer()
         }
+        .contentShape(Rectangle())
         .padding(.leading, 22)
-        .padding(.bottom, 54
-        )
+        .padding(.bottom, 54)
     }
     
     private var agendaCell: some View {
@@ -185,27 +185,30 @@ extension AgendaView {
                 VStack(spacing: 4) {
                     blueCircle
                     
-                    RoundedRectangle(cornerRadius: 2)
-                        .fill(viewState == .normal ? Color.gray9 : .clear)
-                        .frame(width: 2)
+                    if currentIndex != 9 {
+                        RoundedRectangle(cornerRadius: 2)
+                            .fill(viewState == .normal ? Color.gray9 : .clear)
+                            .frame(width: 2)
+                    }
                 }
                 .padding(.top, 4)
                 
-                VStack(alignment: .leading, spacing: 15) {
+                VStack(alignment: .leading, spacing: 12) {
                         agendaText
-                    VStack(alignment: .leading, spacing: 4) {
+                    VStack(alignment: .leading, spacing: 7) {
                         detailAgendaFieldList
                     }
                     .padding(.bottom, viewState == .normal ? 20 : 0)
                 }
             }
             .padding(.top, viewState != .normal ? 27 : 2)
-            .padding(.bottom, viewState != .normal ? 31 : 2)
+            .padding(.bottom, viewState != .normal ? 29 : 2)
             .padding(.leading, 24)
             .background(cellBackground)
-            .padding(.bottom, viewState != .normal ? 28 : 0)
+            .padding(.bottom, viewState != .normal ? 30 : 0)
+            .padding(.top, (viewState == .normal && currentIndex == 0) ? 26 : 0)
             
-            if agenda.isNotEmpty, viewState == .add {
+            if agenda.isNotEmpty, viewState == .add, currentIndex != 8 {
                 placeHolder
                     .onTapGesture {
                         addAgenda()
@@ -226,6 +229,7 @@ extension AgendaView {
                 Text(agenda)
                     .font(.pretendBold18)
                     .foregroundStyle(.black)
+                    .lineLimit(2)
                     .onTapGesture {
                         switchState(to: .edit)
                         agendaFocusField = true
@@ -244,7 +248,7 @@ extension AgendaView {
             .focused($agendaFocusField)
             .submitLabel(.next)
             .onChange(of: agenda) { newValue in
-                agenda = String(agenda.prefix(21))
+                agenda = String(agenda.prefix(16))
                 if isFirstWordSpace(text: newValue) {
                     agenda.removeFirst()
                     return
@@ -302,7 +306,7 @@ extension AgendaView {
             }
             .onChange(of: detailAgendas[index]) { newValue in
                 // MARK: 아무것도 추가 안하고 다음 줄로 갈 때
-                detailAgendas[index] = String(detailAgendas[index].prefix(17))
+                detailAgendas[index] = String(detailAgendas[index].prefix(19))
                 guard index < detailAgendas.count else { return }
                 guard isUserTapEnterWithOtherText(to: newValue) else { detailAgendas[index].removeLast()
                     return }

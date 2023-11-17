@@ -38,38 +38,46 @@ struct HistoryDetailView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            PieChartView(agendas: meeting.agendas)
-                .frame(width: 45, height: 45)
-                .padding(.top, 44)
-                .padding(.bottom, 20)
+        ZStack {
+            Color.white
+                .ignoresSafeArea(edges: .bottom)
             
-            Text(headerText)
-                .font(.pretendBold24)
-                .foregroundStyle(.black)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.leading, 24)
-        .padding(.bottom, 28)
-        .background {
-            Color.gray10
-                .ignoresSafeArea()
-        }
-        
-        VStack {
-            agendas
-                .padding(.top, 30)
-                .padding(.horizontal, 28)
-        }
-        .navigationTitle("\(dayMonthTime) 회의")
-        .navigationBarBackButtonHidden()
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
+            VStack(alignment: .leading, spacing: 0) {
+                VStack(alignment: .leading, spacing: 21) {
+                    PieChartView(agendas: meeting.agendas)
+                        .frame(width: 30, height: 30)
+                        .padding(.top, 20)
+                    
+                    Text(headerText)
+                        .font(.pretendBold24)
                         .foregroundStyle(.black)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 24)
+                .padding(.bottom, 33)
+                .background {
+                    Color.gray10
+                        .ignoresSafeArea()
+                }
+                
+                VStack {
+                    agendas
+                        .padding(.top, 30)
+                        .padding(.horizontal, 28)
+                }
+                .toolbarColorScheme(.dark, for: .navigationBar)
+                .navigationTitle("\(dayMonthTime) 회의")
+                
+                .navigationBarBackButtonHidden()
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            dismiss()
+                        } label: {
+                            Image(systemName: "chevron.left")
+                                .foregroundStyle(.black)
+                        }
+                    }
                 }
             }
         }
@@ -77,7 +85,7 @@ struct HistoryDetailView: View {
     
     private var agendas: some View {
         ScrollView(showsIndicators: false) {
-            VStack(alignment: .leading, spacing: 2) {
+            VStack(alignment: .leading, spacing: 0) {
                 ForEach(Array(zip(meeting.agendas.indices, meeting.agendas)), id: \.0) { index, agenda in
                     AgendaCell(state: .detail, agenda: agenda, index: index, meeting: meeting, titleFont: .pretendBold18)
                         .frame(maxWidth: .infinity, alignment: .leading)
