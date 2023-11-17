@@ -17,12 +17,15 @@
 		0736DC232AD502CF002F1FE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0736DC222AD502CF002F1FE0 /* Preview Assets.xcassets */; };
 		0742D8C82AFF863200FBF183 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0742D8C72AFF863200FBF183 /* KeyboardManager.swift */; };
 		0769D4CE2B03CA06005E7527 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0769D4CD2B03CA06005E7527 /* View+.swift */; };
+		079613792B07CD6400FB86FF /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 079613782B07CD6400FB86FF /* SDWebImageSwiftUI */; };
 		079F1A792B00CB0D00A00E18 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F1A782B00CB0D00A00E18 /* String+.swift */; };
 		079F1A7C2B00EEDB00A00E18 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F1A7B2B00EEDB00A00E18 /* StartView.swift */; };
 		079F1A852B01324E00A00E18 /* MeetingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F1A842B01324E00A00E18 /* MeetingCard.swift */; };
 		07A129202B02AF2900290E05 /* AgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A1291E2B02AF2900290E05 /* AgendaView.swift */; };
 		07A129212B02AF2900290E05 /* AgendaSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A1291F2B02AF2900290E05 /* AgendaSettingView.swift */; };
 		07A1292B2B02C60100290E05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07A1292A2B02C60100290E05 /* Assets.xcassets */; };
+		07ACEBCB2B07ACA100A2FB29 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ACEBCA2B07ACA100A2FB29 /* SplashScreen.swift */; };
+		07ACEBCD2B07AEF100A2FB29 /* ITDA_Splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 07ACEBCC2B07AEF100A2FB29 /* ITDA_Splash.gif */; };
 		07D736622AF6AD1500C04D11 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736612AF6AD1500C04D11 /* Meeting.swift */; };
 		07D736642AF6AD1C00C04D11 /* Agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736632AF6AD1C00C04D11 /* Agenda.swift */; };
 		07D925E82B041234007BD0E5 /* CardBackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D925E72B041234007BD0E5 /* CardBackgroundModifier.swift */; };
@@ -56,6 +59,19 @@
 		A53AD5602B034E24006B9F16 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55F2B034E24006B9F16 /* SoundManager.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		07BF83F62B07BF3500DF6BF5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		071F8D9F2B016579004A6C7A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		071F8DA22B01659A004A6C7A /* Meeting.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Meeting.xcdatamodel; sourceTree = "<group>"; };
@@ -75,6 +91,8 @@
 		07A1291E2B02AF2900290E05 /* AgendaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaView.swift; sourceTree = "<group>"; };
 		07A1291F2B02AF2900290E05 /* AgendaSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaSettingView.swift; sourceTree = "<group>"; };
 		07A1292A2B02C60100290E05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		07ACEBCA2B07ACA100A2FB29 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		07ACEBCC2B07AEF100A2FB29 /* ITDA_Splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = ITDA_Splash.gif; path = ../../../../../../Downloads/ITDA_Splash.gif; sourceTree = "<group>"; };
 		07D736612AF6AD1500C04D11 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		07D736632AF6AD1C00C04D11 /* Agenda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agenda.swift; sourceTree = "<group>"; };
 		07D925E72B041234007BD0E5 /* CardBackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackgroundModifier.swift; sourceTree = "<group>"; };
@@ -113,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079613792B07CD6400FB86FF /* SDWebImageSwiftUI in Frameworks */,
 				86855EFA2AFCB2880051794C /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -125,6 +144,7 @@
 			children = (
 				0736DC192AD502CE002F1FE0 /* Hodori */,
 				0736DC182AD502CE002F1FE0 /* Products */,
+				07BF83F32B07BF3500DF6BF5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -189,6 +209,21 @@
 				07A1291F2B02AF2900290E05 /* AgendaSettingView.swift */,
 			);
 			path = AgendaSetting;
+			sourceTree = "<group>";
+		};
+		07ACEBC92B07AC9500A2FB29 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				07ACEBCA2B07ACA100A2FB29 /* SplashScreen.swift */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		07BF83F32B07BF3500DF6BF5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		07D736602AF6AD0D00C04D11 /* Models */ = {
@@ -301,6 +336,7 @@
 		86B5DAE12AF8B1D000AD5F56 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				07ACEBC92B07AC9500A2FB29 /* SplashScreen */,
 				A53AD5582B034CC5006B9F16 /* TimerView */,
 				07A1291D2B02AF2900290E05 /* AgendaSetting */,
 				079F1A7D2B00F53600A00E18 /* History */,
@@ -314,6 +350,7 @@
 		86B5DAE42AF8B25800AD5F56 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				07ACEBCC2B07AEF100A2FB29 /* ITDA_Splash.gif */,
 				86A8077B2B05F96700BF42DD /* loadingLottieV3.json */,
 				86F49BFA2B0494D500AC54DF /* Pretendard-Bold.otf */,
 				86F49BFB2B0494D500AC54DF /* Pretendard-Medium.otf */,
@@ -353,6 +390,7 @@
 				0736DC132AD502CE002F1FE0 /* Sources */,
 				0736DC142AD502CE002F1FE0 /* Frameworks */,
 				0736DC152AD502CE002F1FE0 /* Resources */,
+				07BF83F62B07BF3500DF6BF5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -361,6 +399,7 @@
 			name = Hodori;
 			packageProductDependencies = (
 				86855EF92AFCB2880051794C /* Lottie */,
+				079613782B07CD6400FB86FF /* SDWebImageSwiftUI */,
 			);
 			productName = Hodori;
 			productReference = 0736DC172AD502CE002F1FE0 /* Hodori.app */;
@@ -392,6 +431,7 @@
 			mainGroup = 0736DC0E2AD502CE002F1FE0;
 			packageReferences = (
 				86855EF82AFCB2880051794C /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				079613772B07CD6400FB86FF /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 0736DC182AD502CE002F1FE0 /* Products */;
 			projectDirPath = "";
@@ -415,6 +455,7 @@
 				86A8077C2B05F96700BF42DD /* loadingLottieV3.json in Resources */,
 				86F49C002B0494D500AC54DF /* Pretendard-Regular.otf in Resources */,
 				86F49BFF2B0494D500AC54DF /* Pretendard-Medium.otf in Resources */,
+				07ACEBCD2B07AEF100A2FB29 /* ITDA_Splash.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +499,7 @@
 				079F1A792B00CB0D00A00E18 /* String+.swift in Sources */,
 				86855F0E2AFDFD660051794C /* Font+.swift in Sources */,
 				A53AD55E2B034DD0006B9F16 /* TimerRunningView.swift in Sources */,
+				07ACEBCB2B07ACA100A2FB29 /* SplashScreen.swift in Sources */,
 				86855EF52AFBB3500051794C /* MeetingTabViewCell.swift in Sources */,
 				86855F022AFCB3B90051794C /* MeetingLottieView.swift in Sources */,
 				86855F122AFE07200051794C /* Color+.swift in Sources */,
@@ -595,10 +637,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hodori/Preview Content\"";
-				DEVELOPMENT_TEAM = JRDC32KNLZ;
+				DEVELOPMENT_TEAM = VGKCD7Q8NW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hodori/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "잇다 ITDA";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -615,8 +659,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodori2s;
+				MARKETING_VERSION = 1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodori;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -637,10 +681,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hodori/Preview Content\"";
-				DEVELOPMENT_TEAM = JRDC32KNLZ;
+				DEVELOPMENT_TEAM = VGKCD7Q8NW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hodori/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "잇다 ITDA";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -657,8 +703,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodori2;
+				MARKETING_VERSION = 1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodori;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -693,6 +739,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		079613772B07CD6400FB86FF /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.2.4;
+			};
+		};
 		86855EF82AFCB2880051794C /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -704,6 +758,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		079613782B07CD6400FB86FF /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 079613772B07CD6400FB86FF /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
 		86855EF92AFCB2880051794C /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 86855EF82AFCB2880051794C /* XCRemoteSwiftPackageReference "lottie-ios" */;
