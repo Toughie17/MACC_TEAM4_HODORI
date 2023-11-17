@@ -58,6 +58,7 @@ struct TimerSettingView: View {
             mediumHaptic.impactOccurred()
             self.presentation.wrappedValue.dismiss()
             sec = 0.0
+
         }) {
             Image(systemName:"xmark")
                 .foregroundColor(.gray3)

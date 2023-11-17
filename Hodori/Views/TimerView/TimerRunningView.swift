@@ -49,7 +49,7 @@ struct TimerRunningView: View {
                     timerString
                 }
             }
-            .padding(.leading, 16) // 하이파이 참고해서 패딩값 수정 필요.
+            .padding(.leading, 16)
             .padding(.vertical, 12)
             .background {
                 RoundedRectangle(cornerRadius: 22)
@@ -112,7 +112,7 @@ struct TimerRunningView: View {
     
     private var playButton: some View {
         Button {
-            mediumHaptic.impactOccurred()
+//            mediumHaptic.impactOccurred()
             withAnimation(.bouncy){
                 isClicked.toggle()
                 if isClicked {
@@ -128,7 +128,7 @@ struct TimerRunningView: View {
                 Image(systemName: isClicked ? "play.fill" : "pause.fill")
                     .resizable()
                     .frame(width: 14, height: 19)
-                    .font(Font.largeTitle.weight(Font.Weight.thin))
+                    .font(Font.system(size: 40, weight: .bold))
                     .foregroundColor(.gray5)
                     .padding()
                     .background(Circle().fill(Color.gray9))
@@ -137,6 +137,7 @@ struct TimerRunningView: View {
         }
         .buttonStyle(PlainButtonStyle())
         .padding(.trailing, 4)
+        .allowsHitTesting(!isClicked)
         
     }
     
@@ -152,7 +153,7 @@ struct TimerRunningView: View {
             HStack {
                 Image(systemName: "xmark")
                     .resizable()
-                    .font(Font.caption.bold())
+                    .font(Font.system(size: 40, weight: .bold))
                     .frame(width: 17, height: 17)
                     .foregroundColor(.gray5)
                     .padding()
@@ -162,6 +163,7 @@ struct TimerRunningView: View {
         }
         .buttonStyle(PlainButtonStyle())
         .padding(.trailing, 30)
+        .allowsHitTesting(!isClicked) 
     }
     
     private var timerString: some View {
