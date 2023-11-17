@@ -13,28 +13,29 @@ struct TimerRunningView: View {
     @Binding var showTimer: Bool
     
     let date = Date()
+    let feedback = UIImpactFeedbackGenerator(style: .soft)
     
     @State var timeRemaining : Int = 0
-    @State private var blinkTimer: Timer?
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var isClicked = false
     @State private var animate = false
-    let feedback = UIImpactFeedbackGenerator(style: .soft)
+    
     @State private var isBlinking = false
-        
+    @State private var blinkTimer: Timer?
+    
     private let mediumHaptic = UIImpactFeedbackGenerator(style: .medium)
     
     var hours: Int {
-            return timeRemaining / 3600
-        }
-
-        var minutes: Int {
-            return (timeRemaining - hours * 3600) / 60
-        }
-
-        var seconds: Int {
-            return timeRemaining % 60
-        }
+        return timeRemaining / 3600
+    }
+    
+    var minutes: Int {
+        return (timeRemaining - hours * 3600) / 60
+    }
+    
+    var seconds: Int {
+        return timeRemaining % 60
+    }
     
     
     var body: some View {
@@ -57,16 +58,7 @@ struct TimerRunningView: View {
             }
         }
         .ignoresSafeArea(edges: .top)
-//        .transition(.move(edge: .top))
     }
-    
-    
-//    func convertSecondsToTime(timeInSeconds: Int) -> String {
-//        let hours = timeInSeconds / 3600
-//        let minutes = (timeInSeconds - hours*3600) / 60
-//        let seconds = timeInSeconds % 60
-//        return String(format: "%02i:%02i:%02i", hours,minutes,seconds)
-//    }
     
     
     func calcRemain() {
@@ -112,7 +104,7 @@ struct TimerRunningView: View {
     
     private var playButton: some View {
         Button {
-//            mediumHaptic.impactOccurred()
+            mediumHaptic.impactOccurred()
             withAnimation(.bouncy){
                 isClicked.toggle()
                 if isClicked {
@@ -173,64 +165,53 @@ struct TimerRunningView: View {
                 .fill(.white)
                 .frame(width: 160, height: 56)
                 .alignmentGuide(.top) { $0[VerticalAlignment.center] }
-//            Text(convertSecondsToTime(timeInSeconds:timeRemaining))
+            
+            
             HStack(spacing: 0) {
-               
-                    Text(String(format: "%02d", hours))
-                        .font(Font.system(size: 40).monospacedDigit())
-                        .foregroundColor(isBlinking ? .clear : .black)
-//                        .frame(width: 50, height: 50)
+                Text(String(format: "%02d", hours))
+                    .font(Font.system(size: 40).monospacedDigit())
+                    .foregroundColor(isBlinking ? .clear : .black)
                 
-                    Text(":")
-                        .font(Font.system(size: 40).monospacedDigit())
-                        .foregroundColor(isBlinking ? .clear : .black)
-                        .padding(.horizontal, 1)
-                        .padding(.bottom, 5)
+                Text(":")
+                    .font(Font.system(size: 40).monospacedDigit())
+                    .foregroundColor(isBlinking ? .clear : .black)
+                    .padding(.horizontal, 1)
+                    .padding(.bottom, 5)
                 
-                    Text(String(format: "%02d", minutes))
-                        .font(Font.system(size: 40).monospacedDigit())
-                        .foregroundColor(isBlinking ? .clear : .black)
-//                        .frame(width: 50, height: 50)
-
+                Text(String(format: "%02d", minutes))
+                    .font(Font.system(size: 40).monospacedDigit())
+                    .foregroundColor(isBlinking ? .clear : .black)
                 
-                    Text(":")
-                        .font(Font.system(size: 40).monospacedDigit())
-                        .foregroundColor(isBlinking ? .clear : .black)
-                        .padding(.horizontal, 1)
-                        .padding(.bottom, 5)
-
-//                    Spacer()
-              
-                    Text(String(format: "%02d", seconds))
-                        .font(Font.system(size: 40).monospacedDigit())
-                        .foregroundColor(isBlinking ? .clear : .black)
-//                        .frame(width: 50, height: 50)
+                Text(":")
+                    .font(Font.system(size: 40).monospacedDigit())
+                    .foregroundColor(isBlinking ? .clear : .black)
+                    .padding(.horizontal, 1)
+                    .padding(.bottom, 5)
                 
+                Text(String(format: "%02d", seconds))
+                    .font(Font.system(size: 40).monospacedDigit())
+                    .foregroundColor(isBlinking ? .clear : .black)
             }
-//                .font(.system(size: 40))
-//                .foregroundColor(isBlinking ? .clear : .black)
-                .onAppear {
-                    startStopBlinking()
-                }
-                .onReceive(timer) { _ in
-                    if timeRemaining > 0 {
-                        timeRemaining -= 1
-                        if timeRemaining == 0 {
-                            SoundManager.instance.playSound()
-                            stopTimer()
-                            feedback.impactOccurred()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) { //  사운드 fix되면 사운드 길이 확인해서 지속시간 상수로 입력하기.
-                                showTimer = false
-                            } //    10초 지난 후에 showTimer false.
-                        }
+            .onAppear {
+                startStopBlinking()
+            }
+            .onReceive(timer) { _ in
+                if timeRemaining > 0 {
+                    timeRemaining -= 1
+                    if timeRemaining == 0 {
+                        SoundManager.instance.playSound()
+                        stopTimer()
+                        feedback.impactOccurred()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) { //  사운드 fix되면 사운드 길이 확인해서 지속시간 상수로 입력하기.
+                            showTimer = false
+                        } //    10초 지난 후에 showTimer false.
                     }
                 }
-                .onAppear {
-                    calcRemain()
-                }
+            }
+            .onAppear {
+                calcRemain()
+            }
         }
-//        .padding(.vertical, 12)
-//            .padding(.trailing, 20)
     }
 }
 
@@ -242,5 +223,5 @@ struct TimerRunningView: View {
 
 
 
-    
+
 

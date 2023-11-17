@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CircleStyle: ButtonStyle {
     let scaledAmount: CGFloat
-        
+    
     init(scaledAmount: CGFloat = 0.9) {
         self.scaledAmount = scaledAmount
     }
@@ -20,9 +20,7 @@ struct CircleStyle: ButtonStyle {
             .overlay(
                 Circle()
                     .fill(.gray)
-//                    .stroke(Color.gray, lineWidth: 2)
                     .foregroundColor(.white)
-//                    .padding(3)
             )
             .scaleEffect(configuration.isPressed ? scaledAmount : 1.0)
             .opacity(configuration.isPressed ? 0.9 : 1.0)

@@ -13,23 +13,20 @@ struct MeetingView: View {
     
     var completedAgendaCount: Int {
         agendas.filter { $0.isComplete }.count }
-    
     var leftAgendaCount: Int {
         agendas.count - completedAgendaCount
     }
-    @State var sec : Double = 0.0 
+    
+    @State var sec : Double = 0.0
     @State var showAlert: Bool = false
     @State var alert: Alert?
     @State var showSheet: Bool = false
     @State var showLottie: Bool = false
     @State var showTimer: Bool = false
     @State var toMeetingEndView: Bool = false
-    
-    
     @State var selectedTab: Int = 0
-    
     @State var showModal: Bool = false
-
+    
     
     private let heavyHaptic = UIImpactFeedbackGenerator(style: .heavy)
     private let mediumHaptic = UIImpactFeedbackGenerator(style: .medium)
@@ -37,14 +34,13 @@ struct MeetingView: View {
     
     
     var body: some View {
-        
         ZStack {
             VStack(spacing: 0) {
                 
                 Spacer()
                 
                 if showTimer {
-                   tempTimerView
+                    tempTimerView
                         .padding(.top, 24)
                         .padding(.horizontal, 20)
                 }
@@ -79,7 +75,6 @@ struct MeetingView: View {
         .navigationBarTitle("회의 진행 중", displayMode: .inline)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                
                 Button {
                     showSheet = true
                 } label: {
@@ -116,19 +111,18 @@ struct MeetingView: View {
                 .presentationBackgroundInteraction(
                     .enabled(upThrough: .medium)) // 모달외 클릭했을 시 시트 내려가지 않게 (iOS16.4)
                 .presentationCornerRadius(21)
-                    // 하프모달 코너래디우스 값 조정(iOS16.4)
+            // 하프모달 코너래디우스 값 조정(iOS16.4)
                 .onDisappear {
-                            // 바텀시트가 사라질 때 sec를 0으로 설정
-                            sec = 0.0
-                        }
-            
+                    // 바텀시트가 사라질 때 sec를 0으로 설정
+                    sec = 0.0
+                }
         }
     }
 }
 
 extension MeetingView {
     private var tempTimerView: some View {
-                   TimerRunningView(sec: $sec,showTimer: $showTimer)
+        TimerRunningView(sec: $sec,showTimer: $showTimer)
     }
     
     private var mainTabView: some View {
@@ -151,7 +145,6 @@ extension MeetingView {
             agendCompleteButton
         }
     }
-    
     
     private var timerButton: some View {
         Button {
