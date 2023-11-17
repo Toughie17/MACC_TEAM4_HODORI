@@ -31,6 +31,9 @@ struct StartView: View {
     
     var body: some View {
         GeometryReader { proxy in
+            Color.white
+                .ignoresSafeArea()
+            
             Color.gray10
                 .ignoresSafeArea()
                 .frame(height: proxy.size.height / 3.22)
@@ -40,30 +43,28 @@ struct StartView: View {
                     Text(today)
                         .font(.pretendRegular20)
                         .foregroundStyle(Color.gray3)
-                    
+        
                     Spacer()
                     historyNavigationButton
                 }
-                .padding(.bottom, 16)
+                .padding(.bottom, 2)
                 
                 header
-                    .padding(.bottom, 53)
+                    .padding(.bottom, 40)
                 
                 if isMeetingExist {
                     MeetingCard(.last, meeting: lastMeeting)
                 } else {
                     placeholder
                 }
-                
                 Spacer()
-                
                 meetingStartButton
                     .padding(.bottom, 36)
                 
             }
             .ignoresSafeArea(edges: .bottom)
             .padding(.horizontal, 24)
-            .padding(.top, 20)
+            .padding(.top, 30)
         }
         
     }
@@ -76,7 +77,8 @@ struct StartView: View {
     
     private var historyNavigationButton: some View {
         Image(systemName: "clock.arrow.circlepath")
-            .font(.system(size: 20))
+            .font(.system(size: 24))
+            .foregroundStyle(.black)
             .onTapGesture {
                 navigationManager.screenPath.append(.history)
             }
