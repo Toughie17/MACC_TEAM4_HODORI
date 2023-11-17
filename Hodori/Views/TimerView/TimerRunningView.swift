@@ -129,7 +129,6 @@ struct TimerRunningView: View {
         }
         .buttonStyle(PlainButtonStyle())
         .padding(.trailing, 4)
-        .allowsHitTesting(!isClicked)
         
     }
     
