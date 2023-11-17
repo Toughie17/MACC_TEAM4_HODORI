@@ -29,6 +29,9 @@ struct AgendaSettingView: View {
 
     var body: some View {
         ZStack {
+            Color.white
+                .ignoresSafeArea()
+            
             VStack(spacing: 0) {
                 ScrollView(showsIndicators: false) {
                     ScrollViewReader { scrollviewProxy in
@@ -108,8 +111,8 @@ struct AgendaSettingView: View {
     
     private var agendaList: some View {
         VStack(alignment: .leading, spacing: 0) {
-            ForEach(agendas) { agenda in
-                AgendaView(viewState: .normal, agenda: agenda.title, detailAgendas: agenda.detail, isFocused: $isFocused) { agendaTitle, detailAgendas in
+            ForEach(Array(zip(agendas.indices, agendas)), id: \.0) { index, agenda in
+                AgendaView(viewState: .normal, agenda: agenda.title, detailAgendas: agenda.detail, currentIndex: index, isFocused: $isFocused) { agendaTitle, detailAgendas in
                     if agendaTitle.isEmpty, detailAgendas.filter({ $0 != "" && $0 != "\u{200B}" }).isEmpty {
                         updateAgenda(oldAgenda: agenda, newAgenda: Agenda(title: agendaTitle, detail: detailAgendas))
                         agendas.removeAll(where: { $0.title == "" })
@@ -130,7 +133,7 @@ struct AgendaSettingView: View {
     }
     
     private var agendaAddCell: some View {
-            AgendaView(viewState: .add, agenda: "", detailAgendas: [""], isFocused: $isFocused) { agenda, detailAgendas in
+        AgendaView(viewState: .add, agenda: "", detailAgendas: [""], currentIndex: agendas.endIndex-1, isFocused: $isFocused) { agenda, detailAgendas in
                 agendas.append(Agenda(title: agenda, detail: detailAgendas))
             }
             .simultaneousGesture(TapGesture().onEnded {
@@ -149,7 +152,7 @@ struct AgendaSettingView: View {
             HStack { Spacer() }
                 .id(anchor)
         }
-        .padding(.top, 40)
+        .padding(.top, 20)
     }
     
     private var completeButton: some View {
