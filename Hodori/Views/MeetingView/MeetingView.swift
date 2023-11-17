@@ -26,6 +26,7 @@ struct MeetingView: View {
     @State var toMeetingEndView: Bool = false
     @State var selectedTab: Int = 0
     @State var showModal: Bool = false
+    @State private var sheetContentHieht = CGFloat(359)
     
     
     private let heavyHaptic = UIImpactFeedbackGenerator(style: .heavy)
@@ -106,7 +107,7 @@ struct MeetingView: View {
         }
         .sheet(isPresented: $showModal) { 
             TimerSettingView( sec : $sec,showModal: $showModal, showTimer : $showTimer)
-                .presentationDetents([.medium]) // 바텀시트 하프모달로 보이게 하기
+                .presentationDetents([.height(sheetContentHieht)]) // 바텀시트 하프모달로 보이게 하기
                 .presentationDragIndicator(.visible) // grabber 보이게 하기
 //                .presentationBackgroundInteraction(
 //                    .enabled(upThrough: .medium)) // 모달외 클릭했을 시 시트 내려가지 않게 (iOS16.4)

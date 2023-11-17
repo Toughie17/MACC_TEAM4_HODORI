@@ -28,7 +28,7 @@ struct TimerSettingView: View {
     
     var body: some View {
         NavigationView{
-            VStack (spacing: 10) {
+            VStack (spacing: 0) {
                 HStack {
                     Spacer()
                     VStack {
@@ -38,6 +38,7 @@ struct TimerSettingView: View {
                 }
                 CustomPicker(sec: $sec)
                     .frame(width: 220)
+                    .padding(.top,20)
                 
                 timerStartButton
                     .padding(.top, 30)
@@ -51,7 +52,7 @@ struct TimerSettingView: View {
             .foregroundColor(.gray2)
             .font(.pretendBold20)
             .multilineTextAlignment(.center)
-            .padding(.top, 24)
+            .padding(.top, 49)
     }
     
     private var cancelButton: some View {
@@ -64,7 +65,7 @@ struct TimerSettingView: View {
             Image(systemName:"xmark")
                 .foregroundColor(.gray3)
                 .font(.system(size: 24, weight: .regular))
-                .padding(.top, 23)
+                .padding(.top, 50)
                 .padding(.leading, 79)
                 .padding(.trailing, 16)
         }

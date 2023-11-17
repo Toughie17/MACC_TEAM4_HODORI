@@ -38,7 +38,7 @@ struct CustomPicker: UIViewRepresentable {
                label1.textColor = UIColor.lightGray
                pickerView.addSubview(label1)
 
-        let label2 = UILabel(frame: CGRect(x: componentWidth * 1.13, y: y, width: componentWidth * 0.4, height: fontSize))
+        let label2 = UILabel(frame: CGRect(x: componentWidth * 1.10, y: y, width: componentWidth * 0.4, height: fontSize))
                label2.font = font
                label2.textAlignment = .left
                label2.text = "분"
