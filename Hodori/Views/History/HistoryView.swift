@@ -18,12 +18,24 @@ struct HistoryView: View {
     var body: some View {
         ZStack {
             Color.gray10
-                .ignoresSafeArea(edges: .bottom)
+                .ignoresSafeArea()
             
             if meetings.isEmpty {
                 Text("이전 회의 내역이 아직 없어요")
                     .font(.pretendRegular16)
                     .foregroundStyle(Color.gray2)
+                    .navigationTitle("회의 기록")
+                    .navigationBarBackButtonHidden()
+                    .toolbar {
+                        ToolbarItem(placement: .topBarLeading) {
+                            Button {
+                                navigationManager.screenPath.removeLast()
+                            } label: {
+                                Image(systemName: "chevron.left")
+                                    .foregroundStyle(.black)
+                            }
+                        }
+                    }
             } else {
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading, spacing: 16) {
