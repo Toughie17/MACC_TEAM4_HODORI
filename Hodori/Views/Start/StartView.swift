@@ -10,6 +10,8 @@ import SwiftUI
 struct StartView: View {
     @EnvironmentObject var meetingManager: MeetingManager
     @EnvironmentObject var navigationManager: NavigationManager
+    @State private var isHistoryNavigationButtonClicked = false
+    @State private var isAgendaSettingNavigationButtonClicked = false
     
     private var today: String {
         let currentDate = Date()
@@ -66,7 +68,10 @@ struct StartView: View {
             .padding(.horizontal, 24)
             .padding(.top, 30)
         }
-        
+        .onAppear {
+            isHistoryNavigationButtonClicked = false
+            isAgendaSettingNavigationButtonClicked = false
+        }
     }
     
     private var header: some View {
@@ -81,12 +86,15 @@ struct StartView: View {
             .foregroundStyle(.black)
             .onTapGesture {
                 navigationManager.screenPath.append(.history)
+                isHistoryNavigationButtonClicked = true
             }
+            .disabled(isAgendaSettingNavigationButtonClicked)
     }
     
     private var meetingStartButton: some View {
         Button {
             navigationManager.screenPath.append(.agendaSetting)
+            isAgendaSettingNavigationButtonClicked = true
         } label: {
             HStack(spacing: 8) {
                 Image(systemName: "plus")
@@ -105,6 +113,7 @@ struct StartView: View {
                     .fill(Color.gray1)
             }
         }
+        .disabled(isHistoryNavigationButtonClicked)
     }
     
     private var headerText: String {
