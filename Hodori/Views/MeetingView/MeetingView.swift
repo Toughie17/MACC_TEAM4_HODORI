@@ -108,9 +108,9 @@ struct MeetingView: View {
             TimerSettingView( sec : $sec,showModal: $showModal, showTimer : $showTimer)
                 .presentationDetents([.medium]) // 바텀시트 하프모달로 보이게 하기
                 .presentationDragIndicator(.visible) // grabber 보이게 하기
-                .presentationBackgroundInteraction(
-                    .enabled(upThrough: .medium)) // 모달외 클릭했을 시 시트 내려가지 않게 (iOS16.4)
-                .presentationCornerRadius(21)
+//                .presentationBackgroundInteraction(
+//                    .enabled(upThrough: .medium)) // 모달외 클릭했을 시 시트 내려가지 않게 (iOS16.4)
+//                .presentationCornerRadius(21)
             // 하프모달 코너래디우스 값 조정(iOS16.4)
                 .onDisappear {
                     // 바텀시트가 사라질 때 sec를 0으로 설정
