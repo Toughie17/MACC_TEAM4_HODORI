@@ -45,11 +45,11 @@ struct TimerRunningView: View {
                     playButton
                     cancelButton
                 }
-               
-           Spacer()
-                    timerString
-                        .padding(.trailing, 20)
-               
+                
+                Spacer()
+                timerString
+                    .padding(.trailing, 20)
+                
             }
             .padding(.leading, 16)
             .padding(.vertical, 12)
@@ -105,27 +105,27 @@ struct TimerRunningView: View {
     
     private var playButton: some View {
         Button {
-                    mediumHaptic.impactOccurred()
-                    withAnimation(.bouncy){
-                        isClicked.toggle()
-                        if isClicked {
-                            stopTimer()
-                            startStopBlinking()
-                        } else {
-                            startTimer()
-                            stopBlinking()
-                        }
-                    }
-                } label: {
-                    Circle()
-                        .fill(Color.gray9)
-                        .frame(width: 40, height: 40)
-                        .overlay {
-                            Image(systemName: isClicked ? "play.fill" : "pause")
-                                .font(Font.system(size: 16, weight: .heavy))
-                                .foregroundColor(.gray5)
-                        }
+            mediumHaptic.impactOccurred()
+            withAnimation(.bouncy){
+                isClicked.toggle()
+                if isClicked {
+                    stopTimer()
+                    startStopBlinking()
+                } else {
+                    startTimer()
+                    stopBlinking()
                 }
+            }
+        } label: {
+            Circle()
+                .fill(Color.gray9)
+                .frame(width: 40, height: 40)
+                .overlay {
+                    Image(systemName: isClicked ? "play.fill" : "pause")
+                        .font(Font.system(size: 16, weight: .heavy))
+                        .foregroundColor(.gray5)
+                }
+        }
         
     }
     
@@ -138,20 +138,17 @@ struct TimerRunningView: View {
                 sec = 0.0
             }
         } label: {
-            HStack {
-                Image(systemName: "xmark")
-                    .resizable()
-                    .font(Font.system(size: 40, weight: .bold))
-                    .frame(width: 17, height: 17)
-                    .foregroundColor(.gray5)
-                    .padding()
-                    .background(Circle().fill(Color.gray9))
-                    .frame(width: 40, height: 40)
-            }
+            Circle()
+                .fill(Color.gray9)
+                .frame(width: 40, height: 40)
+                .overlay {
+                    Image(systemName: "xmark")
+                        .font(Font.system(size: 16, weight: .bold))
+                        .foregroundColor(.gray5)
+                }
         }
-        .buttonStyle(PlainButtonStyle())
         .padding(.trailing, 30)
-        .allowsHitTesting(!isClicked) 
+        
     }
     
     private var timerString: some View {
