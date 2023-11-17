@@ -45,16 +45,16 @@
 		86A8077C2B05F96700BF42DD /* loadingLottieV3.json in Resources */ = {isa = PBXBuildFile; fileRef = 86A8077B2B05F96700BF42DD /* loadingLottieV3.json */; };
 		86B5DADE2AF8AF5A00AD5F56 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */; };
 		86B5DAE62AF8B39000AD5F56 /* MeetingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */; };
+		86F49BFD2B0494D500AC54DF /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86F49BF92B0494D500AC54DF /* Pretendard-SemiBold.otf */; };
+		86F49BFE2B0494D500AC54DF /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86F49BFA2B0494D500AC54DF /* Pretendard-Bold.otf */; };
+		86F49BFF2B0494D500AC54DF /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86F49BFB2B0494D500AC54DF /* Pretendard-Medium.otf */; };
+		86F49C002B0494D500AC54DF /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86F49BFC2B0494D500AC54DF /* Pretendard-Regular.otf */; };
 		A53AD55A2B034D2B006B9F16 /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD5592B034D2B006B9F16 /* CustomPicker.swift */; };
 		A53AD55C2B034D91006B9F16 /* TimerSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55B2B034D91006B9F16 /* TimerSettingView.swift */; };
 		A53AD55E2B034DD0006B9F16 /* TimerRunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */; };
 		A53AD5602B034E24006B9F16 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55F2B034E24006B9F16 /* SoundManager.swift */; };
 		A53AD5622B034E73006B9F16 /* TimerButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD5612B034E73006B9F16 /* TimerButtonStyles.swift */; };
 		A5A7C5062B05CCC8005F6281 /* loud-alarm-clock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5A7C5052B05CCC8005F6281 /* loud-alarm-clock.mp3 */; };
-		86F49BFD2B0494D500AC54DF /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86F49BF92B0494D500AC54DF /* Pretendard-SemiBold.otf */; };
-		86F49BFE2B0494D500AC54DF /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86F49BFA2B0494D500AC54DF /* Pretendard-Bold.otf */; };
-		86F49BFF2B0494D500AC54DF /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86F49BFB2B0494D500AC54DF /* Pretendard-Medium.otf */; };
-		86F49C002B0494D500AC54DF /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86F49BFC2B0494D500AC54DF /* Pretendard-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,16 +98,16 @@
 		86A8077B2B05F96700BF42DD /* loadingLottieV3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingLottieV3.json; sourceTree = "<group>"; };
 		86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingManager.swift; sourceTree = "<group>"; };
+		86F49BF92B0494D500AC54DF /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		86F49BFA2B0494D500AC54DF /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		86F49BFB2B0494D500AC54DF /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		86F49BFC2B0494D500AC54DF /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		A53AD5592B034D2B006B9F16 /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
 		A53AD55B2B034D91006B9F16 /* TimerSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettingView.swift; sourceTree = "<group>"; };
 		A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRunningView.swift; sourceTree = "<group>"; };
 		A53AD55F2B034E24006B9F16 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		A53AD5612B034E73006B9F16 /* TimerButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerButtonStyles.swift; sourceTree = "<group>"; };
 		A5A7C5052B05CCC8005F6281 /* loud-alarm-clock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "loud-alarm-clock.mp3"; sourceTree = "<group>"; };
-		86F49BF92B0494D500AC54DF /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
-		86F49BFA2B0494D500AC54DF /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
-		86F49BFB2B0494D500AC54DF /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
-		86F49BFC2B0494D500AC54DF /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -599,7 +599,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hodori/Preview Content\"";
-				DEVELOPMENT_TEAM = 27567HRR46;
+				DEVELOPMENT_TEAM = JRDC32KNLZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hodori/Info.plist;
@@ -620,7 +620,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodori;
+				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodori2s;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -641,7 +641,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hodori/Preview Content\"";
-				DEVELOPMENT_TEAM = 27567HRR46;
+				DEVELOPMENT_TEAM = JRDC32KNLZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hodori/Info.plist;
@@ -662,7 +662,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodori;
+				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodori2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

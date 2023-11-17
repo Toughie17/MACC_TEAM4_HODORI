@@ -16,9 +16,12 @@ struct CustomPicker: UIViewRepresentable {
     
     func makeUIView(context: Context) -> UIPickerView {
         let pickerView = UIPickerView(frame: .zero)
+        pickerView.frame(width: 30, height:39)
         pickerView.translatesAutoresizingMaskIntoConstraints = false
         pickerView.delegate = context.coordinator
         pickerView.dataSource = context.coordinator
+       
+
         
         
         let font = UIFont.systemFont(ofSize: 20.0)
@@ -26,14 +29,14 @@ struct CustomPicker: UIViewRepresentable {
                let componentWidth: CGFloat = pickerView.frame.width / CGFloat(pickerView.numberOfComponents)
                let y = (pickerView.frame.size.height / 2) - (fontSize / 2)
                
-               let label1 = UILabel(frame: CGRect(x: componentWidth * 0.65, y: y, width: componentWidth * 0.4, height: fontSize))
+               let label1 = UILabel(frame: CGRect(x: componentWidth * 0.8, y: y, width: componentWidth * 0.4, height: fontSize))
                label1.font = font
                label1.textAlignment = .left
                label1.text = "시간"
                label1.textColor = UIColor.lightGray
                pickerView.addSubview(label1)
 
-               let label2 = UILabel(frame: CGRect(x: componentWidth * 1.6, y: y, width: componentWidth * 0.4, height: fontSize))
+               let label2 = UILabel(frame: CGRect(x: componentWidth * 1.42, y: y, width: componentWidth * 0.4, height: fontSize))
                label2.font = font
                label2.textAlignment = .left
                label2.text = "분"
@@ -58,7 +61,6 @@ struct CustomPicker: UIViewRepresentable {
         // 피커뷰에서 시간과 5분 단위로 표시된 분 선택
         uiView.selectRow(hours, inComponent: 0, animated: false)
         uiView.selectRow(minutes / 5, inComponent: 1, animated: false)
-//        uiView.selectRow(minutes, inComponent: 1, animated: false)
    
     }
     
@@ -84,7 +86,7 @@ struct CustomPicker: UIViewRepresentable {
 //            return component == 0 ? 24 : 60  // 1분 간격으로 조정
         }
     
-    
+        
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if component == 0 {
             return "\(values[row])"
@@ -94,7 +96,11 @@ struct CustomPicker: UIViewRepresentable {
 //            return "\(values[row])" // 1분 간격으로 조정
         }
     }
-
+        
+        func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+            return 90
+        }
+   
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
             let hourIndex = pickerView.selectedRow(inComponent: 0)
             let minIndex = pickerView.selectedRow(inComponent: 1)
