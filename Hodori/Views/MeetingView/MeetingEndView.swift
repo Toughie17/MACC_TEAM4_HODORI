@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct MeetingEndView: View {
+    
     @EnvironmentObject var navigationManager: NavigationManager
     @EnvironmentObject var meetingManager: MeetingManager
+    
     var agendas: [Agenda]
     let completedAgendaCount: Int
     
@@ -21,25 +23,41 @@ struct MeetingEndView: View {
     
     var body: some View {
         ZStack {
-            VStack {
+            Color.white.ignoresSafeArea()
+            
+            VStack(alignment: .center, spacing: 0) {
                 Text("\(currentDateText) 회의")
                     .font(.system(size: 17, weight: .semibold))
+                    .foregroundStyle(Color.black)
                     .padding(.top, 11)
-                    .padding(.bottom, 44)
+                    .padding(.bottom, 55)
                 
                 PieChartView(agendas: agendas)
-                    .frame(width: 45, height: 45)
-                    .padding(.bottom, 26)
+                    .frame(width: 30, height: 30)
+                    .padding(.bottom, 20)
                 
-                VStack {
-                    Text("\(agendas.count)개 중에 \(completedAgendaCount)개 안건을")
-                    Text("완료했어요")
-                }
-                .font(.pretendBold20)
-                .padding(.bottom, 56)
+                Text(agendas.count == completedAgendaCount ? "안건을 모두 완료했어요" : "안건 \(completedAgendaCount)개를 완료했어요")
+                    .font(.pretendBold24)
+                    .foregroundStyle(Color.black)
+                    .padding(.bottom, 50)
                 
-                ForEach(agendas.indices, id: \.self) { index in
-                    AllAgendaCell(agenda: agendas[index], target: false)
+                if agendas.isNotEmpty {
+                    let firstIndex = agendas.startIndex
+                    let lastIndex = agendas.index(before: agendas.endIndex)
+                    
+                    ForEach(agendas.indices, id: \.self) { index in
+                        if agendas.count == 1 {
+                            AllAgendaCell(agenda: agendas[index], target: false, needUpperLine: false, needLowerLine: false)
+                        }
+                        else if index == firstIndex {
+                            AllAgendaCell(agenda: agendas[index], target: false, needUpperLine: false, needLowerLine: true)
+                        }
+                        else if index == lastIndex {
+                            AllAgendaCell(agenda: agendas[index], target: false, needUpperLine: true, needLowerLine: false)
+                        } else {
+                            AllAgendaCell(agenda: agendas[index], target: false, needUpperLine: true, needLowerLine: true)
+                        }
+                    }
                 }
                 
                 Spacer()
@@ -48,33 +66,37 @@ struct MeetingEndView: View {
                     navigationManager.screenPath = []
                 } label: {
                     RoundedRectangle(cornerRadius: 16)
-                        .fill(.blue)
+                        .fill(Color.gray1)
                         .frame(height: 56)
                         .frame(maxWidth: .infinity)
                         .overlay (
                             Text("회의 마치기")
-                                .foregroundStyle(.white)
-                                .font(.pretendBold20)
+                                .foregroundStyle(Color.white)
+                                .font(.pretendBold16)
                         )
                 }
-                .padding(.bottom, 21)
+                .padding(.bottom, 15)
+                .padding(.horizontal, 24)
             }
         }
         .onAppear {
             CoreDataManager.shared.save(meeting: Meeting(agendas: agendas, startDate: Date()))
             meetingManager.fetchMeetings()
         }
-        .padding(.horizontal, 44)
         .navigationBarBackButtonHidden()
     }
 }
 
 #Preview {
-    MeetingEndView(agendas: [
-        Agenda(title: "이전 회의 안건 첫번째는 이걸로 할게요", detail: [],isComplete: false),
-        Agenda(title: "안건2", detail: [],isComplete: false),
-        Agenda(title: "안건3", detail: [],isComplete: false),
-        Agenda(title: "안건4", detail: [],isComplete: true),
-        Agenda(title: "안건5", detail: [],isComplete: false)
-    ], completedAgendaCount: 1)
+    NavigationStack {
+        MeetingEndView(agendas: [
+            Agenda(title: "안건1", detail: [],isComplete: false),
+            Agenda(title: "으아아아아아아", detail: [],isComplete: true),
+            Agenda(title: "안건3", detail: [],isComplete: false),
+            Agenda(title: "안건4", detail: [],isComplete: true),
+            Agenda(title: "안건5", detail: [],isComplete: false)
+        ], completedAgendaCount: 3)
+    }
+    .environmentObject(NavigationManager())
+    .environmentObject(MeetingManager())
 }
