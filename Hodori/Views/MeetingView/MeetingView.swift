@@ -92,7 +92,6 @@ struct MeetingView: View {
                     mediumHaptic.impactOccurred()
                     withAnimation(.bouncy) {
                         showAlert = true
-                        showTimer = false
                     }
                 } label: {
                     Text("회의 종료")
