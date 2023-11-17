@@ -45,6 +45,12 @@
 		86A8077C2B05F96700BF42DD /* loadingLottieV3.json in Resources */ = {isa = PBXBuildFile; fileRef = 86A8077B2B05F96700BF42DD /* loadingLottieV3.json */; };
 		86B5DADE2AF8AF5A00AD5F56 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */; };
 		86B5DAE62AF8B39000AD5F56 /* MeetingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */; };
+		A53AD55A2B034D2B006B9F16 /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD5592B034D2B006B9F16 /* CustomPicker.swift */; };
+		A53AD55C2B034D91006B9F16 /* TimerSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55B2B034D91006B9F16 /* TimerSettingView.swift */; };
+		A53AD55E2B034DD0006B9F16 /* TimerRunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */; };
+		A53AD5602B034E24006B9F16 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55F2B034E24006B9F16 /* SoundManager.swift */; };
+		A53AD5622B034E73006B9F16 /* TimerButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD5612B034E73006B9F16 /* TimerButtonStyles.swift */; };
+		A5A7C5062B05CCC8005F6281 /* loud-alarm-clock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5A7C5052B05CCC8005F6281 /* loud-alarm-clock.mp3 */; };
 		86F49BFD2B0494D500AC54DF /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86F49BF92B0494D500AC54DF /* Pretendard-SemiBold.otf */; };
 		86F49BFE2B0494D500AC54DF /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86F49BFA2B0494D500AC54DF /* Pretendard-Bold.otf */; };
 		86F49BFF2B0494D500AC54DF /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86F49BFB2B0494D500AC54DF /* Pretendard-Medium.otf */; };
@@ -92,6 +98,12 @@
 		86A8077B2B05F96700BF42DD /* loadingLottieV3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingLottieV3.json; sourceTree = "<group>"; };
 		86B5DADD2AF8AF5A00AD5F56 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingManager.swift; sourceTree = "<group>"; };
+		A53AD5592B034D2B006B9F16 /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
+		A53AD55B2B034D91006B9F16 /* TimerSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettingView.swift; sourceTree = "<group>"; };
+		A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRunningView.swift; sourceTree = "<group>"; };
+		A53AD55F2B034E24006B9F16 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		A53AD5612B034E73006B9F16 /* TimerButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerButtonStyles.swift; sourceTree = "<group>"; };
+		A5A7C5052B05CCC8005F6281 /* loud-alarm-clock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "loud-alarm-clock.mp3"; sourceTree = "<group>"; };
 		86F49BF92B0494D500AC54DF /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		86F49BFA2B0494D500AC54DF /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		86F49BFB2B0494D500AC54DF /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
@@ -129,6 +141,7 @@
 		0736DC192AD502CE002F1FE0 /* Hodori */ = {
 			isa = PBXGroup;
 			children = (
+				A5A7C5042B05CB01005F6281 /* TimerSounds */,
 				07D925E62B041220007BD0E5 /* Modifiers */,
 				86855F0C2AFDFCB00051794C /* Info.plist */,
 				07D736602AF6AD0D00C04D11 /* Models */,
@@ -270,6 +283,7 @@
 				86B5DAE52AF8B39000AD5F56 /* MeetingManager.swift */,
 				0742D8C72AFF863200FBF183 /* KeyboardManager.swift */,
 				071F8D9F2B016579004A6C7A /* CoreDataManager.swift */,
+				A53AD55F2B034E24006B9F16 /* SoundManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -289,6 +303,7 @@
 		86B5DAE12AF8B1D000AD5F56 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A53AD5582B034CC5006B9F16 /* TimerView */,
 				07A1291D2B02AF2900290E05 /* AgendaSetting */,
 				079F1A7D2B00F53600A00E18 /* History */,
 				079F1A7A2B00EED000A00E18 /* Start */,
@@ -310,6 +325,25 @@
 				071F8DA12B01659A004A6C7A /* MeetingModel.xcdatamodeld */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		A53AD5582B034CC5006B9F16 /* TimerView */ = {
+			isa = PBXGroup;
+			children = (
+				A53AD5592B034D2B006B9F16 /* CustomPicker.swift */,
+				A53AD55B2B034D91006B9F16 /* TimerSettingView.swift */,
+				A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */,
+				A53AD5612B034E73006B9F16 /* TimerButtonStyles.swift */,
+			);
+			path = TimerView;
+			sourceTree = "<group>";
+		};
+		A5A7C5042B05CB01005F6281 /* TimerSounds */ = {
+			isa = PBXGroup;
+			children = (
+				A5A7C5052B05CCC8005F6281 /* loud-alarm-clock.mp3 */,
+			);
+			path = TimerSounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,6 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0736DC232AD502CF002F1FE0 /* Preview Assets.xcassets in Resources */,
+				A5A7C5062B05CCC8005F6281 /* loud-alarm-clock.mp3 in Resources */,
 				86F49BFE2B0494D500AC54DF /* Pretendard-Bold.otf in Resources */,
 				86F49BFD2B0494D500AC54DF /* Pretendard-SemiBold.otf in Resources */,
 				07A1292B2B02C60100290E05 /* Assets.xcassets in Resources */,
@@ -400,10 +435,12 @@
 				07D925E82B041234007BD0E5 /* CardBackgroundModifier.swift in Sources */,
 				863702472AFA8971004A8A34 /* MeetingEndView.swift in Sources */,
 				0736DC1D2AD502CE002F1FE0 /* ContentView.swift in Sources */,
+				A53AD55A2B034D2B006B9F16 /* CustomPicker.swift in Sources */,
 				07A129202B02AF2900290E05 /* AgendaView.swift in Sources */,
 				071F8DA72B017C56004A6C7A /* HistoryDetailView.swift in Sources */,
 				07A129212B02AF2900290E05 /* AgendaSettingView.swift in Sources */,
 				07D736622AF6AD1500C04D11 /* Meeting.swift in Sources */,
+				A53AD55C2B034D91006B9F16 /* TimerSettingView.swift in Sources */,
 				8637023D2AFA7001004A8A34 /* MeetingView.swift in Sources */,
 				072BF4FF2B03FBA80028A274 /* AgendaCell.swift in Sources */,
 				86855EFC2AFCB2BB0051794C /* LottieView.swift in Sources */,
@@ -413,6 +450,7 @@
 				863702412AFA737B004A8A34 /* PieChartView.swift in Sources */,
 				0736DC1B2AD502CE002F1FE0 /* HodoriApp.swift in Sources */,
 				071F8DA52B017950004A6C7A /* HistoryView.swift in Sources */,
+				A53AD5602B034E24006B9F16 /* SoundManager.swift in Sources */,
 				863702432AFA7534004A8A34 /* AllAgendaView.swift in Sources */,
 				863702452AFA872E004A8A34 /* AllAgendaCell.swift in Sources */,
 				07D736642AF6AD1C00C04D11 /* Agenda.swift in Sources */,
@@ -422,7 +460,9 @@
 				071F8DA02B016579004A6C7A /* CoreDataManager.swift in Sources */,
 				079F1A792B00CB0D00A00E18 /* String+.swift in Sources */,
 				86855F0E2AFDFD660051794C /* Font+.swift in Sources */,
+				A53AD55E2B034DD0006B9F16 /* TimerRunningView.swift in Sources */,
 				86855EF52AFBB3500051794C /* MeetingTabViewCell.swift in Sources */,
+				A53AD5622B034E73006B9F16 /* TimerButtonStyles.swift in Sources */,
 				86855F022AFCB3B90051794C /* MeetingLottieView.swift in Sources */,
 				86855F122AFE07200051794C /* Color+.swift in Sources */,
 				863702392AFA162A004A8A34 /* PrioritySettingView.swift in Sources */,

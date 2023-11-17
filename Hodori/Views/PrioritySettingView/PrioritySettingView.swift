@@ -78,7 +78,7 @@ extension PrioritySettingView {
                             if let sourceIndex = agendas.firstIndex(of: draggingItem),
                                let destinationIndex = agendas.firstIndex(of: agenda) {
                                 
-                                withAnimation(.bouncy) {
+                                withAnimation(.default) {
                                     self.agendas.move(fromOffsets: IndexSet(integer: sourceIndex), toOffset: destinationIndex > sourceIndex ? destinationIndex + 1 : destinationIndex)
                                 }
                                 impactFeedback.impactOccurred()

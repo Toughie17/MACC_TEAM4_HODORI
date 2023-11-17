@@ -13,25 +13,27 @@ struct MeetingView: View {
     
     var completedAgendaCount: Int {
         agendas.filter { $0.isComplete }.count }
-    
     var leftAgendaCount: Int {
         agendas.count - completedAgendaCount
     }
     
+    @State var sec : Double = 0.0
     @State var showAlert: Bool = false
     @State var alert: Alert?
     @State var showSheet: Bool = false
     @State var showLottie: Bool = false
     @State var showTimer: Bool = false
     @State var toMeetingEndView: Bool = false
-    
     @State var selectedTab: Int = 0
+    @State var showModal: Bool = false
+    
     
     private let heavyHaptic = UIImpactFeedbackGenerator(style: .heavy)
     private let mediumHaptic = UIImpactFeedbackGenerator(style: .medium)
     
+    
+    
     var body: some View {
-        
         ZStack {
             Color.gray10.ignoresSafeArea()
             
@@ -73,7 +75,6 @@ struct MeetingView: View {
         .navigationBarTitle("회의 진행 중", displayMode: .inline)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                
                 Button {
                     showSheet = true
                 } label: {
@@ -90,6 +91,7 @@ struct MeetingView: View {
                     mediumHaptic.impactOccurred()
                     withAnimation(.bouncy) {
                         showAlert = true
+                        showTimer = false
                     }
                 } label: {
                     Text("회의 종료")
@@ -102,14 +104,25 @@ struct MeetingView: View {
         .navigationDestination(isPresented: $toMeetingEndView) {
             MeetingEndView(agendas: agendas, completedAgendaCount: completedAgendaCount)
         }
+        .sheet(isPresented: $showModal) { 
+            TimerSettingView( sec : $sec,showModal: $showModal, showTimer : $showTimer)
+                .presentationDetents([.medium]) // 바텀시트 하프모달로 보이게 하기
+                .presentationDragIndicator(.visible) // grabber 보이게 하기
+//                .presentationBackgroundInteraction(
+//                    .enabled(upThrough: .medium)) // 모달외 클릭했을 시 시트 내려가지 않게 (iOS16.4)
+//                .presentationCornerRadius(21)
+            // 하프모달 코너래디우스 값 조정(iOS16.4)
+                .onDisappear {
+                    // 바텀시트가 사라질 때 sec를 0으로 설정
+                    sec = 0.0
+                }
+        }
     }
 }
 
 extension MeetingView {
     private var tempTimerView: some View {
-        RoundedRectangle(cornerRadius: 22)
-            .fill(.orange)
-            .frame(height: 80)
+        TimerRunningView(sec: $sec,showTimer: $showTimer)
     }
     
     private var mainTabView: some View {
@@ -147,21 +160,23 @@ extension MeetingView {
     
     private var timerButton: some View {
         Button {
+            mediumHaptic.impactOccurred()
             withAnimation(.bouncy) {
-                showTimer.toggle()
+                showModal.toggle()
             }
         } label: {
             ZStack(alignment: .center) {
                 RoundedRectangle(cornerRadius: 22)
-                    .stroke(Color.gray1, lineWidth: 2)
+                    .stroke((showModal || showTimer) ? Color.gray5 : Color.gray1, lineWidth: 2)
                     .frame(width: 70, height: 56)
                 
                 Image(systemName: "stopwatch")
                     .font(.system(size: 24, weight: .regular))
-                    .foregroundStyle(Color.gray1)
+                    .foregroundStyle((showModal || showTimer) ? Color.gray5 : Color.gray1)
                     .frame(width: 29, height: 29)
             }
         }
+        .disabled(showModal || showTimer)
     }
     
     private var agendCompleteButton: some View {
