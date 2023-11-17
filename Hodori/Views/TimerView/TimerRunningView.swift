@@ -125,7 +125,7 @@ struct TimerRunningView: View {
             }
         } label: {
             HStack {
-                Image(systemName: isClicked ? "play.fill" : "pause.fill")
+                Image(systemName: isClicked ? "play.fill" : "pause")
                     .resizable()
                     .frame(width: 14, height: 19)
                     .font(Font.system(size: 40, weight: .bold))
