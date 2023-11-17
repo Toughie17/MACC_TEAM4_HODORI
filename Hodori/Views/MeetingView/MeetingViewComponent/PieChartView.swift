@@ -29,7 +29,7 @@ struct PieChartView: View {
         }
     }
     
-    var backgroundColor: Color = .blue
+    var backgroundColor: Color = Color.primaryBlue
     
     var body: some View {
         GeometryReader { geometryProxy in
@@ -37,7 +37,7 @@ struct PieChartView: View {
                 Circle()
                     .foregroundColor(.clear)
                 Circle()
-                    .stroke(Color.blue, lineWidth: 3)
+                    .stroke(Color.primaryBlue, lineWidth: 3)
                 
                 Path { path in
                     let size = geometryProxy.size
