@@ -27,12 +27,8 @@ extension View {
         default: self
             
         }
-        
     }
-
-    
 }
-
 
 extension View {
     func cardBackground(opacity: CGFloat, radius: CGFloat, y: CGFloat) -> some View {
