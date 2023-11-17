@@ -22,49 +22,58 @@ struct AgendaCell: View {
     @State private var agendaClick: [(Double, Bool)] = Array(repeating: (0, false), count: 10)
     
     var body: some View {
-        switch state {
-        case .normal:
-            normalAgendaCell
-        case .detail:
-            detailAgendaCell
+        VStack(spacing: 0) {
+            switch state {
+            case .normal:
+                normalAgendaCell
+            case .detail:
+                detailAgendaCell
+            }
         }
+        .padding(.leading, 4)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
     
     private var normalAgendaCell: some View {
         Group {
-            HStack(spacing: 16) {
-                checkmark
-                title
-            }
-            
-            HStack(spacing: 24) {
-                if index < meeting.agendas.endIndex - 1 {
-                    pole
-                        .frame(maxWidth: 2, maxHeight: 14)
-                        .padding(.leading, 7)
+            VStack(alignment: .leading, spacing: 2) {
+                HStack(spacing: 0) {
+                    checkmark
+                        .padding(.trailing, 16)
+                    title
                 }
+                
+                pole
+                    .frame(width: 2, height: 14)
+                    .padding(.leading, 7)
             }
         }
     }
     
     private var detailAgendaCell: some View {
         Group {
-            HStack(spacing: 16) {
-                checkmark
-                title
-                Spacer()
-                chevron
-            }
-            
-            HStack(spacing: 24) {
-                if index < meeting.agendas.endIndex {
+            VStack(alignment: .leading, spacing: 1) {
+                HStack(spacing: 0) {
+                    checkmark
+                        .padding(.trailing, 16)
+                    title
+                    Spacer()
+                    chevron
+                }
+                
+                HStack(spacing: 24) {
                     pole
                         .frame(maxWidth: 2, minHeight: 21)
                         .padding(.leading, 7)
-                }
-                
-                if isAgendaClicked(index) {
-                    detailAgendas
+                    
+                    if isAgendaClicked(index) {
+                        VStack(alignment: .leading, spacing: 7) {
+                            detailAgendas
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.top, 14)
+                        .padding(.bottom, 32)
+                    }
                 }
             }
         }
@@ -87,6 +96,7 @@ struct AgendaCell: View {
         Group {
             if let firstAgenda = agenda.detail.first, firstAgenda.isNotEmpty {
                 Image(systemName: "chevron.down")
+                    .font(.system(size: 14, weight: .medium))
                     .foregroundStyle(agenda.isComplete ? Color.gray5 : .black)
                     .rotationEffect(Angle(degrees: agendaClick[index].0))
                     .onTapGesture {
@@ -101,27 +111,20 @@ struct AgendaCell: View {
     
     private var pole: some View {
         RoundedRectangle(cornerRadius: 2)
-            .fill(Color.gray9)
-            
+            .foregroundStyle(index < meeting.agendas.endIndex - 1 ? Color.gray9 : Color.clear)
     }
     
     private var detailAgendas: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            ForEach(agenda.detail, id: \.self) { detailAgenda in
-                Text("\(detailAgenda)")
-                    .font(.pretendMedium16)
-                    .foregroundStyle(Color.gray2)
-            }
+        ForEach(agenda.detail, id: \.self) { detailAgenda in
+            Text("\(detailAgenda)")
+                .font(.pretendMedium16)
+                .foregroundStyle(agenda.isComplete ? Color.gray6 : Color.gray2)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.top, 8)
-        .padding(.bottom, 29)
     }
     
     private func isAgendaClicked(_ index: Int) -> Bool {
         agendaClick[index].1
     }
-    
 }
 
 #Preview {
