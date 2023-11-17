@@ -40,15 +40,16 @@ struct TimerRunningView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                HStack {
+            HStack(spacing : 0) {
+                HStack(spacing : 4){
                     playButton
                     cancelButton
                 }
-                .padding(.trailing, 20)
-                VStack {
+               
+           Spacer()
                     timerString
-                }
+                        .padding(.trailing, 20)
+               
             }
             .padding(.leading, 16)
             .padding(.vertical, 12)
