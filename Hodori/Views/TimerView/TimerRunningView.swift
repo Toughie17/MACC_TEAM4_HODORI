@@ -105,31 +105,27 @@ struct TimerRunningView: View {
     
     private var playButton: some View {
         Button {
-            mediumHaptic.impactOccurred()
-            withAnimation(.bouncy){
-                isClicked.toggle()
-                if isClicked {
-                    stopTimer()
-                    startStopBlinking()
-                } else {
-                    startTimer()
-                    stopBlinking()
+                    mediumHaptic.impactOccurred()
+                    withAnimation(.bouncy){
+                        isClicked.toggle()
+                        if isClicked {
+                            stopTimer()
+                            startStopBlinking()
+                        } else {
+                            startTimer()
+                            stopBlinking()
+                        }
+                    }
+                } label: {
+                    Circle()
+                        .fill(Color.gray9)
+                        .frame(width: 40, height: 40)
+                        .overlay {
+                            Image(systemName: isClicked ? "play.fill" : "pause")
+                                .font(Font.system(size: 16, weight: .heavy))
+                                .foregroundColor(.gray5)
+                        }
                 }
-            }
-        } label: {
-            HStack {
-                Image(systemName: isClicked ? "play.fill" : "pause")
-                    .resizable()
-                    .frame(width: 14, height: 19)
-                    .font(Font.system(size: 40, weight: .bold))
-                    .foregroundColor(.gray5)
-                    .padding()
-                    .background(Circle().fill(Color.gray9))
-                    .frame(width: 40, height: 40)
-            }
-        }
-        .buttonStyle(PlainButtonStyle())
-        .padding(.trailing, 4)
         
     }
     
