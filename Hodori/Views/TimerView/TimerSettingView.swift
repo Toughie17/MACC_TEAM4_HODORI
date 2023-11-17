@@ -37,6 +37,7 @@ struct TimerSettingView: View {
                     cancelButton
                 }
                 CustomPicker(sec: $sec)
+                    .frame(width: 220)
                 
                 timerStartButton
                     .padding(.top, 30)

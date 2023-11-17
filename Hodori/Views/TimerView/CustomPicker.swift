@@ -15,8 +15,10 @@ struct CustomPicker: UIViewRepresentable {
     }
     
     func makeUIView(context: Context) -> UIPickerView {
-        let pickerView = UIPickerView(frame: .zero)
-        pickerView.frame(width: 30, height:39)
+//        let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 80  , height: 80))
+
+        let pickerView = UIPickerView(frame:.zero)
+        pickerView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         pickerView.translatesAutoresizingMaskIntoConstraints = false
         pickerView.delegate = context.coordinator
         pickerView.dataSource = context.coordinator
@@ -29,14 +31,14 @@ struct CustomPicker: UIViewRepresentable {
                let componentWidth: CGFloat = pickerView.frame.width / CGFloat(pickerView.numberOfComponents)
                let y = (pickerView.frame.size.height / 2) - (fontSize / 2)
                
-               let label1 = UILabel(frame: CGRect(x: componentWidth * 0.8, y: y, width: componentWidth * 0.4, height: fontSize))
+               let label1 = UILabel(frame: CGRect(x: componentWidth * 0.5, y: y, width: componentWidth * 0.4, height: fontSize))
                label1.font = font
                label1.textAlignment = .left
                label1.text = "시간"
                label1.textColor = UIColor.lightGray
                pickerView.addSubview(label1)
 
-               let label2 = UILabel(frame: CGRect(x: componentWidth * 1.42, y: y, width: componentWidth * 0.4, height: fontSize))
+        let label2 = UILabel(frame: CGRect(x: componentWidth * 1.13, y: y, width: componentWidth * 0.4, height: fontSize))
                label2.font = font
                label2.textAlignment = .left
                label2.text = "분"
