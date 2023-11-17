@@ -117,12 +117,10 @@ struct MeetingView: View {
                     .enabled(upThrough: .medium)) // 모달외 클릭했을 시 시트 내려가지 않게 (iOS16.4)
                 .presentationCornerRadius(21)
                     // 하프모달 코너래디우스 값 조정(iOS16.4)
-//                .onChange(of: showModal, perform: { value in
-//                                    // Grabber로 바텀시트를 내릴 때 sec를 0으로 설정
-//                                    if !value {
-//                                        sec = 0.0
-//                                    }
-//                                })
+                .onDisappear {
+                            // 바텀시트가 사라질 때 sec를 0으로 설정
+                            sec = 0.0
+                        }
             
         }
     }
