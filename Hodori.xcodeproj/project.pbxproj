@@ -26,6 +26,7 @@
 		07D736622AF6AD1500C04D11 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736612AF6AD1500C04D11 /* Meeting.swift */; };
 		07D736642AF6AD1C00C04D11 /* Agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736632AF6AD1C00C04D11 /* Agenda.swift */; };
 		07D925E82B041234007BD0E5 /* CardBackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D925E72B041234007BD0E5 /* CardBackgroundModifier.swift */; };
+		7BF933032B077EAD00B6CD6C /* loud-alarm-clock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7BF933022B077EAD00B6CD6C /* loud-alarm-clock.mp3 */; };
 		863702372AFA107A004A8A34 /* PriorityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863702362AFA107A004A8A34 /* PriorityCell.swift */; };
 		863702392AFA162A004A8A34 /* PrioritySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863702382AFA162A004A8A34 /* PrioritySettingView.swift */; };
 		8637023D2AFA7001004A8A34 /* MeetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8637023C2AFA7001004A8A34 /* MeetingView.swift */; };
@@ -53,8 +54,6 @@
 		A53AD55C2B034D91006B9F16 /* TimerSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55B2B034D91006B9F16 /* TimerSettingView.swift */; };
 		A53AD55E2B034DD0006B9F16 /* TimerRunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */; };
 		A53AD5602B034E24006B9F16 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55F2B034E24006B9F16 /* SoundManager.swift */; };
-		A53AD5622B034E73006B9F16 /* TimerButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD5612B034E73006B9F16 /* TimerButtonStyles.swift */; };
-		A5A7C5062B05CCC8005F6281 /* loud-alarm-clock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5A7C5052B05CCC8005F6281 /* loud-alarm-clock.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +78,7 @@
 		07D736612AF6AD1500C04D11 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		07D736632AF6AD1C00C04D11 /* Agenda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agenda.swift; sourceTree = "<group>"; };
 		07D925E72B041234007BD0E5 /* CardBackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackgroundModifier.swift; sourceTree = "<group>"; };
+		7BF933022B077EAD00B6CD6C /* loud-alarm-clock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "loud-alarm-clock.mp3"; sourceTree = "<group>"; };
 		863702362AFA107A004A8A34 /* PriorityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityCell.swift; sourceTree = "<group>"; };
 		863702382AFA162A004A8A34 /* PrioritySettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioritySettingView.swift; sourceTree = "<group>"; };
 		8637023C2AFA7001004A8A34 /* MeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingView.swift; sourceTree = "<group>"; };
@@ -106,8 +106,6 @@
 		A53AD55B2B034D91006B9F16 /* TimerSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettingView.swift; sourceTree = "<group>"; };
 		A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRunningView.swift; sourceTree = "<group>"; };
 		A53AD55F2B034E24006B9F16 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
-		A53AD5612B034E73006B9F16 /* TimerButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerButtonStyles.swift; sourceTree = "<group>"; };
-		A5A7C5052B05CCC8005F6281 /* loud-alarm-clock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "loud-alarm-clock.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,7 +331,6 @@
 				A53AD5592B034D2B006B9F16 /* CustomPicker.swift */,
 				A53AD55B2B034D91006B9F16 /* TimerSettingView.swift */,
 				A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */,
-				A53AD5612B034E73006B9F16 /* TimerButtonStyles.swift */,
 			);
 			path = TimerView;
 			sourceTree = "<group>";
@@ -341,7 +338,7 @@
 		A5A7C5042B05CB01005F6281 /* TimerSounds */ = {
 			isa = PBXGroup;
 			children = (
-				A5A7C5052B05CCC8005F6281 /* loud-alarm-clock.mp3 */,
+				7BF933022B077EAD00B6CD6C /* loud-alarm-clock.mp3 */,
 			);
 			path = TimerSounds;
 			sourceTree = "<group>";
@@ -411,7 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0736DC232AD502CF002F1FE0 /* Preview Assets.xcassets in Resources */,
-				A5A7C5062B05CCC8005F6281 /* loud-alarm-clock.mp3 in Resources */,
+				7BF933032B077EAD00B6CD6C /* loud-alarm-clock.mp3 in Resources */,
 				86F49BFE2B0494D500AC54DF /* Pretendard-Bold.otf in Resources */,
 				86F49BFD2B0494D500AC54DF /* Pretendard-SemiBold.otf in Resources */,
 				07A1292B2B02C60100290E05 /* Assets.xcassets in Resources */,
@@ -462,7 +459,6 @@
 				86855F0E2AFDFD660051794C /* Font+.swift in Sources */,
 				A53AD55E2B034DD0006B9F16 /* TimerRunningView.swift in Sources */,
 				86855EF52AFBB3500051794C /* MeetingTabViewCell.swift in Sources */,
-				A53AD5622B034E73006B9F16 /* TimerButtonStyles.swift in Sources */,
 				86855F022AFCB3B90051794C /* MeetingLottieView.swift in Sources */,
 				86855F122AFE07200051794C /* Color+.swift in Sources */,
 				863702392AFA162A004A8A34 /* PrioritySettingView.swift in Sources */,

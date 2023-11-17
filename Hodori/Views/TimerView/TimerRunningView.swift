@@ -63,9 +63,9 @@ struct TimerRunningView: View {
     
     
     func calcRemain() {
-        let calendar = Calendar.current // 현재 시간 저장
-        let targetTime : Date = calendar.date(byAdding: .second, value: Int($sec.wrappedValue), to: date, wrappingComponents: false) ?? Date() // 설정한 초들을 date 형식으로 바꿔서 calendar에 저장
-        self.timeRemaining =  Int(targetTime.timeIntervalSince(date)) // timeRemaining에 시간 값을 바로 넣게 변형
+        let calendar = Calendar.current
+        let targetTime : Date = calendar.date(byAdding: .second, value: Int($sec.wrappedValue), to: date, wrappingComponents: false) ?? Date()
+        self.timeRemaining =  Int(targetTime.timeIntervalSince(date)) //
         
     }
     
@@ -195,9 +195,9 @@ struct TimerRunningView: View {
                         SoundManager.instance.playSound()
                         stopTimer()
                         feedback.impactOccurred()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) { //  사운드 fix되면 사운드 길이 확인해서 지속시간 상수로 입력하기.
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                             showTimer = false
-                        } //    10초 지난 후에 showTimer false.
+                        }
                     }
                 }
             }

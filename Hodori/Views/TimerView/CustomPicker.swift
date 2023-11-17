@@ -15,7 +15,6 @@ struct CustomPicker: UIViewRepresentable {
     }
     
     func makeUIView(context: Context) -> UIPickerView {
-//        let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 80  , height: 80))
 
         let pickerView = UIPickerView(frame:.zero)
         pickerView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
@@ -56,11 +55,6 @@ struct CustomPicker: UIViewRepresentable {
         let hours = totalSeconds / 3600
         let minutes = (totalSeconds % 3600) / 60
  
-        
-//        uiView.selectRow(hours, inComponent: 0, animated: false)
-//        uiView.selectRow(minutes, inComponent: 1, animated: false)
-        //        uiView.selectRow(seconds, inComponent: 2, animated: false)
-        // 피커뷰에서 시간과 5분 단위로 표시된 분 선택
         uiView.selectRow(hours, inComponent: 0, animated: false)
         uiView.selectRow(minutes / 5, inComponent: 1, animated: false)
    
@@ -81,11 +75,10 @@ struct CustomPicker: UIViewRepresentable {
         func numberOfComponents(in pickerView: UIPickerView) -> Int {
             return 2
         }
-        
-        // 각 컴포넌트의 행 수 반환
+
         func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-            return component == 0 ? 24 : 60 / 5 // 5분 간격으로 조정
-//            return component == 0 ? 24 : 60  // 1분 간격으로 조정
+            return component == 0 ? 24 : 60 / 5
+
         }
     
         
@@ -94,8 +87,7 @@ struct CustomPicker: UIViewRepresentable {
             return "\(values[row])"
         }
         else {
-            return "\(values[row * 5])" // 5분 간격으로 조정
-//            return "\(values[row])" // 1분 간격으로 조정
+            return "\(values[row * 5])"
         }
     }
         
@@ -106,10 +98,9 @@ struct CustomPicker: UIViewRepresentable {
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
             let hourIndex = pickerView.selectedRow(inComponent: 0)
             let minIndex = pickerView.selectedRow(inComponent: 1)
-            //            let secIndex = pickerView.selectedRow(inComponent: 2)
+
             
-            sec.wrappedValue = Double((minIndex*60 * 5 )+(hourIndex*3600)) // 5분 간격으로 넘어감
-//            sec.wrappedValue = Double((minIndex*60 )+(hourIndex*3600)) // 1분 간격으로 넘어감
+            sec.wrappedValue = Double((minIndex*60 * 5 )+(hourIndex*3600))
         }
     
     }
