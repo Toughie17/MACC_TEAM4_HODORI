@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HistoryDetailView: View {
     @State private var agendaClick: [(Double, Bool)] = Array(repeating: (0, false), count: 10)
-    @EnvironmentObject var navigationManager: NavigationManager
     @Environment(\.dismiss) var dismiss
     let meeting: Meeting
     

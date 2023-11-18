@@ -162,27 +162,25 @@ struct TimerRunningView: View {
             
             HStack(spacing: 0) {
                 Text(String(format: "%02d", hours))
-                    .font(Font.system(size: 40).monospacedDigit())
+                    .font(Font.system(size: 40, weight: .light).monospacedDigit())
                     .foregroundColor(isBlinking ? .clear : .black)
                 
                 Text(":")
-                    .font(Font.system(size: 40).monospacedDigit())
+                    .font(Font.system(size: 40, weight: .light).monospacedDigit())
                     .foregroundColor(isBlinking ? .clear : .black)
-                    .padding(.horizontal, 1)
                     .padding(.bottom, 5)
                 
                 Text(String(format: "%02d", minutes))
-                    .font(Font.system(size: 40).monospacedDigit())
+                    .font(Font.system(size: 40, weight: .light).monospacedDigit())
                     .foregroundColor(isBlinking ? .clear : .black)
                 
                 Text(":")
-                    .font(Font.system(size: 40).monospacedDigit())
+                    .font(Font.system(size: 40, weight: .light).monospacedDigit())
                     .foregroundColor(isBlinking ? .clear : .black)
-                    .padding(.horizontal, 1)
                     .padding(.bottom, 5)
                 
                 Text(String(format: "%02d", seconds))
-                    .font(Font.system(size: 40).monospacedDigit())
+                    .font(Font.system(size: 40, weight: .light).monospacedDigit())
                     .foregroundColor(isBlinking ? .clear : .black)
             }
             .onAppear {

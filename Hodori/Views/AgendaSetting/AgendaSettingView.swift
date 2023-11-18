@@ -9,13 +9,13 @@ import SwiftUI
 
 struct AgendaSettingView: View {
     @State private var agendas: [Agenda] = []
-    @EnvironmentObject var navigationManager: NavigationManager
+    @Environment(\.dismiss) var dismiss
     @StateObject var keyboardManager = KeyboardManager()
     
     @State private var showAlert = false
     
     @State private var buttonHeight: CGFloat = 0
-    @State private var selectedAgenda: Agenda = .init(title: "", detail: [""])
+    @State private var selectedAgenda: Agenda = Agenda(title: "", detail: [""])
     
     let autoCorrectionHeight: CGFloat = 57
     
@@ -271,7 +271,7 @@ extension AgendaSettingView {
                 .center(.horizontal)
                 .contentShape(Rectangle())
                 .onTapGesture {
-                    navigationManager.screenPath.removeLast()
+                    dismiss()
                 }
             
         }

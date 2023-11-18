@@ -68,6 +68,7 @@ struct StartView: View {
             .padding(.horizontal, 24)
             .padding(.top, 30)
         }
+        .navigationBarBackButtonHidden()
         .onAppear {
             isHistoryNavigationButtonClicked = false
             isAgendaSettingNavigationButtonClicked = false

@@ -8,7 +8,7 @@
 import SwiftUI
 import UIKit
 
-class KeyboardManager: ObservableObject {
+final class KeyboardManager: ObservableObject {
     enum KeyboardState {
         case willShow
         case willChange

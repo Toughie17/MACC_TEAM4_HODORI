@@ -31,7 +31,7 @@ struct PieChartView: View {
         GeometryReader { geometryProxy in
             ZStack(alignment: .center) {
                 Circle()
-                    .foregroundColor(.white)
+                    .foregroundColor(.clear)
                 Circle()
                     .stroke(Color.primaryBlue, lineWidth: 3)
                 

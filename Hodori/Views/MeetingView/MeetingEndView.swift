@@ -63,7 +63,7 @@ struct MeetingEndView: View {
                 Spacer()
                 
                 Button {
-                    navigationManager.screenPath = []
+                    navigationManager.screenPath = [.start]
                 } label: {
                     RoundedRectangle(cornerRadius: 16)
                         .fill(Color.gray1)
