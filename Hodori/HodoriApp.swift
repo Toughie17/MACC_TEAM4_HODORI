@@ -5,19 +5,22 @@
 //  Created by Eric on 10/10/23.
 //
 
-import FirebaseCore
 import SwiftUI
 
 @main
-struct HodoriApp: App {
+struct HodoriApp: App {    
+    let coreDataManager = CoreDataManager.shared
     
     init() {
-        FirebaseApp.configure()
+        UIScrollView.appearance().bounces = false
     }
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashScreen()
+                .environmentObject(NavigationManager())
+                .environmentObject(MeetingManager())
+                .environment(\.managedObjectContext, coreDataManager.viewContext)
         }
     }
 }
