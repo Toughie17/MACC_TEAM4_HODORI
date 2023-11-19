@@ -53,7 +53,7 @@ struct PrioritySettingView: View {
 extension PrioritySettingView {
     
     private var infoText: some View {
-        Text("진행할 순서에 맞춰 이동하고 회의를 시작하세요!")
+        Text("안건을 꾹 눌러서 회의 순서에 맞게 이동해 보세요!")
             .foregroundStyle(Color.gray5)
             .font(.pretendRegular14)
     }
