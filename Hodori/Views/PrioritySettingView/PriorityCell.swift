@@ -33,11 +33,6 @@ struct PriorityCell: View {
                         .padding(.bottom, 12)
                 }
                 
-                Spacer()
-                
-                Image(systemName: "line.3.horizontal")
-                    .foregroundStyle(Color.gray5)
-                    .padding(.trailing, 12)
             }
         }
         .frame(minHeight: 50)
