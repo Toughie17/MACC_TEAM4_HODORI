@@ -25,10 +25,10 @@
 		07A129212B02AF2900290E05 /* AgendaSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A1291F2B02AF2900290E05 /* AgendaSettingView.swift */; };
 		07A1292B2B02C60100290E05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07A1292A2B02C60100290E05 /* Assets.xcassets */; };
 		07ACEBCB2B07ACA100A2FB29 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ACEBCA2B07ACA100A2FB29 /* SplashScreen.swift */; };
-		07ACEBCD2B07AEF100A2FB29 /* ITDA_Splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 07ACEBCC2B07AEF100A2FB29 /* ITDA_Splash.gif */; };
 		07D736622AF6AD1500C04D11 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736612AF6AD1500C04D11 /* Meeting.swift */; };
 		07D736642AF6AD1C00C04D11 /* Agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736632AF6AD1C00C04D11 /* Agenda.swift */; };
 		07D925E82B041234007BD0E5 /* CardBackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D925E72B041234007BD0E5 /* CardBackgroundModifier.swift */; };
+		7B00B8C02B0A732D003CC330 /* ITDA_Splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7B00B8BF2B0A732D003CC330 /* ITDA_Splash.gif */; };
 		7BF933032B077EAD00B6CD6C /* loud-alarm-clock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7BF933022B077EAD00B6CD6C /* loud-alarm-clock.mp3 */; };
 		863702372AFA107A004A8A34 /* PriorityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863702362AFA107A004A8A34 /* PriorityCell.swift */; };
 		863702392AFA162A004A8A34 /* PrioritySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863702382AFA162A004A8A34 /* PrioritySettingView.swift */; };
@@ -92,10 +92,10 @@
 		07A1291F2B02AF2900290E05 /* AgendaSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaSettingView.swift; sourceTree = "<group>"; };
 		07A1292A2B02C60100290E05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07ACEBCA2B07ACA100A2FB29 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
-		07ACEBCC2B07AEF100A2FB29 /* ITDA_Splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = ITDA_Splash.gif; path = ../../../../../../Downloads/ITDA_Splash.gif; sourceTree = "<group>"; };
 		07D736612AF6AD1500C04D11 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		07D736632AF6AD1C00C04D11 /* Agenda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agenda.swift; sourceTree = "<group>"; };
 		07D925E72B041234007BD0E5 /* CardBackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackgroundModifier.swift; sourceTree = "<group>"; };
+		7B00B8BF2B0A732D003CC330 /* ITDA_Splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ITDA_Splash.gif; sourceTree = "<group>"; };
 		7BF933022B077EAD00B6CD6C /* loud-alarm-clock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "loud-alarm-clock.mp3"; sourceTree = "<group>"; };
 		863702362AFA107A004A8A34 /* PriorityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityCell.swift; sourceTree = "<group>"; };
 		863702382AFA162A004A8A34 /* PrioritySettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioritySettingView.swift; sourceTree = "<group>"; };
@@ -350,7 +350,7 @@
 		86B5DAE42AF8B25800AD5F56 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				07ACEBCC2B07AEF100A2FB29 /* ITDA_Splash.gif */,
+				7B00B8BF2B0A732D003CC330 /* ITDA_Splash.gif */,
 				86A8077B2B05F96700BF42DD /* loadingLottieV3.json */,
 				86F49BFA2B0494D500AC54DF /* Pretendard-Bold.otf */,
 				86F49BFB2B0494D500AC54DF /* Pretendard-Medium.otf */,
@@ -453,9 +453,9 @@
 				86F49BFD2B0494D500AC54DF /* Pretendard-SemiBold.otf in Resources */,
 				07A1292B2B02C60100290E05 /* Assets.xcassets in Resources */,
 				86A8077C2B05F96700BF42DD /* loadingLottieV3.json in Resources */,
+				7B00B8C02B0A732D003CC330 /* ITDA_Splash.gif in Resources */,
 				86F49C002B0494D500AC54DF /* Pretendard-Regular.otf in Resources */,
 				86F49BFF2B0494D500AC54DF /* Pretendard-Medium.otf in Resources */,
-				07ACEBCD2B07AEF100A2FB29 /* ITDA_Splash.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

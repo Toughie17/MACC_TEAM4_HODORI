@@ -22,7 +22,7 @@ struct SplashScreen: View {
                     .customLoopCount(1)
                     
                     .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.22) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                             navigationManager.screenPath.append(.start)
                         }
                     }

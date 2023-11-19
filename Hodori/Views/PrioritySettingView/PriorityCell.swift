@@ -32,7 +32,7 @@ struct PriorityCell: View {
                         .padding(.top, 13)
                         .padding(.bottom, 12)
                 }
-                
+                Spacer()
             }
         }
         .frame(minHeight: 50)
