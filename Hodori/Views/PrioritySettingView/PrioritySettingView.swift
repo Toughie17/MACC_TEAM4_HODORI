@@ -39,7 +39,7 @@ struct PrioritySettingView: View {
                 Spacer()
                 
                 startButton
-                    .padding(.bottom, 15)
+                    .padding(.bottom, 36)
                     .padding(.horizontal,24)
                 
                     .navigationBarBackButtonHidden()
@@ -47,6 +47,7 @@ struct PrioritySettingView: View {
                     .navigationBarTitle("안건 순서 설정하기", displayMode: .inline)
             }
         }
+        .ignoresSafeArea(edges: .bottom)
     }
 }
 
