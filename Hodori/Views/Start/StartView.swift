@@ -38,7 +38,7 @@ struct StartView: View {
             
             Color.gray10
                 .ignoresSafeArea()
-                .frame(height: proxy.size.height / 3.22)
+                .frame(height: proxy.size.height / 3.4)
             
             VStack(alignment: .leading) {
                 HStack {
