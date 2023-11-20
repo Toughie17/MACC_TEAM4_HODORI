@@ -26,10 +26,11 @@ struct AllAgendaView: View {
                 
                 PieChartView(agendas: agendas)
                     .frame(width: 30, height: 30)
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 24)
                 
                 Text("지금은 \(currentTab + 1)번째 안건\n회의 중이에요")
                     .multilineTextAlignment(.center)
+                    .lineSpacing(2)
                     .font(.pretendBold24)
                     .foregroundStyle(Color.black)
                     .padding(.bottom, 50)
