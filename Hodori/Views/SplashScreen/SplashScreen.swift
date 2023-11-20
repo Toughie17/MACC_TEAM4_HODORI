@@ -20,7 +20,6 @@ struct SplashScreen: View {
                 
                 AnimatedImage(name: "ITDA_Splash.gif", isAnimating: $isAnimating)
                     .customLoopCount(1)
-                    
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                             navigationManager.screenPath.append(.start)
@@ -38,4 +37,5 @@ struct SplashScreen: View {
 
 #Preview {
     SplashScreen()
+        .environmentObject(NavigationManager())
 }

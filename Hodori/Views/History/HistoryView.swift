@@ -58,6 +58,9 @@ struct HistoryView: View {
                             }
                         }
                     }
+                    
+                    Color.clear
+                        .frame(height: 40)
                 }
                 .ignoresSafeArea(edges: .bottom)
                 .background {
@@ -82,7 +85,7 @@ struct HistoryView: View {
             }
         }
         .padding(.top, 25)
-        .padding(.bottom, 21)
+        .padding(.bottom, 5)
     }
     
     private func getFormattedYear(from date: Date) -> String {
@@ -94,4 +97,6 @@ struct HistoryView: View {
 
 #Preview {
     HistoryView()
+        .environmentObject(NavigationManager())
+        .environmentObject(MeetingManager())
 }
