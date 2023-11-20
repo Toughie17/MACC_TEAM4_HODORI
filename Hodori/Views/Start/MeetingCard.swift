@@ -12,15 +12,9 @@ enum CardState {
     case history
 }
 
-struct MeetingCard: View {   
+struct MeetingCard: View {
     let cardState: CardState
     let meeting: Meeting
-    @State private var textHeight: CGFloat = 0
-    
-    private var isMeetingExist: Bool {
-        guard let firstAgenda = meeting.agendas.first else { return false }
-        return firstAgenda.title.isNotEmpty
-    }
     
     private var fullDate: String {
         return dateFormat(meeting.startDate, format: "yyyy년 MM월 dd일 HH:mm")
@@ -53,133 +47,51 @@ struct MeetingCard: View {
     }
     
     var body: some View {
-        if isMeetingExist {
-            meetingCard
-        } else {
-            placeholder
+        VStack(alignment: .leading, spacing: 31) {
+            header
+            agendas
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.leading, 24)
+        .padding(.top, 26)
+        .padding(.bottom, 29)
+        .padding(.trailing, 28)
+        .cardBackground(opacity: cardState == .last ? 0.1 : 0.05, radius: cardState == .last ? 20 : 40, y: 4)
     }
     
-    private var meetingCard: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            HStack(spacing: 8) {
-                PieChartView(agendas: Array(meeting.agendas))
-                    .frame(width: 20, height: 20)
+    private var header: some View {
+        HStack(spacing: 12) {
+            PieChartView(agendas: Array(meeting.agendas))
+                .frame(width: 24, height: 24)
+            
+            HStack(alignment: .bottom, spacing: 8) {
+                Text(cardState == .last ? "이전 회의" : dayMonth)
+                    .font(.pretendBold20)
+                    .foregroundStyle(.black)
                 
-                
-                HStack(alignment: .bottom, spacing: 8) {
-                    Text(cardState == .last ? "이전 회의" : dayMonth)
-                        .font(.system(size: 20))
-                        .bold()
-                        .foregroundStyle(.black)
-                        .background { GeometryReader { proxy in
-                            Color.clear
-                                .onAppear {
-                                    textHeight = proxy.size.height
-                                }
-                        }}
-                    Text(cardState == .last ? fullDate : time)
-                        .font(.system(size: 14))
-                        .foregroundStyle(.gray)
-                }
-                
-                Spacer()
-                
-                if cardState == .history {
-                    NavigationLink {
-                        HistoryDetailView(meeting: meeting)
-                    } label: {
-                        Image(systemName: "chevron.right")
-                            .font(.system(size: 16))
-                            .foregroundStyle(.black)
-                    }
-                }
+                Text(cardState == .last ? fullDate : time)
+                    .font(.pretendRegular14)
+                    .foregroundStyle(Color.gray6)
             }
             
-            VStack(alignment: .leading, spacing: 12) {
-                ForEach(meeting.agendas, id: \.self) { agenda in
-                    HStack(spacing: 16) {
-                        Image(systemName: agenda.isComplete ? "checkmark" : "circle")
-                            .foregroundStyle(agenda.isComplete ? .blue : .gray)
-                        
-                        Text(agenda.title)
-                            .font(.system(size: 16))
-                            .fontWeight(.medium)
-                            .foregroundStyle(agenda.isComplete ? .black : .gray)
-                    }
+            Spacer()
+            
+            if cardState == .history {
+                NavigationLink {
+                    HistoryDetailView(meeting: meeting)
+                } label: {
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 16))
+                        .foregroundStyle(.black)
                 }
             }
         }
-        .padding(24)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background {
-            RoundedRectangle(cornerRadius: 16)
-                .fill(.gray)
-                .opacity(0.2)
-        }
     }
     
-    private var placeholder: some View {
-        Text("이전 회의 내역이 아직 없어요\n새 회의를 시작해보세요")
-            .font(.system(size: 16))
-            .foregroundStyle(.secondary)
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 36)
-            .background {
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(.gray)
-                    .opacity(0.2)
-            }
-            .multilineTextAlignment(.center)
-    }
-}
-
-
-struct PieChartView: View {
-    
-    let agendas: [Agenda]
-
-    var degreePerAgenda: Double {
-        Double(360 / (agendas.count))
-    }
-    
-    var doneCount: Double {
-        Double(agendas.filter { $0.isComplete == true }.count)
-    }
-    
-    var startPercent: CGFloat = 0.1
-    
-    var endPercent: CGFloat  {
-        CGFloat(degreePerAgenda * doneCount) - 0.01
-    }
-    
-    var backgroundColor: Color = .blue
-    
-    var body: some View {
-        GeometryReader { geometryProxy in
-            ZStack(alignment: .center) {
-                Circle()
-                    .foregroundColor(.clear)
-                Circle()
-                    .stroke(Color.blue, lineWidth: 2)
-                
-                Path { path in
-                    let size = geometryProxy.size
-                    let center = CGPoint(x: size.width / 2.0,
-                                         y: size.height / 2.0)
-                    let radius = min(size.width, size.height) / 2.0
-                    path.move(to: center)
-                    path.addArc(center: center,
-                                radius: radius,
-                                startAngle: .init(degrees: Double(self.startPercent)),
-                                endAngle: .init(degrees: Double(self.endPercent)),
-                                clockwise: false)
-                }
-                .rotation(.init(degrees: 270))
-                .foregroundColor(self.backgroundColor)
-                .frame(width: geometryProxy.size.width,
-                       height: geometryProxy.size.height,
-                       alignment: .center)
+    private var agendas: some View {
+        VStack(spacing: 2) {
+            ForEach(Array(zip(meeting.agendas.indices, meeting.agendas)), id: \.0) { index, agenda in
+                AgendaCell(state: .normal, agenda: agenda, index: index, meeting: meeting, titleFont: .pretendMedium16)
             }
         }
     }

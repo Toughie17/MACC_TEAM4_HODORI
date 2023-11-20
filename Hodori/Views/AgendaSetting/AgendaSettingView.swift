@@ -9,14 +9,16 @@ import SwiftUI
 
 struct AgendaSettingView: View {
     @State private var agendas: [Agenda] = []
-    @EnvironmentObject var navigationManager: NavigationManager
+    @Environment(\.dismiss) var dismiss
     @StateObject var keyboardManager = KeyboardManager()
+    
     @State private var showAlert = false
     
     @State private var buttonHeight: CGFloat = 0
+    @State private var selectedAgenda: Agenda = Agenda(title: "", detail: [""])
     
-    @State private var selectedAgenda: Agenda = .init(title: "", detail: [""])
     let autoCorrectionHeight: CGFloat = 57
+    
     @State private var isAddCellClicked = false
     @State private var isFocused: Bool = false
     @Namespace var anchor
@@ -27,6 +29,9 @@ struct AgendaSettingView: View {
 
     var body: some View {
         ZStack {
+            Color.white
+                .ignoresSafeArea()
+            
             VStack(spacing: 0) {
                 ScrollView(showsIndicators: false) {
                     ScrollViewReader { scrollviewProxy in
@@ -55,7 +60,6 @@ struct AgendaSettingView: View {
                             }
                     }
                 } // ScrollView
-                .padding(.top, 27)
                 .background {
                     touchableArea
                 }
@@ -65,10 +69,11 @@ struct AgendaSettingView: View {
                 
                 keyboardArea
                 completeButton
-                    .padding(.bottom, 42)
+                    .padding(.bottom, 36)
+                    .padding(.horizontal, 24)
             } // VStack
             .ignoresSafeArea(edges: .bottom)
-            .navigationTitle("새 회의 시작하기")
+            .navigationTitle("안건 작성하기")
             .navigationBarBackButtonHidden()
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -81,7 +86,6 @@ struct AgendaSettingView: View {
                     }
                 }
             }
-            .padding(.horizontal, 20)
             
             if showAlert {
                 Color.black
@@ -105,31 +109,31 @@ struct AgendaSettingView: View {
 
     }
     
-
-    
     private var agendaList: some View {
-        ForEach(agendas) { agenda in
-            AgendaView(viewState: .normal, agenda: agenda.title, detailAgendas: agenda.detail, isFocused: $isFocused) { agendaTitle, detailAgendas in
-                if agendaTitle.isEmpty, detailAgendas.filter({ $0 != "" && $0 != "\u{200B}" }).isEmpty {
-                    updateAgenda(oldAgenda: agenda, newAgenda: Agenda(title: agendaTitle, detail: detailAgendas))
-                    agendas.removeAll(where: { $0.title == "" })
-                } else {
-                    updateAgenda(oldAgenda: agenda, newAgenda: Agenda(title: agendaTitle, detail: detailAgendas))
+        VStack(alignment: .leading, spacing: 0) {
+            ForEach(Array(zip(agendas.indices, agendas)), id: \.0) { index, agenda in
+                AgendaView(viewState: .normal, agenda: agenda.title, detailAgendas: agenda.detail, currentIndex: index, isFocused: $isFocused) { agendaTitle, detailAgendas in
+                    if agendaTitle.isEmpty, detailAgendas.filter({ $0 != "" && $0 != "\u{200B}" }).isEmpty {
+                        updateAgenda(oldAgenda: agenda, newAgenda: Agenda(title: agendaTitle, detail: detailAgendas))
+                        agendas.removeAll(where: { $0.title == "" })
+                    } else {
+                        updateAgenda(oldAgenda: agenda, newAgenda: Agenda(title: agendaTitle, detail: detailAgendas))
+                    }
                 }
+                .simultaneousGesture(TapGesture().onEnded {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        selectedAgenda = agenda
+                    }
+                })
+                
+                HStack { Spacer() }
+                    .id(agenda.id)
             }
-            .simultaneousGesture(TapGesture().onEnded {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    selectedAgenda = agenda
-                }
-            })
-            
-            HStack { Spacer() }
-                .id(agenda.id)
-            }
+        }
     }
     
     private var agendaAddCell: some View {
-            AgendaView(viewState: .add, agenda: "", detailAgendas: [""], isFocused: $isFocused) { agenda, detailAgendas in
+        AgendaView(viewState: .add, agenda: "", detailAgendas: [""], currentIndex: agendas.endIndex-1, isFocused: $isFocused) { agenda, detailAgendas in
                 agendas.append(Agenda(title: agenda, detail: detailAgendas))
             }
             .simultaneousGesture(TapGesture().onEnded {
@@ -138,7 +142,7 @@ struct AgendaSettingView: View {
     }
     
     private var agendaField: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: 0) {
             agendaList
             
             if agendas.count < 10 {
@@ -147,27 +151,36 @@ struct AgendaSettingView: View {
             
             HStack { Spacer() }
                 .id(anchor)
-            
         }
+        .padding(.top, 20)
     }
     
     private var completeButton: some View {
         NavigationLink {
-            PrioritySettingTestView(agendas: $agendas)
+            PrioritySettingView(agendas: $agendas)
         } label: {
-            Text("작성 완료")
-                .font(.system(size: 16))
-                .bold()
-                .foregroundStyle(.white)
-                .padding(.vertical, 16)
-                .frame(maxWidth: .infinity)
-                .background {
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(!agendas.contains(where: { $0.title == "" }) && agendas.count > 0 ? .blue : .gray)
-                }
+            HStack(spacing: 14) {
+                Image("checkmark")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 15, height: 10)
+                    .foregroundStyle(.white)
+                
+                Text("작성 완료")
+                    .font(.pretendBold16)
+                    .foregroundStyle(.white)
+                    .padding(.trailing, 15)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 18)
+            .background {
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(!agendas.contains(where: { $0.title == "" }) && agendas.count > 0 ? Color.gray1 : .gray)
+                    .shadow(color: .white, radius: 10, x: 0, y: -15) 
+            }
         }
         .buttonStyle(CustomButton())
-        .disabled(agendas.contains(where: { $0.title == "" }) || agendas.count < 0)
+        .disabled(agendas.contains(where: { $0.title == "" }) || agendas.count <= 0)
         .background {
             GeometryReader { proxy in
                 Color.clear
@@ -203,78 +216,63 @@ extension AgendaSettingView {
             
             alertButton
         }
-        .aspectRatio(1.3, contentMode: .fit)
+        .aspectRatio(1.45, contentMode: .fit)
         .background {
             RoundedRectangle(cornerRadius: 16)
                 .fill(.white)
         }
-        .padding(.horizontal, 34)
+        .padding(.horizontal, 54)
         
     }
     
     private var alertText: some View {
         VStack(spacing: 0) {
-            Image(systemName: "exclamationmark.triangle")
-                .foregroundStyle(.red)
-                .font(.system(size: 30))
+            Text("뒤로 가시겠어요?")
+                .font(.pretendBold20)
+                .foregroundStyle(.black)
                 .padding(.bottom, 16)
             
-            Text("페이지를 나가시겠어요?")
-                .font(.system(size: 20))
-                .bold()
-                .padding(.bottom, 8)
-            
             Text("페이지 이탈 시\n작성했던 내용이 모두 삭제돼요")
-                .font(.system(size: 16))
-                .foregroundStyle(.gray)
-                .opacity(0.8)
+                .font(.pretendRegular16)
+                .foregroundStyle(Color.gray4)
                 .multilineTextAlignment(.center)
+                .lineSpacing(1.4)
         }
-        .padding(.top, 28)
-        .padding(.horizontal, 22)
-        .padding(.bottom, 30)
+        .padding(.top, 35)
+        .padding(.bottom, 29)
         .layoutPriority(1)
     }
     
     private var divider: some View {
         Rectangle()
-            .fill(.gray)
-            .opacity(0.5)
+            .fill(Color.gray9)
             .frame(height: 1)
     }
     
     private var alertButton: some View {
         HStack {
-            HStack {
-                Spacer()
-                Text("취소")
-                    .font(.system(size: 20))
-                    .fontWeight(.medium)
-                    .foregroundStyle(.gray)
-                Spacer()
-            }
-            .contentShape(Rectangle())
-            .onTapGesture {
-                showAlert = false
-            }
+            Text("취소")
+                .font(.pretendMedium16)
+                .foregroundStyle(Color.gray3)
+                .center(.horizontal)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    showAlert = false
+                }
             
             Rectangle()
-                .fill(.gray)
-                .opacity(0.5)
+                .fill(Color.gray9)
                 .frame(width: 1)
             
-            HStack {
-                Spacer()
-                Text("나가기")
-                    .font(.system(size: 20))
-                    .fontWeight(.medium)
-                    .foregroundStyle(.gray)
-                Spacer()
-            }
-            .contentShape(Rectangle())
-            .onTapGesture {
-                navigationManager.screenPath.removeLast()
-            }
+
+            Text("나가기")
+                .font(.pretendMedium16)
+                .foregroundStyle(Color.gray3)
+                .center(.horizontal)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    dismiss()
+                }
             
         }
     }

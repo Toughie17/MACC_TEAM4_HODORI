@@ -17,9 +17,9 @@ struct HodoriApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashScreen()
                 .environmentObject(NavigationManager())
-                .environmentObject(MeetingManger())
+                .environmentObject(MeetingManager())
                 .environment(\.managedObjectContext, coreDataManager.viewContext)
         }
     }

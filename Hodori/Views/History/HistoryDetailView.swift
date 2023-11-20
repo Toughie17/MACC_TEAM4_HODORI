@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HistoryDetailView: View {
     @State private var agendaClick: [(Double, Bool)] = Array(repeating: (0, false), count: 10)
-    @EnvironmentObject var navigationManager: NavigationManager
     @Environment(\.dismiss) var dismiss
     let meeting: Meeting
     
@@ -21,32 +20,63 @@ struct HistoryDetailView: View {
         meeting.agendas.filter { $0.isComplete == true }.count
     }
     
+    private var dayMonthTime: String {
+        return dateFormat(meeting.startDate, format: "M월 d일 HH:mm")
+    }
+    
+    private var headerText: String {
+        totalAgenda == completedAgenda ? "안건을 모두 완료했어요" : "안건 \(completedAgenda)개를 완료했어요"
+    }
+
+    private func dateFormat(_ date: Date, format: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        let date = date
+        let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
+    
     var body: some View {
-        VStack {
-            PieChartView(agendas: meeting.agendas)
-                .frame(width: 45, height: 45)
-                .padding(.top, 44)
-                .padding(.bottom, 20)
+        ZStack {
+            Color.white
+                .ignoresSafeArea(edges: .bottom)
             
-            Text("\(totalAgenda)개 중 \(completedAgenda)개를 완료했어요")
-                .font(.system(size: 20))
-                .bold()
-                .foregroundStyle(.black)
-                .padding(.bottom, 20)
-            
-            agendas
-                .padding(.top, 30)
-                .padding(.horizontal, 28)
-        }
-        .navigationTitle("\(meeting.title) 회의")
-        .navigationBarBackButtonHidden()
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
+            VStack(alignment: .leading, spacing: 0) {
+                VStack(alignment: .leading, spacing: 21) {
+                    PieChartView(agendas: meeting.agendas)
+                        .frame(width: 30, height: 30)
+                        .padding(.top, 20)
+                    
+                    Text(headerText)
+                        .font(.pretendBold24)
                         .foregroundStyle(.black)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 24)
+                .padding(.bottom, 33)
+                .background {
+                    Color.gray10
+                        .ignoresSafeArea()
+                }
+                
+                VStack {
+                    agendas
+                        .padding(.top, 30)
+                        .padding(.horizontal, 28)
+                }
+                .toolbarColorScheme(.dark, for: .navigationBar)
+                .navigationTitle("\(dayMonthTime) 회의")
+                
+                .navigationBarBackButtonHidden()
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            dismiss()
+                        } label: {
+                            Image(systemName: "chevron.left")
+                                .foregroundStyle(.black)
+                        }
+                    }
                 }
             }
         }
@@ -54,53 +84,10 @@ struct HistoryDetailView: View {
     
     private var agendas: some View {
         ScrollView(showsIndicators: false) {
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 0) {
                 ForEach(Array(zip(meeting.agendas.indices, meeting.agendas)), id: \.0) { index, agenda in
-                    HStack(alignment: .top, spacing: 16) {
-                            Image(systemName: agenda.isComplete ? "checkmark" : "circle")
-                                .foregroundStyle(agenda.isComplete ? .blue : .gray)
-                            
-                            VStack(alignment: .leading, spacing: 8) {
-                                HStack {
-                                    Text(agenda.title)
-                                    
-                                    Spacer()
-                                    
-                                    if let firstAgenda = agenda.detail.first, firstAgenda.isNotEmpty {
-                                        Image(systemName: "chevron.down")
-                                            .foregroundStyle(agenda.isComplete ? .gray : .black)
-                                            .rotationEffect(Angle(degrees: agendaClick[index].0))
-                                            .onTapGesture {
-                                                withAnimation(.linear(duration: 0.2)) {
-                                                    agendaClick[index].0 += 180
-                                                    agendaClick[index].1.toggle()
-                                                }
-                                            }
-                                    }
-                                }
-                                
-                                if agendaClick[index].1 {
-                                    VStack(alignment: .leading, spacing: 4) {
-                                        ForEach(agenda.detail, id: \.self) { detailAgenda in
-                                            HStack(spacing: 0) {
-                                                Text("• ")
-                                                Text("\(detailAgenda)")
-                                                    .font(.system(size: 14))
-                                                    .foregroundStyle(.gray)
-                                                    .opacity(0.5)
-                                            }
-                                            .font(.system(size: 14))
-                                            .foregroundStyle(.gray)
-                                            .opacity(0.8)
-                                            
-                                        }
-                                    }
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                }
-                            }
-                        }
-                    
-                    Divider()
+                    AgendaCell(state: .detail, agenda: agenda, index: index, meeting: meeting, titleFont: .pretendBold18)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
         }

@@ -9,48 +9,44 @@ import SwiftUI
 
 struct PrioritySettingView: View {
     
-    @Environment(\.dismiss) private var dismiss
-    //MARK: 모크데이터
-    @State var agendas: [Agenda] = [
-        Agenda(title: "춘식이의 고구마",
-               detail: [
-                "감자",
-                "계란",
-                "닭가슴살",
-                "돈까스",
-                "라멘"
-               ], isComplete: false),
-        Agenda(title: "춘식이의 파자마", detail: [],isComplete: false),
-        Agenda(title: "제주도 감귤", detail: [],isComplete: false),
-        Agenda(title: "참서리 제육볶음", detail: [],isComplete: false),
-        Agenda(title: "커미 아메리카노", detail: [],isComplete: false),
-        Agenda(title: "메로메로 돈까스", detail: [],isComplete: false),
-        Agenda(title: "버거킹", detail: [],isComplete: false),
-        Agenda(title: "치즈냥이", detail: [],isComplete: false),
-        Agenda(title: "메인랩", detail: [],isComplete: false),
-        Agenda(title: "체육관", detail: [],isComplete: false)
-    ]
+    init(agendas: Binding<[Agenda]>) {
+        let appearance = UINavigationBarAppearance()
+        let font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black, .font: font]
+        UINavigationBar.appearance().standardAppearance = appearance
+        _agendas = agendas
+    }
     
+    @Environment(\.dismiss) private var dismiss
+    @Binding var agendas: [Agenda]
     @State private var draggingItem: Agenda?
     
     private let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
     
     var body: some View {
-        VStack(spacing: 0) {
-            infoText
-                .padding(.top,8)
-            cells
-                .padding(.top, 16)
-                .navigationBarBackButtonHidden()
-                .navigationBarItems(leading: backButton)
-                .navigationBarTitle("우선순위 설정", displayMode: .inline)
+        
+        ZStack {
+            Color.gray10.ignoresSafeArea()
             
-            Spacer()
-            
-            startButton
-                .padding(.bottom, 21)
+            VStack(spacing: 0) {
+                infoText
+                    .padding(.top,8)
+                    .padding(.bottom, 24)
+                cells
+                    .padding(.bottom, 12)
+                    .padding(.horizontal, 24)
+                
+                Spacer()
+                
+                startButton
+                    .padding(.bottom, 15)
+                    .padding(.horizontal,24)
+                
+                    .navigationBarBackButtonHidden()
+                    .navigationBarItems(leading: backButton)
+                    .navigationBarTitle("안건 순서 설정하기", displayMode: .inline)
+            }
         }
-        .padding(.horizontal,20)
     }
 }
 
@@ -82,7 +78,7 @@ extension PrioritySettingView {
                             if let sourceIndex = agendas.firstIndex(of: draggingItem),
                                let destinationIndex = agendas.firstIndex(of: agenda) {
                                 
-                                withAnimation(.bouncy) {
+                                withAnimation(.default) {
                                     self.agendas.move(fromOffsets: IndexSet(integer: sourceIndex), toOffset: destinationIndex > sourceIndex ? destinationIndex + 1 : destinationIndex)
                                 }
                                 impactFeedback.impactOccurred()
@@ -99,11 +95,11 @@ extension PrioritySettingView {
             MeetingView(agendas: self.agendas)
         } label: {
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color.primaryBlue)
-                .frame(height: 56)
+                .fill(Color.gray1)
+                .frame(height: 54)
                 .overlay {
                     Text("회의 시작")
-                        .font(.pretendBold20)
+                        .font(.pretendBold16)
                         .foregroundColor(.white)
                 }
         }
@@ -123,6 +119,17 @@ extension PrioritySettingView {
 
 #Preview {
     NavigationStack {
-        PrioritySettingView()
+        PrioritySettingView(agendas:.constant(
+            [
+                Agenda(title: "으악", detail: []),
+                Agenda(title: "으악", detail: []),
+                Agenda(title: "으악", detail: []),
+                Agenda(title: "으악", detail: []),
+                Agenda(title: "으악", detail: []),
+                Agenda(title: "으악", detail: [])
+            ]
+        
+        )
+                            )
     }
 }

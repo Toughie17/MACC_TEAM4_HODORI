@@ -19,19 +19,20 @@ struct AgendaView: View {
     @State var agenda: String
     @State var detailAgendas: [String]
     @State private var isPlaceHolderCilcked = false
-    
+    let currentIndex: Int
     @Binding var isFocused: Bool
     
     @FocusState private var agendaFocusField: Bool
     @FocusState private var detailAgendaFocusField: Int?
     
     private var detailAgendasFrame: CGFloat {
-        guard let firstDetailAgenda = detailAgendas.first else { return 0 }
-        return viewState == .normal && firstDetailAgenda.isEmpty ? 0 : .infinity
+        guard detailAgendas.first != nil else { return 0 }
+//        return viewState == .normal && firstDetailAgenda.isEmpty ? 0 : .infinity
+        return .infinity
     }
     
-    private var cellBackground: some View {
-        isCellFocused ? RoundedRectangle(cornerRadius: 16).fill(.gray.opacity(0.2)) : RoundedRectangle(cornerRadius: 16).fill(.clear)
+    private var cellBackground: Color {
+        isCellFocused ? .gray10 : .clear
     }
     
     private var isCellEmpty: Bool {
@@ -49,6 +50,7 @@ struct AgendaView: View {
         case .placeholder:
             placeHolder
                 .onTapGesture { switchState(to: .add) }
+                .padding(.top, 6)
         default:
             agendaCell
                 .onAppear {
@@ -133,7 +135,7 @@ extension AgendaView {
     }
     
     private func detailPlaceholder(current index: Int) -> String {
-        "\(index == 0 && detailAgendas.count == 1 ? "세부 회의 안건" : detailAgendas[index])"
+        "\(index == 0 && detailAgendas.count == 1 ? "세부안건을 작성해주세요" : detailAgendas[index])"
     }
     
     private func handleTapActionInDetailAgenda(current index: Int) {
@@ -159,32 +161,54 @@ extension AgendaView {
 // MARK: Agenda View
 extension AgendaView {
     private var placeHolder: some View {
-        HStack(alignment: .top, spacing: 11) {
-            blueCircle
-            Text("새 안건")
+        HStack(alignment: .top, spacing: 8) {
+            Image(systemName: "plus")
                 .font(.system(size: 16))
                 .fontWeight(.semibold)
+                .foregroundStyle(Color.primaryBlue)
+                .padding(.top, 2)
+            
+            Text("새 안건")
+                .font(.pretendBold16)
+                .foregroundStyle(Color.gray5)
             
             Spacer()
         }
-        .opacity(0.5)
+        .contentShape(Rectangle())
+        .padding(.leading, 22)
+        .padding(.bottom, 54)
     }
     
     private var agendaCell: some View {
-        VStack(spacing: 19) {
-            HStack(alignment: .top, spacing: 11) {
-                blueCircle
-                VStack(alignment: .leading, spacing: 16) {
-                        agendaText
-                    VStack(alignment: .leading, spacing: 4) {
-                        detailAgendaFieldList
+        VStack(spacing: 0) {
+            HStack(alignment: .top, spacing: 12) {
+                VStack(spacing: 4) {
+                    blueCircle
+                    
+                    if currentIndex != 9 {
+                        RoundedRectangle(cornerRadius: 2)
+                            .fill(viewState == .normal ? Color.gray9 : .clear)
+                            .frame(width: 2)
                     }
                 }
+                .padding(.top, 4)
+                
+                VStack(alignment: .leading, spacing: 12) {
+                        agendaText
+                    VStack(alignment: .leading, spacing: 7) {
+                        detailAgendaFieldList
+                    }
+                    .padding(.bottom, viewState == .normal ? 20 : 0)
+                }
             }
-            .padding(.vertical, viewState != .normal ? 20 : 0)
+            .padding(.top, viewState != .normal ? 27 : 2)
+            .padding(.bottom, viewState != .normal ? 29 : 2)
+            .padding(.leading, 24)
             .background(cellBackground)
+            .padding(.bottom, viewState != .normal ? 30 : 0)
+            .padding(.top, (viewState == .normal && currentIndex == 0) ? 26 : 0)
             
-            if agenda.isNotEmpty, viewState == .add {
+            if agenda.isNotEmpty, viewState == .add, currentIndex != 8 {
                 placeHolder
                     .onTapGesture {
                         addAgenda()
@@ -195,18 +219,17 @@ extension AgendaView {
     
     private var blueCircle: some View {
         Circle()
-            .stroke(.blue, lineWidth: 3)
-            .frame(width: 12, height: 12)
-            .padding(.leading, 18)
-            .padding(.top, 4)
+            .strokeBorder(Color.primaryBlue, lineWidth: 2)
+            .frame(width: 14, height: 14)
     }
     
     private var agendaText: some View {
         Group {
             if viewState == .normal {
                 Text(agenda)
-                    .font(.system(size: 16))
-                    .fontWeight(.semibold)
+                    .font(.pretendBold18)
+                    .foregroundStyle(.black)
+                    .lineLimit(2)
                     .onTapGesture {
                         switchState(to: .edit)
                         agendaFocusField = true
@@ -219,13 +242,13 @@ extension AgendaView {
     }
     
     private var agendaField: some View {
-        TextField("새 안건", text: $agenda, axis: .vertical)
-            .font(.system(size: 16))
-            .fontWeight(.semibold)
+        TextField("안건을 작성해주세요", text: $agenda, axis: .vertical)
+            .font(.pretendBold18)
+            .foregroundStyle(.black)
             .focused($agendaFocusField)
             .submitLabel(.next)
             .onChange(of: agenda) { newValue in
-                agenda = String(agenda.prefix(21))
+                agenda = String(agenda.prefix(16))
                 if isFirstWordSpace(text: newValue) {
                     agenda.removeFirst()
                     return
@@ -266,24 +289,24 @@ extension AgendaView {
 
 // MARK: DetailAgendas View
 extension AgendaView {
-    private var bulletPoint: String {
-        viewState == .normal && detailAgendas.first!.isEmpty ? "" : "•"
-    }
+//    private var bulletPoint: String {
+//        viewState == .normal && detailAgendas.first!.isEmpty ? "" : "•"
+//    }
     
     private var detailAgendaFieldList: some View {
         ForEach(detailAgendas.indices, id: \.self) { index in
-            HStack(spacing: 8) {
-                Text(bulletPoint)
+            HStack(spacing: 4) {
+                //                Text(bulletPoint)
                 TextField(detailPlaceholder(current: index), text: $detailAgendas[index], axis: .vertical)
-                    .font(.system(size: 14))
-                    .fontWeight(.medium)
+                    .font(.pretendMedium16)
+                    .foregroundStyle(Color.gray3)
                     .focused($detailAgendaFocusField, equals: index)
                     .submitLabel(.next)
                     .disabled(agenda.isEmpty)
             }
             .onChange(of: detailAgendas[index]) { newValue in
                 // MARK: 아무것도 추가 안하고 다음 줄로 갈 때
-                detailAgendas[index] = String(detailAgendas[index].prefix(17))
+                detailAgendas[index] = String(detailAgendas[index].prefix(19))
                 guard index < detailAgendas.count else { return }
                 guard isUserTapEnterWithOtherText(to: newValue) else { detailAgendas[index].removeLast()
                     return }
@@ -307,7 +330,7 @@ extension AgendaView {
                 // MARK: 다음 줄로 넘길 때
                 guard isUserTapEnter(to: newValue) else { return }
                 handleTapActionInDetailAgenda(current: index)
-
+                
                 if isNextLineEmpty(current: index) {
                     moveLineTo(index: index+1)
                 } else if isDetailAgendalessThanfive(current: index)  {
@@ -318,16 +341,7 @@ extension AgendaView {
                 }
             }
         }
-        .frame(maxHeight: detailAgendasFrame)
+        .opacity(viewState == .normal && detailAgendas.first != nil && detailAgendas.first!.isEmpty ? 0 : 1)
+        .frame(maxHeight: .infinity)
     }
 }
-
-// MARK: INDEX OUT OF RANGE 원인
-// MARK: 이것만 잡고 자자ㅏㅏ
-
-
-// MARK: ㅠㅠ
-// MARK: 밑에 textfield가 있는 상황에서 그 위 텍스트 필드의 텍스트 중간 쯤에 커서를 두고
-// MARK: 반드시 손으로 터치해서 textfield의 포커스를 다시 아래로 넘겨줌
-// MARK: 그리고 지워서 포커스를 이동시키면 textfield의 커서가 맨 끝이 아니라 그 전 위치로 돌아감.
-

@@ -22,20 +22,18 @@ struct PieChartView: View {
     var startPercent: CGFloat = 0
     
     var endPercent: CGFloat  {
-        if doneCount == 0 {
-            0.01
-        } else {
-            CGFloat(degreePerAgenda * doneCount) - 0.01
-        }
+        doneCount == 0 ? 0.01 : (CGFloat(degreePerAgenda * doneCount) - 0.01)
     }
+    
+    var backgroundColor: Color = Color.primaryBlue
     
     var body: some View {
         GeometryReader { geometryProxy in
             ZStack(alignment: .center) {
                 Circle()
-                    .foregroundColor(.blue)
+                    .foregroundColor(.clear)
                 Circle()
-                    .stroke(Color.blue, lineWidth: 10)
+                    .stroke(Color.primaryBlue, lineWidth: 3)
                 
                 Path { path in
                     let size = geometryProxy.size
@@ -47,23 +45,22 @@ struct PieChartView: View {
                                 radius: radius,
                                 startAngle: .init(degrees: Double(self.startPercent)),
                                 endAngle: .init(degrees: Double(self.endPercent)),
-                                clockwise: true)
+                                clockwise: false)
                 }
                 .rotation(.init(degrees: 270))
-                .foregroundColor(.white)
+                .foregroundColor(backgroundColor)
                 
                 .frame(width: geometryProxy.size.width,
                        height: geometryProxy.size.height,
                        alignment: .center)
             }
         }
-        .frame(width: 45, height: 45)
     }
 }
 
 #Preview {
     PieChartView(agendas: [
-        Agenda(title: "안건1", detail: [], isComplete: false),
+        Agenda(title: "안건1", detail: [], isComplete: true),
         Agenda(title: "안건2", detail: [], isComplete: false),
         Agenda(title: "안건3", detail: [], isComplete: false),
         Agenda(title: "안건4", detail: [], isComplete: false),
