@@ -21,7 +21,7 @@ struct AllAgendaView: View {
                 Text("전체 안건")
                     .font(.pretendBold20)
                     .foregroundStyle(Color.gray2)
-                    .padding(.top, 21)
+                    .padding(.top, 26)
                     .padding(.bottom, 44)
                 
                 PieChartView(agendas: agendas)
@@ -77,7 +77,7 @@ struct AllAgendaView: View {
                             .foregroundStyle(Color.gray3)
                     }
                     .padding(.trailing, 19)
-                    .padding(.top, 21)
+                    .padding(.top, 26)
                 }
                 Spacer()
             }
