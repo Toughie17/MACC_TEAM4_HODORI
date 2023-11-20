@@ -29,9 +29,9 @@ extension AppScreen {
     var destination: some View {
         switch self {
         case .start:
-            Text("1번")
+            StartView()
         case .agendaSetting:
-            Text("2번")
+            AgendaSettingView()
         case .prioritySetting:
             PrioritySettingView()
         case.meeting:
@@ -39,10 +39,7 @@ extension AppScreen {
         case.allAgenda:
             Text("4번")
         case.history:
-            Text("5번")
-        case.testMeetingView:
-            Text("hi")
-//            TestMeetingView()
+            HistoryView()
         }
     }
 }
