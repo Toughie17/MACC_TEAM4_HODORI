@@ -28,7 +28,7 @@ struct MeetingTabViewCell: View {
                 
                 VStack(alignment: .leading, spacing: 0) {
                     agendaOrderText
-                        .padding(.bottom, 4)
+                        .padding(.bottom, 6)
                     currentAgendaTitle
                         .padding(.bottom, 28)
                         .padding(.trailing, 80)
@@ -37,7 +37,7 @@ struct MeetingTabViewCell: View {
                 }
                 .padding(.leading, 36)
             }
-            .padding(.top, 28)
+//            .padding(.top, 28)
             
             if showLottie {
                 MeetingLottieView(index: index)
@@ -58,7 +58,7 @@ extension MeetingTabViewCell {
                 .padding(.trailing, 12)
             
             Image(systemName: agenda.isComplete ? "checkmark.circle.fill" : "circle")
-                .fontWeight(.heavy)
+                .font(.pretendBold21)
                 .frame(width: 22, height: 22)
                 .foregroundStyle(Color.primaryBlue)
                 .padding(.trailing, 12)

@@ -56,6 +56,7 @@ struct MeetingView: View {
                 
                 buttonBox
                     .padding(.horizontal, 24)
+                    .padding(.bottom, 36)
             }
             .zIndex(1)
             
@@ -69,6 +70,7 @@ struct MeetingView: View {
                     .zIndex(3)
             }
         }
+        .ignoresSafeArea(edges: .bottom)
         .sheet(isPresented: $showSheet, content: {
             AllAgendaView(showSheet: $showSheet, agendas: $agendas, currentTab: $selectedTab)
         })
@@ -125,9 +127,17 @@ extension MeetingView {
         let lastIndex = agendas.index(before: agendas.endIndex)
         
         return TabView(selection: $selectedTab) {
+//            
+//            if agendas.count == 1 {
+//                Meeting
+//            }
+            
             ForEach(agendas.indices, id: \.self) { index in
                 
-                if index == firstIndex {
+                if agendas.count == 1 {
+                    MeetingTabViewCell(agenda: agendas[index], index: selectedTab, showLottie: $showLottie, needLeftLine: false, needRightLine: false)
+                }
+                else if index == firstIndex {
                     MeetingTabViewCell(agenda: agendas[index], index: selectedTab, showLottie: $showLottie, needLeftLine: false, needRightLine: true)
                 } else if index == lastIndex {
                     MeetingTabViewCell(agenda: agendas[index], index: selectedTab, showLottie: $showLottie, needLeftLine: true, needRightLine: false)
@@ -163,7 +173,7 @@ extension MeetingView {
             ZStack(alignment: .center) {
                 RoundedRectangle(cornerRadius: 22)
                     .stroke((showModal || showTimer) ? Color.gray5 : Color.gray1, lineWidth: 2)
-                    .frame(width: 70, height: 56)
+                    .frame(width: 64, height: 54)
                 
                 Image(systemName: "stopwatch")
                     .font(.system(size: 24, weight: .regular))
@@ -180,7 +190,7 @@ extension MeetingView {
             withAnimation(.bouncy) {
                 showLottie = true
                 print(selectedTab)
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.2) {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.15) {
                     showLottie = false
                     updateAgendas()
                 }
@@ -203,7 +213,7 @@ extension MeetingView {
                 }
             }
             .foregroundStyle(.white)
-            .frame(height: 56)
+            .frame(height: 54)
         }
         .disabled(showLottie || agendas[selectedTab].isComplete)
     }
