@@ -21,15 +21,16 @@ struct AllAgendaView: View {
                 Text("전체 안건")
                     .font(.pretendBold20)
                     .foregroundStyle(Color.gray2)
-                    .padding(.top, 21)
+                    .padding(.top, 26)
                     .padding(.bottom, 44)
                 
                 PieChartView(agendas: agendas)
                     .frame(width: 30, height: 30)
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 24)
                 
                 Text("지금은 \(currentTab + 1)번째 안건\n회의 중이에요")
                     .multilineTextAlignment(.center)
+                    .lineSpacing(2)
                     .font(.pretendBold24)
                     .foregroundStyle(Color.black)
                     .padding(.bottom, 50)
@@ -76,7 +77,7 @@ struct AllAgendaView: View {
                             .foregroundStyle(Color.gray3)
                     }
                     .padding(.trailing, 19)
-                    .padding(.top, 21)
+                    .padding(.top, 26)
                 }
                 Spacer()
             }

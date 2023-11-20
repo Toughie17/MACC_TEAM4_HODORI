@@ -75,10 +75,11 @@ struct MeetingEndView: View {
                                 .font(.pretendBold16)
                         )
                 }
-                .padding(.bottom, 15)
+                .padding(.bottom, 36)
                 .padding(.horizontal, 24)
             }
         }
+        .ignoresSafeArea(edges: .bottom)
         .onAppear {
             CoreDataManager.shared.save(meeting: Meeting(agendas: agendas, startDate: Date()))
             meetingManager.fetchMeetings()
