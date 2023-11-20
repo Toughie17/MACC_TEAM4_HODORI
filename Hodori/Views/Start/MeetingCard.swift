@@ -47,7 +47,7 @@ struct MeetingCard: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 31) {
+        VStack(alignment: .leading, spacing: 29) {
             header
             agendas
         }
