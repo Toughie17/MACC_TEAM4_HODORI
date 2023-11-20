@@ -24,7 +24,6 @@ struct PrioritySettingView: View {
     private let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
     
     var body: some View {
-        
         ZStack {
             Color.gray10.ignoresSafeArea()
             
