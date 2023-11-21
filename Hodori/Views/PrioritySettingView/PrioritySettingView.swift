@@ -85,6 +85,7 @@ extension PrioritySettingView {
                             }
                         }
                     }
+                    .scaleEffect(0.97)
             }
         }
     }
