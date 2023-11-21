@@ -235,8 +235,13 @@ extension AgendaView {
                         agendaFocusField = true
                     }
             } else {
-                agendaField
-                    .layoutPriority(1)
+                HStack(alignment: .bottom) {
+                    agendaField
+                    Spacer()
+                    textChecker
+                        .padding(.trailing, 24)
+                }
+                .layoutPriority(1)
             }
         }
     }
@@ -284,6 +289,12 @@ extension AgendaView {
                     }
                 }
             }
+    }
+    
+    private var textChecker: some View {
+        Text("\(agenda.count)/16")
+            .font(.pretendRegular14)
+            .foregroundStyle(Color.gray5)
     }
 }
 
