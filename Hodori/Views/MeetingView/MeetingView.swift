@@ -159,7 +159,12 @@ extension MeetingView {
         HStack(spacing: 0) {
             timerButton
                 .padding(.trailing, 16)
-            agendCompleteButton
+            if !agendas[selectedTab].isComplete {
+                agendaCompleteButton
+            } else {
+                agendaCancelButton
+            }
+//            agendaCompleteButton
         }
     }
     
@@ -184,17 +189,37 @@ extension MeetingView {
         .disabled(showModal || showTimer)
     }
     
-    private var agendCompleteButton: some View {
+    private var agendaCancelButton: some View {
+        Button {
+            agendas[selectedTab].isComplete = false
+        } label: {
+            ZStack(alignment: .center) {
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(.blue)
+                HStack(spacing: 0) {
+                    Spacer()
+                    Text("안건 취소 버튼")
+                        .font(.pretendBold16)
+                        .foregroundStyle(.white)
+                    Spacer()
+                }
+            }
+            .frame(height: 54)
+        }
+
+    }
+    
+    private var agendaCompleteButton: some View {
         Button {
             heavyHaptic.impactOccurred()
-            withAnimation(.bouncy) {
+//            withAnimation(.bouncy) {
                 showLottie = true
                 print(selectedTab)
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.15) {
                     showLottie = false
                     updateAgendas()
                 }
-            }
+//            }
         } label: {
             ZStack(alignment: .center) {
                 RoundedRectangle(cornerRadius: 16)
@@ -219,12 +244,12 @@ extension MeetingView {
     }
     
     private func updateAgendas() {
-        withAnimation(.default) {
+//        withAnimation(.default) {
             agendas[selectedTab].isComplete = true
             if selectedTab < agendas.count && selectedTab != agendas.count - 1 {
                 selectedTab += 1
             }
-        }
+//        }
     }
     
     private func agendaTitle(forIndex index: Int) -> String {
