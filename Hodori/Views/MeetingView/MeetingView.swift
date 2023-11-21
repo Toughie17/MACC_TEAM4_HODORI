@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MeetingView: View {
-
     @State var agendas: [Agenda]
     
     var completedAgendaCount: Int {
@@ -29,8 +28,8 @@ struct MeetingView: View {
     @State private var sheetContentHieht = CGFloat(359)
     
     
-    private let heavyHaptic = UIImpactFeedbackGenerator(style: .heavy)
-    private let mediumHaptic = UIImpactFeedbackGenerator(style: .medium)
+//    private let heavyHaptic = UIImpactFeedbackGenerator(style: .heavy)
+//    private let mediumHaptic = UIImpactFeedbackGenerator(style: .medium)
     
     
     
@@ -91,7 +90,8 @@ struct MeetingView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 
                 Button {
-                    mediumHaptic.impactOccurred()
+                    HapticManager.shared.mediumyHaptic()
+//                    mediumHaptic.impactOccurred()
                     withAnimation(.bouncy) {
                         showAlert = true
                     }
@@ -170,7 +170,8 @@ extension MeetingView {
     
     private var timerButton: some View {
         Button {
-            mediumHaptic.impactOccurred()
+            HapticManager.shared.mediumyHaptic()
+//            mediumHaptic.impactOccurred()
             withAnimation(.bouncy) {
                 showModal.toggle()
             }
@@ -191,6 +192,7 @@ extension MeetingView {
     
     private var agendaCancelButton: some View {
         Button {
+            HapticManager.shared.heavyHaptic()
             agendas[selectedTab].isComplete = false
         } label: {
             ZStack(alignment: .center) {
@@ -211,7 +213,8 @@ extension MeetingView {
     
     private var agendaCompleteButton: some View {
         Button {
-            heavyHaptic.impactOccurred()
+            HapticManager.shared.heavyHaptic()
+//            heavyHaptic.impactOccurred()
 //            withAnimation(.bouncy) {
                 showLottie = true
                 print(selectedTab)
