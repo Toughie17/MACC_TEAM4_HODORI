@@ -21,8 +21,6 @@ struct PrioritySettingView: View {
     @Binding var agendas: [Agenda]
     @State private var draggingItem: Agenda?
     
-//    private let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
-    
     var body: some View {
         ZStack {
             Color.gray10.ignoresSafeArea()
@@ -68,7 +66,6 @@ extension PrioritySettingView {
                             .onAppear {
                                 draggingItem = agenda
                                 HapticManager.shared.mediumyHaptic()
-//                                impactFeedback.impactOccurred()
                             }
                     }
                     .dropDestination(for: Agenda.self) { items, location in
@@ -83,7 +80,6 @@ extension PrioritySettingView {
                                     self.agendas.move(fromOffsets: IndexSet(integer: sourceIndex), toOffset: destinationIndex > sourceIndex ? destinationIndex + 1 : destinationIndex)
                                 }
                                 HapticManager.shared.mediumyHaptic()
-//                                impactFeedback.impactOccurred()
                             }
                         }
                     }
@@ -131,8 +127,7 @@ extension PrioritySettingView {
                 Agenda(title: "으악", detail: []),
                 Agenda(title: "으악", detail: [])
             ]
-        
         )
-                            )
+        )
     }
 }
