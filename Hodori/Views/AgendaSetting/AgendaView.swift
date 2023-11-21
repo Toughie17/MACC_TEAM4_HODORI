@@ -135,7 +135,7 @@ extension AgendaView {
     }
     
     private func detailPlaceholder(current index: Int) -> String {
-        "\(index == 0 && detailAgendas.count == 1 ? "세부안건을 작성해주세요" : detailAgendas[index])"
+        "\(index == 0 && detailAgendas.count == 1 ? "세부안건을 작성해주세요 (최대 5개)" : detailAgendas[index])"
     }
     
     private func handleTapActionInDetailAgenda(current index: Int) {
