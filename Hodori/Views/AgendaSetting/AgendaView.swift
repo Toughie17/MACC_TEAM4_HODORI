@@ -135,7 +135,7 @@ extension AgendaView {
     }
     
     private func detailPlaceholder(current index: Int) -> String {
-        "\(index == 0 && detailAgendas.count == 1 ? "세부안건을 작성해주세요" : detailAgendas[index])"
+        "\(index == 0 && detailAgendas.count == 1 ? "세부안건을 작성해주세요 (최대 5개)" : detailAgendas[index])"
     }
     
     private func handleTapActionInDetailAgenda(current index: Int) {
@@ -235,8 +235,13 @@ extension AgendaView {
                         agendaFocusField = true
                     }
             } else {
-                agendaField
-                    .layoutPriority(1)
+                HStack(alignment: .bottom) {
+                    agendaField
+                    Spacer()
+                    textChecker
+                        .padding(.trailing, 24)
+                }
+                .layoutPriority(1)
             }
         }
     }
@@ -285,18 +290,25 @@ extension AgendaView {
                 }
             }
     }
+    
+    private var textChecker: some View {
+        Text("\(agenda.count)/16")
+            .font(.pretendRegular14)
+            .foregroundStyle(Color.gray5)
+    }
 }
 
 // MARK: DetailAgendas View
 extension AgendaView {
-//    private var bulletPoint: String {
-//        viewState == .normal && detailAgendas.first!.isEmpty ? "" : "•"
-//    }
+    private var bulletPoint: String {
+        viewState == .normal && detailAgendas.first!.isEmpty ? "" : "‧"
+    }
     
     private var detailAgendaFieldList: some View {
         ForEach(detailAgendas.indices, id: \.self) { index in
-            HStack(spacing: 4) {
-                //                Text(bulletPoint)
+            HStack(alignment: .top, spacing: 6) {
+                Text(bulletPoint)
+                    .foregroundStyle(Color.gray6)
                 TextField(detailPlaceholder(current: index), text: $detailAgendas[index], axis: .vertical)
                     .font(.pretendMedium16)
                     .foregroundStyle(Color.gray3)
