@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MeetingView: View {
-
     @State var agendas: [Agenda]
     
     var completedAgendaCount: Int {
@@ -27,12 +26,6 @@ struct MeetingView: View {
     @State var selectedTab: Int = 0
     @State var showModal: Bool = false
     @State private var sheetContentHieht = CGFloat(359)
-    
-    
-    private let heavyHaptic = UIImpactFeedbackGenerator(style: .heavy)
-    private let mediumHaptic = UIImpactFeedbackGenerator(style: .medium)
-    
-    
     
     var body: some View {
         ZStack {
@@ -91,7 +84,7 @@ struct MeetingView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 
                 Button {
-                    mediumHaptic.impactOccurred()
+                    HapticManager.shared.mediumyHaptic()
                     withAnimation(.bouncy) {
                         showAlert = true
                     }
@@ -127,10 +120,6 @@ extension MeetingView {
         let lastIndex = agendas.index(before: agendas.endIndex)
         
         return TabView(selection: $selectedTab) {
-//            
-//            if agendas.count == 1 {
-//                Meeting
-//            }
             
             ForEach(agendas.indices, id: \.self) { index in
                 
@@ -159,13 +148,17 @@ extension MeetingView {
         HStack(spacing: 0) {
             timerButton
                 .padding(.trailing, 16)
-            agendCompleteButton
+            if !agendas[selectedTab].isComplete {
+                agendaCompleteButton
+            } else {
+                agendaCancelButton
+            }
         }
     }
     
     private var timerButton: some View {
         Button {
-            mediumHaptic.impactOccurred()
+            HapticManager.shared.mediumyHaptic()
             withAnimation(.bouncy) {
                 showModal.toggle()
             }
@@ -184,16 +177,36 @@ extension MeetingView {
         .disabled(showModal || showTimer)
     }
     
-    private var agendCompleteButton: some View {
+    private var agendaCancelButton: some View {
         Button {
-            heavyHaptic.impactOccurred()
-            withAnimation(.bouncy) {
-                showLottie = true
-                print(selectedTab)
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.15) {
-                    showLottie = false
-                    updateAgendas()
+            HapticManager.shared.heavyHaptic()
+            agendas[selectedTab].isComplete = false
+        } label: {
+            ZStack(alignment: .center) {
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(Color.gray1, lineWidth: 2)
+                HStack(spacing: 0) {
+                    Spacer()
+                    Text("안건 다시 진행하기")
+                        .font(.pretendBold16)
+                        .foregroundStyle(Color.gray1)
+                    Spacer()
                 }
+            }
+            .frame(height: 54)
+        }
+        
+    }
+    
+    private var agendaCompleteButton: some View {
+        Button {
+            HapticManager.shared.heavyHaptic()
+            
+            showLottie = true
+            print(selectedTab)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.15) {
+                showLottie = false
+                updateAgendas()
             }
         } label: {
             ZStack(alignment: .center) {
@@ -219,11 +232,9 @@ extension MeetingView {
     }
     
     private func updateAgendas() {
-        withAnimation(.default) {
-            agendas[selectedTab].isComplete = true
-            if selectedTab < agendas.count && selectedTab != agendas.count - 1 {
-                selectedTab += 1
-            }
+        agendas[selectedTab].isComplete = true
+        if selectedTab < agendas.count && selectedTab != agendas.count - 1 {
+            selectedTab += 1
         }
     }
     
