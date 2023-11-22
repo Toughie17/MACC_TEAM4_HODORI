@@ -300,14 +300,15 @@ extension AgendaView {
 
 // MARK: DetailAgendas View
 extension AgendaView {
-//    private var bulletPoint: String {
-//        viewState == .normal && detailAgendas.first!.isEmpty ? "" : "•"
-//    }
+    private var bulletPoint: String {
+        viewState == .normal && detailAgendas.first!.isEmpty ? "" : "‧"
+    }
     
     private var detailAgendaFieldList: some View {
         ForEach(detailAgendas.indices, id: \.self) { index in
-            HStack(spacing: 4) {
-                //                Text(bulletPoint)
+            HStack(alignment: .top, spacing: 6) {
+                Text(bulletPoint)
+                    .foregroundStyle(Color.gray6)
                 TextField(detailPlaceholder(current: index), text: $detailAgendas[index], axis: .vertical)
                     .font(.pretendMedium16)
                     .foregroundStyle(Color.gray3)

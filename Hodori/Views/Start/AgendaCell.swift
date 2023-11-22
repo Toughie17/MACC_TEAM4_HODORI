@@ -116,10 +116,18 @@ struct AgendaCell: View {
     
     private var detailAgendas: some View {
         ForEach(agenda.detail, id: \.self) { detailAgenda in
-            Text("\(detailAgenda)")
-                .font(.pretendMedium16)
-                .foregroundStyle(agenda.isComplete ? Color.gray6 : Color.gray2)
+            HStack(alignment: .center, spacing: 6) {
+                bulletPoint
+                Text("\(detailAgenda)")
+                    .font(.pretendMedium16)
+                    .foregroundStyle(agenda.isComplete ? Color.gray6 : Color.gray2)
+            }
         }
+    }
+    
+    private var bulletPoint: some View {
+        Text("‧")
+            .foregroundStyle(Color.gray6)
     }
     
     private func isAgendaClicked(_ index: Int) -> Bool {
