@@ -242,7 +242,7 @@ extension AgendaView {
     }
     
     private var agendaField: some View {
-        TextField("안건을 작성해주세요", text: $agenda, axis: .vertical)
+        TextField("안건을 작성해 주세요", text: $agenda, axis: .vertical)
             .font(.pretendBold18)
             .foregroundStyle(.black)
             .focused($agendaFocusField)

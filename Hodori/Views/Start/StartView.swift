@@ -118,11 +118,11 @@ struct StartView: View {
     }
     
     private var headerText: String {
-        isMeetingExist ? "회의를 시작 해볼까요?" : "오늘 회의, 잇죠?"
+        isMeetingExist ? "회의를 시작해 볼까요?" : "오늘 회의, 잇죠?"
     }
     
     private var placeholder: some View {
-        Text("이전 회의 내역이 아직 없어요\n새 회의를 시작해보세요")
+        Text("이전 회의 내역이 아직 없어요\n새 회의를 시작해 보세요")
             .font(.pretendRegular16)
             .foregroundStyle(Color.gray2)
             .lineSpacing(1.4)
