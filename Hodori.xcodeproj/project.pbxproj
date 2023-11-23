@@ -30,6 +30,7 @@
 		07D925E82B041234007BD0E5 /* CardBackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D925E72B041234007BD0E5 /* CardBackgroundModifier.swift */; };
 		7B00B8C02B0A732D003CC330 /* ITDA_Splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7B00B8BF2B0A732D003CC330 /* ITDA_Splash.gif */; };
 		7BF933032B077EAD00B6CD6C /* loud-alarm-clock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7BF933022B077EAD00B6CD6C /* loud-alarm-clock.mp3 */; };
+		86000A962B0C9EF0004675FA /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86000A952B0C9EF0004675FA /* HapticManager.swift */; };
 		863702372AFA107A004A8A34 /* PriorityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863702362AFA107A004A8A34 /* PriorityCell.swift */; };
 		863702392AFA162A004A8A34 /* PrioritySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863702382AFA162A004A8A34 /* PrioritySettingView.swift */; };
 		8637023D2AFA7001004A8A34 /* MeetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8637023C2AFA7001004A8A34 /* MeetingView.swift */; };
@@ -97,6 +98,7 @@
 		07D925E72B041234007BD0E5 /* CardBackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackgroundModifier.swift; sourceTree = "<group>"; };
 		7B00B8BF2B0A732D003CC330 /* ITDA_Splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ITDA_Splash.gif; sourceTree = "<group>"; };
 		7BF933022B077EAD00B6CD6C /* loud-alarm-clock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "loud-alarm-clock.mp3"; sourceTree = "<group>"; };
+		86000A952B0C9EF0004675FA /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		863702362AFA107A004A8A34 /* PriorityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityCell.swift; sourceTree = "<group>"; };
 		863702382AFA162A004A8A34 /* PrioritySettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioritySettingView.swift; sourceTree = "<group>"; };
 		8637023C2AFA7001004A8A34 /* MeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingView.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				0742D8C72AFF863200FBF183 /* KeyboardManager.swift */,
 				071F8D9F2B016579004A6C7A /* CoreDataManager.swift */,
 				A53AD55F2B034E24006B9F16 /* SoundManager.swift */,
+				86000A952B0C9EF0004675FA /* HapticManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				863702432AFA7534004A8A34 /* AllAgendaView.swift in Sources */,
 				863702452AFA872E004A8A34 /* AllAgendaCell.swift in Sources */,
 				07D736642AF6AD1C00C04D11 /* Agenda.swift in Sources */,
+				86000A962B0C9EF0004675FA /* HapticManager.swift in Sources */,
 				8637023F2AFA7039004A8A34 /* MeetingAlert.swift in Sources */,
 				86B5DADE2AF8AF5A00AD5F56 /* NavigationManager.swift in Sources */,
 				86B5DAE62AF8B39000AD5F56 /* MeetingManager.swift in Sources */,
@@ -637,7 +641,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hodori/Preview Content\"";
-				DEVELOPMENT_TEAM = VGKCD7Q8NW;
+				DEVELOPMENT_TEAM = 27567HRR46;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hodori/Info.plist;
@@ -660,7 +664,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodori;
+				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodoris;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -681,7 +685,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hodori/Preview Content\"";
-				DEVELOPMENT_TEAM = VGKCD7Q8NW;
+				DEVELOPMENT_TEAM = 27567HRR46;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hodori/Info.plist;
@@ -704,7 +708,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodori;
+				PRODUCT_BUNDLE_IDENTIFIER = Macro.Hodoris;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

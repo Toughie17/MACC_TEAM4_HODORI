@@ -156,39 +156,58 @@ struct AgendaSettingView: View {
     }
     
     private var completeButton: some View {
-        NavigationLink {
-            PrioritySettingView(agendas: $agendas)
-        } label: {
-            HStack(spacing: 14) {
-                Image("checkmark")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 15, height: 10)
-                    .foregroundStyle(.white)
-                
-                Text("작성 완료")
-                    .font(.pretendBold16)
-                    .foregroundStyle(.white)
-                    .padding(.trailing, 15)
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 18)
-            .background {
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(!agendas.contains(where: { $0.title == "" }) && agendas.count > 0 ? Color.gray1 : .gray)
-                    .shadow(color: .white, radius: 10, x: 0, y: -15) 
-            }
-        }
-        .buttonStyle(CustomButton())
-        .disabled(agendas.contains(where: { $0.title == "" }) || agendas.count <= 0)
-        .background {
-            GeometryReader { proxy in
-                Color.clear
-                    .onAppear {
-                        self.buttonHeight = proxy.size.height
+        VStack(spacing: 10) {
+            if agendas.count == 10 {
+                warningMessage
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 5)
+                    .background {
+                        Color.white
                     }
+                    .shadow(color: .white, radius: 4, x: 0, y: -7)
+            }
+            
+            NavigationLink {
+                PrioritySettingView(agendas: $agendas)
+            } label: {
+                HStack(spacing: 14) {
+                    Image("checkmark")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 15, height: 10)
+                        .foregroundStyle(.white)
+                    
+                    Text("작성 완료")
+                        .font(.pretendBold16)
+                        .foregroundStyle(.white)
+                        .padding(.trailing, 15)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 18)
+                .background {
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(!agendas.contains(where: { $0.title == "" }) && agendas.count > 0 ? Color.gray1 : .gray)
+                        .shadow(color: agendas.count == 10 ? .clear : .white, radius: 10, x: 0, y: -15)
+                }
+            }
+            .buttonStyle(CustomButton())
+            .disabled(agendas.contains(where: { $0.title == "" }) || agendas.count <= 0)
+            .background {
+                GeometryReader { proxy in
+                    Color.clear
+                        .onAppear {
+                            self.buttonHeight = proxy.size.height
+                        }
+                }
             }
         }
+    }
+    
+    private var warningMessage: some View {
+        Text("안건은 최대 10개까지 작성가능해요")
+            .font(.pretendMedium14)
+            .foregroundStyle(Color.subRed)
+            .frame(maxWidth: .infinity)
     }
 }
 
