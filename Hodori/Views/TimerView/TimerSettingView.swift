@@ -17,7 +17,7 @@ struct TimerSettingView: View {
     
     private let mediumHaptic = UIImpactFeedbackGenerator(style: .medium)
     
-    var hourIndex: Int {
+    var hourIndex: Int { 
         return Int(sec / 3600)
     }
     
@@ -26,8 +26,8 @@ struct TimerSettingView: View {
     }
     
     
-    var body: some View {
-        NavigationView{
+    var body: some View { 
+        NavigationView {
             VStack (spacing: 0) {
                 HStack {
                     Spacer()
@@ -56,12 +56,11 @@ struct TimerSettingView: View {
     }
     
     private var cancelButton: some View {
-        Button(action: {
+        Button {
             mediumHaptic.impactOccurred()
             self.presentation.wrappedValue.dismiss()
             sec = 0.0
-            
-        }) {
+        } label: {
             Image(systemName:"xmark")
                 .foregroundColor(.gray3)
                 .font(.system(size: 24, weight: .regular))
@@ -69,6 +68,7 @@ struct TimerSettingView: View {
                 .padding(.leading, 79)
                 .padding(.trailing, 16)
         }
+
     }
     
     private var timerStartButton: some View {

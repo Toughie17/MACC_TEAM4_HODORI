@@ -22,9 +22,6 @@ struct CustomPicker: UIViewRepresentable {
         pickerView.delegate = context.coordinator
         pickerView.dataSource = context.coordinator
        
-
-        
-        
         let font = UIFont.systemFont(ofSize: 20.0)
                let fontSize: CGFloat = font.pointSize
                let componentWidth: CGFloat = pickerView.frame.width / CGFloat(pickerView.numberOfComponents)

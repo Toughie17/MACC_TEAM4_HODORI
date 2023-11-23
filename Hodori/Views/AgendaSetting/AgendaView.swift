@@ -135,7 +135,7 @@ extension AgendaView {
     }
     
     private func detailPlaceholder(current index: Int) -> String {
-        "\(index == 0 && detailAgendas.count == 1 ? "세부안건을 작성해주세요 (최대 5개)" : detailAgendas[index])"
+        "\(index == 0 && detailAgendas.count == 1 ? "세부 안건을 작성해주세요 (최대 5개)" : detailAgendas[index])"
     }
     
     private func handleTapActionInDetailAgenda(current index: Int) {
@@ -247,7 +247,7 @@ extension AgendaView {
     }
     
     private var agendaField: some View {
-        TextField("안건을 작성해주세요", text: $agenda, axis: .vertical)
+        TextField("안건을 작성해 주세요", text: $agenda, axis: .vertical)
             .font(.pretendBold18)
             .foregroundStyle(.black)
             .focused($agendaFocusField)
