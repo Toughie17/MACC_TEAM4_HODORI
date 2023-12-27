@@ -29,6 +29,7 @@
 		07D736642AF6AD1C00C04D11 /* Agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D736632AF6AD1C00C04D11 /* Agenda.swift */; };
 		07D925E82B041234007BD0E5 /* CardBackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D925E72B041234007BD0E5 /* CardBackgroundModifier.swift */; };
 		7B00B8C02B0A732D003CC330 /* ITDA_Splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7B00B8BF2B0A732D003CC330 /* ITDA_Splash.gif */; };
+		7B18A0182B3BB5EE005E5D58 /* DropViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B18A0172B3BB5EE005E5D58 /* DropViewDelegate.swift */; };
 		7BF933032B077EAD00B6CD6C /* loud-alarm-clock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7BF933022B077EAD00B6CD6C /* loud-alarm-clock.mp3 */; };
 		86000A962B0C9EF0004675FA /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86000A952B0C9EF0004675FA /* HapticManager.swift */; };
 		863702372AFA107A004A8A34 /* PriorityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863702362AFA107A004A8A34 /* PriorityCell.swift */; };
@@ -97,6 +98,7 @@
 		07D736632AF6AD1C00C04D11 /* Agenda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agenda.swift; sourceTree = "<group>"; };
 		07D925E72B041234007BD0E5 /* CardBackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackgroundModifier.swift; sourceTree = "<group>"; };
 		7B00B8BF2B0A732D003CC330 /* ITDA_Splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ITDA_Splash.gif; sourceTree = "<group>"; };
+		7B18A0172B3BB5EE005E5D58 /* DropViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropViewDelegate.swift; sourceTree = "<group>"; };
 		7BF933022B077EAD00B6CD6C /* loud-alarm-clock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "loud-alarm-clock.mp3"; sourceTree = "<group>"; };
 		86000A952B0C9EF0004675FA /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		863702362AFA107A004A8A34 /* PriorityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityCell.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 			children = (
 				863702362AFA107A004A8A34 /* PriorityCell.swift */,
 				863702382AFA162A004A8A34 /* PrioritySettingView.swift */,
+				7B18A0172B3BB5EE005E5D58 /* DropViewDelegate.swift */,
 			);
 			path = PrioritySettingView;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				863702432AFA7534004A8A34 /* AllAgendaView.swift in Sources */,
 				863702452AFA872E004A8A34 /* AllAgendaCell.swift in Sources */,
 				07D736642AF6AD1C00C04D11 /* Agenda.swift in Sources */,
+				7B18A0182B3BB5EE005E5D58 /* DropViewDelegate.swift in Sources */,
 				86000A962B0C9EF0004675FA /* HapticManager.swift in Sources */,
 				8637023F2AFA7039004A8A34 /* MeetingAlert.swift in Sources */,
 				86B5DADE2AF8AF5A00AD5F56 /* NavigationManager.swift in Sources */,
@@ -641,7 +645,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hodori/Preview Content\"";
-				DEVELOPMENT_TEAM = 27567HRR46;
+				DEVELOPMENT_TEAM = JRDC32KNLZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hodori/Info.plist;
@@ -685,7 +689,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hodori/Preview Content\"";
-				DEVELOPMENT_TEAM = 27567HRR46;
+				DEVELOPMENT_TEAM = JRDC32KNLZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hodori/Info.plist;

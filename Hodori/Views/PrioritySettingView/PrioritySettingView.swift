@@ -17,9 +17,9 @@ struct PrioritySettingView: View {
         _agendas = agendas
     }
     
+    @State private var draggedAgenda: Agenda?
     @Environment(\.dismiss) private var dismiss
     @Binding var agendas: [Agenda]
-    @State private var draggingItem: Agenda?
     
     var body: some View {
         ZStack {
@@ -29,7 +29,7 @@ struct PrioritySettingView: View {
                 infoText
                     .padding(.top,8)
                     .padding(.bottom, 24)
-                cells
+               cells
                     .padding(.bottom, 12)
                     .padding(.horizontal, 24)
                 
@@ -56,37 +56,21 @@ extension PrioritySettingView {
             .font(.pretendRegular14)
     }
     
+   
     private var cells: some View {
         ScrollView {
             ForEach(agendas, id: \.self) { agenda in
                 PriorityCell(title: agenda.title)
-                    .draggable(agenda) {
-                        EmptyView()
-                            .frame(width: 1, height: 1)
-                            .onAppear {
-                                draggingItem = agenda
-                                HapticManager.shared.mediumyHaptic()
-                            }
-                    }
-                    .dropDestination(for: Agenda.self) { items, location in
-                        draggingItem = nil
-                        return true
-                    } isTargeted: { status in
-                        if let draggingItem, status, draggingItem != agenda {
-                            if let sourceIndex = agendas.firstIndex(of: draggingItem),
-                               let destinationIndex = agendas.firstIndex(of: agenda) {
-                                
-                                withAnimation(.default) {
-                                    self.agendas.move(fromOffsets: IndexSet(integer: sourceIndex), toOffset: destinationIndex > sourceIndex ? destinationIndex + 1 : destinationIndex)
-                                }
-                                HapticManager.shared.mediumyHaptic()
-                            }
-                        }
-                    }
-                    .scaleEffect(0.97)
+                    .onDrag({
+                        self.draggedAgenda = agenda
+                        return NSItemProvider()
+                    })
+                    .onDrop(of: [.text], delegate: DropViewDelegate(destinationItem: agenda, agendas: $agendas, draggedAgenda: $draggedAgenda))
+
             }
         }
     }
+    
     
     private var startButton: some View {
         
