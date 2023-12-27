@@ -8,25 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     @EnvironmentObject var navigationManager: NavigationManager
     
     var body: some View {
-        
-        NavigationStack(path: $navigationManager.screenPath) {
-            
-            Group {
-                VStack {
-                    Image(systemName: "globe")
-                        .imageScale(.large)
-                        .foregroundStyle(.tint)
-                    Text("Hello, world!")
-                }
-            }
-            .navigationDestination(for: AppScreen.self) { appScreen in
-                appScreen.destination
-            }
-        }
+        StartView()
     }
 }
 
