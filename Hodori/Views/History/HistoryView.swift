@@ -32,7 +32,9 @@ struct HistoryView: View {
                                 navigationManager.screenPath.removeLast()
                             } label: {
                                 Image(systemName: "chevron.left")
-                                    .foregroundStyle(.black)
+                                    .frame(width: 50, height: 50, alignment: .leading)
+                                    .foregroundStyle(Color.black)
+                                    .font(.system(size: 17, weight: .semibold))
                             }
                         }
                     }
@@ -54,7 +56,9 @@ struct HistoryView: View {
                                 navigationManager.screenPath.removeLast()
                             } label: {
                                 Image(systemName: "chevron.left")
-                                    .foregroundStyle(.black)
+                                    .frame(width: 50, height: 50, alignment: .leading)
+                                    .foregroundStyle(Color.black)
+                                    .font(.system(size: 17, weight: .semibold))
                             }
                         }
                     }

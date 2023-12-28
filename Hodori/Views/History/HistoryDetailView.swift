@@ -74,7 +74,9 @@ struct HistoryDetailView: View {
                             dismiss()
                         } label: {
                             Image(systemName: "chevron.left")
-                                .foregroundStyle(.black)
+                                .frame(width: 50, height: 50, alignment: .leading)
+                                .foregroundStyle(Color.black)
+                                .font(.system(size: 17, weight: .semibold))
                         }
                     }
                 }
