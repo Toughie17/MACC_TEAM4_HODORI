@@ -43,8 +43,9 @@ struct HistoryView: View {
                     VStack(alignment: .leading, spacing: 16) {
                         ForEach(Array(zip(meetings.indices, meetings)), id: \.1) { index, meeting in
                             yearSection(index)
+                        NavigationLink(destination: HistoryDetailView(meeting: meeting)) {
                             MeetingCard(.history, meeting: meeting)
-                            
+                            }
                         }
                     }
                     .padding(.horizontal, 24)
