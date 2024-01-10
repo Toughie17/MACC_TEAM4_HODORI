@@ -69,7 +69,7 @@ struct StartView: View {
                     }
                     .background(
                         NavigationLink(
-                            destination: HistoryDetailView(meeting: meeting),
+                            destination: HistoryDetailView(meeting: lastMeeting), // lastMeeting 전달
                             tag: 1,
                             selection: self.$tag
                         ) {
