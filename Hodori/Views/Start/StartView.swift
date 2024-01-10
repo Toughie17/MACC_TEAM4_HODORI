@@ -12,6 +12,13 @@ struct StartView: View {
     @EnvironmentObject var navigationManager: NavigationManager
     @State private var isHistoryNavigationButtonClicked = false
     @State private var isAgendaSettingNavigationButtonClicked = false
+    @State var tag:Int? = nil
+    
+    let meeting: Meeting
+
+    init(meeting: Meeting) {
+           self.meeting = meeting
+       }
     
     private var today: String {
         let currentDate = Date()
@@ -55,7 +62,20 @@ struct StartView: View {
                     .padding(.bottom, 40)
                 
                 if isMeetingExist {
-                    MeetingCard(.last, meeting: lastMeeting)
+                    Button(action: {
+                        self.tag = 1
+                    }) {
+                        MeetingCard(.last, meeting: lastMeeting)
+                    }
+                    .background(
+                        NavigationLink(
+                            destination: HistoryDetailView(meeting: meeting),
+                            tag: 1,
+                            selection: self.$tag
+                        ) {
+                            EmptyView()
+                        }
+                    )
                 } else {
                     placeholder
                 }
@@ -134,7 +154,7 @@ struct StartView: View {
 }
 
 #Preview {
-    StartView()
+    StartView(meeting: Meeting(agendas: [.init(title: "", detail: [""])], startDate: Date()))
         .environmentObject(MeetingManager())
         .environmentObject(NavigationManager())
 }
