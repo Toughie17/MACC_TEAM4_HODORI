@@ -221,6 +221,7 @@ extension MeetingView {
                         Image(systemName: "checkmark")
                             .font(.system(size: 16, weight: .semibold))
                             .padding(.leading, 12)
+                        
                     }
                     Spacer()
                 }
