@@ -109,6 +109,7 @@ extension PrioritySettingView {
             dismiss()
         } label: {
             Image(systemName: "chevron.left")
+                .frame(width: 50, height: 50, alignment: .leading)
                 .foregroundStyle(Color.gray3)
                 .font(.system(size: 17, weight: .semibold))
                 .padding(.trailing, 30)

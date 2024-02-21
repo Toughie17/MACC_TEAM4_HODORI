@@ -75,7 +75,7 @@ struct MeetingView: View {
                     showSheet = true
                 } label: {
                     Image(systemName: "list.bullet")
-                        .frame(width: 27, height: 22)
+                        .frame(width: 50, height: 50, alignment: .leading)
                         .foregroundStyle(Color.gray2)
                 }
                 .disabled(showAlert || showLottie)

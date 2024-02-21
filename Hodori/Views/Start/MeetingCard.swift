@@ -76,15 +76,15 @@ struct MeetingCard: View {
             
             Spacer()
             
-            if cardState == .history {
-                NavigationLink {
-                    HistoryDetailView(meeting: meeting)
-                } label: {
-                    Image(systemName: "chevron.right")
-                        .font(.system(size: 16))
-                        .foregroundStyle(.black)
-                }
-            }
+//            if cardState == .history {
+//                NavigationLink {
+//                    HistoryDetailView(meeting: meeting)
+//                } label: {
+//                    Image(systemName: "chevron.right")
+//                        .font(.system(size: 16))
+//                        .foregroundStyle(.black)
+//                }
+//            }
         }
     }
     

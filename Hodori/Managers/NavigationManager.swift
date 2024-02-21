@@ -28,7 +28,7 @@ extension AppScreen {
     var destination: some View {
         switch self {
         case .start:
-            StartView()
+            StartView(meeting: Meeting(agendas: [.init(title: "", detail: [""])], startDate: Date()))
         case .agendaSetting:
             AgendaSettingView()
 //        case .prioritySetting:

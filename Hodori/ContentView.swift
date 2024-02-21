@@ -11,7 +11,7 @@ struct ContentView: View {
     @EnvironmentObject var navigationManager: NavigationManager
     
     var body: some View {
-        StartView()
+        StartView(meeting: Meeting(agendas: [.init(title: "", detail: [""])], startDate: Date()))
     }
 }
 
