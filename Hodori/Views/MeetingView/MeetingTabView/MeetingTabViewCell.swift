@@ -12,6 +12,7 @@ struct MeetingTabViewCell: View {
     let agenda: Agenda
     let index: Int
     @Binding var showLottie: Bool
+    @State var showSheet: Bool = false
     
     let needLeftLine: Bool
     let needRightLine: Bool
@@ -33,7 +34,12 @@ struct MeetingTabViewCell: View {
                             .padding(.bottom, 6)
                         Spacer()
                         Menu {
-                            Button(action: {})  {
+                            Button(action: {
+                                HapticManager.shared.mediumyHaptic()
+                                withAnimation(.bouncy) {
+                                    showSheet = true
+                                }
+                            })  {
                                 Label("수정하기",systemImage: "pencil")
                             }
                             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
