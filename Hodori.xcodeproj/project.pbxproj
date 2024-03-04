@@ -58,6 +58,7 @@
 		A53AD55C2B034D91006B9F16 /* TimerSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55B2B034D91006B9F16 /* TimerSettingView.swift */; };
 		A53AD55E2B034DD0006B9F16 /* TimerRunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */; };
 		A53AD5602B034E24006B9F16 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AD55F2B034E24006B9F16 /* SoundManager.swift */; };
+		A5A5950F2B8F3FCF00BC851A /* AgendaEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A5950E2B8F3FCF00BC851A /* AgendaEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -126,6 +127,7 @@
 		A53AD55B2B034D91006B9F16 /* TimerSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettingView.swift; sourceTree = "<group>"; };
 		A53AD55D2B034DD0006B9F16 /* TimerRunningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRunningView.swift; sourceTree = "<group>"; };
 		A53AD55F2B034E24006B9F16 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		A5A5950E2B8F3FCF00BC851A /* AgendaEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +292,7 @@
 			children = (
 				86855EEE2AFBB07E0051794C /* PageControl.swift */,
 				86855EF42AFBB3500051794C /* MeetingTabViewCell.swift */,
+				A5A5950E2B8F3FCF00BC851A /* AgendaEditView.swift */,
 			);
 			path = MeetingTabView;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				8637023F2AFA7039004A8A34 /* MeetingAlert.swift in Sources */,
 				86B5DADE2AF8AF5A00AD5F56 /* NavigationManager.swift in Sources */,
 				86B5DAE62AF8B39000AD5F56 /* MeetingManager.swift in Sources */,
+				A5A5950F2B8F3FCF00BC851A /* AgendaEditView.swift in Sources */,
 				071F8DA02B016579004A6C7A /* CoreDataManager.swift in Sources */,
 				079F1A792B00CB0D00A00E18 /* String+.swift in Sources */,
 				86855F0E2AFDFD660051794C /* Font+.swift in Sources */,

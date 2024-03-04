@@ -12,7 +12,7 @@ struct MeetingTabViewCell: View {
     let agenda: Agenda
     let index: Int
     @Binding var showLottie: Bool
-    @State var showSheet: Bool = false
+    @State var showModal: Bool = false
     
     let needLeftLine: Bool
     let needRightLine: Bool
@@ -37,11 +37,17 @@ struct MeetingTabViewCell: View {
                             Button(action: {
                                 HapticManager.shared.mediumyHaptic()
                                 withAnimation(.bouncy) {
-                                    showSheet = true
+                                    showModal = true
                                 }
                             })  {
                                 Label("수정하기",systemImage: "pencil")
                             }
+                            .sheet(isPresented: $showModal) {
+                                AgendaEditView(showModal: $showModal, agenda: agenda)
+                                    .presentationDetents([.large])
+                                    .presentationDragIndicator(.visible)
+                            }
+                            
                             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
                                 Label("추가하기",systemImage: "pencil")
                             }
