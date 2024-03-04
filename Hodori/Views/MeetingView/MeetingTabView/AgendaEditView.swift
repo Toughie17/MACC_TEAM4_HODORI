@@ -11,20 +11,20 @@ struct AgendaEditView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.presentationMode) var presentation
     @StateObject var keyboardManager = KeyboardManager()
-
+    
     @Binding var agenda: Agenda
     @Binding var showEditModal : Bool
-//    @Binding var agendas: [Agenda]
-//    @Binding var selectedTab: Int
     
-//    @State var mainAgenda: String
-//    @State var detailAgendas: [String]
+    @State private var editedTitle: String
+    @State private var editedDetails: [String]
     @FocusState private var isFocused: Bool
-
-//    init(agenda: Binding<Agenda>, showEditModal: Binding<Bool>, agendas: Binding<[Agenda]>, selectedTab: Binding<Int>) {
-//        _agenda = agenda
-//        _showEditModal = showEditModal
-//    }
+    
+    public init(agenda: Binding<Agenda>, showEditModal: Binding<Bool>) {
+        self._agenda = agenda
+        self._showEditModal = showEditModal
+        _editedTitle = State(initialValue: agenda.wrappedValue.title)
+        _editedDetails = State(initialValue: agenda.wrappedValue.detail)
+    }
     
     var body: some View {
         VStack (alignment: .leading) {
@@ -32,6 +32,7 @@ struct AgendaEditView: View {
             HStack {
                 Button {
                     withAnimation(.bouncy) {
+                        resetChanges()
                         self.presentation.wrappedValue.dismiss()
                     }
                 } label: {
@@ -55,7 +56,9 @@ struct AgendaEditView: View {
                 
                 Button {
                     withAnimation(.bouncy) {
-                        showEditModal.toggle()
+                        editedTitle = agenda.title
+                        editedDetails = agenda.detail
+                        self.presentation.wrappedValue.dismiss()
                     }
                 } label: {
                     Text("완료")
@@ -67,7 +70,7 @@ struct AgendaEditView: View {
                 }
             }
             
-                Spacer()
+            Spacer()
             
             // 안건, 세부안건 섹션
             
@@ -104,15 +107,20 @@ struct AgendaEditView: View {
                 
                 Spacer()
             }
-//            .onTapGesture {
-//                isFocused.toggle()
-//            }
-        }            
+        }
         .padding(.leading, 24)
-
-
+        .onAppear {
+            editedTitle = agenda.title
+            editedDetails = agenda.detail
+        }
+    }
+    
+    func resetChanges() {
+        agenda.title = editedTitle
+        agenda.detail = editedDetails
     }
 }
+
 
 //#Preview {
 //    AgendaEditView(agenda: $agenda, showEditModal: Binding.constant(false))

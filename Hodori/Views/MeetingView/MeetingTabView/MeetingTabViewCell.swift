@@ -16,7 +16,6 @@ struct MeetingTabViewCell: View {
     @Binding var showLottie: Bool
     @State var showEditModal: Bool = false
     
-    
     let needLeftLine: Bool
     let needRightLine: Bool
     
