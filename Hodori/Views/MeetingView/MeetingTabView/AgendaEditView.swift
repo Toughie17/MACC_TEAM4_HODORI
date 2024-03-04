@@ -17,9 +17,10 @@ struct AgendaEditView: View {
 //    @Binding var agendas: [Agenda]
 //    @Binding var selectedTab: Int
     
-    
-    @State private var isFocused: Bool = true
-    
+//    @State var mainAgenda: String
+//    @State var detailAgendas: [String]
+    @FocusState private var isFocused: Bool
+
 //    init(agenda: Binding<Agenda>, showEditModal: Binding<Bool>, agendas: Binding<[Agenda]>, selectedTab: Binding<Int>) {
 //        _agenda = agenda
 //        _showEditModal = showEditModal
@@ -71,9 +72,16 @@ struct AgendaEditView: View {
             // 안건, 세부안건 섹션
             
             VStack {
-                Text(agenda.title)
+                TextField("안건을 수정하세요", text: $agenda.title)
                     .font(.pretendBold24)
-                    .foregroundStyle(agenda.isComplete ? Color.gray3 : Color.black)
+                    .foregroundStyle(Color.black)
+                    .onAppear{
+                        isFocused = true
+                    }
+                    .onTapGesture {
+                        isFocused.toggle()
+                    }
+                    .focused($isFocused)
                 
                 if agenda.detail != [""] {
                     ForEach(agenda.detail, id: \.self) { detail in
@@ -99,8 +107,10 @@ struct AgendaEditView: View {
 //            .onTapGesture {
 //                isFocused.toggle()
 //            }
+        }            
+        .padding(.leading, 24)
 
-        }
+
     }
 }
 
