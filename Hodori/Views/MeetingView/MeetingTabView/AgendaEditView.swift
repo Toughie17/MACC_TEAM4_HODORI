@@ -28,91 +28,107 @@ struct AgendaEditView: View {
     
     var body: some View {
         VStack (alignment: .leading) {
-            // 타이틀 섹션
             HStack {
-                Button {
-                    withAnimation(.bouncy) {
-                        resetChanges()
-                        self.presentation.wrappedValue.dismiss()
-                    }
-                } label: {
-                    Text("종료")
-                        .font(.system(size: 17, weight: .regular))
-                        .foregroundStyle(Color.gray2)
-                        .padding(.top, 30)
-                        .padding(.leading, 24)
-                        .padding(.bottom, 25)
-                }
-                
+                cancelBtn
                 Spacer()
-                
-                Text("안건 수정하기")
-                    .font(.pretendBold20)
-                    .foregroundStyle(Color.gray2)
-                    .padding(.top, 28)
-                    .padding(.bottom, 23)
-                
+                headLineText
                 Spacer()
-                
-                Button {
-                    withAnimation(.bouncy) {
-                        editedTitle = agenda.title
-                        editedDetails = agenda.detail
-                        self.presentation.wrappedValue.dismiss()
-                    }
-                } label: {
-                    Text("완료")
-                        .font(.system(size: 17, weight: .regular))
-                        .foregroundStyle(Color.primaryBlue)
-                        .padding(.top, 30)
-                        .padding(.trailing, 24)
-                        .padding(.bottom, 25)
-                }
+                CompleteBtn
             }
-            
+        }
             Spacer()
             
             // 안건, 세부안건 섹션
-            
             VStack {
-                TextField("안건을 수정하세요", text: $agenda.title)
-                    .font(.pretendBold24)
-                    .foregroundStyle(Color.black)
-                    .onAppear{
-                        isFocused = true
-                    }
-                    .onTapGesture {
-                        isFocused.toggle()
-                    }
-                    .focused($isFocused)
-                
-                if agenda.detail != [""] {
-                    ForEach(agenda.detail, id: \.self) { detail in
-                        HStack(spacing: 0) {
-                            Image(systemName: "circle.fill")
-                                .resizable()
-                                .frame(width: 3, height: 3)
-                                .padding(.trailing, 8)
-                            
-                            Text(detail)
-                                .font(.pretendRegular16)
-                                .lineLimit(1)
-                        }
-                        .foregroundStyle(agenda.isComplete ? Color.gray7 : Color.gray2)
-                        .padding(.bottom, 8)
-                    }
-                } else {
-                    EmptyView()
+                VStack {
+                    AgendaTitleSection
                 }
-                
-                Spacer()
+                .padding(.leading, 24)
+
+                VStack {
+                    if agenda.detail != [""] {
+                        ForEach(agenda.detail, id: \.self) { detail in
+                            HStack(spacing: 0) {
+                                Image(systemName: "circle.fill")
+                                    .resizable()
+                                    .frame(width: 3, height: 3)
+                                    .padding(.trailing, 8)
+                                
+                                Text(detail)
+                                    .font(.pretendRegular16)
+                                    .lineLimit(1)
+                            }
+                            .foregroundStyle(agenda.isComplete ? Color.gray7 : Color.gray2)
+                            .padding(.bottom, 8)
+                        }
+                    } else {
+                        EmptyView()
+                    }
+                    Spacer()
+                }
+            }
+        
+            .onAppear {
+                editedTitle = agenda.title
+                editedDetails = agenda.detail
             }
         }
-        .padding(.leading, 24)
-        .onAppear {
-            editedTitle = agenda.title
-            editedDetails = agenda.detail
+    }
+
+extension AgendaEditView {
+    private var cancelBtn: some View {
+        Button {
+            HapticManager.shared.mediumyHaptic()
+            withAnimation(.bouncy) {
+                resetChanges()
+                self.presentation.wrappedValue.dismiss()
+            }
+        } label: {
+            Text("종료")
+                .font(.system(size: 17, weight: .regular))
+                .foregroundStyle(Color.gray2)
+                .padding(.top, 30)
+                .padding(.leading, 24)
+                .padding(.bottom, 25)
         }
+    }
+    
+    private var headLineText: some View {
+            Text("안건 수정하기")
+                .font(.pretendBold20)
+                .foregroundStyle(Color.gray2)
+                .padding(.top, 28)
+                .padding(.bottom, 23)
+        }
+    
+    private var CompleteBtn: some View {
+            Button {
+                HapticManager.shared.mediumyHaptic()
+                withAnimation(.bouncy) {
+                    editedTitle = agenda.title
+                    editedDetails = agenda.detail
+                    self.presentation.wrappedValue.dismiss()
+                }
+            } label: {
+                Text("완료")
+                    .font(.system(size: 17, weight: .regular))
+                    .foregroundStyle(Color.primaryBlue)
+                    .padding(.top, 30)
+                    .padding(.trailing, 24)
+                    .padding(.bottom, 25)
+            }
+        }
+    private var AgendaTitleSection: some View {
+        TextField("안건을 수정하세요", text: $agenda.title)
+            .font(.pretendBold24)
+            .foregroundStyle(Color.black)
+            .onAppear{
+                isFocused = true
+            }
+            .onTapGesture {
+                isFocused.toggle()
+            }
+            .focused($isFocused)
     }
     
     func resetChanges() {
