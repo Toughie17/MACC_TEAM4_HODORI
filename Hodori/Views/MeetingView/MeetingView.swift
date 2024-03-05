@@ -25,8 +25,9 @@ struct MeetingView: View {
     @State var toMeetingEndView: Bool = false
     @State var selectedTab: Int = 0
     @State var showModal: Bool = false
+    @State var showEditModal: Bool = false
     @State private var sheetContentHieht = CGFloat(359)
-    
+        
     var body: some View {
         ZStack {
             Color.gray10.ignoresSafeArea()
@@ -99,7 +100,7 @@ struct MeetingView: View {
         .navigationDestination(isPresented: $toMeetingEndView) {
             MeetingEndView(agendas: agendas, completedAgendaCount: completedAgendaCount)
         }
-        .sheet(isPresented: $showModal) { 
+        .sheet(isPresented: $showModal) {
             TimerSettingView( sec : $sec,showModal: $showModal, showTimer : $showTimer)
                 .presentationDetents([.height(sheetContentHieht)])
                 .presentationDragIndicator(.visible)
@@ -124,14 +125,14 @@ extension MeetingView {
             ForEach(agendas.indices, id: \.self) { index in
                 
                 if agendas.count == 1 {
-                    MeetingTabViewCell(agenda: agendas[index], index: selectedTab, showLottie: $showLottie, needLeftLine: false, needRightLine: false)
+                    MeetingTabViewCell(agenda: $agendas[index], index: selectedTab, showLottie: $showLottie,  needLeftLine: false, needRightLine: false)
                 }
                 else if index == firstIndex {
-                    MeetingTabViewCell(agenda: agendas[index], index: selectedTab, showLottie: $showLottie, needLeftLine: false, needRightLine: true)
+                    MeetingTabViewCell(agenda: $agendas[index], index: selectedTab, showLottie: $showLottie,  needLeftLine: false, needRightLine: false)
                 } else if index == lastIndex {
-                    MeetingTabViewCell(agenda: agendas[index], index: selectedTab, showLottie: $showLottie, needLeftLine: true, needRightLine: false)
+                    MeetingTabViewCell(agenda: $agendas[index], index: selectedTab, showLottie: $showLottie,  needLeftLine: false, needRightLine: false)
                 } else {
-                    MeetingTabViewCell(agenda: agendas[index], index: selectedTab, showLottie: $showLottie, needLeftLine: true, needRightLine: true)
+                    MeetingTabViewCell(agenda: $agendas[index], index: selectedTab, showLottie: $showLottie, needLeftLine: false, needRightLine: false)
                 }
             }
             
