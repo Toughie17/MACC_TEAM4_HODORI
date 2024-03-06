@@ -60,6 +60,7 @@ struct MeetingCard: View {
     }
     
     private var header: some View {
+        ZStack {
         HStack(spacing: 12) {
             PieChartView(agendas: Array(meeting.agendas))
                 .frame(width: 24, height: 24)
@@ -72,6 +73,7 @@ struct MeetingCard: View {
                 Text(cardState == .last ? fullDate : time)
                     .font(.pretendRegular14)
                     .foregroundStyle(Color.gray6)
+//                    .padding(.bottom, 1)
             }
             
             Spacer()
@@ -85,6 +87,15 @@ struct MeetingCard: View {
 //                        .foregroundStyle(.black)
 //                }
 //            }
+        }
+            HStack {
+                Spacer()
+                
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 16, weight: .medium))
+                    .foregroundStyle(.black)
+                    .padding(.top, 2)
+            }
         }
     }
     
